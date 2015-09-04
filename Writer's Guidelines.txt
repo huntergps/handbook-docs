@@ -25,7 +25,7 @@ Neither is it important to state the obvious - make it clear from context instea
 
 Focus on how a Button is used and *how* you acheive the most common tasks with it.
 
-	## `<$(Button)>` 
+	## `$(Button)` 
 	
 	Buttons are clickable @(control)s that takes their look and feel from the @(theme).
 
@@ -110,3 +110,9 @@ $(ClassName) somewhere in the handbook (written as used in UX, not with full nam
 
 The docus should foucs on the most used properties and their allowed values, but does not need to provide
 exhaustive docs. When references to exhaustive docs are neded, use the @unodoc macro.
+
+
+## Rules of thumb:
+
+* Use XML brackets in article bodies where it makes sense, e.g. `<App>`
+* Don't use XML brackets in headers, but use `code notation` around things that are XML tags in headers

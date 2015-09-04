@@ -14,7 +14,7 @@ sure you read:
 * TODO: Links to detailed UX specs
 
 
-## $(Creating stand-alone apps) : `<$(App)>`
+## $(Creating stand-alone apps) : `$(App)`
 
 When creating stand-alone apps or prototypes in Fuse, we use the `<App>` tag. 
 

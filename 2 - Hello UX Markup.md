@@ -5,7 +5,7 @@ Fuse can be used in two primary ways:
 * @(Creating stand-alone apps) or prototypes with cross-platform JavaScript logic
 * @(Creating reusable components), UI views and designs for native apps
 
-The main representation of these things in Fuse is through the use of UX Markup. 
+The main representation of both these things in Fuse is through the use of UX Markup. 
 
 UX Markup is an XML-based format that should be immediately familiar to anyone who has 
 worked with similar formats. For an in-depth look at it's quirks and detailed features, make
@@ -84,6 +84,8 @@ TODO: Add info on that
 
 
 ## @(Theme)s
+
+@unodoc(Fuse.Theme)
 
 `App` offers a setting called `Theme`, which specifies how standard components in
 the app will look and feel. You set it like this:

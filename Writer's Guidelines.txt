@@ -29,7 +29,9 @@ Focus on how a Button is used and *how* you acheive the most common tasks with i
 	
 	Buttons are clickable @(control)s that takes their look and feel from the @(theme).
 
-	This is how you handle a click event:
+	(pictures of android, ios and some custom GL-based buttons side by side)
+
+	This is how you handle a clicked event:
 
 		<Button Clicked="{some_function}" />
 
@@ -40,7 +42,6 @@ Focus on how a Button is used and *how* you acheive the most common tasks with i
 	This means a button can look like many different things depending on the platform and
 	custom style settings.
 
-	(pictures of android, ios and some custom GL-based buttons side by side)
 
 	Changing the look and feel of a button must be considered in context of the @(theme). For example, in iOS the native
 	buttons are just blue text labels, while on Android they have backgrounds and complex behavior when

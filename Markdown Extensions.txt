@@ -5,6 +5,7 @@ $(Foo) defines where Foo is documented. Any links to Foo will point here.
 Note that there can only be one such point in the entire handbook.
 
 
+
 Any code in `quotes` or indented blocks should automatically hotlink any words that
 are documented.
 
@@ -21,9 +22,13 @@ Note that @(Foo bar) should also work in this case as before.
 
 The links names and labels must not be case sensitve
 
-The following syntax should link to the corresponding Unodoc:
 
-* @unodoc(Fuse.Controls.Button) - renders a recognizeable link button that takes you to unodoc for this thing
+
+If Foo is a proper name for an UX entity, the location of $(Foo) should display a right-aligned button
+next to it that links to the corresponding Unodoc page.
+
+The following syntax should also link to the corresponding Unodoc:
+
 * @unodoc(Fuse.Controls.Button: see the full Button reference) - renders <a> see the full Button reference</a>
 
 

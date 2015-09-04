@@ -110,9 +110,3 @@ $(ClassName) somewhere in the handbook (written as used in UX, not with full nam
 
 The docus should foucs on the most used properties and their allowed values, but does not need to provide
 exhaustive docs. When references to exhaustive docs are neded, use the @unodoc macro.
-
-	
-
-This should render something like this:
-
-	BUTTON [Fuse.Controls.Button]

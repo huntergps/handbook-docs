@@ -5,7 +5,6 @@ $(Foo) defines where Foo is documented. Any links to Foo will point here.
 Note that there can only be one such point in the entire handbook.
 
 
-
 Any code in `quotes` or indented blocks should automatically hotlink any words that
 are documented.
 

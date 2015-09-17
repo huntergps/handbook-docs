@@ -6,31 +6,26 @@ How themes interact with controls.
 
 How controls are panels (usually)
 
-## Basic controls
+> ## $(Button)
 
-> ### Button
+> ## $(Switch)
 
-> ### Switch
+> ## $(Slider)
 
-> ### Slider
+> ## $(TextInput)
 
-> ### TextInput
+> ## $(PageControl)
 
-## Advanced controls 
+> ## $(Page)
 
-> ### ScrollView (link elsewhere?)
+> ## $(ScrollView) (link elsewhere?)
 
-> ### MapView (link elsewhere?)
+> ## $(MapView) (link elsewhere?)
 
-> ### WebView (link elsewhere?)
+> ## $(WebView) (link elsewhere?)
 
-> ### Picker (link elsewhere?)
+> ## $(Picker) (link elsewhere?)
 
-> ### DatePicker (link elsewhere?)
+> ## $(DatePicker) (link elsewhere?)
 
 
-## Control Styling & Appearance
-
-> ### Tweaking existing styles
- 
-> ### Building new controls from scratch

@@ -33,6 +33,10 @@ Available space, points (vs @(pixels)).
 
 > ### $(Anchor) and $(Offset)
 
+> ### StatusBarBackground
+
+> ### BottomBarBackground
+
 
 ## Panels
 

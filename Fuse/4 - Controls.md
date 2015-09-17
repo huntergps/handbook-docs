@@ -6,7 +6,7 @@ How themes interact with controls.
 
 How controls are panels (usually)
 
-## Control types
+## Basic controls
 
 > ### Button
 
@@ -14,7 +14,20 @@ How controls are panels (usually)
 
 > ### Slider
 
+> ### TextInput
+
+## Advanced controls 
+
 > ### ScrollView (link elsewhere?)
+
+> ### MapView (link elsewhere?)
+
+> ### WebView (link elsewhere?)
+
+> ### Picker (link elsewhere?)
+
+> ### DatePicker (link elsewhere?)
+
 
 ## Control Styling & Appearance
 

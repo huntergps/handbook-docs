@@ -36,11 +36,13 @@ Available space, points (vs @(pixels)).
 
 ## Panels
 
-> ### Panel
+Panels can contain child UI elements and lay them out according to layout rules.
 
-> ### StackPanel
+### Panel
 
-> ### Grid
+### StackPanel
+
+### Grid
 
 > ### WrapPanel
 

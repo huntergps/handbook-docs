@@ -18,6 +18,8 @@ How controls are panels (usually)
 
 > ## $(Page)
 
+> ## $(PageIndicator)
+
 > ## $(ScrollView) (link elsewhere?)
 
 > ## $(MapView) (link elsewhere?)
@@ -27,5 +29,3 @@ How controls are panels (usually)
 > ## $(Picker) (link elsewhere?)
 
 > ## $(DatePicker) (link elsewhere?)
-
-

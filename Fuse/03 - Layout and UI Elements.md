@@ -1,6 +1,6 @@
 # Layout and UI Elements
 
-Fuse has a powerful layout system that works across all platforms and devices, whether you 
+Fuse has a powerful layout system that works across all platforms and devices, whether you
 are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) based elements.
 
 > ## Videos on this topic
@@ -12,7 +12,19 @@ are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) ba
 
 Explain relationship Nodes, Elements, Controls, Panel.
 
+Nodes: Top level type. UX is a tree of nodes
+Elements:
+Panels:
+Controls:
+
+
 ### Shapes
+
+- Rectangle
+- Circle
+
+> ### Fills
+> ### Strokes
 
 ### Text
 
@@ -21,7 +33,7 @@ Explain relationship Nodes, Elements, Controls, Panel.
 
 ## Element Layout
 
-Available space, points (vs @(pixels)). 
+Available space, points (vs @(pixels)).
 
 ### Alignment
 

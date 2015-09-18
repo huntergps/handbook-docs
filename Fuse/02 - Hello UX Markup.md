@@ -2,21 +2,21 @@
 
 Fuse can be used in two primary ways:
 
-* @(Creating stand-alone apps) or prototypes with cross-platform JavaScript logic
-* @(Creating reusable components), UI views and designs for native apps
+* @(Creating apps) or prototypes with cross-platform JavaScript logic
+* @(Creating components), UI views and designs for native apps
 
-The main representation of both these things in Fuse is through the use of UX Markup. 
+The main representation of both these things in Fuse is through the use of UX Markup.
 
-UX Markup is an XML-based format that should be immediately familiar to anyone who has 
+UX Markup is an XML-based format that should be immediately familiar to anyone who has
 worked with similar formats. For an in-depth look at it's quirks and detailed features, make
 sure you read:
 
 * TODO: Links to detailed UX specs
 
 
-## $(Creating stand-alone apps) : `$(App)`
+## $(Creating apps) : $(App)
 
-When creating stand-alone apps or prototypes in Fuse, we use the `<App>` tag. 
+When creating stand-alone apps or prototypes in Fuse, we use the `<App>` tag.
 
 	<App>
 		<Text>Hello, world!</Text>
@@ -36,7 +36,10 @@ The `Background` property controls the @(color) of the root view of the app.
 TODO: Details on lifecycle events available on App
 
 
-## $(Creating reusable components) : `$(ux:Class)`
+## $(Creating components) : $(ux:Class)
+
+TODO: Focus on the humane way with a file for each component
+TODO: Put ux:Class in separate sub topic
 
 When creating reusable components, we decorate our tags with the `ux:Class`
 attribute:
@@ -51,7 +54,7 @@ This can be done on any node even inside other nodes:
 		<Panel ux:Class="FancyClass" />
 	</Panel>
 
-You can also split your components into seprate files. The root node of a n`.ux` file is implicitly a `ux:Class`, 
+You can also split your components into seprate files. The root node of a n`.ux` file is implicitly a `ux:Class`,
 so if the following code lives inside `FancyPanel.ux`:
 
 	<Panel>
@@ -74,16 +77,16 @@ Once you've made a reusable class, you can use it like any other tag:
 	</MyClass>
 
 > ### Using your component in a native iOS (Xcode) app
-
+TODO: Link to @(learn-iOS)
 TODO: Add info on this
 
 > ### Using your component in a native Android Studio app
-
+TODO: Link to @(learn-Android)
 TODO: Add info on that
 
 ## UX tags
 
-UX document consists of XML tags. Each available UX tag correspondst a *class* implemented in @(Uno) code. Each tag corresponds to one (or multiple) runtime objects. 
+UX document consists of XML tags. Each available UX tag correspondst a *class* implemented in @(Uno) code. Each tag corresponds to one (or multiple) runtime objects.
 
 The available tags (classes) come in these categories:
 
@@ -96,9 +99,7 @@ The available tags (classes) come in these categories:
 * Visual @(effects) which can be applied to @(elements)
 * @(Styles) which allow consistent look and feel of components without repeating data
 
-## @(Theme)s
-
-@unodoc(Fuse.Theme)
+## $(Theme:Themes)
 
 `App` offers a setting called `Theme`, which specifies how standard components in
 the app will look and feel. You set it like this:
@@ -107,15 +108,15 @@ the app will look and feel. You set it like this:
 
 If not specified, `App` uses a plain `GraphicsTheme` by default.
 
-### $(`NativeTheme`)
+### $(NativeTheme)
 
 The `NativeTheme` will render
 
 
-### $(`GraphicsTheme`)
+### $(GraphicsTheme)
 
 By default, app uses a `GraphicsTheme`, which will render all components using
-OpenGL ES. This will give your app an identical look on all platforms, with the 
+OpenGL ES. This will give your app an identical look on all platforms, with the
 exception of:
 
 * `TextInput` - will be rendered using the platform's native text edit controls
@@ -139,6 +140,7 @@ Or like this, which means exactly the same:
 	</App>
 
 > #### Creating your own GraphicsTheme
+TODO: Concider moving to Styling and resources chapter
 
 It is possible to *extend* `GraphicsTheme` to specify specific
 look and feels for controls like `Slider` and `Button`.
@@ -167,12 +169,10 @@ And then this works:
 		...
 	</App>
 
-### $(`BasicTheme`)
+### $(BasicTheme)
 
-The `BasicTheme` is a `GraphicsTheme` that ships with fuse and gives controls a 
+The `BasicTheme` is a `GraphicsTheme` that ships with fuse and gives controls a
 material design-ish look and feel. This can be useful when you want a starting
 point for UIs that are supposed to look the same on all platforms.
 
 	<App Theme="Basic">
-
-

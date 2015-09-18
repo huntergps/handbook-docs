@@ -17,7 +17,7 @@ If you want to add longer passages of text, such as a _Lorem Ipsum_, you discove
 	<App>
 		<Text TextWrapping="Wrap">Lorem Ipsum(...)</Text>
 	</App>
-	
+
 If you find that wrapping the text still makes it hard to show all the contents you want, you probably want to look at adding the contents to a @(ScrollView), or changing @(FontSize). `TextWrapping` can be set to `Wrap` and `NoWrap` (default).
 
 ### $(Fonts)
@@ -38,11 +38,13 @@ In this example, the fonts are located in the same directory as the relevant UX 
 
 Fuse is currently unable to use _system fonts_, but that is a feature under development.
 
-On device, unicode and other multibyte character sets work fine. However, there are currently some issues rendering multibyte character sets using desktop preview. This is a known issue, and is being worked on. 
+On device, unicode and other multibyte character sets work fine. However, there are currently some issues rendering multibyte character sets using desktop preview. This is a known issue, and is being worked on.
 
 This means, however, that emojis work fine on devices.
 
 ### Text specific layout
+
+TODO: Remove the font bits since its already discussed
 
 For further control over how your text is rendered, you can set `TextAlignment`, `TextColor` and `FontSize`:
 
@@ -60,6 +62,8 @@ In this example, the first text element will be left aligned as this is the defa
 
 ## Image
 
+TODO: StretchMode, Color?
+
 Working with images is easy:
 
 	<App>
@@ -76,8 +80,10 @@ _Note!_ If you come from a background as a web developer you might be used to as
 
 > ### Image contents from resources
 
+TODO: Move to DataBinding chapter
+
 For a small example of other ways to load image data, here is a small example that also uses databinding from JavaScript:
- 
+
 	<App>
 		<FileImageSource ux:Key="pic2" File="Pictures/Picture2.jpg" />
 		<StackPanel>
@@ -90,16 +96,18 @@ For a small example of other ways to load image data, here is a small example th
 			<Image File="Pictures/Picture1.jpg" />
 			<Select Data="{pictureResource}">
 				<Image Source="{DataToResource key}" />
-			</Select> 
+			</Select>
 			<Select Data="{url}">
 				<Image Url="{}" />
 			</Select>
 		</StackPanel>
 	</App>
 
-This app will show three `Image`s stacked on top of each other. The topmost picture will be fetched as a normal file. Then we create a `FileImageSource` that we bind to a picture using `DataToResource`, which looks up the resource for `pictureResource.key` and binds it to the `Image`. We also get the URL for a picture on the web and bind it to the `Url`-property of an image. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly. 
+This app will show three `Image`s stacked on top of each other. The topmost picture will be fetched as a normal file. Then we create a `FileImageSource` that we bind to a picture using `DataToResource`, which looks up the resource for `pictureResource.key` and binds it to the `Image`. We also get the URL for a picture on the web and bind it to the `Url`-property of an image. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly.
 
 ## Shapes
+
+TODO: Talk about the shape API?
 
 Rendering basic shapes comes in handy quite often.
 
@@ -110,7 +118,7 @@ A `Rectangle` can be drawed by adding just that:
 	<App Background="#000">
 		<Rectangle Fill="#f00" />
 	</App>
-	
+
 In this example, even if the `Background` of the `App` is set to `#000`, the whole area of the app will be displayed as red, as the `Rectangle` will take up as much space as it can and fill it with `#f00`.
 
 If you want to have the `Rectangle` limit itself somewhat, you can:
@@ -132,15 +140,17 @@ It is equally simple to draw `Circle`s:
 			</Stroke>
 		</Circle>
 	</App>
-	
+
 In this example, we've taken it a bit further, and we're also adding a yellow stroke.
 
 ### Fills
 
+TODO: Same as SolidColor bit
+
 We've seen that shapes accept simple `Fill` properties:
 
 	<Rectangle Fill="#f00" />
-	
+
 It is possible to use other kinds of brushes to fill shapes. For example:
 
 	<App>
@@ -161,7 +171,10 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 
 ### Strokes
 
-`Stroke`s accept a brush the same way a `Fill` does: 
+TODO: StrokeAlignment
+TODO: Stroke has Brush property (Brush="#f00")
+
+`Stroke`s accept a brush the same way a `Fill` does:
 
 	<App>
 		<StackPanel>
@@ -180,7 +193,7 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 			</Rectangle>
 		</StackPanel>
 	</App>
-	
+
 It can obviously just be set to be a `SolidColor`-brush:
 
 	<App Background="#000">
@@ -204,7 +217,7 @@ It is easy to make an app that has a `Button`:
 	</App>
 
 This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". There is one difference from our previous examples at work here, namely: `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
- 
+
 In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
 
 	<App>
@@ -215,9 +228,9 @@ In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
 		</Rectangle>
 	</App>
 
-Depending on where you started the preview process from, you'll see the `Message` output when you click the `Rectangle`. 
+Depending on where you started the preview process from, you'll see the `Message` output when you click the `Rectangle`.
 
-Why, then is there a need to a separate `Button` concept? 
+Why, then is there a need to a separate `Button` concept?
 
 Because when you switch the `Theme` to `Native`, Fuse will render the `Button` as a native iOS or Android `Button`, depending on which platform the app is run on. Also, creating a concept called "Button" makes it easier to make meaningful themes.
 
@@ -229,7 +242,7 @@ The `Button` can also accept `Clicked` as an _`event` trigger_ as well as an exp
 				buttonClick: function (args) { debug_log ("Button was clicked"); }
 			}
 		</JavaScript>
-		<Button Text="Click me!" Clicked="{buttonClick}" />			
+		<Button Text="Click me!" Clicked="{buttonClick}" />
 	</App>
 
 This is handy when you want to drive business logic from events.

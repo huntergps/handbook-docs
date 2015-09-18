@@ -20,7 +20,10 @@ If you want to add longer passages of text, such as a _Lorem Ipsum_, you discove
 
 If you find that wrapping the text still makes it hard to show all the contents you want, you probably want to look at adding the contents to a @(ScrollView), or changing @(FontSize). `TextWrapping` can be set to `Wrap` and `NoWrap` (default).
 
+
 ### $(Fonts)
+
+TODO: MOve negative stuff to roadmap
 
 You can import fonts from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a _global @(Resources:resource)_ for it immediately.
 
@@ -63,6 +66,9 @@ In this example, the first text element will be left aligned as this is the defa
 ## Image
 
 TODO: StretchMode, Color?
+TODO: Multi density image source
+TODO: Memory policy
+TODO: HTTPImageSource
 
 Working with images is easy:
 
@@ -80,7 +86,7 @@ _Note!_ If you come from a background as a web developer you might be used to as
 
 > ### Image contents from resources
 
-TODO: Move to DataBinding chapter
+TODO: Link/Move parts to DataBinding chapter
 
 For a small example of other ways to load image data, here is a small example that also uses databinding from JavaScript:
 
@@ -94,12 +100,8 @@ For a small example of other ways to load image data, here is a small example th
 				}
 			</JavaScript>
 			<Image File="Pictures/Picture1.jpg" />
-			<Select Data="{pictureResource}">
-				<Image Source="{DataToResource key}" />
-			</Select>
-			<Select Data="{url}">
-				<Image Url="{}" />
-			</Select>
+			<Image Source="{DataToResource pictureResource.key}" />
+			<Image Url="{url}" />
 		</StackPanel>
 	</App>
 
@@ -145,7 +147,10 @@ In this example, we've taken it a bit further, and we're also adding a yellow st
 
 ### Fills
 
-TODO: Same as SolidColor bit
+TODO: Fills % Strokes
+TODO: Same as $(SolidColor) bit
+TODO: $(LinearGradient)
+TODO: $(ImageFill)
 
 We've seen that shapes accept simple `Fill` properties:
 
@@ -173,6 +178,7 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 
 TODO: StrokeAlignment
 TODO: Stroke has Brush property (Brush="#f00")
+Todo: StrokeOffset
 
 `Stroke`s accept a brush the same way a `Fill` does:
 
@@ -205,6 +211,9 @@ It can obviously just be set to be a `SolidColor`-brush:
 	</App>
 
 ## $(Button)
+
+TODO: More undertitles
+TODO: Remove DebugAction and or rename to <Debug Message=
 
 It is easy to make an app that has a `Button`:
 

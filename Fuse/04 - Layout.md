@@ -7,13 +7,16 @@ are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) ba
 
 ## Panels
 
+TODO: Children will fill entire panel
+TODO: Panel example
+
 Panels can contain child UI elements and lay them out according to layout rules. There are several types of panels, each with different layouting rules.
 
 ### $(Panel)
 The most basic type of panel is the Panel. The Panel applies no layout rules on its children. If a panel contains several children it simply layers them on top of each other.
 
 ### $(StackPanel)
-The StackPanel places it's children in a stack. The default layout is a vertical stack, but one can use the @(Orientation) property to specify that the stack should be layed out horizontally.
+The StackPanel places it's children in a stack. The default layout is a vertical stack, but one can use the $(Orientation) property to specify that the stack should be layed out horizontally.
 
 ```
 <StackPanel Orientation="Horizontal">
@@ -55,6 +58,7 @@ The following WrapPanel layes out its children horizontally from right ro left.
 ```<WrapPanel FlowDirection="RightToLeft"/>```
 
 TODO: How to make the WrapPanel Vertical?
+TODO: Illustration
 
 ### DockPanel
 The DockPanel layes out it's children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so: `<Rectangle Dock="Left"/>. The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` or `Fill`.
@@ -63,9 +67,11 @@ TODO: Add examples with illustrations
 
 ## Element Layout
 
+TODO: Link to video
+
 Whenever a @(Panel) performs layout on it's children, it has to ask each element about it's layout properties.
 
-Layout properties are assigned per element to control such things as the elements `Width`, `Height`, @(Margin) and @P(adding).
+Layout properties are assigned per element to control such things as the elements `Width`, `Height`, @(Margin) and @(Padding).
 If an element doesn't specify these things, the panel performing layout on them will handle it.
 
 Available space, @(points) (vs @(pixels)).
@@ -74,6 +80,8 @@ TODO: For an exhaustive list of layout properties, take a look here
 
 
 ### $(Alignment)
+TODO: List all allignment values
+
 When elements are positioned in a panel they may not require all of the space available to them. For example, a vertical stack panel will be as wide as its largest element, leaving extra space for the smaller elements. Elements can either be aligned within this space, or stretched to fill it.
 
 We can align elements to the sides of its container by the @(Alignment) property.
@@ -100,6 +108,14 @@ This rectangle has a margin of 50 for its left and right, and 20 for its top and
 
 ### Units
 There are multiple ways of specifying values on layout properties, points, percent and pixels.
+TODO: The following properties support units
+- Width
+- Height
+- MinWidth
+- MinHeight
+- @Offset
+- @Anchor
+- Grid column/row has its own system, proportion,auto
 
 ### Specifying units in $(points)
 When setting an elements Width to a number like so `<Element Width="50"/>`, the elemnt will become 50 points wide.
@@ -147,6 +163,8 @@ Here is how we can make sure our content is never covered by the keyboard or hom
 ```
 
 ### $(Absolute positioning)
+TODO: Add $headers for X and Y
+
 If we want to give our elements an explicit position, we can assign their X and Y properties. The X property will move the element relative to the left side of its container, while the Y property moves it relative to the top.
 
 Be ware that absolute positioning elements should generally be avoided in favor of using layout rules. This is because when real data is used, the absolute values used might no longer be meaningfull.

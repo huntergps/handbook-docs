@@ -1,39 +1,29 @@
-# Layout and UI Elements
+# $(Layout)
 
 Fuse has a powerful layout system that works across all platforms and devices, whether you
 are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) based elements.
 
-> ## Videos on this topic
-
 * TODO: Links to jake's videos
 
+## Panels
 
-## Elements
+Panels can contain child UI elements and lay them out according to layout rules.
 
-Explain relationship Nodes, Elements, Controls, Panel.
+### Panel
 
-Nodes: Top level type. UX is a tree of nodes
-Elements:
-Panels:
-Controls:
+### StackPanel
 
+### Grid
 
-### Shapes
+> ### WrapPanel
 
-- Rectangle
-- Circle
-
-> ### Fills
-> ### Strokes
-
-### Text
-
-### Image
-
+> ### DockPanel
 
 ## Element Layout
 
 Available space, points (vs @(pixels)).
+
+
 
 ### Alignment
 
@@ -49,17 +39,4 @@ Available space, points (vs @(pixels)).
 
 > ### BottomBarBackground
 
-
-## Panels
-
-Panels can contain child UI elements and lay them out according to layout rules.
-
-### Panel
-
-### StackPanel
-
-### Grid
-
-> ### WrapPanel
-
-> ### DockPanel
+> ### Absolute positioning

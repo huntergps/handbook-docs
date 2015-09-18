@@ -1,6 +1,6 @@
 # Triggers and Animators
 
-Triggers is the 
+Triggers is the <insert your sales pitch>
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
@@ -16,8 +16,8 @@ TODO:
 > ### $(Rest state) and deviation
 
 The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state.
-Each trigger knows how "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means 
-animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on 
+Each trigger knows how "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means
+animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
 multiple devices, screen sizes, with real data and real user input.
 
 
@@ -26,23 +26,33 @@ multiple devices, screen sizes, with real data and real user input.
 
 TODO: explain overall how animators work
 
-> ### $(Change
+> ### $(Change)
 
 Temporarily changes the value of a property. If you want to permanently change a value, use @(Set)
 
+- Change animates while set sets
+
 (examples++)
 
-> ### $(Move)
+### $(Move)
 
-> ### $(Scale)
+### $(Scale)
 
-> ### $(Rotate)
+### $(Rotate)
 
 > ### $(Cycle)
 
-> ### $(Sping)
+> ### $(Spin)
 
-## Trigger $(Actions)
+> ## Transforms
+- Translation
+- Rotation
+- Scaling
+- Order of when they are applied
+- Attractor
+- Change + those: examples
+
+## $(Actions)
 
 Triggers can contain actions too, which are one-off events that fire at a particular point in the trigger's timeline.
 
@@ -51,19 +61,19 @@ the @(rest state) if the trigger is reversed.
 
 (make sure examples include things like Delay)
 
-> ### $(Set)
+### $(Set)
 
 Permanently changes the value of a property. If you want to just change it temporarily, use @(Change)
 
 (examples++)
 
-> ### $(Callback)
+### $(Callback)
+
+> ### $(Toggle)
 
 > ### $(BringIntoView)
 
 > ### $(BringToFront)
-
-
 
 
 ## $(State groups)
@@ -74,12 +84,12 @@ State groups allow you to define completely custom states, with custom event
 
 Reacts to data changes, either from data binding or from the control context.
 
-> ### WhileTrue
+> ### $(WhileTrue)
+- note that this is mentioned earlier in switch, but this is where we mention all the ways it can be user
 
 > ### WhileFalse
 
 > ### WhileFailed
-
 
 
 ## Gestures
@@ -88,20 +98,19 @@ Reacts to pointer inputs.
 
 > ### WhilePressed
 
-> ### WhilePressed
-
 > ### Clicked
+
+> ### Tapped
+
+> ### WhileHovering
 
 
 ## Control triggers
 
-> ### Disabled
-
 > ### Enabled
 
-> ### WhileScrollable
+> ### Disabled
 
-> #
 
 ## Platform triggers
 
@@ -116,7 +125,7 @@ Reacts to pointer inputs.
 ## Special $(Animation)s
 
 In Fuse terminology, *animations* are a certain category of triggers that animate in response to a higher level interpretation
-of input, events and logical state changes. 
+of input, events and logical state changes.
 
 Animation triggers are designed to solve quite specific animation problems that would otherwise be hard to pull off using the simpler triggers.
 The flipside is that these triggers can be somewhat hard to understand and use, so make sure you read the docs and study examples before spending

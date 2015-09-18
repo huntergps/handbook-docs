@@ -205,7 +205,7 @@ It is easy to make an app that has a `Button`:
 
 This small example will create a `Button` that covers the whole screen, and depending on where you started the preview process from, you'll see the `Message` output when you click the button. There is one difference from our previous examples at work here, namely: `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
 
-In Fuse, pretty much can easily be made clickable (and tappable, etc):
+In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
 
 	<App>
 		<Rectangle Fill="#309">

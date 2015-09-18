@@ -196,15 +196,15 @@ It can obviously just be set to be a `SolidColor`-brush:
 It is easy to make an app that has a `Button`:
 
 	<App Theme="Basic">
-		<Button Text="Click me!">
+		<Button Text="Click me!" ux:Name="button1">
 			<Clicked>
-				<DebugAction Message="Button got clicked" />
+				<Set button1.Text="Clicked!" />
 			</Clicked>
 		</Button>
 	</App>
 
-This small example will create a `Button` that covers the whole screen, and depending on where you started the preview process from, you'll see the `Message` output when you click the button. There is one difference from our previous examples at work here, namely: `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
-
+This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". There is one difference from our previous examples at work here, namely: `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
+ 
 In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
 
 	<App>
@@ -214,6 +214,8 @@ In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
 			</Clicked>
 		</Rectangle>
 	</App>
+
+Depending on where you started the preview process from, you'll see the `Message` output when you click the `Rectangle`. 
 
 Why, then is there a need to a separate `Button` concept? 
 

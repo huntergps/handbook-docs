@@ -12,7 +12,7 @@ Displaying text is something you do in most apps. The simplest possible example 
 		<Text>Hello, world!</Text>
 	</App>
 
-If you want to add longer passages of text, such as a Lorem Ipsum, you discover that you in certain cases want to enable word wrapping. In Fuse, this is done with the `TextWrapping` property on the `Text` control:
+If you want to add longer passages of text, such as a _Lorem Ipsum_, you discover that you in certain cases want to enable word wrapping. In Fuse, this is done with the `TextWrapping` property on the `Text` control:
 
 	<App>
 		<Text TextWrapping="Wrap">Lorem Ipsum(...)</Text>

@@ -180,6 +180,16 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 			</Rectangle>
 		</StackPanel>
 	</App>
+	
+It can obviously just be set to be a `SolidColor`-brush:
+
+	<App Background="#000">
+		<Rectangle Fill="#f00" Width="50" Height="50">
+			<Stroke Width="5">
+				<SolidColor Color="#ff0" />
+			</Stroke>
+		</Rectangle>
+	</App>
 
 ## $(Button)
 

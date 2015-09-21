@@ -359,7 +359,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 
 > ### Databinding switch
 
-TODO: OBSERVE! This example crashes with invalid program when clicking on the `Switch`; using the buttons works as expected.
+TODO: OBSERVE! This example crashes with invalid program when clicking on the `Switch`; using the buttons works as expected. This is true for local fuse preview and DotNetExe, works as expected on device
 
 You can also databind the switch:
 
@@ -449,17 +449,89 @@ It is also possible to databind the slider position:
 	</App>
 
 ## $(TextInput)
-- Value (2way databinding)
-- Events for when changing value
-- Password mode
-- Numeric mode
-- WhileKeyboardVisible
-- WhileFocused
-- WhileEmpty
-- Multiline
-- Word wrap
-- link to styling?
-- text edit
+
+Fuse provides a `TextInput`-control to allow for user input of text:
+
+		
+	<JavaScript>
+		var valueChanged = function (args) {
+			debug_log (args.value);
+		}
+
+		module.exports = {			
+			valueChanged: valueChanged
+		};
+	</JavaScript>
+
+	<TextInput ValueChanged="{valueChanged}" />
+	
+You can also easily do two-way databinding:	
+
+	<App Theme="Basic">		
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+
+			var name = Observable("");
+		
+			var greeting = name.map(function (name) {
+				if (name == "") {
+					return "Type your name above";
+				} else {
+					return "Hello there, " + name + "!";
+				}
+			});
+
+			var clearName = function () {
+				name.value = "";
+			}
+
+			module.exports = {
+				name: name,
+				greeting: greeting,				
+				clearName: clearName
+			};
+		</JavaScript>
+
+		<StackPanel>
+			<StatusBarBackground />
+			<DockPanel>
+				<Text Dock="Left" Alignment="VerticalCenter">Name:</Text>
+				<TextInput Value="{name}" Alignment="VerticalCenter" />
+			</DockPanel>	
+			<Text TextAlignment="Center" Value="{greeting}" />
+			<Button Clicked="{clearName}" Text="Clear" />
+		</StackPanel>
+	</App>
+	
+If you want to accept a password, you might want to mask the user input:
+
+	<TextInput IsPassword="true" />
+
+If you want to accept numeric values mainly, you can set an `InputHint`:
+
+	<TextInput InputHint="Number" />
+	
+Valid values for `InputHint` are `Default`, `Email`, `Number`, `Phone`, `Url`.
+
+`TextInput` also allows you to input contents over multiple lines instead of scrolling off to the right, which it does by default:
+
+	<TextInput IsMultiline="true" />
+
+When a `TextInput` gets focus, it will often summon the device's on-screen keyboard. Fuse provides a number of mechanisms to react to this event, one of which is `WhileKeyboardVisible`:
+
+	<Text Value="Instructions of some kind">
+		<WhileKeyboardVisible>
+			<Move Y="-1" RelativeTo="Keyboard" />
+		</WhileKeyboardVisible>
+	</Text>
+	<TextInput />
+	
+As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, and you can do pretty much anything you want as a response to the on-screen keyboard taking up space on the screen.
+
+- WhileFocused TODO: I am not sure what exactly this is supposed to demonstrate
+- WhileEmpty TODO: This doesn't exist, should it? It is good for implementing placeholder data
+- link to styling? 
+- text edit TODO: What is this?
 
 
 ## $(PageControl)
@@ -471,7 +543,7 @@ It is also possible to databind the slider position:
 ### $(PageIndicator)
 
 ## $(ScrollView) (link elsewhere?)
-- ScrollDirection
+- AllowedScrollDirection
 - ScrollingAnimation
 - WhileScrollable
 

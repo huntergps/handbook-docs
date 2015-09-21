@@ -511,7 +511,7 @@ If you want to accept numeric values mainly, you can set an `InputHint`:
 
 	<TextInput InputHint="Number" />
 	
-Valid values for `InputHint` are `Default`, `Email`, `Number`, `Phone`, `Url`.
+Valid values for `InputHint` are `Default`, `Email`, `Number`, `Phone`, `Url`. These are called "hints" because they might not do anything, depending on which platform you are on. For example, when on the desktop, the keyboard will be the same no matter which hint is added to the `TextInput`.
 
 `TextInput` also allows you to input contents over multiple lines instead of scrolling off to the right, which it does by default:
 
@@ -595,15 +595,35 @@ Fuse has a `ScrollView` that can be used to navigate contents that are larger th
 To limit the behavior of a `ScrollView`, you can set the ScrollDirection:
 
 	<ScrollView AllowedScrollDirections="Horizontal">
-
+		<!-- Contents -->
 	</ScrollView>
 
-Valid settings for `AllowedScrollDirections` include `Horizontal`, `Both` and `Vertical` (default).
+Valid settings for `AllowedScrollDirections` include `Horizontal`, `Both` and `Vertical` (default). TODO: Check that this is true. There are also a bunch of AllowedScrollDirections in the enum I believe are not used
 
-- AllowedScrollDirection
+> ### $(ScrollingAnimation)
 
-- ScrollingAnimation
-- WhileScrollable
+It is possible to animate properties based on absolute `ScrollView` position. For example, let's remove a top ledge as a `ScrollView` scrolls down: 
+
+	<App Theme="Basic" Background="#fff">		
+		<Panel>
+			<Panel Alignment="Top" Height="50" ux:Name="ledge">		
+				<Text Alignment="Center" TextAlignment="Center" TextColor="#fff" Value="TopLedge" />
+				<Rectangle  Fill="#000" />
+			</Panel>
+			<ScrollView>
+				<ScrollingAnimation From="0" To="50">
+					<Change ledge.Opacity="0" />
+				</ScrollingAnimation>
+				<StackPanel>
+					<!-- Block out the top ledge in the scrollview -->
+					<Panel Height="50" />
+					<!-- ... Content ... -->
+				</StackPanel>
+			</ScrollView>
+		</Panel>
+	</App>
+
+> ### $(WhileScrollable)
 
 
 ## $(MapView) (link elsewhere?)

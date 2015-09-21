@@ -5,18 +5,19 @@ are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) ba
 
 * TODO: Links to jake's videos
 
-## Panels
-
-TODO: Children will fill entire panel
-TODO: Panel example
+## $(Panels)
 
 Panels can contain child UI elements and lay them out according to layout rules. There are several types of panels, each with different layouting rules.
 
 ### $(Panel)
-The most basic type of panel is the Panel. The Panel applies no layout rules on its children. If a panel contains several children it simply layers them on top of each other.
+The most basic type of panel is the Panel. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other.
+Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite usefull in many situations.
+
+TODO: Example
+
 
 ### $(StackPanel)
-The StackPanel places it's children in a stack. The default layout is a vertical stack, but one can use the $(Orientation) property to specify that the stack should be layed out horizontally.
+The StackPanel places its children in a stack. The default layout is a vertical stack, but one can use the $(Orientation) property to specify that the stack should be layed out horizontally.
 
 ```
 <StackPanel Orientation="Horizontal">
@@ -25,7 +26,7 @@ The StackPanel places it's children in a stack. The default layout is a vertical
 ```
 
 ### $(Grid)
-The Grid places it's children in a grid formation. The rows and collumns can be specified explicitly by the @(RowData) and @(ColumnData) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
+The Grid places its children in a grid formation. The rows and collumns can be specified explicitly by the @(RowData) and @(ColumnData) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
 
 #### $(RowCount) and $(ColumnCount)
 If all you want is a grid of equally sized rows and columns you can simply state the number of rows and columns using the RowCount and ColumnCount properties.
@@ -37,50 +38,74 @@ If you want more fine grained control of how the rows and column sizes are calcu
 The values can either be absolute, relative or automatic.
 
 Example of a Grid with 3 rows of size 10, 10 and 50 points.
-```<Grid RowData="10,10,50"/>```
+```
+<Grid RowData="10,10,50"/>
+```
 
 Example of a Grid with 3 rows where the first two each occupy 20% of the available space, and the last one occypies 60%:
-```<Grid RowData="1*,1*,3*"/>```
+```
+<Grid RowData="1*,1*,3*"/>
+```
 The rows sizes here are calculated by first summing all the values (1+1+3 = 5).
 Then we divide our value by the total (1/5 = 20%, 1/5 = 20%, 3/5 = 60%).
 
 The following grid has 3 rows where the first two rows gets the size of its largest child and the last row takes up the remaining space:
-```<Grid RowData="auto,auto,1*"/>```
+```
+<Grid RowData="auto,auto,1*"/>
+```
 
-### Placing elements in a Grid
+### $(Grid.Row:Placing elements in a Grid) $(Grid.Column:)
+By default, elements are placed in the grid by the order they appear in the UX, from left to right, top to bottom. One can specify per element which grid cell they should be placed in using the Row and Column like so:
+```
+<Rectangle Row="1" Column="2" />
+```
 
-
-
-### WrapPanel
+### $(WrapPanel)
 The wrap panel lays our its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
 
 The following WrapPanel layes out its children horizontally from right ro left.
-```<WrapPanel FlowDirection="RightToLeft"/>```
+```
+<WrapPanel FlowDirection="RightToLeft"/>
+```
 
-TODO: How to make the WrapPanel Vertical?
+The Orientation property can be used to make a vertical `WrapPanel` like so:
+```
+<WrapPanel Orientation="Vertical"/>
+```
+
 TODO: Illustration
 
-### DockPanel
-The DockPanel layes out it's children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so: `<Rectangle Dock="Left"/>. The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` or `Fill`.
+### $(DockPanel)
+The DockPanel layes out its children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so:
+```
+<Rectangle Dock="Left"/>
+```
+The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` or `Fill`.
 
-TODO: Add examples with illustrations
+```
+<DockPanel>
+	<Rectangle Fill="Red" Dock="Left"/>
+	<Rectangle Fill="Gree" Dock="Top"/>
+	<Rectangle Fill="Blue" Dock="Right"/>
+	<Rectangle Fill="Yellow" Dock="Bottom"/>
+	<Rectangle Fill="Teal" />
+</DockPanel>
+```
+
+TODO: Illustration
 
 ## Element Layout
 
 TODO: Link to video
 
-Whenever a @(Panel) performs layout on it's children, it has to ask each element about it's layout properties.
+Whenever a @(Panel) performs layout on its children, it has to ask each element about its layout properties.
 
 Layout properties are assigned per element to control such things as the elements `Width`, `Height`, @(Margin) and @(Padding).
 If an element doesn't specify these things, the panel performing layout on them will handle it.
 
 Available space, @(points) (vs @(pixels)).
 
-TODO: For an exhaustive list of layout properties, take a look here
-
-
 ### $(Alignment)
-TODO: List all allignment values
 
 When elements are positioned in a panel they may not require all of the space available to them. For example, a vertical stack panel will be as wide as its largest element, leaving extra space for the smaller elements. Elements can either be aligned within this space, or stretched to fill it.
 
@@ -93,29 +118,55 @@ In the following example, we have a @(Panel) which is 500x500 in size, which con
 </Panel>
 ```
 
+Alignment can be assigned to any one of the following values:
+- Left
+- HorizontalCenter
+- Right
+- Top
+- VerticalCenter
+- Bottom
+- TopLeft
+- TopCenter
+- TopRight
+- CenterLeft
+- Center
+- CenterRight
+- BottomLeft
+- BottomCenterter
+- BottomRight
+
 ### $(Margin) and $(Padding)
-Each element can specify the amount of space between it and its parent or surrounding elements by using it's @(Margin) property.
+Each element can specify the amount of space between it and its parent or surrounding elements by using its @(Margin) property.
 
 Each element can also specify how much space should be between its borders and any element inside it by using the @(Padding) property.
 
 Both @(Margin) and @(Padding) are specified using a comma separated list of 4 values which defines the left, top, right and bottom values in that order.
 Here is an example of a @(Rectangle) with a margin of 20 to the left, 30 to the top, 50 to the right and 10 to the bottom:
-```<Rectangle Margin="20,30,50,10"/>```
+```
+<Rectangle Margin="20,30,50,10"/>
+```
 Here is a rectangle where all sides have the same margin:
-```<Rectangle Margin="50"/>```
+```
+<Rectangle Margin="50"/>
+```
 This rectangle has a margin of 50 for its left and right, and 20 for its top and bottom:
-```<Rectangle Margin="50,20"/>```
+```
+<Rectangle Margin="50,20"/>
+```
 
 ### Units
 There are multiple ways of specifying values on layout properties, points, percent and pixels.
-TODO: The following properties support units
+The following properties support units
 - Width
 - Height
 - MinWidth
 - MinHeight
+- MaxWidth
+- MaxHeight
 - @Offset
 - @Anchor
-- Grid column/row has its own system, proportion,auto
+
+* Note that Grids column & row properties uses their own system, proportion,auto
 
 ### Specifying units in $(points)
 When setting an elements Width to a number like so `<Element Width="50"/>`, the elemnt will become 50 points wide.
@@ -128,12 +179,16 @@ For example, if we place an @(Element) inside a @(Panel) which is 500 points wid
 
 ### Specifying units in $(pixels)
 We can specify values in pixels using the px suffix like so:
-```<Rectangle Width="200px"/>```
+```
+<Rectangle Width="200px"/>
+```
 This rectangle will be exactly 200 pixels wide, which means it will be smaller when the screen density is high.
 
 ### $(Anchor) and $(Offset)
-When a @(Panel) places it's children, it assumes that the "center" of that element is in the middle. However, if we want the element to be placed as if its "center" was along its left side, we could use the @(Anchor) property like so:
-```<Rectangle Anchor="0,50%"/>```
+When a @(Panel) places its children, it assumes that the "center" of that element is in the middle. However, if we want the element to be placed as if its "center" was along its left side, we could use the @(Anchor) property like so:
+```
+<Rectangle Anchor="0,50%"/>
+```
 This puts the elements anchor in the middle of its left edge.
 
 ### $(StatusBarBackground)
@@ -162,8 +217,7 @@ Here is how we can make sure our content is never covered by the keyboard or hom
 </App>
 ```
 
-### $(Absolute positioning)
-TODO: Add $headers for X and Y
+### $(Absolute positioning) $(X:) $(Y:)
 
 If we want to give our elements an explicit position, we can assign their X and Y properties. The X property will move the element relative to the left side of its container, while the Y property moves it relative to the top.
 

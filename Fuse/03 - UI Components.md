@@ -267,6 +267,8 @@ You can describe a `LinearGradient`-brush using `LinearGradient` and `GradientSt
 		<GradientStop Offset="1" Color="#000" />
 	</LinearGradient>
 
+The `StartPoint` and `EndPoint` are both X and Y offsets within the @(Shape) the brush is used in, so you can specify a diagonal brush by using `StartPoint="0,0" EndPoint="1,1"`.
+
 ## $(Button)
 
 TODO: Remove DebugAction and or rename to <Debug Message=
@@ -320,13 +322,14 @@ To accept on/off-style input, Fuse has a `Switch`-control:
 
 	<Switch />
 	
-To make it do anything, you can use the `WhileTrue`-trigger:
+To make it do something, you can use the `WhileTrue`-trigger:
 
 	<App Theme="Basic">
 		<StackPanel>
 			<Switch>
 				<WhileTrue>
-					<Change rectangle.Width="160" Duration="0.5" Easing="CircularInOut" />
+					<Change rectangle.Width="160" Duration="0.5" 
+						Easing="CircularInOut" />
 				</WhileTrue>
 			</Switch>
 			<Rectangle ux:Name="rectangle" Width="70" Height="70" Fill="#909" />
@@ -335,7 +338,7 @@ To make it do anything, you can use the `WhileTrue`-trigger:
 
 To make it act on the opposite state, you can use `WhileFalse`, or `WhileTrue Invert="true"`.
 
-If you want the `Switch` to start out being set:
+If you want the `Switch` to start out being activated:
 
 	<Switch Value="true" />
 
@@ -347,7 +350,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 				switchChanged: function (args) {
 					debug_log ("Switch value is: " + args.value);
 				}
-			}
+			};
 		</JavaScript>
 		<StackPanel>
 			<Switch Value="true" ValueChanged="{switchChanged}" />
@@ -356,7 +359,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 
 > ### Databinding switch
 
-TODO: OBSERVE! This example crashes with invalid program when clicking on the `Switch`; using the buttons works as expected.
+TODO: OBSERVE! This example crashes with invalid program when clicking on the `Switch`; using the buttons works as expected. This is true for local fuse preview and DotNetExe, works as expected on device
 
 You can also databind the switch:
 
@@ -373,7 +376,7 @@ You can also databind the switch:
 				switchChanged: function (args) {
 					debug_log ("Switch value is: " + args.value);
 				}
-			}
+			};
 		</JavaScript>
 		<StackPanel>
 			<Switch Value="{switchEnabled}" ValueChanged="{switchChanged}" />
@@ -385,32 +388,201 @@ You can also databind the switch:
 	</App>
 
 ## $(Slider)
-- ProgressAnimation
-- Events for when changing value
-- WhileInRange?
+
+To display a slider:
+
+	<Slider />
+	
+If you want to influence something as the slider moves, you can use `ProgressAnimation`. Consider this code which allows you to `Rotate` a `Rectangle` from 0 to 90 degrees:
+
+	<StackPanel>
+		<Slider>
+			<ProgressAnimation>
+				<Rotate Target="rectangle" Degrees="90" />
+			</ProgressAnimation>
+		</Slider>
+		<Rectangle ux:Name="rectangle" Width="100" Height="100" Fill="#808" />
+	</StackPanel>
+	
+You can also listen to the `ValueChanged`-event:
+
+	<App Theme="Basic">		
+		<JavaScript>			
+			module.exports = {
+				sliderValueChanged: function (args) 
+				{
+					debug_log ("Value: " + args.value);
+				}
+			};
+		</JavaScript>		
+		<Slider ValueChanged="{sliderValueChanged}" />		
+	</App>
+	
+When moving the slider from the far left to the far right, your console will output floating point numbers from 0 to 100, which are the default `Minimum` and `Maximum` values. These properties can also be set:
+
+	<Slider Minimum="4" Maximum="42" />
+	
+- WhileInRange? TODO: I could not find WhileInRange. Has it been renamed?
+
 > ### Databinding slider
 
+It is also possible to databind the slider position:
+
+	<App Theme="Basic">		
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+
+			var sliderValue = Observable(42);
+			var sliderLabel = sliderValue.map(function (val) {
+				return "Current position: " + val;
+			});
+
+			module.exports = {
+				sliderValue: sliderValue,
+				sliderLabel: sliderLabel
+			};
+		</JavaScript>
+		<StackPanel>
+			<Slider Value="{sliderValue}" />
+			<Text TextAlignment="Center" Value="{sliderLabel}" />
+		</StackPanel>
+	</App>
+
 ## $(TextInput)
-- Value (2way databinding)
-- Events for when changing value
-- Password mode
-- Numeric mode
-- WhileKeyboardVisible
-- WhileFocused
-- WhileEmpty
-- Multiline
-- Word wrap
-- link to styling?
-- text edit
+
+Fuse provides a `TextInput`-control to allow for user input of text:
+
+		
+	<JavaScript>
+		var valueChanged = function (args) {
+			debug_log (args.value);
+		}
+
+		module.exports = {			
+			valueChanged: valueChanged
+		};
+	</JavaScript>
+
+	<TextInput ValueChanged="{valueChanged}" />
+	
+You can also easily do two-way databinding:	
+
+	<App Theme="Basic">		
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+
+			var name = Observable("");
+		
+			var greeting = name.map(function (name) {
+				if (name == "") {
+					return "Type your name above";
+				} else {
+					return "Hello there, " + name + "!";
+				}
+			});
+
+			var clearName = function () {
+				name.value = "";
+			}
+
+			module.exports = {
+				name: name,
+				greeting: greeting,				
+				clearName: clearName
+			};
+		</JavaScript>
+
+		<StackPanel>
+			<StatusBarBackground />
+			<DockPanel>
+				<Text Dock="Left" Alignment="VerticalCenter">Name:</Text>
+				<TextInput Value="{name}" Alignment="VerticalCenter" />
+			</DockPanel>	
+			<Text TextAlignment="Center" Value="{greeting}" />
+			<Button Clicked="{clearName}" Text="Clear" />
+		</StackPanel>
+	</App>
+	
+If you want to accept a password, you might want to mask the user input:
+
+	<TextInput IsPassword="true" />
+
+If you want to accept numeric values mainly, you can set an `InputHint`:
+
+	<TextInput InputHint="Number" />
+	
+Valid values for `InputHint` are `Default`, `Email`, `Number`, `Phone`, `Url`.
+
+`TextInput` also allows you to input contents over multiple lines instead of scrolling off to the right, which it does by default:
+
+	<TextInput IsMultiline="true" />
+
+When a `TextInput` gets focus, it will often summon the device's on-screen keyboard. Fuse provides a number of mechanisms to react to this event, one of which is `WhileKeyboardVisible`:
+
+	<Text Value="Instructions of some kind">
+		<WhileKeyboardVisible>
+			<Move Y="-1" RelativeTo="Keyboard" />
+		</WhileKeyboardVisible>
+	</Text>
+	<TextInput />
+	
+As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, and you can do pretty much anything you want as a response to the on-screen keyboard taking up space on the screen.
+
+- WhileFocused TODO: I am not sure what exactly this is supposed to demonstrate
+- WhileEmpty TODO: This doesn't exist, should it? It is good for implementing placeholder data
+- link to styling? 
+- text edit TODO: What is this?
 
 
 ## $(PageControl)
-- Forward link to navigation chapter
-- Pagecontrol wraps navigation with swipenavigate
+
+Fuse has a lot of ways to deal with @(Navigation:navigation). If you need to get started quickly, you can use `PageControl`:
+
+	<PageControl />
 
 ### $(Page)
 
+A `PageControl` is typically used with `Page`s:
+
+	<PageControl>
+		<Page>
+			<Rectangle Fill="#808" />
+		</Page>
+		<Page>
+			<Rectangle Fill="#990" />
+		</Page>
+	</PageControl>
+
+This will create two swipable pages. You can exchange the `Rectangle`s in this example for any UX you want, of course.
+
 ### $(PageIndicator)
+
+If you want to create a page indicator to the mix:
+
+	<App Theme="Basic" Background="#000">		
+		<DockPanel>
+			<PageControl ux:Name="pageControl">
+				<Page>
+					<!-- Page 1 -->
+				</Page>
+				<Page>
+					<!-- Page 2 -->
+				</Page>
+			</PageControl>
+			<PageIndicator Dock="Bottom" Alignment="Center" Margin="5" Navigation="pageControl">
+				<Circle ux:Generate="Factory" ux:Binding="DotFactory" Width="10" Height="10"  Margin="4" Padding="10">
+					<SolidColor ux:Name="dot" Color="#444" />
+					<ActivatingAnimation>
+						<Change dot.Color="#fff" />
+					</ActivatingAnimation>
+				</Circle>
+			</PageIndicator>
+		</DockPanel>
+	</App>
+
+`PageControl` is really an abstraction on @(SwipeNavigate) and @(LinearNavigation), so if you want to make more custom navigation scenarios, look at @(Navigation).
+
+TODO: Link to https://www.fusetools.com/developers/examples/pagecontrol
 
 ## $(ScrollView) (link elsewhere?)
 
@@ -428,7 +600,8 @@ To limit the behavior of a `ScrollView`, you can set the ScrollDirection:
 
 Valid settings for `AllowedScrollDirections` include `Horizontal`, `Both` and `Vertical` (default).
 
-- ScrollDirection
+- AllowedScrollDirection
+
 - ScrollingAnimation
 - WhileScrollable
 

@@ -413,6 +413,21 @@ You can also databind the switch:
 ### $(PageIndicator)
 
 ## $(ScrollView) (link elsewhere?)
+
+Fuse has a `ScrollView` that can be used to navigate contents that are larger than the available size.
+
+	<ScrollView>
+		<Panel Width="2000" Height="2000" />
+	</ScrollView>
+
+To limit the behavior of a `ScrollView`, you can set the ScrollDirection:
+
+	<ScrollView AllowedScrollDirections="Horizontal">
+
+	</ScrollView>
+
+Valid settings for `AllowedScrollDirections` include `Horizontal`, `Both` and `Vertical` (default).
+
 - ScrollDirection
 - ScrollingAnimation
 - WhileScrollable

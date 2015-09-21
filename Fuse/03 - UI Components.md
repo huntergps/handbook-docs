@@ -151,10 +151,8 @@ To draw a `Rectangle`:
 In this example, the `Rectangle` will take up as much space as it is allowed by its parent and fill it with `#f00`.
 
 If you want to have the `Rectangle` limit itself, you can add `Width` and `Height`:
-
-	<App Background="#000">
-		<Rectangle Fill="#f00" Width="50" Height="50" CornerRadius="5" />
-	</App>
+	
+	<Rectangle Fill="#f00" Width="50" Height="50" CornerRadius="5" />
 
 This will render a red `Rectangle` with rounded corners over a black background. Note that these units are @(Points), not pixels, and the `Rectangle` will appear to be roughly the same size on most devices, regardless of pixel density and screen size.
 
@@ -162,11 +160,10 @@ This will render a red `Rectangle` with rounded corners over a black background.
 
 It is equally simple to draw `Circle`s:
 
-	<App Background="#000">
-		<Circle Fill="#f00" Width="50" Height="50">
-			<Stroke Width="5" Brush="#ff0" />				
-		</Circle>
-	</App>
+
+	<Circle Fill="#f00" Width="50" Height="50">
+		<Stroke Width="5" Brush="#ff0" />				
+	</Circle>
 
 In this example, we've taken it a bit further, and we're adding a yellow stroke.
 
@@ -178,51 +175,47 @@ We've seen that shapes accept simple `Fill` properties:
 
 It is possible to use other kinds of brushes to fill shapes. For example:
 
-	<App>
-		<StackPanel>
-			<Circle Width="150" Height="150">
-				<ImageFill File="Pictures/Picture1.jpg" />
-			</Circle>
-			<Rectangle Height="150">
-				<LinearGradient StartPoint="0,0" EndPoint="1,0.75">
-					<GradientStop Offset="0" Color="#FC3C47" />
-					<GradientStop Offset="1" Color="#B73070" />
-				</LinearGradient>
-			</Rectangle>
-		</StackPanel>
-	</App>
+
+	<StackPanel>
+		<Circle Width="150" Height="150">
+			<ImageFill File="Pictures/Picture1.jpg" />
+		</Circle>
+		<Rectangle Height="150">
+			<LinearGradient StartPoint="0,0" EndPoint="1,0.75">
+				<GradientStop Offset="0" Color="#FC3C47" />
+				<GradientStop Offset="1" Color="#B73070" />
+			</LinearGradient>
+		</Rectangle>
+	</StackPanel>	
 
 Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a `Rectangle` that has a nice and subtle `LinearGradient` from fuchsia(?) to purple(?).
 
 ### $(Stroke:Strokes)
 
 `Stroke`s accept a brush the same way a `Fill` does:
-
-	<App>
-		<StackPanel>
-			<Circle Width="150" Height="150">
-				<Stroke Width="10">
-					<ImageFill File="Pictures/Picture1.jpg" />
-				</Stroke>
-			</Circle>
-			<Rectangle Height="150">
-				<Stroke Width="15">
-					<LinearGradient StartPoint="0,0" EndPoint="1,0.75">
-						<GradientStop Offset="0" Color="#FC3C47" />
-						<GradientStop Offset="1" Color="#B73070" />
-					</LinearGradient>
-				</Stroke>
-			</Rectangle>
-		</StackPanel>
-	</App>
+	
+	<StackPanel>
+		<Circle Width="150" Height="150">
+			<Stroke Width="10">
+				<ImageFill File="Pictures/Picture1.jpg" />
+			</Stroke>
+		</Circle>
+		<Rectangle Height="150">
+			<Stroke Width="15">
+				<LinearGradient StartPoint="0,0" EndPoint="1,0.75">
+					<GradientStop Offset="0" Color="#FC3C47" />
+					<GradientStop Offset="1" Color="#B73070" />
+				</LinearGradient>
+			</Stroke>
+		</Rectangle>
+	</StackPanel>
 
 It can obviously just be set to be a `SolidColor`-brush:
+	
+	<Rectangle Fill="#f00" Width="50" Height="50">
+		<Stroke Width="5" Brush="#ff0" />				
+	</Rectangle>
 
-	<App Background="#000">
-		<Rectangle Fill="#f00" Width="50" Height="50">
-			<Stroke Width="5" Brush="#ff0" />				
-		</Rectangle>
-	</App>
 
 #### $(StrokeAlignment)
 
@@ -573,7 +566,7 @@ This will create two swipable pages. You can exchange the `Rectangle`s in this e
 
 ### $(PageIndicator)
 
-If you want to create a page indicator to the mix:
+If you want to add a page indicator to the mix:
 
 	<App Theme="Basic" Background="#000">		
 		<DockPanel>
@@ -665,6 +658,12 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 
 > ## Effects
 - Only in graphics mode
+
+### DropShadow
+
+### Blur
+
+### 
 
 
 > ## About Controls

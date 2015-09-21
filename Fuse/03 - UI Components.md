@@ -371,8 +371,8 @@ You can also databind the switch:
 
 			module.exports = {
 				switchEnabled: switchEnabled,
-				enableSwitch: function () { switchEnabled.value = false; },
-				disableSwitch: function () { switchEnabled.value = true; },
+				enableSwitch: function () { switchEnabled.value = true; },
+				disableSwitch: function () { switchEnabled.value = false; },
 				switchChanged: function (args) {
 					debug_log ("Switch value is: " + args.value);
 				}
@@ -381,8 +381,8 @@ You can also databind the switch:
 		<StackPanel>
 			<Switch Value="{switchEnabled}" ValueChanged="{switchChanged}" />
 			<Grid ColumnCount="2">
-				<Button Text="Disable" Clicked="{enableSwitch}" />
-				<Button Text="Enable" Clicked="{disableSwitch}" />
+				<Button Text="Disable" Clicked="{disableSwitch}" />
+				<Button Text="Enable" Clicked="{enableSwitch}" />
 			</Grid>
 		</StackPanel>
 	</App>

@@ -267,6 +267,8 @@ You can describe a `LinearGradient`-brush using `LinearGradient` and `GradientSt
 		<GradientStop Offset="1" Color="#000" />
 	</LinearGradient>
 
+The `StartPoint` and `EndPoint` are both X and Y offsets within the @(Shape) the brush is used in, so you can specify a diagonal brush by using `StartPoint="0,0" EndPoint="1,1"`.
+
 ## $(Button)
 
 TODO: Remove DebugAction and or rename to <Debug Message=
@@ -320,13 +322,14 @@ To accept on/off-style input, Fuse has a `Switch`-control:
 
 	<Switch />
 	
-To make it do anything, you can use the `WhileTrue`-trigger:
+To make it do something, you can use the `WhileTrue`-trigger:
 
 	<App Theme="Basic">
 		<StackPanel>
 			<Switch>
 				<WhileTrue>
-					<Change rectangle.Width="160" Duration="0.5" Easing="CircularInOut" />
+					<Change rectangle.Width="160" Duration="0.5" 
+						Easing="CircularInOut" />
 				</WhileTrue>
 			</Switch>
 			<Rectangle ux:Name="rectangle" Width="70" Height="70" Fill="#909" />
@@ -335,7 +338,7 @@ To make it do anything, you can use the `WhileTrue`-trigger:
 
 To make it act on the opposite state, you can use `WhileFalse`, or `WhileTrue Invert="true"`.
 
-If you want the `Switch` to start out being set:
+If you want the `Switch` to start out being activated:
 
 	<Switch Value="true" />
 
@@ -347,7 +350,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 				switchChanged: function (args) {
 					debug_log ("Switch value is: " + args.value);
 				}
-			}
+			};
 		</JavaScript>
 		<StackPanel>
 			<Switch Value="true" ValueChanged="{switchChanged}" />
@@ -373,7 +376,7 @@ You can also databind the switch:
 				switchChanged: function (args) {
 					debug_log ("Switch value is: " + args.value);
 				}
-			}
+			};
 		</JavaScript>
 		<StackPanel>
 			<Switch Value="{switchEnabled}" ValueChanged="{switchChanged}" />
@@ -385,10 +388,65 @@ You can also databind the switch:
 	</App>
 
 ## $(Slider)
-- ProgressAnimation
-- Events for when changing value
-- WhileInRange?
+
+To display a slider:
+
+	<Slider />
+	
+If you want to influence something as the slider moves, you can use `ProgressAnimation`. Consider this code which allows you to `Rotate` a `Rectangle` from 0 to 90 degrees:
+
+	<StackPanel>
+		<Slider>
+			<ProgressAnimation>
+				<Rotate Target="rectangle" Degrees="90" />
+			</ProgressAnimation>
+		</Slider>
+		<Rectangle ux:Name="rectangle" Width="100" Height="100" Fill="#808" />
+	</StackPanel>
+	
+You can also listen to the `ValueChanged`-event:
+
+	<App Theme="Basic">		
+		<JavaScript>			
+			module.exports = {
+				sliderValueChanged: function (args) 
+				{
+					debug_log ("Value: " + args.value);
+				}
+			};
+		</JavaScript>		
+		<Slider ValueChanged="{sliderValueChanged}" />		
+	</App>
+	
+When moving the slider from the far left to the far right, your console will output floating point numbers from 0 to 100, which are the default `Minimum` and `Maximum` values. These properties can also be set:
+
+	<Slider Minimum="4" Maximum="42" />
+	
+- WhileInRange? TODO: I could not find WhileInRange. Has it been renamed?
+
 > ### Databinding slider
+
+It is also possible to databind the slider position:
+
+	<App Theme="Basic">		
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+
+			var sliderValue = Observable(42);
+			var sliderLabel = sliderValue.map(function (val) {
+				return "Current position: " + val;
+			});
+
+			module.exports = {
+				sliderValue: sliderValue,
+				sliderLabel: sliderLabel
+			};
+		</JavaScript>
+		<StackPanel>
+			<Slider Value="{sliderValue}" />
+			<Text TextAlignment="Center" Value="{sliderLabel}" />
+		</StackPanel>
+	</App>
 
 ## $(TextInput)
 - Value (2way databinding)

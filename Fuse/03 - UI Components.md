@@ -196,10 +196,6 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 
 ### $(Stroke:Strokes)
 
-TODO: StrokeAlignment
-TODO: Stroke has Brush property (Brush="#f00")
-Todo: StrokeOffset
-
 `Stroke`s accept a brush the same way a `Fill` does:
 
 	<App>
@@ -227,6 +223,26 @@ It can obviously just be set to be a `SolidColor`-brush:
 			<Stroke Width="5" Brush="#ff0" />				
 		</Rectangle>
 	</App>
+
+#### $(StrokeAlignment)
+
+The `Stroke` can be aligned:
+	
+	<Stroke StrokeAlignment="Center" />
+	
+Valid values are `Center`, `Inside`, `Outside`.
+
+#### $(Stroke.Offset)
+
+The `Stroke` of a @(Shape) can be `Offset`:
+
+	<Stroke Width="10" Offset="10">
+		<ImageFill File="Pictures/Picture1.jpg" />
+	</Stroke>
+
+A positive `Offset` will make the `Stroke` appear outside the `Shape` while a negative `Offset` will make it appear inside.
+
+
 
 ### Brushes
 

@@ -64,11 +64,9 @@ To display an image:
 
 This code assumes the file `FuseLogo.png` lives in the same directory as the UX-file. If you would rather load the contents of the image from the Internet, simply:
 
-	<App>
-		<Image Url="http://path_to_image" />
-	</App>
+	<Image Url="http://path_to_image" />
 
-_Note!_ If you come from a background as a web developer you might be used to assigning a URL to a `src`-attribute. While `Image` has a `Source`-property, it is used to assign a `Resource` to an image. In this context, this `Resource` is a `HttpImageSource`, but that is created behind the covers for you automatically, so stick to the `Url`-property to load contents from the web.
+> _Note!_ If you come from a background as a web developer you might be used to assigning a URL to a `src`-attribute. While `Image` has a `Source`-property, it is used to assign a `Resource` to an image. In this context, this `Resource` is a `HttpImageSource`, but that is created behind the covers for you automatically, so stick to the `Url`-property to load contents from the web.
 
 > ### Image contents from resources
 
@@ -117,9 +115,26 @@ There are a number of ways to address this issue. You can set the `StretchMode`-
 
 > ### Multi density images
 
+Because devices have widely different resolutions, Fuse allows you to specify multiple image resources for the same logical `Image`:
+
+	<Image>
+		<MultiDensityImageSource>
+			<FileImageSource File="Icon.png" Density="1"/>
+			<FileImageSource File="Icon.png@2x.png" Density="2"/>
+		</MultiDensityImageSource>
+	</Image>
+	
+Fuse will then pick the resource best suited for the device in question.
+
+TODO: Explain how Fuse decides which png to choose? 
+
 > ### Memory policy
 
+TODO: Explain @mortoray?
+
 > ### HttpImageSource
+
+Q: Is this different from just using `Url`?
 
 ## $(Shapes)
 
@@ -209,9 +224,7 @@ It can obviously just be set to be a `SolidColor`-brush:
 
 	<App Background="#000">
 		<Rectangle Fill="#f00" Width="50" Height="50">
-			<Stroke Width="5">
-				<SolidColor Color="#ff0" />
-			</Stroke>
+			<Stroke Width="5" Brush="#ff0" />				
 		</Rectangle>
 	</App>
 
@@ -247,9 +260,15 @@ The same way @(Image) allows you to, `ImageFill` lets you set @(StretchMode).
 
 #### $(LinearGradient)
 
+You can describe a `LinearGradient`-brush using `LinearGradient` and `GradientStop`. For example, to create a grey ramp that is white in the top and black in the bottom:
+
+	<LinearGradient StartPoint="0,0" EndPoint="0,1">
+		<GradientStop Offset="0" Color="#fff" />
+		<GradientStop Offset="1" Color="#000" />
+	</LinearGradient>
+
 ## $(Button)
 
-TODO: More undertitles
 TODO: Remove DebugAction and or rename to <Debug Message=
 
 It is easy to make an app that has a `Button`:
@@ -262,7 +281,7 @@ It is easy to make an app that has a `Button`:
 		</Button>
 	</App>
 
-This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". There is one difference from our previous examples at work here, namely: `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
+This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". Because we're working with a control, we add `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
 
 In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
 
@@ -280,7 +299,9 @@ Why, then is there a need to a separate `Button` concept?
 
 Because when you switch the `Theme` to `Native`, Fuse will render the `Button` as a native iOS or Android `Button`, depending on which platform the app is run on. Also, creating a concept called "Button" makes it easier to make meaningful themes.
 
-The `Button` can also accept `Clicked` as an _`event` trigger_ as well as an explicit trigger:
+### $(Event triggers)
+
+The `Button` can also accept `Clicked` as an _`event` trigger_:
 
 	<App Theme="Basic">
 		<JavaScript>
@@ -294,10 +315,74 @@ The `Button` can also accept `Clicked` as an _`event` trigger_ as well as an exp
 This is handy when you want to drive business logic from events.
 
 ## $(Switch)
-- WhileTrue
-- WhileFalse
-- Events for when changing value
+
+To accept on/off-style input, Fuse has a `Switch`-control:
+
+	<Switch />
+	
+To make it do anything, you can use the `WhileTrue`-trigger:
+
+	<App Theme="Basic">
+		<StackPanel>
+			<Switch>
+				<WhileTrue>
+					<Change rectangle.Width="160" Duration="0.5" Easing="CircularInOut" />
+				</WhileTrue>
+			</Switch>
+			<Rectangle ux:Name="rectangle" Width="70" Height="70" Fill="#909" />
+		</StackPanel>
+	</App>
+
+To make it act on the opposite state, you can use `WhileFalse`, or `WhileTrue Invert="true"`.
+
+If you want the `Switch` to start out being set:
+
+	<Switch Value="true" />
+
+The events emitted by the `Switch` can also be handled from JavaScript:
+
+	<App Theme="Basic">		
+		<JavaScript>
+			module.exports = {
+				switchChanged: function (args) {
+					debug_log ("Switch value is: " + args.value);
+				}
+			}
+		</JavaScript>
+		<StackPanel>
+			<Switch Value="true" ValueChanged="{switchChanged}" />
+		</StackPanel>
+	</App>
+
 > ### Databinding switch
+
+TODO: OBSERVE! This example crashes with invalid program when clicking on the `Switch`; using the buttons works as expected.
+
+You can also databind the switch:
+
+	<App Theme="Basic">		
+		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+
+			var switchEnabled = Observable(false);
+
+			module.exports = {
+				switchEnabled: switchEnabled,
+				enableSwitch: function () { switchEnabled.value = false; },
+				disableSwitch: function () { switchEnabled.value = true; },
+				switchChanged: function (args) {
+					debug_log ("Switch value is: " + args.value);
+				}
+			}
+		</JavaScript>
+		<StackPanel>
+			<Switch Value="{switchEnabled}" ValueChanged="{switchChanged}" />
+			<Grid ColumnCount="2">
+				<Button Text="Disable" Clicked="{enableSwitch}" />
+				<Button Text="Enable" Clicked="{disableSwitch}" />
+			</Grid>
+		</StackPanel>
+	</App>
 
 ## $(Slider)
 - ProgressAnimation

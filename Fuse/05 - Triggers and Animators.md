@@ -1,12 +1,17 @@
 # Triggers and Animators
 
-Triggers is the <insert your sales pitch>
+Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) which are used to animate elements in different ways. This chapter will contain anything you need to know about making your UI come to life using the @(Trigger) system.
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
-For example, here is a @(Panel) with a @(WhilePressed) trigger doing some animation in resonse:
-
-	/// TODO
+For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel to rotate 90 degrees with a bouncy animation.
+```
+<Panel>
+	<WhilePressed>
+		<Rotate Degrees="90" Duration="0.5" Easing="BounceInOut"/>
+	</WhilePressed>
+</Panel>
+```
 
 TODO:
 * Explain how triggers are a timeline, plays forwards/backwards, applies/unapplies
@@ -16,48 +21,201 @@ TODO:
 > ### $(Rest state) and deviation
 
 The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state.
-Each trigger knows how "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means
+Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means
 animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
 multiple devices, screen sizes, with real data and real user input.
 
 
-
 ## Animators
 
-TODO: explain overall how animators work
+Animators are used to specify which and how @(Element:elements) are to be animated when a @(Trigger:trigger) is triggered.
 
-> ### $(Change)
+Animators have five pairs of properties which are important for controlling the exact result of an animation.
 
-Temporarily changes the value of a property. If you want to permanently change a value, use @(Set)
+### $(Target)/Value
+The `Target` property is used to identify the property which we intend to animate.
+The `Value` property is the value of the result of an animation.
 
-- Change animates while set sets
+Because the task of setting a target and value, UX has a special syntax for this:
+```
+<Change target.Property="Value"/>
+```
 
-(examples++)
+### $(Duration)/$(DurationBack)
+Animations can have different behavior when animating forwards and backwards. When a trigger is activated, the animation is said to play forwards. When the trigger is deactivated, the animation is played backwards. Duration is used to set the duration for the animation.
+One can set a different duration for the backwards animation by using the `DurationBack` property.
+
+### $(Delay)/$(DelayBack)
+Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its target over 2 seconds.
+```
+<Change Delay="5" Duration="2" someElement.Height="100"/>
+```
+
+### $(Easing)/$(EasingBack)
+
+Fuse comes with a standard set of predefined easing curves. Easing curves are used to control how an animation progresses over time. The default easing is set to `Linear`. With linear easing, the animation progresses at the same speed over its entire duration. This usually appears quite unnatural and fake. To gain a more natural feel, we can change the easing to QuadraticInOut, like so:
+```
+<Change Easing="QuadraticInOut" Duration="2" someElement.Property="SomeValue"/>
+```
+This animator will progress slowly in the beginning, faster in the middle, and then slow again in the end.
+
+The following easing curves are defined:
+- $(Linear)
+- $(Quadratic)
+- $(Cubic)
+- $(Quartic)
+- $(Quintic)
+- $(Sinusoidal)
+- $(Exponential)
+- $(Circular)
+- $(Elastic)
+- $(Back)
+- $(Bounce)
+
+They each have three different versions: [easing]In, [easing]Out and [easing]InOut.
+Assign easing to an animator like so:
+```
+<Move Easing="CubicIn" X="5" Y="10" Duration="0.5"/>
+<Scale Easing="BounceOut" Factor="1.5" Duration="0.2"/>
+<Rotate Easing="BounceOut" Degrees="10" Duration="0.4"/>
+```
+
+* Note that the easing type has to be combined with either In, Out or InOut. In means that the easing function is observed only in the beginning of the animation. Out is observed only at the end. InOut gives an effect on both the beginning and end of the animation.
+
+- MixOp
+TODO: Write about mixop
+
+### $(Change)
+
+Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @(Set) animator.
+The `Change` animator can be used to animate almost any property.
+
+```
+<Panel ux:Name="somePanel">
+	<SolidColor ux:Name="someColor" Color="Red"/>
+</Panel>
+<Change somePanel.Opacity="0"/>
+<Change someColor.Color="Blue" Duration="0.3"/>
+<Change somePanel.Visibility="Collapsed"/>
+```
+
+One can also animate such properties as `Width`, `Height` and `Margin`, but because these properties might affect the entire layout of your UI, this can end up being quite costly in terms of performance. There are usually more effective ways to do animations that interact with layout. Check out @(LayoutAnimation) and @(MultiLayoutPanel) for some inspiration.
 
 ### $(Move)
 
+The `Move` animator is a convenience animator used to move an element:
+```
+<Panel>
+	<WhilePressed>
+		<Move X="100" Duration="0.2"/>
+	</WhilePressed>
+</Panel>
+
+
+```
+This corresponds to adding a translation on an element and animating it with a change:
+```
+<Panel ux:Name="someElement">
+	<Translation ux:Name="someTranslation"/>
+	<WhilePressed>
+		<Change someTranslation.X="100" Duration="0.2"/>
+	</WhilePressed>
+</Panel>
+```
+
 ### $(Scale)
 
+`Scale` works in the same way as @(Move) except that it scales the element. Note that scale doesn't actually change the elements size. This means that the rest of the UI layout wont be affected and the animation is guaranteed to be fast.
+
+```
+<Scale Factor="2" Duration="0.4"/>
+```
+
 ### $(Rotate)
+`Rotate` rotates an Element and is equal to adding a @(Rotation) and animating it with a @(Change).
+```
+<Rotate Degrees="90" Duration="0.5"/>
+```
 
 > ### $(Cycle)
+TODO: Cycle
 
 > ### $(Spin)
+TODO: Spin
 
 > ## Transforms
-- Translation
-- Rotation
-- Scaling
-- Order of when they are applied
-- Attractor
-- Change + those: examples
+All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.
+It is worth mentioning that the order of these transforms affects the order of when they are applied to the element, and therefore can leed to different results.
+
+```
+<Panel Width="100" Height="50">
+	<Translation X="100"/>
+	<Rotation Degrees="45"/>
+</Panel>
+```
+```
+<Panel Width="100" Height="50">
+	<Rotation Degrees="45"/>
+	<Translation X="100"/>
+</Panel>
+```
+
+The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive X-direction is now 45 degrees downwards, and so our panel ends up being moved towards the bottom right.
+
+There are three types of transforms that can be put on elements:
+### $(Translation)
+`Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-reiction and 50 points in the Y-direction.
+```
+<Rectangle Width="50" Height="50">
+	<Translation X="100" Y="50"/>
+</Rectangle>
+```
+
+TODO: Document X, Y, Z
+
+### $(Scaling)
+`Scaling` enlarges or shrinks the element by the factor specified. The following example will make the @(Rectangle) twice as big as the original size:
+```
+<Rectangle Width="100" Height="100">
+	<Scaling Factor="2"/>
+</Rectangle>
+```
+
+TODO: Document Vector
+
+### $(Rotation)
+`Rotation` rotates the element by the amount of degrees specified. Here is an example of a rectangle which is rotated by 90 degrees.
+```
+<Rectangle Width="100" Height="50">
+	<Rotation Degrees="90"/>
+</Rectangle>
+```
+
+Document X, Y, Z
+
+### $(Sheer)
+TODO: Document sheer
+
+
+## $(Attractor)
+
+The `Attractor` is used to give a more natural movement to animations. It acts as an intermediary between an animator and its target. An `Attractor` will continuously animate its target towards its `Value` using a simple form of physics simulation. We can combine this behavior with animation by animating the attractors `Value` property.
+```
+<Panel ux:Name="somePanel">
+	<Translation ux:Name="someTranslation"/>
+	<Attractor ux:Name="someAttractor" Target="someTranslation.X"/>
+	<WhilePressed>
+		<Change someAttractor.Value="100"/>
+	</WhilePressed>
+
+</Panel>
+```
 
 ## $(Actions)
 
 Triggers can contain actions too, which are one-off events that fire at a particular point in the trigger's timeline.
 
-Note that actions, contrary to @(animators) are not reversible. This means it is not neccessarily possible to return to
-the @(rest state) if the trigger is reversed.
+Note that actions, contrary to @(animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
 
 (make sure examples include things like Delay)
 
@@ -65,51 +223,147 @@ the @(rest state) if the trigger is reversed.
 
 Permanently changes the value of a property. If you want to just change it temporarily, use @(Change)
 
-(examples++)
+TODO: (examples++)
 
 ### $(Callback)
 
+`Callback` is used to call a JavaScript function (see @(DataBinding)) when a trigger is activated.
+
+```
+<JavaScript>
+	var someJSFunction(){
+		Console.Log("some function called");
+	}
+	module.exports = { someJSFunction: someJSFunction };
+</JavaScript>
+<Rectangle Width="100" Height="50" Alignment="Center" Fill="Red">
+	<WhilePressed>
+		<Callback Handle="{someJSFunction}"/>
+	</WhilePressed>
+</Rectangle>
+```
+
 > ### $(Toggle)
+TODO: Not sure how toggle works exactly
 
 > ### $(BringIntoView)
+TODO: Ask edaqua
 
 > ### $(BringToFront)
+TODO: Do we need to discuss Z-ordering?
 
 
 ## $(State groups)
 
-State groups allow you to define completely custom states, with custom event
+State groups allow you to define completely custom states, with custom events.
+
+### $(State)
+A `State` consists of a set of @(Animator:animators) inside a `State` object.
+```
+<State>
+	<Rotate Degrees="200"/>
+</State>
+```
+
+### $(StateGroup)
+A `StateGroup` is used to group a set of @(State:states) together and switch between them. `StateGroup` has an `Active` property, which is used to assign which @(State) is currently active in that group. One can also specify the @(TransitionType), which can be wither `Exclusive` or `Parallel`. `Exclusive` means that each state will have to be fully deactivated before the next state becomes active. `Parallel` means that as one state deactivates, the next one will active and whatever properties they animate will be interpolated between them.
+
+Here is an exampel of how to use a `StateGroup` to switch the color of a @(Rectangle) between three states:
+```
+<StackPanel>
+	<Panel Width="100" Height="100">
+		<SolidColor ux:Name="someColor"/>
+	</Panel>
+	<StateGroup ux:Name="stateGroup">
+		<State ux:Name="redState">
+			<Change someColor.Color="#f00" Duration="0.2"/>
+		</State>
+		<State ux:Name="blueState">
+			<Change someColor.Color="#00f" Duration="0.2"/>
+		</State>
+		<State ux:Name="greenState">
+			<Change someColor.Color="#0f0" Duration="0.2"/>
+		</State>
+	</StateGroup>
+	<Grid ColumnCount="3">
+		<Button Text="Red">
+			<Clicked>
+				<Set stateGroup.Active="redState"/>
+			</Clicked>
+		</Button>
+		<Button Text="Blue">
+			<Clicked>
+				<Set stateGroup.Active="blueState"/>
+			</Clicked>
+		</Button>
+		<Button Text="Green">
+			<Clicked>
+				<Set stateGroup.Active="greenState"/>
+			</Clicked>
+		</Button>
+	</Grid>
+</StackPanel>
+```
+
 
 ## Data triggers
 
 Reacts to data changes, either from data binding or from the control context.
 
-> ### $(WhileTrue)
-- note that this is mentioned earlier in switch, but this is where we mention all the ways it can be user
+### $(WhileTrue)
+`WhileTrue` is active while its @(Value) property is `True` and inactive while it's false.
 
-> ### WhileFalse
+### $(WhileFalse)
+`WhileFalse` is active while its @(Value) property is `False` and inactive while it's true.
 
-> ### WhileFailed
+### WhileFailed
+TODO: I dont know what it does
 
 
-## Gestures
+## $Gestures
 
 Reacts to pointer inputs.
 
-> ### WhilePressed
+### $(WhilePressed)
+`WhilePressed` is active while its containing element is being pressed and the pointer is inside its bounds.
+```
+<Panel Width="50" Height="50">
+	<WhilePressed>
+		<Scale Factor="2" Duration="0.2"/>
+	</WhilePressed>
+</Panel>
+```
 
-> ### Clicked
+### $(Clicked)
+`Clicked` is activated in response to a click @(Gestures:gesture). What constitutes a click-event can be platform specific, but usually means that the pointer was pressed and released within the bounds of the containing element.
 
-> ### Tapped
+* Note: `Clicked`-triggers can be placed on any @(Element), not just @(Button:buttons).
 
-> ### WhileHovering
+```
+<Panel Width="50" Height="50">
+	<WhilePressed>
+		<Scale Factor="2" Duration="0.2"/>
+	</WhilePressed>
+</Panel>
+```
 
 
-## Control triggers
+### $(Tapped)
+The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click just means that the pointer has to be pressed and released on the element, a tap means that the pointer has to be released within a certain time after the pointer is pressed.
 
-> ### Enabled
+TODO: Can we configure this time? And what is the default?
 
-> ### Disabled
+### $(WhileHovering)
+`WhileHovering` is active while the pointer is within the bounds if its containing @(Element).
+
+* Note: `WhileHovering` only has value when the device supports a hovering pointer, like the mouse pointer on desktop machines. For most smart phones this trigger won't have much value.
+
+## $(Control triggers)
+
+### $(WhileEnabled)
+The `WhileEnabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `True`.
+
+### $(WhileDisabled)
 
 
 ## Platform triggers

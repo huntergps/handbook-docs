@@ -535,12 +535,54 @@ As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, 
 
 
 ## $(PageControl)
-- Forward link to navigation chapter
-- Pagecontrol wraps navigation with swipenavigate
+
+Fuse has a lot of ways to deal with @(Navigation:navigation). If you need to get started quickly, you can use `PageControl`:
+
+	<PageControl />
 
 ### $(Page)
 
+A `PageControl` is typically used with `Page`s:
+
+	<PageControl>
+		<Page>
+			<Rectangle Fill="#808" />
+		</Page>
+		<Page>
+			<Rectangle Fill="#990" />
+		</Page>
+	</PageControl>
+
+This will create two swipable pages. You can exchange the `Rectangle`s in this example for any UX you want, of course.
+
 ### $(PageIndicator)
+
+If you want to create a page indicator to the mix:
+
+	<App Theme="Basic" Background="#000">		
+		<DockPanel>
+			<PageControl ux:Name="pageControl">
+				<Page>
+					<!-- Page 1 -->
+				</Page>
+				<Page>
+					<!-- Page 2 -->
+				</Page>
+			</PageControl>
+			<PageIndicator Dock="Bottom" Alignment="Center" Margin="5" Navigation="pageControl">
+				<Circle ux:Generate="Factory" ux:Binding="DotFactory" Width="10" Height="10"  Margin="4" Padding="10">
+					<SolidColor ux:Name="dot" Color="#444" />
+					<ActivatingAnimation>
+						<Change dot.Color="#fff" />
+					</ActivatingAnimation>
+				</Circle>
+			</PageIndicator>
+		</DockPanel>
+	</App>
+
+`PageControl` is really an abstraction on @(SwipeNavigate) and @(LinearNavigation), so if you want to make more custom navigation scenarios, look at @(Navigation).
+
+TODO: Link to https://www.fusetools.com/developers/examples/pagecontrol
 
 ## $(ScrollView) (link elsewhere?)
 - AllowedScrollDirection

@@ -657,13 +657,51 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 > ## Layers
 
 > ## Effects
-- Only in graphics mode
 
-### DropShadow
+Fuse has the ability to render a set of visual effects that can be added to most controls. It is important to understand that in order for these to work, you need to be in graphics mode; native themes are limited in their ability to render these effects.
 
-### Blur
+### $(DropShadow)
 
-### 
+To add a `DropShadow` to an element:
+
+	<Rectangle Width="50" Height="50" Fill="#808">
+		<DropShadow />
+	</Rectangle>
+
+To make a soft `DropShadow` from the top down:
+
+	<Rectangle Width="50" Height="50" Fill="#808">
+		<DropShadow Angle="90" Distance="12" Size="20" Spread="0.1"  />
+	</Rectangle>
+
+It can also be used to create artistic effects like outer glow:
+
+	<Panel Background="#000">
+		<Circle Width="50" Height="50" Fill="#808">
+			<DropShadow Distance="0" Size="50" Spread="0.2" Color="#ff06" />
+		</Circle>
+	</Panel>
+
+`DropShadow` has these properties:
+
+- `Angle` - Which direction does the light come from: 
+	- 0 - right
+	- 90 - top
+	- 180 - left
+	- 270 - bottom
+- `Distance` - The distance in points from the source of the shadow
+- `Size` - The size of the dropshadow
+- `Spread` - How the shadow drops off. The closer to 0, the more linear. Keep this value low (experiment below 1.0), or you will get artifacting
+- `Color` - Which color the dropshadow should have. Note that this also supports alpha channel, so you can make the shadow more or less transparent 
+
+### $(Blur)
+
+### $(Desaturate)
+
+### $(Halftone)
+
+### $(Mask)
+
 
 
 > ## About Controls

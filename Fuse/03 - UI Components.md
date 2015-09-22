@@ -696,12 +696,43 @@ It can also be used to create artistic effects like outer glow:
 
 ### $(Blur)
 
+To blur an element:
+
+	<Text Value="Hello there!">
+		<Blur Radius="0.9" />
+	</Text>
+	
+Note that while the `Radius` of the `Blur` can be animated like most other properties, this is potentially an expensive operation, and should be tested on devices to make sure it behaves properly.
+
 ### $(Desaturate)
+
+To `Desaturate` an element, fully or partially:
+
+	<Image File="Pictures/Picture1.jpg">
+		<Desaturate Amount="0.4" />
+	</Image>
+	
+An amount of 1.0 will fully `Desaturate` the element.
 
 ### $(Halftone)
 
+Add a classic halftone effect:
+
+	<Image File="Pictures/Picture1.jpg">
+		<Halftone />
+	</Image>
+
+`Halftone` accepts:
+
+- `Spacing` - The distance between the dots (`float`, default 0.5)
+- `Smoothness` - How hard or soft the dot edges are (`float`, default 2)
+- `Intensity` - How much of the effect is applied (`float`, default 1)
+- `DotTint` - Tint amount of the dots (`float`, default 0.5)
+- `PaperTint` - Tint amount of the paper (`float`, default 0.2)
+
 ### $(Mask)
 
+TODO: Describe mask.
 
 
 > ## About Controls

@@ -1,6 +1,6 @@
-# Triggers and Animators
+# $(Trigger)s and $(Animator)s
 
-Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) which are used to animate elements in different ways. This chapter will contain anything you need to know about making your UI come to life using the @(Trigger) system.
+Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) which are used to animate elements.
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
@@ -17,8 +17,9 @@ TODO:
 * Explain how triggers are a timeline, plays forwards/backwards, applies/unapplies
 * Duration, easing and easing back - how the trigger takes the total length of all it's @(animators)
 
+As well as animating properties, one can also use triggers to add and remove entire elements.
 
-> ### $(Rest state) and deviation
+### $(Rest state) and deviation
 
 The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state.
 Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means
@@ -103,19 +104,27 @@ One can also animate such properties as `Width`, `Height` and `Margin`, but beca
 
 ### $(Move)
 
-The `Move` animator is a convenience animator used to move an element:
+The `Move` animator is used to move an element. `Move` does not affect layout, so the element will just get an offset from its actual location. By default, `<Move X="10"/>` will move the element by 10 points.
+Some times one wants an element to move relative to its own size or some other elements size. To control this, we can use the @(RelativeTo) property.
+
+@(RelativeTo) can be set to the following values:
+- `Local`(default): Moves the set amount of points in the X and/or Y direction.
+- `Size`: Moves the set amount times the size of the element. So X="1" moves the element by its entire width in the X direction.
+- `ParentSize`: Same as `Size` but uses the elements parents size instead.
+- `LayoutChange`: Used in response to a @(LayoutAnimation) to move the element by the amount of a layout change.
+- `Keyboard`: Moves the element relative to the size of the @(Keyboard).
+
+`<Move X="0.5" RelativeTo="Size"/>` will move the element by half of its own width in the x-direction.
+Move corresponds to adding a @(Translation) on the element and using @(Change) to animate its X and Y values. The folling two examples give the same result.
 ```
 <Panel>
 	<WhilePressed>
 		<Move X="100" Duration="0.2"/>
 	</WhilePressed>
 </Panel>
-
-
 ```
-This corresponds to adding a translation on an element and animating it with a change:
 ```
-<Panel ux:Name="someElement">
+<Panel>
 	<Translation ux:Name="someTranslation"/>
 	<WhilePressed>
 		<Change someTranslation.X="100" Duration="0.2"/>
@@ -363,18 +372,33 @@ TODO: Can we configure this time? And what is the default?
 ### $(WhileEnabled)
 The `WhileEnabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `True`.
 
+```
+<Panel  Width="50" Height="50" Background="Red" >
+	<WhileEnabled>
+		<Rotate Degrees="45" Duration="0.5"/>
+	</WhileEnabled>
+</Panel>
+```
+
 ### $(WhileDisabled)
+The `WhileDisabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `False`.
 
 
 ## Platform triggers
 
-> ### Android
+TODO: Do android and ios work?
 
-> ### iOS
+### Android
 
-> ### KeyboardVisible
+### iOS
 
-> ### WhileWindowAspect
+### $(WhileKeyboardVisible)
+`WhileKeyboardVisible` is active whenever the on-screen keyboard is visible.
+
+TODO: Example
+
+### WhileWindowAspect
+TODO: Did we change the name of this?
 
 ## Special $(Animation)s
 
@@ -385,25 +409,27 @@ Animation triggers are designed to solve quite specific animation problems that 
 The flipside is that these triggers can be somewhat hard to understand and use, so make sure you read the docs and study examples before spending
 too much time scratching your head.
 
-> ### $(LayoutAnimation)
+### $(LayoutAnimation)
 
-(consider linking to external article here)
 
-> ### $(AddingAnimation)
 
-(consider linking to examples)
+TODO: consider linking to external article here
 
-> ### $(RemovingAnimation)
+### $(AddingAnimation)
 
-> ### $(EnteringAnimation)
+TODO: consider linking to examples
 
-> ### $(ExitingAnimation)
+### $(RemovingAnimation)
 
-> ### $(ActivatingAnimation)
+### $(EnteringAnimation)
 
-> ### $(ScrollingAnimation)
+### $(ExitingAnimation)
 
-> ### $(ProgressAnimation)
+### $(ActivatingAnimation)
+
+### $(ScrollingAnimation)
+
+### $(ProgressAnimation)
 
 ## $(Timeline)
 

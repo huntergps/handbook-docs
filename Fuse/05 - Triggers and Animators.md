@@ -502,13 +502,11 @@ In the following example, our background changes color when we reach the bottom 
 ```
 <ScrollViewer>
 	<SolidColor ux:Name="color" Color="#000"/>
-	<StackPanel Background="#ddd" Margin="10">
-		<Panel Height="200" Background="Red"/>
-		<Panel Height="200" Background="Blue"/>
-		<Panel Height="200" Background="Green"/>
-		<Panel Height="200" Background="Purple"/>
-		<Panel Height="200" Background="Teal"/>
-	</StackPanel>
+	<StackPanel Margin="10">
+			<Each Count="10">
+				<Panel Height="200" Background="Red" Margin="2"/>
+			</Each>
+		</StackPanel>
 	<WhileScrollable ScrollDirections="Down">
 		<Change color.Color="#ddd" Duration="0.4"/>
 	</WhileScrollable>

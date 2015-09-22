@@ -803,8 +803,8 @@ The mask will always stretch itself to match the size of the element to be maske
 
 > ## About Controls
 
-TODO: Generally about controls and how they are just semantic containers
+In Fuse, controls and other UI components are fundamentally the same. In a way, you could say that controls are just _semantic containers_, they embody a certain set of appearances and behavior that we usually refer to by a well-defined name. 
 
-How themes interact with controls.
+This means that in general, creating your own controls should be possible and accessible.
 
-How controls are panels (usually)
+Naming controls by semantics makes it easy to also create themes that address them. You can read more about this process in the @(Themes:theming) section.

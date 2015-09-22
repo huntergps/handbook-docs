@@ -646,9 +646,35 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 ## $(DatePicker) (link elsewhere?)
 
 > ## Hit test
-- HitTestMode
-- How hit testing works
-- Common pitfalls, opacity="0" == HitTestMode="None"
+
+When interacting with an element, it is sometimes desirable to be able to differenciate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using $(HitTestMode).
+
+Consider this code:
+
+	<Grid ColumnCount="2">
+		<Rectangle Width="100" Height="100" Fill="#808" >
+			<Clicked>
+				<DebugAction Message="Clicked left" />
+			</Clicked>
+		</Rectangle>
+		<Rectangle Width="100" Height="100" Fill="#808" HitTestMode="None" >
+			<Clicked>
+				<DebugAction Message="Clicked right" />
+			</Clicked>
+		</Rectangle>
+	</Grid>
+	
+It will layout two `Rectangle`s and add `Clicked`-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle. This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.
+
+Valid values for `HitTestMode` are:
+
+- `None` - This element will not do hit testing
+- `LocalBounds` - This element will be hit tested based on its size
+- `LocalVisual` - This element will be hit tested based on its appearance
+- `LocalBoundsAndChildren` - Hit testing will include the bounds of the element and its ch`ildren
+- `LocalVisualAndChildren` - Hit testing will include the appearance of the element and its children
+
+Note that if you set the @(Opacity) of an element below or equal its `HitTestOpacityThreshold` (which defaults to being 0), hit testing will be disabled for that object. This means that you can click an element as you fade it out, but it will stop accepting clicks at a certain point.
 
 > ## $(ClipToBounds)
 

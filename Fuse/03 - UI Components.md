@@ -70,8 +70,6 @@ This code assumes the file `FuseLogo.png` lives in the same directory as the UX-
 
 > ### Image contents from resources
 
-TODO: Link/Move parts to DataBinding chapter(?) I think there was the idea to keep it here for now. Especially after the code was simplified
-
 For a small example of other ways to load image data, here is a small example that also uses databinding from JavaScript:
 
 	<App>
@@ -106,18 +104,18 @@ When added to a container, an `Image` will by default try to show as much as its
 There are a number of ways to address this issue. You can set the `StretchMode`-property on your `Image` to make it behave differently. Here are the different `StretchMode`s:
 
 - `Fill` - Fill the available area in the container without necessarily preserving aspect ratio.
-- `PixelPrecise` - TODO: Explain @mortoray?
-- `PointPrecise` - TODO: Explain
-- `PointPrefer` - TODO: Explain
+- `PixelPrecise` - Use the pixels from the image as unit to make sure the image is crisp on all devices. This means that the image will be different sizes on different devices. It ignores the size of the `Image` container.
+- `PointPrecise` - This uses the size of the image source as the `Image` in points, which guarantees that it will be the same on all devices. It ignores the size of the `Image` container.
+- `PointPrefer` - The `PointPrefer` stretch mode will prioritize getting image size correct using `PointPrecise` stretch mode, but in cases where `PixelPrecise` would create an on-screen image with approximately the right size, it will use `PixelPrecise` to increase the clarity of the image.
 - `Scale9` - Link to external documentation for this?
 - `Uniform` - This will make the picture as large as possible while preserving aspect ratio. This will often make the `Image` not cover the whole parent.
-- `UniformToFill` - Fill the parent container while preserving aspect ratio. This will often mean that parts of the picture are left out.
+- `UniformToFill` - Fill the parent container while preserving aspect ratio. This will often mean that parts of the picture are left out, clipped by the parent
 
 > ### Multi density images
 
 Because devices have widely different resolutions, Fuse allows you to specify multiple image resources for the same logical `Image`:
 
-	<Image>
+	<Image StretchMode="PointPrefer">
 		<MultiDensityImageSource>
 			<FileImageSource File="Icon.png" Density="1"/>
 			<FileImageSource File="Icon.png@2x.png" Density="2"/>
@@ -126,7 +124,7 @@ Because devices have widely different resolutions, Fuse allows you to specify mu
 	
 Fuse will then pick the resource best suited for the device in question.
 
-TODO: Explain how Fuse decides which png to choose? 
+AUTH
 
 > ### Memory policy
 
@@ -134,11 +132,9 @@ TODO: Explain @mortoray?
 
 > ### HttpImageSource
 
-Q: Is this different from just using `Url`?
+Q: Is this different from just using `Url`? AUTH
 
 ## $(Shapes)
-
-TODO: Talk about the shape API?
 
 Fuse comes with functionality for doing shape rendering. All shapes can have multiple `Fill`s and `Stroke`s, these will be layered.
 
@@ -280,7 +276,7 @@ The `StartPoint` and `EndPoint` are both X and Y offsets within the @(Shape) the
 
 ## $(Button)
 
-TODO: Remove DebugAction and or rename to <Debug Message=
+TODO: Remove DebugAction and or rename to <Debug Message=, this has a pull request, but the examples needs a search/replace DebugAction -> Debug
 
 It is easy to make an app that has a `Button`:
 
@@ -368,8 +364,6 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 
 > ### Databinding switch
 
-TODO: OBSERVE! This example crashes with invalid program when clicking on the `Switch`; using the buttons works as expected. This is true for local fuse preview and DotNetExe, works as expected on device
-
 You can also databind the switch:
 
 	<App Theme="Basic">		
@@ -430,8 +424,6 @@ You can also listen to the `ValueChanged`-event:
 When moving the slider from the far left to the far right, your console will output floating point numbers from 0 to 100, which are the default `Minimum` and `Maximum` values. These properties can also be set:
 
 	<Slider Minimum="4" Maximum="42" />
-	
-- WhileInRange? TODO: I could not find WhileInRange. Has it been renamed?
 
 > ### Databinding slider
 
@@ -542,6 +534,7 @@ As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, 
 - link to styling? 
 - text edit TODO: What is this?
 
+TODO: Consider not documenting these here but in the chapter on Triggers and Animators
 
 ## $(PageControl)
 
@@ -591,7 +584,7 @@ If you want to add a page indicator to the mix:
 
 `PageControl` is really an abstraction on @(SwipeNavigate) and @(LinearNavigation), so if you want to make more custom navigation scenarios, look at @(Navigation).
 
-TODO: Link to https://www.fusetools.com/developers/examples/pagecontrol
+For a full example of using `PageControl`, `PageIndicator` and `Page` check this out: https://www.fusetools.com/developers/examples/pagecontrol
 
 ## $(ScrollView) (link elsewhere?)
 
@@ -805,6 +798,8 @@ If you use a white image with alpha channel, `RGBA` and `Alpha` will have the sa
 The mask will always stretch itself to match the size of the element to be masked.
 
 > ## About Controls
+
+AUTH
 
 In Fuse, controls and other UI components are fundamentally the same. In a way, you could say that controls are just _semantic containers_, they embody a certain set of appearances and behavior that we usually refer to by a well-defined name. 
 

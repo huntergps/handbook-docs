@@ -784,7 +784,22 @@ Add a classic halftone effect:
 
 ### $(Mask)
 
-TODO: Describe mask.
+Fuse allows you to mask an element with an image or `ImageSource`.
+
+	<Rectangle Width="50" Height="50">
+		<Mask File="Masks/Flower.png" />
+	</Rectangle>
+
+The `Mask` effects accepts the following properties:
+
+- `Mode` - How to interpret the mask source
+	- `RGBA` (default) - Use the alpha channel of the source image as the mask and multiply the RGB values from the mask with the RGB values from the element to be masked
+	- `Alpha` - Use the alpha channel of the source image without touching the RGB values from the masked element
+	- `Greyscale` - Use the color component of the greyscale mask as a multiplication factor with the original alpha value
+	
+If you use a white image with alpha channel, `RGBA` and `Alpha` will have the same result.
+
+The mask will always stretch itself to match the size of the element to be masked.
 
 > ## About Controls
 

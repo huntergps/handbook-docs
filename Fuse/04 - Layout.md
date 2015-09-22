@@ -93,6 +93,8 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 ```
 
 TODO: Illustration
+TODO: Add information about docking multiple elements to the same dock
+TODO: Order of elements added to dock affects size
 
 ## Element Layout
 

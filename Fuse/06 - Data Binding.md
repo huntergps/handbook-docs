@@ -14,16 +14,26 @@ allows data for UX to come from anywhere and any language.
 Roadmap:
 * Observables for Swift
 * Observables for Java
+* Expressions in paths
 
 ## Data Context
 
-More detailed on how data contexts work, how bindings and `Each` change the data context
+More detailed on how data contexts work, how bindings and `Each` change the data context AUTH(ority needed)
 
 ## $(Each)
 
 TODO: explain, show examples, nested each's 
+TODO: Count - special handling of empty, etc.
 
 Explain that the inner tree of an `Each` is a "factory" that will be instantiated per item.
+
+## $(Select)
+
+## $(Match)
+
+### $(Case)
+
+## $(DataToResource)
 
 > ### Ensuring order
 
@@ -33,7 +43,7 @@ resides. To ensure child order, wrap the `Each` in some sort of @(Panel):
 	<StackPanel>
 		<Text>I go first!</Text>
 		<StackPanel>
-			<Each Item="{strings}">
+			<Each Items="{strings}">
 				<Text Value="{}" />
 			</Each>
 		</StackPanel>
@@ -41,4 +51,4 @@ resides. To ensure child order, wrap the `Each` in some sort of @(Panel):
 	</StackPanel>
 
 > We are considering adding more tricks to allow more flexibility in this case, but for now this
-  is the reccommended approach.
+  is the recommended approach.

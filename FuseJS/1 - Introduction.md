@@ -17,6 +17,14 @@ Or by inlining the JavaScript code in the tag, like this:
 
 	</JavaScript>
 
+## Structuring your project
+
+TODO: Explain UX is the boss, JavaScript is relative to
+
+## Modules
+
+FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file (or inline snipepd) is a module. 
+
 > ## Importing modules
 
 FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file (or inline snipepd) is a module.
@@ -58,4 +66,7 @@ Purifying your code by separating view and logic into UX markup and JavaScript c
 more effective collaboration between UX designers and developers.
 
 If you need to write performance-critical business logic, we recommend doing that in @(native code) or alternatively @(Uno) code instead of JS.
+
+
+
 

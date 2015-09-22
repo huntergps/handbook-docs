@@ -634,6 +634,7 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 
 > ### $(WhileScrollable)
 
+TODO: Not really sure what this trigger does
 
 ## $(MapView) (link elsewhere?)
 
@@ -796,6 +797,8 @@ The `Mask` effects accepts the following properties:
 	- `RGBA` (default) - Use the alpha channel of the source image as the mask and multiply the RGB values from the mask with the RGB values from the element to be masked
 	- `Alpha` - Use the alpha channel of the source image without touching the RGB values from the masked element
 	- `Greyscale` - Use the color component of the greyscale mask as a multiplication factor with the original alpha value
+- `File` - If you have a picture bundled as part of the project
+- `Source` - If you have another source for the `Image`, for instance a @(HttpImageSource)
 	
 If you use a white image with alpha channel, `RGBA` and `Alpha` will have the same result.
 

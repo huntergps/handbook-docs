@@ -650,13 +650,39 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 - How hit testing works
 - Common pitfalls, opacity="0" == HitTestMode="None"
 
-> ## Clip to bounds
+> ## $(ClipToBounds)
 
-> ## Opacity
+Normally, when laying out an element inside the other, the inner element can freely live outside the parent element:
+
+	<Panel Width="100" Height="100">
+			<Image Margin="-100" File="Pictures/Picture1.jpg" 	
+				StretchMode="UniformToFill" />
+	</Panel>
+
+This `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds. TODO: This really should have a screenshot.
+
+If you intent to have the `Image` clip to its parent size, simply add $(ClipToBounds) to the `Panel`:
+
+		<Panel Width="100" Height="100" ClipToBounds="true">
+			<Image Margin="-100" File="Pictures/Picture1.jpg" 
+				StretchMode="UniformToFill" />
+		</Panel>
+
+Now, the `Image` will not overflow the bounds of the `Panel`.
+
+> ## $(Opacity)
+
+You can set the transparency of objects using the `Opacity`-property. 
+
+	<Panel>
+		<Opacity Value="0.5" />
+	</Panel>
+	
+When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTest:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state. 
 
 > ## Layers
 
-> ## Effects
+> ## $(Effects)
 
 Fuse has the ability to render a set of visual effects that can be added to most controls. It is important to understand that in order for these to work, you need to be in graphics mode; native themes are limited in their ability to render these effects.
 
@@ -733,7 +759,6 @@ Add a classic halftone effect:
 ### $(Mask)
 
 TODO: Describe mask.
-
 
 > ## About Controls
 

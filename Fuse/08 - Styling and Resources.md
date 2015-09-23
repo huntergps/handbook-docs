@@ -9,6 +9,8 @@ You can introduce a _Class Resource_ at any point in your code:
 	<Text ux:Class="Header" FontSize="22" />
 	<Header>Welcome</Header>
 	<Text>This document will change your life.</Text>
+	<Header>Introduction</Header>
+	<Text>Are we there yet?</Text>
 
 In this case, the `Header`-class will be a distinctly different class from `Text`, although it inherits from it so all properties on `Text` will be available on `Header`. Note that the Class Resource can be defined in a separate file, and often is:
 
@@ -31,8 +33,14 @@ Class Resources can be as complex as you want:
 			<FileImageSource File="Burger.png@2x.png" Density="2"/>
 		</MultiDenistyImageSoruce>
 	</Image>
+	
+	<!-- ... -->
+	
+	<Panel>
+		<BurgerIcon />
+	</Panel>
 
-Class Resources can also contain their own logic using triggers and actions.
+Class Resources can also contain their own logic using @(Triggers) and @(Actions).
 
 ## $(Style)
 
@@ -50,9 +58,9 @@ To add a `Style` to a `Node`:
 
 The `Text` instances created at the level where the `Style` is introduced _or below_ will be affected by the `Style`. In this case, adding the `Style` will have the same appearance as adding the `FontSize` to all the `Text`-elements separately.
 
-## Styling Class resources
+## Styling Class Resources
 
-When introducing Class Resources you create _new types_:
+When introducing @(Class Resources) you create _new types_:
 
 	<Text ux:Class="Header" />
 	<Style>
@@ -64,6 +72,8 @@ When introducing Class Resources you create _new types_:
 In this case we've introduced a new _semantic class_ when we create `Header`, as the properties are the same as the default `Text` properties, but we've created another class that can be styled separately.
 
 ## $(Theme)
+
+TODO: This needs a rewrite with an emphasis on Native.
 
 The global look and feel or our app is determined by a `Theme`. You see this at the root of most applications in the App class:
 
@@ -83,6 +93,8 @@ It is possible to run an app without applying a `Theme`, but in many cases this 
 
 ### Theme customization
 
+TODO: Is this still relevant? If so how? AUTH
+
 It is possible to override aspects of a `Theme`:
 
 	<App>
@@ -96,11 +108,9 @@ It is possible to override aspects of a `Theme`:
 
 ## $(Global resources)
 
-Global resources are shared objects (singletons) that are created once and used throughout your application. Global resources are recommended for objects that never change (are immutable), such as fonts, colors and sounds.
+Global resources are shared objects that are created once and used throughout your application. Global resources are recommended for objects that never change during the application lifetime, such as fonts, colors and sounds.
 
-Global resources are created in UX markup by using the ux:Global attribute. This becomes a public static readonly field in the generated Uno code. This means you can also create static resources in Uno code the same way.
-
-`ux:Global` creates a singleton with a global alias. This means you can refer to it by just its `ResourceAlias`.
+Global resources are created in UX markup by using the `ux:Global` attribute. `ux:Global` creates a global alias. This means you can refer to it by its `ResourceAlias`.
 
 A resource alias is local to the type of the resource. If for example you have both a `float4` color resource named `Coral` and a `SolidColor` resource named `Coral`, Fuse will understand from context which is which.
 
@@ -116,14 +126,63 @@ Once you've created a `ux:Global` alias, you can refer to your font by just the 
 
 ## $(Resource)s and $(ux:Key)
 
-Declaring resources, resource bindings,
+To declare a Dynamic Resource, simply:
+
+	<string ux:Key="WelcomeMessage" ux:Value="Hello!">
+
+The resource will then be available to any nodes below it in the tree where it is defined. It can then be used as:
+
+	<Text Value="{Resource WelcomeMessage}" />
+
+### $(Localization)
+
+TODO: This doesn't work. How do I do this? AUTH
+
+	<App Theme="Basic">	
+		<JavaScript>
+		var Observable = require("FuseJS/Observable");
+		var locale = Observable("no");
+
+		function setLocale(l) {
+			locale.value = l;
+		}
+
+		module.exports = {
+			locale: locale
+		};
+		</JavaScript>
+		<StackPanel>			
+			<Panel ux:Class="Norwegian">			
+				<string ux:Key="Greeting" ux:Value="Heisann, verden!" />
+			</Panel>
+			<Panel ux:Class="English">
+				<string ux:Key="Greeting" ux:Value="Hello world!" />
+			</Panel>
+			<Match Value="{locale}">
+				<Case String="no">
+					<Norwegian />
+				</Case>
+				<Case String="en">
+					<English />
+				</Case>
+			</Match>			
+			<Text Value="{Resource Greeting}" />
+		</StackPanel>
+	</App>
+
 
 > ### $(DataToResource)
+
+TODO: Does it make sense to cover this here? Is this not fairly tightly bound to databinding? AUTH?
 
 ## The anatomy of controls
 
 TODO: Explain appearances, overlays, child/parent, how 
 
 ## Tweaking existing styles
- 
+
+- InheritStyle = false ?
+
 ## Building new controls from scratch
+
+AUTH?

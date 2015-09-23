@@ -267,10 +267,11 @@ TODO: Do we need to discuss Z-ordering?
 State groups allow you to define completely custom states, with custom events.
 
 ### $(State)
-A `State` consists of a set of @(Animator:animators) inside a `State` object.
+A `State` consists of a set of @(Animator:animators) inside a `State` object. It acts as a normal @(Trigger), but is activated by its containing @(StateGroup).
 ```
 <State>
-	<Rotate Degrees="200"/>
+	<Rotate Degrees="200" Duration="0.4"/>
+	<Move X="10" Duration="0.4"/>
 </State>
 ```
 
@@ -314,7 +315,6 @@ Here is an exampel of how to use a `StateGroup` to switch the color of a @(Recta
 </StackPanel>
 ```
 
-
 ## Data triggers
 
 Reacts to data changes, either from data binding or from the control context.
@@ -327,7 +327,6 @@ Reacts to data changes, either from data binding or from the control context.
 
 ### WhileFailed
 TODO: I dont know what it does
-
 
 ## $Gestures
 
@@ -411,34 +410,123 @@ too much time scratching your head.
 
 ### $(LayoutAnimation)
 
-
+The `LayoutAnimation` is triggered in response to a layout change. A layout change happens whenever the element gets a new layout by the layout system. `LayoutAnimation` is commonly used together with @(MultiLayoutPanel) for some pretty interresting animations. See @(LayoutAnimation) for more in depth documentation.
 
 TODO: consider linking to external article here
 
 ### $(AddingAnimation)
 
-TODO: consider linking to examples
+TODO: Link to examples
+
+`AddingAnimation` is triggered whenever the element is added to the visual tree. Adding animation is by default a backwards animation, meaning it will animate from progress 1 back to 0.
+
+
 
 ### $(RemovingAnimation)
 
+TODO: Link to examples
+
+`RemoveAnimation` is similar to @(AddingAnimation) but is triggered whenever the element is removed from its parent. `RemoveAnimation` progresses normally from 0 to 1 over the specified @(Duration).
+
+In the following example, a rectangle will move in from the right side by the width of its parent container over one second when it is added to the visual tree by the @(Switch). It will move out to the left by the same length when it is removed.
+```
+<App Theme="Basic" ClearColor="#eeeeeeff">
+	<StackPanel Background="#ddd" Margin="10">
+		<Switch>
+			<WhileTrue>
+				<Change whileTrue.Value="true"/>
+			</WhileTrue>
+		</Switch>
+		<WhileTrue ux:Name="whileTrue">
+			<Panel Height="50" Width="50" Background="Red">
+				<AddingAnimation>
+					<Move RelativeTo="ParentSize" X="1" Duration="1" Easing="BounceIn"/>
+				</AddingAnimation>
+				<RemovingAnimation>
+					<Move RelativeTo="ParentSize" X="-1" Duration="0.5"/>
+				</RemovingAnimation>
+			</Panel>
+		</WhileTrue>
+	</StackPanel>
+</App>
+```
+
 ### $(EnteringAnimation)
+
+TODO: Link to navigation
+`EnteringAnimation` is used to control how pages behave when they are navigated to and from. Check out the @(Navigation) chapter for more in depth documentation.
 
 ### $(ExitingAnimation)
 
+TODO: Same as above
+
 ### $(ActivatingAnimation)
+
+`ActivatingAnimation` allows for animating based on which @(Page) is active. `ActivatingAnimation` will progress from 0 to 1 as a @(Page) is being navigated to. If @(SwipeNavigate) is used, one can observe that `ActivatingAnimation` progressed from 0 as soon as the @(Page) is entering, stays at 1 as long as the @(Page) is active, and then progresses towards 0 again as the @(Page) is exiting.
 
 ### $(ScrollingAnimation)
 
+`ScrollingAnimation` lets us create animations in response to a @(ScrollView) being scrolled. By using the `From` and `To` properties one can define an interval on the @(ScrollView) where the trigger gets activated.
+
+In the following example, we use `ScrollingAnimation` to @(Scale) the @(ScrollView) as it is being scrolled.
+```
+<ScrollView>
+	<StackPanel Background="#ddd" Margin="10">
+		<Panel Height="200" Background="Red"/>
+		<Panel Height="200" Background="Blue"/>
+		<Panel Height="200" Background="Green"/>
+		<Panel Height="200" Background="Purple"/>
+		<Panel Height="200" Background="Teal"/>
+	</StackPanel>
+	<ScrollingAnimation From="0" To="400">
+		<Scale Factor="0.3" />
+	</ScrollingAnimation>
+</ScrollView>
+```
+
+### $(WhileScrollable)
+
+`WhileScrollable` is used to animate based on whether a @(ScrollView) can be scrolled or not. Use the `ScrollDirections` property to filter the activation based which directions we care about.
+
+`ScrollDirections` can take on any one of the following values:
+- All
+- Both
+- Down
+- Horizontal
+- Left
+- Right
+- Up
+- Vertical
+
+In the following example, our background changes color when we reach the bottom of our @(ScrollView):
+```
+<ScrollViewer>
+	<SolidColor ux:Name="color" Color="#000"/>
+	<StackPanel Margin="10">
+			<Each Count="10">
+				<Panel Height="200" Background="Red" Margin="2"/>
+			</Each>
+		</StackPanel>
+	<WhileScrollable ScrollDirections="Down">
+		<Change color.Color="#ddd" Duration="0.4"/>
+	</WhileScrollable>
+</ScrollViewer>
+```
+
 ### $(ProgressAnimation)
+
+TODO: What does it do?
 
 ## $(Timeline)
 
-Timelines are used to create custom animations that can be played, paused, seeked etc. in response to events.
+TODO: Might need edaqua for this one.
 
+Timelines are used to create custom animations that can be played, paused, seeked etc. in response to events.
 
 > ## Advanced trigger usage
 
 TODO: Show examples of
+* Document Bypass
 * Triggers within triggers
 * Elements/nodes within triggers
 * Styles within triggers (? not sure if this is currently possible)

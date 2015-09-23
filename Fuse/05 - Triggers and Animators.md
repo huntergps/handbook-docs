@@ -86,6 +86,10 @@ Assign easing to an animator like so:
 - MixOp
 TODO: Write about mixop
 
+### $(Keyframe)
+
+TODO: Document keyframe
+
 ### $(Change)
 
 Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @(Set) animator.
@@ -222,6 +226,8 @@ The `Attractor` is used to give a more natural movement to animations. It acts a
 
 ## $(Actions)
 
+- TODO: AtProgress
+
 Triggers can contain actions too, which are one-off events that fire at a particular point in the trigger's timeline.
 
 Note that actions, contrary to @(animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
@@ -232,7 +238,9 @@ Note that actions, contrary to @(animators) are not reversible. This means it is
 
 Permanently changes the value of a property. If you want to just change it temporarily, use @(Change)
 
-TODO: (examples++)
+When using `Set` on a property, the value will not be reverted back when the containing trigger is deactivated.
+
+TODO: Examples
 
 ### $(Callback)
 
@@ -330,7 +338,7 @@ TODO: I dont know what it does
 
 ## $Gestures
 
-Reacts to pointer inputs.
+Following are triggers which react to pointer gestures.
 
 ### $(WhilePressed)
 `WhilePressed` is active while its containing element is being pressed and the pointer is inside its bounds.

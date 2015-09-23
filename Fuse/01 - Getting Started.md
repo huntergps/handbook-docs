@@ -18,7 +18,7 @@ Congratulations on your fresh Fuse install!
 
 If you want to get started using Fuse by following an example from creation of a new project all the way until you run it on your handheld device, you can find such a tutorial here: https://www.fusetools.com/developers/guides/tutorial Also, if you want to look at some ready-to-run examples of Fuse in action, head on over to https://www.fusetools.com/examples 
 
-## Project structure
+## $(Project structure)
 
 After having created a new project, either by using the dashboard or the `fuse` command line command, you will find three files in the project directory:
 

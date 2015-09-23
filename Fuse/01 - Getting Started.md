@@ -18,6 +18,16 @@ Congratulations on your fresh Fuse install!
 
 If you want to get started using Fuse by following an example from creation of a new project all the way until you run it on your handheld device, you can find such a tutorial here: https://www.fusetools.com/developers/guides/tutorial
 
+## Project structure
+
+After having created a new project, either by using the dashboard or the `fuse` command line command, you will find three files in the project directory:
+
+- `ProjectName.unoproj` - This is the project file, and basically keeps track of which files comprise the project as well as which packages it depends on  
+- `devices.json` - When previewing your code, Fuse needs to know which devices you intend to target. The `devices.json`-file contains definitions for quite a few devices you are likely to want to deploy your app to. If none of the shipped device definitions match what you intend to ship to, feel free to add your own here. 
+- `MainView.ux` - This is the main starting point for your app, mainly because it contains the `App`-tag. Under normal circumstances you will delete most of the contents of this file, but feel free to examine the default application and see what is needed to make a bare bones surface with some controls.
+
+Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.
+
 ## Preview
 
 Fuse has excellent support for getting a live preview of the edits you make, both in a desktop based simulator and on the devices you decide to target. These previews can run simultaneously, so you no longer need to build your project for specific devices between edits; just save and they will appear instantly on the device(s). 

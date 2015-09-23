@@ -98,7 +98,9 @@ You can hook up event handlers to call JavaScript functions with similar syntax:
 
 	<JavaScript>			
 		module.exports = {
-			clickHandler: function (args) { debug_log ("I was clicked: " + JSON.stringify(args)); }
+			clickHandler: function (args) { 
+				debug_log ("I was clicked: " + JSON.stringify(args)); 
+			}
 		};
 	</JavaScript>
 	<Button Clicked="{clickHandler}" Text="Click me!" />

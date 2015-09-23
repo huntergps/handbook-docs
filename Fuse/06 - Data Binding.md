@@ -57,7 +57,22 @@ This will predictably list out the text strings 1, 2 and 3. When binding the `Te
 		</StackPanel>
 	</App>
 
-In this case, we have also made the data source @(Observable). This means that it supports reflecting changes to the data source at runtime. In this case, the collection itself is `Observable`, but the items are not. You can bind to the children, but if they were to change, these changes would not be reflected in the UI. We'll look at how to fix this shortly.
+In this case, we have also made the data source @(Observable). This means that it supports propagating changes to the data source at runtime. In this case, the collection itself is `Observable`, but the items are not. You can bind to the children, but if they were to change, these changes would not be reflected in the UI. If you wanted to make the children also propagate their changes to the UI, you would make them `Observable` also:
+
+	<JavaScript>	
+		var Observable = require("FuseJS/Observable");
+		var data = Observable(
+			{ name: Observable("Hubert") }, 
+			{ name: Observable("Marjory") });		
+		module.exports = {
+			data: data
+		};
+	</JavaScript>
+	<StackPanel>
+		<Each Items="{data}">
+			<Text Value="{name}" />
+		</Each>
+	</StackPanel>
 
 You can also bind to a path:
 

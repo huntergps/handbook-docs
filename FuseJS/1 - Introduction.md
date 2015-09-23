@@ -19,7 +19,28 @@ Or by inlining the JavaScript code in the tag, like this:
 
 ## Modules
 
-FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file (or inline snipepd) is a module. 
+FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file or inline snippet is a _module_.
+
+For things inside the module to be visible on the outside, we use the `module.exports`-construct:
+
+	<JavaScript>
+		module.exports = {
+			exportedSymbol: "Hello, rest of the world!"	
+		};
+	</JavaScript>
+
+Failing to export from modules will make it impossible to reach defined data inside the module:
+
+	<JavaScript>
+		var data = [1, 2, 3];
+		var invisible = "I'm invisible";
+		
+		module.exports = {
+			data: data
+		};
+	</JavaScript>
+
+This is good for hiding implementation detils from other calling JavaScript modules and UX code.
 
 > ## Importing modules
 

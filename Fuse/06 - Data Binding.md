@@ -59,7 +59,7 @@ This will predictably list out the text strings 1, 2 and 3. When binding the `Te
 
 In this case, we have also made the data source @(Observable). This means that it supports reflecting changes to the data source at runtime. In this case, the collection itself is `Observable`, but the items are not. You can bind to the children, but if they were to change, these changes would not be reflected in the UI. We'll look at how to fix this shortly.
 
-You can also bind deep into a complex structure:
+You can also bind to a path:
 
 		<JavaScript>	
 			var complex = {
@@ -75,6 +75,8 @@ You can also bind deep into a complex structure:
 			};
 		</JavaScript>
 		<Text Value="{complex.user.userinfo.name}" />		
+
+This is very useful when binding to arbitrary data sources such as those returned from a REST service as JSON, as it often allows you to bind directly to complex data without processing the data in code first. See here for an in-depth example of just that: https://www.fusetools.com/developers/examples/newsfeed
 
 > ## Other data sources
 

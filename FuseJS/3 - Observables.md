@@ -205,6 +205,10 @@ Updates all items in the @(Observable) with the values from `newValues`.
 
 ### $(Reactive operators)
 
+FuseJS comes with a rich set of reactive operators that return @(Observables) from other @(Observables). This means that if the original `Observable` changes, any `Observable`s that are created as a result of applying a reactive operator will also change automatically.
+
+> Note! It is important to understand that the result of a reactive operator will only be computed if the resulting `Observable` is somehow databound and its value is needed. If you @(map(func)) over an `Observable` collection and try to `debug_log` from the mapping function, these contents might not be displayed because the resulting `Observable` is not databound. If you run into this problem, you can manually add a subscriber for debugging purposes, as described @(addSubscriber(func):here). AUTH
+
 #### $(where:where(condition))
 Returns a new @(Observable) with only the values for which `condition` returns true.
 
@@ -231,7 +235,7 @@ Invokes `func` on every value in the @(Observable) returning a new @(Observable)
 		return Math.sqrt(number);
 	});
 
-roots values becomes the square root of the numbers in `numbers`. The values in `numbers` remain unchanged.
+The values of `roots` becomes the square root of the numbers in `numbers`. The values in `numbers` remain unchanged.
 
 #### $(count:count())
 Returns the number of values in the @(Observable) as an observable number. Whenever an item is added or removed from the @(Observable), the `count` changes.

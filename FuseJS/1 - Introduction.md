@@ -40,7 +40,7 @@ Failing to export from modules will make it impossible to reach defined data ins
 		};
 	</JavaScript>
 
-This is good for hiding implementation detils from other calling JavaScript modules and UX code.
+This is good for hiding implementation details from other calling JavaScript modules and UX code.
 
 > ## Importing modules
 

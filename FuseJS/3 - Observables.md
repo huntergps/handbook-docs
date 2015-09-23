@@ -301,14 +301,10 @@ the subscription, otherwise we can accumulate memory garbage over time:
 Sets the value of the @(Observable) without notifying `excludingObserver`
 
 	var observable = Observable(1);
-    	var shouldGetNotification = function() {
-
-    	}
-
-	var shouldNotGetNotification = function() {
-
-    	}
-
+	
+    var shouldGetNotification = function() { }
+	var shouldNotGetNotification = function() { }
+		
 	observable.addSubscriber(shouldGetNotification);
 	observable.addSubscriber(shouldNotGetNotification);
 

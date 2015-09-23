@@ -26,32 +26,32 @@ The StackPanel places its children in a stack. The default layout is a vertical 
 ```
 
 ### $(Grid)
-The Grid places its children in a grid formation. The rows and collumns can be specified explicitly by the @(RowData) and @(ColumnData) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
+The Grid places its children in a grid formation. The rows and collumns can be specified explicitly by the @(Rows) and @(Columns) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
 
 #### $(RowCount) and $(ColumnCount)
 If all you want is a grid of equally sized rows and columns you can simply state the number of rows and columns using the RowCount and ColumnCount properties.
 ```
 <Grid RowCount="4" ColumnCount="2"/>
 ```
-#### $(RowData) and $(ColumnData)
-If you want more fine grained control of how the rows and column sizes are calculated, you can use the RowData and ColumnData properties. These properties are assigned to a comma separated list of values which can take on a few different forms.
+#### $(Rows) and $(Columns)
+If you want more fine grained control of how the rows and column sizes are calculated, you can use the Rows and Columns properties. These properties are assigned to a comma separated list of values which can take on a few different forms.
 The values can either be absolute, relative or automatic.
 
 Example of a Grid with 3 rows of size 10, 10 and 50 points.
 ```
-<Grid RowData="10,10,50"/>
+<Grid Rows="10,10,50"/>
 ```
 
 Example of a Grid with 3 rows where the first two each occupy 20% of the available space, and the last one occypies 60%:
 ```
-<Grid RowData="1*,1*,3*"/>
+<Grid Rows="1*,1*,3*"/>
 ```
 The rows sizes here are calculated by first summing all the values (1+1+3 = 5).
 Then we divide our value by the total (1/5 = 20%, 1/5 = 20%, 3/5 = 60%).
 
 The following grid has 3 rows where the first two rows gets the size of its largest child and the last row takes up the remaining space:
 ```
-<Grid RowData="auto,auto,1*"/>
+<Grid Rows="auto,auto,1*"/>
 ```
 
 ### $(Grid.Row:Placing elements in a Grid) $(Grid.Column:)

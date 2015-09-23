@@ -232,9 +232,9 @@ Valid match properties for `Case` are:
 - `Number` - match a number
 - `Bool` - match a boolean
 
-## $(DataToResource)
+## DataToResource
 
-You can bind to a defined resource using `DataToResource`:
+You can bind to a defined resource using @(DataToResource):
 
 	<FileImageSource ux:Key="picture" File="Pictures/Picture1.jpg" />		
 	<JavaScript>

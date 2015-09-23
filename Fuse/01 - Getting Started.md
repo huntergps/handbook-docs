@@ -16,7 +16,7 @@ Setup instructions for Windows: https://www.fusetools.com/developers/guides/setu
 
 Congratulations on your fresh Fuse install! 
 
-If you want to get started using Fuse by following an example from creation of a new project all the way until you run it on your handheld device, you can find such a tutorial here: https://www.fusetools.com/developers/guides/tutorial
+If you want to get started using Fuse by following an example from creation of a new project all the way until you run it on your handheld device, you can find such a tutorial here: https://www.fusetools.com/developers/guides/tutorial Also, if you want to look at some ready-to-run examples of Fuse in action, head on over to https://www.fusetools.com/examples 
 
 ## Project structure
 
@@ -50,7 +50,7 @@ You can read more about starting Fuse preview on the desktop here: https://www.f
 
 ## Export
 
-When running preview, Fuse will create a shell application on your device that connects to the Fuse daemon running on your system to quickly display changes you make to the project. However, if you want to bring the device with you to a meeting or to show to people away from your development environment, you need to export the project to the device you are targetting.
+When running preview, Fuse will create a shell application on your device that connects to the Fuse daemon running on your system to quickly display changes you make to the project. However, if you want to bring the device with you to a meeting or to show to people away from your development environment, you need to export the project to the device you are targeting.
 
 > ### iOS
 

@@ -1,6 +1,5 @@
 # Introduction
 
-
 FuseJS is a JavaScript framework for writing cross-platform mobile app business logic.
 
 ## Getting started
@@ -12,9 +11,7 @@ FuseJS is can be used in @(UX Markup) through the `<$(JavaScript)>` tag, either 
 Or by inlining the JavaScript code in the tag, like this:
 
 	<JavaScript>
-
 		debug_log("Hello, FuseJS!");
-
 	</JavaScript>
 
 ## Modules

@@ -4,7 +4,18 @@ Fuse provides first class support for creating data driven apps with UX tags thr
 
 ## JavaScript module as data source
 
-The simplest way to create a data source is through JavaScript:
+The simplest way to create a data source is through JavaScript, here is a databound "Hello world" minimal example:
+
+	<App>		
+		<JavaScript>	
+			module.exports = {
+				greeting: "Hello databound world!"
+			};
+		</JavaScript>
+		<Text Value="{greeting}" />			
+	</App>
+
+Similarly, you can bind to collections:
 
 	<App>		
 		<JavaScript>
@@ -50,7 +61,7 @@ In this case, we have also made the data source @(Observable). This means that i
 
 > ## Other data sources
 
-Explain how the `Fuse.Reactive` provides abstractions over data sources in Uno code, which allows data for UX to come from anywhere and any language.  AUTH
+Explain how the `Fuse.Reactive` provides abstractions over data sources in Uno code, which allows data for UX to come from anywhere and any language. TODO: Should this link to an example in the Uno docs where Uno exposes something that can be databound to? AUTH
 
 Roadmap:
 * Observables for Swift
@@ -115,7 +126,7 @@ When using `Each`, it can be helpful to think of it as a "factory" where the inn
 
 ## $(WhileCount) and $(WhileEmpty)
 
-You can act on the count of a collection:
+You can act on the number of items in a collection:
 
 	<Each Items="{friends}">
 		<!-- ... List friend ... -->
@@ -153,30 +164,41 @@ While this might not seem immediately useful, consider that the `Data` property 
 
 You can drive which subtree should be active using `Match` and `Case`:
 
-		<JavaScript>
-			module.exports = {
-				active: "blue"
-			};	
-		</JavaScript>
-		<Match Value="{active}">
-			<Case String="red">
-				<Rectangle Fill="#f00" Height="50" Width="50" />
-			</Case>
-			<Case String="blue">
-				<Rectangle Fill="#00f" Height="50" Width="50" />
-			</Case>
-		</Match>
+	<JavaScript>
+		module.exports = {
+			active: "blue"
+		};	
+	</JavaScript>
+	<Match Value="{active}">
+		<Case String="red">
+			<Rectangle Fill="#f00" Height="50" Width="50" />
+		</Case>
+		<Case String="blue">
+			<Rectangle Fill="#00f" Height="50" Width="50" />
+		</Case>
+	</Match>
 
 Valid match properties for `Case` are:
 
-
+- `String` - match a string
+- `Number` - match a number
+- `Bool` - match a boolean
 
 ## $(DataToResource)
 
-> ### Ensuring order
+You can bind to a defined resource using `DataToResource`:
 
-`Each` does not neccessarily insert the children at the exact location in the tree where the `Each` node
-resides. To ensure child order, wrap the `Each` in some sort of @(Panel):
+	<FileImageSource ux:Key="picture" File="Pictures/Picture1.jpg" />		
+	<JavaScript>
+		module.exports = {
+			picture: "picture"
+		}
+	</JavaScript>			
+	<Image Source="{DataToResource picture}" />			
+
+> ## Ensuring order
+
+Note that `Each` does not necessarily insert the children at the exact location in the tree where the `Each` node resides. To ensure child order, wrap the `Each` in some sort of @(Panel):
 
 	<StackPanel>
 		<Text>I go first!</Text>
@@ -188,5 +210,4 @@ resides. To ensure child order, wrap the `Each` in some sort of @(Panel):
 		<Text>I go last!</Text>
 	</StackPanel>
 
-> We are considering adding more tricks to allow more flexibility in this case, but for now this
-  is the recommended approach.
+We are considering adding more tricks to allow more flexibility in this case, but for now this is the recommended approach.

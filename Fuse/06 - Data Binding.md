@@ -59,6 +59,23 @@ This will predictably list out the text strings 1, 2 and 3. When binding the `Te
 
 In this case, we have also made the data source @(Observable). This means that it supports reflecting changes to the data source at runtime. In this case, the collection itself is `Observable`, but the items are not. You can bind to the children, but if they were to change, these changes would not be reflected in the UI. We'll look at how to fix this shortly.
 
+You can also bind deep into a complex structure:
+
+		<JavaScript>	
+			var complex = {
+				user: {
+					userinfo: {
+						name: "Bob"
+					}
+				}
+			};
+
+			module.exports = {
+				complex: complex
+			};
+		</JavaScript>
+		<Text Value="{complex.user.userinfo.name}" />		
+
 > ## Other data sources
 
 Explain how the `Fuse.Reactive` provides abstractions over data sources in Uno code, which allows data for UX to come from anywhere and any language. TODO: Should this link to an example in the Uno docs where Uno exposes something that can be databound to? AUTH

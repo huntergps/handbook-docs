@@ -47,7 +47,32 @@ In this example, we use a @(Set) action to change the alignment og a panel from 
 `MultiLayout` allows us to move @(Element:elements) between different @(Layout:layouts). This allows us to @(Move) elements between different locations in the visual tree, and also switch between certain layouts on the fly.
 
 ## $(Placeholder)
-The `Placeholder` element is used to reference other @(Element:elements) in the visual tree. A `Placeholder` is itself an @(Element) and it can have its own layout properties. Here is a quick example, showing how we can move a @(Rectangle) from one @(Panel) to another. In this example we use a @(MultilayoutPanel) with a @(DockLayout). We put three @(Panel:panels) inside it, docket do different locations. We use @(Placeholder:placeholders) to reference one @(Rectangle) and move it between the three @(Panel:panels).
+The `Placeholder` element is used to reference other @(Element:elements) in the visual tree. A `Placeholder` is itself an @(Element) and it can have its own layout properties.
+
+The `Placeholder` is used when we want to define two different locations or layouts for the same @(Element). We use the placeholders `Target` property to reference the @(Element) we want to make a plceholder for. The @(Element) definition itself has to also be wrapped in a `Placeholder`. Think of it as an @(Element) being tossed from one `Placeholder` to another.
+
+	<Placeholder Height="50">
+		<Rectangle ux:Name="rectangle1" Fill="Red"/>
+	</Placeholder>
+
+	<Placeholder Target="rectangle1" Heigth="100"/>
+
+Notice that the second `Placeholder` references the @(Rectangle), not the other `Placeholder`.
+
+To switch between the two placeholder, we need to use @(MultiLayout). We can apply `MultiLayout` to any @(Panel) type or use the @(MultiLayoutPanel). Here is how we can apply the example above to a @(StackPanel):
+
+	<StackPanel>
+		<MultiLayout LayoutElement="placeholder2"/>
+		<Placeholder Name="placeholder1" Height="70">
+			<Rectangle Name="rectangle1" Fill="Red" Margin="25,5"/>
+		</Placeholder>
+		<Placeholder Name="placeholder2" Target="rectangle1" Height="100"/>
+	</StackPanel>
+
+By changing the `LayoutElement` property of the MultiLayout, we can move the @(Rectangle) between "placeholder1" and "placeholder2". Notice that the @(Rectangle) has its @(Margin) property set. Therefore that property will still exist when it's moved to the other @(Placeholder). The @(Height) however, is set on the @(Placeholder:placeholders) themselves, and will therefore change.
+
+
+Here is a quick example, showing how we can move a @(Rectangle) from one @(Panel) to another. In this example we use a @(MultilayoutPanel) with a @(DockLayout). We put three @(Panel:panels) inside it, docket do different locations. We use @(Placeholder:placeholders) to reference one @(Rectangle) and move it between the three @(Panel:panels).
 
 	<MultiLayoutPanel ux:Name="multiLayoutPanel">
 		<DockLayout/>
@@ -80,4 +105,6 @@ The `Placeholder` element is used to reference other @(Element:elements) in the 
 		</Panel>
 	</MultiLayoutPanel>
 
-MultiLayout can be a bit tricky to wrap ones head around, so lets go through a few more uses cases.
+MultiLayout can be a bit tricky to wrap ones head around, so lets go through a few more use cases.
+
+Here is an example of how one can move elements from a stack layout to a grid layout.

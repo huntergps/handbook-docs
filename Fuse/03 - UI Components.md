@@ -370,19 +370,19 @@ You can also databind the switch:
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
 
-			var switchEnabled = Observable(false);
+			var switchValue = Observable(false);
 
 			module.exports = {
-				switchEnabled: switchEnabled,
-				enableSwitch: function () { switchEnabled.value = true; },
-				disableSwitch: function () { switchEnabled.value = false; },
+				switchValue: switchValue,
+				enableSwitch: function () { switchValue.value = true; },
+				disableSwitch: function () { switchValue.value = false; },
 				switchChanged: function (args) {
 					debug_log ("Switch value is: " + args.value);
 				}
 			};
 		</JavaScript>
 		<StackPanel>
-			<Switch Value="{switchEnabled}" ValueChanged="{switchChanged}" />
+			<Switch Value="{switchValue}" ValueChanged="{switchChanged}" />
 			<Grid ColumnCount="2">
 				<Button Text="Disable" Clicked="{disableSwitch}" />
 				<Button Text="Enable" Clicked="{enableSwitch}" />

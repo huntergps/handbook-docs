@@ -320,9 +320,43 @@ Permanently changes the value of a property. If you want to just change it tempo
 ```
 
 > ### $(BringIntoView)
+The `BringIntoView` trigger is used together with the @(ScrollView) control. By setting its `TargetNode` property, we can instruct the @(ScrollView) to go to a position so that that that `Node` becomes visible.
+
+This example shows how to use `BringIntoView` to make a @(ScrollView) automatically scroll between the top and the bottom by clicking a button:
+
+```
+<App Theme="Basic" ClearColor="#eeeeeeff">
+	<DockPanel>
+		<StatusBarBackground DockPanel.Dock="Top" />
+		<ScrollView ClipToBounds="true">
+			<StackPanel>
+				<Panel ux:Name="panel1" Height="80" Background="#F44336" />
+				<Panel Height="200" Background="#ddd"/>
+				<Panel Height="200" Background="#bbb"/>
+				<Panel Height="200" Background="#999"/>
+				<Panel Height="200" Background="#777"/>
+				<Panel Height="200" Background="#444"/>
+				<Panel ux:Name="panel2" Height="80" Background="#3949AB" />
+			</StackPanel>
+		</ScrollView>
+		<StackPanel Dock="Bottom" Height="60" Orientation="Horizontal" Alignment="Center">
+			<Button Text="To the top">
+				<Clicked>
+					<BringIntoView TargetNode="panel1" />
+				</Clicked>
+			</Button>
+			<Button Text="To the bottom">
+				<Clicked>
+					<BringIntoView TargetNode="panel2" />
+				</Clicked>
+			</Button>
+		</StackPanel>
+	</DockPanel>
+</App>
+```
 
 > ### $(BringToFront)
-TODO: Do we need to discuss Z-ordering?
+AUTH: TODO: Do we need to discuss Z-ordering?
 
 
 ## $(State groups)

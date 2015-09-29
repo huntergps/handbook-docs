@@ -417,10 +417,10 @@ Here is an exampel of how to use a `StateGroup` to switch the color of a @(Recta
 Reacts to data changes, either from data binding or from the control context.
 
 ### $(WhileTrue)
-`WhileTrue` is active while its @(Value) property is `True` and inactive while it's false.
+`WhileTrue` is active while its `Value` property is `True` and inactive while it's false.
 
 ### $(WhileFalse)
-`WhileFalse` is active while its @(Value) property is `False` and inactive while it's true.
+`WhileFalse` is active while its `Value` property is `False` and inactive while it's true.
 
 ### WhileFailed
 TODO: I dont know what it does
@@ -479,13 +479,22 @@ The `WhileEnabled` trigger is active whenever its containing @(Element:elements)
 The `WhileDisabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `False`.
 
 
-## Platform triggers
+## $(Platform triggers)
 
-TODO: Do android and ios work?
+Sometimes it can be necessary with platform specific code. This can be done by using the platform triggers `Android` and `iOS`.
 
-### Android
+In the following example, we place a red @(Panel) if on an Android device and a blue @(Panel) if on an iOS device:
 
-### iOS
+```
+<Panel>
+	<Android>
+		<Panel Background="#f00" Alignment="Center" Width="150" Height="150"/>
+	</Android>
+	<iOS>
+		<Panel Background="#00f" Alignment="Center" Width="150" Height="150"/>
+	</iOS>
+</Panel>
+```
 
 ### $(WhileKeyboardVisible)
 `WhileKeyboardVisible` is active whenever the on-screen keyboard is visible.
@@ -516,11 +525,10 @@ TODO: Link to examples
 
 `AddingAnimation` is triggered whenever the element is added to the visual tree. Adding animation is by default a backwards animation, meaning it will animate from progress 1 back to 0.
 
-
+TODO: Example
 
 ### $(RemovingAnimation)
-
-TODO: Link to examples
+`RemovingAnimation` is similar to @(AddingAnimation), but is triggered whenever an @(Element) is being removed from the visual tree.
 
 `RemoveAnimation` is similar to @(AddingAnimation) but is triggered whenever the element is removed from its parent. `RemoveAnimation` progresses normally from 0 to 1 over the specified @(Duration).
 

@@ -1,6 +1,6 @@
 # $(Trigger)s and $(Animator)s
 
-Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) which are used to animate elements.
+Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
@@ -15,36 +15,46 @@ For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel
 
 TODO:
 * Explain how triggers are a timeline, plays forwards/backwards, applies/unapplies
-* Duration, easing and easing back - how the trigger takes the total length of all it's @(animators)
 
 As well as animating properties, one can also use triggers to add and remove entire elements.
 
 ### $(Rest state) and deviation
 
-The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state.
-Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means
-animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
+The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state. Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
 multiple devices, screen sizes, with real data and real user input.
 
 
 ## Animators
 
 Animators are used to specify which and how @(Element:elements) are to be animated when a @(Trigger:trigger) is triggered.
-
-Animators have five pairs of properties which are important for controlling the exact result of an animation.
+There are five pairs of properties which are important for controlling the exact result of an animation.
 
 ### $(Target)/Value
 The `Target` property is used to identify the property which we intend to animate.
 The `Value` property is the value of the result of an animation.
 
-Because the task of setting a target and value, UX has a special syntax for this:
+Because the task of setting a target and value, UX has a special syntax for this. Instead of
+```
+<Change Target="target.Property" Value="Value"/>
+```
+one can do the following:
 ```
 <Change target.Property="Value"/>
 ```
 
 ### $(Duration)/$(DurationBack)
-Animations can have different behavior when animating forwards and backwards. When a trigger is activated, the animation is said to play forwards. When the trigger is deactivated, the animation is played backwards. Duration is used to set the duration for the animation.
-One can set a different duration for the backwards animation by using the `DurationBack` property.
+Animations can have different behavior when animating forwards and backwards. When a trigger is activated, the animation is said to play forwards. When the trigger is deactivated, the animation is played backwards. Duration is used to set the duration for the animation. One can set a different duration for the backwards animation by using the `DurationBack` property.
+
+When there are multiple @(Animator:animators) inside a trigger, the total duration of the trigger will be the longest duration among the animators.
+
+In the following example, the total duration of the @(WhileTrue) trigger will be 3 seconds. If we wanted the animations to happen one after the other, we could use @(Delay).
+
+```
+<WhileTrue>
+	<Move X="10" Duration="2"/>
+	<Rotate Degrees="90" Duration="3"/>
+</WhileTrue>
+```
 
 ### $(Delay)/$(DelayBack)
 Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its target over 2 seconds.

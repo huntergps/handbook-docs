@@ -306,10 +306,20 @@ Permanently changes the value of a property. If you want to just change it tempo
 ```
 
 > ### $(Toggle)
-	TODO: Not sure how toggle works exactly
+`Toggle` is used to toggle a boolean value between `true` and `false`. If out inside a @(Switch) it will toggle the value of the @(Switch). `Toggle` can also be used to activate/deactive @(WhileTrue) and @(WhileFalse) triggers like so:
+
+```
+<WhileTrue ux:Name="trueTrigger">
+	...
+</WhileTrue>
+<Panel>
+	<Clicked>
+		<Toggle Target="trueTrigger"/>
+	</Clicked>
+</Panel>
+```
 
 > ### $(BringIntoView)
-TODO: Ask edaqua
 
 > ### $(BringToFront)
 TODO: Do we need to discuss Z-ordering?
@@ -402,12 +412,11 @@ Following are triggers which react to pointer gestures.
 
 ```
 <Panel Width="50" Height="50">
-	<WhilePressed>
+	<Clicked>
 		<Scale Factor="2" Duration="0.2"/>
-	</WhilePressed>
+	</Clicked>
 </Panel>
 ```
-
 
 ### $(Tapped)
 The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click just means that the pointer has to be pressed and released on the element, a tap means that the pointer has to be released within a certain time after the pointer is pressed.

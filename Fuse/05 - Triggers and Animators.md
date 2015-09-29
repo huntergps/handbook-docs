@@ -87,8 +87,34 @@ Assign easing to an animator like so:
 TODO: Write about mixop
 
 ### $(Keyframe)
+AUTH:
 
-TODO: Document keyframe
+There are situations in where we not only want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+
+    <Move RelativeTo="ParentSize">
+		<Keyframe X="10" Time="0.5"/>
+		<Keyframe X="15" Time="1"/>
+		<Keyframe X="5" Time="2"/>
+		</Move>
+
+This @(Move) animator will first animte X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
+Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
+
+	<Page>
+		<SolidColor ux:Name="background" Color="#f00"/>
+		<ActivatingAnimation>
+			<Change Target="background.Color">
+				<Keyframe Value="#0f0" TimeDelta="0.25"/>
+				<Keyframe Value="#f00" TimeDelta="0.25"/>
+				<Keyframe Value="#ff0" TimeDelta="0.25"/>
+				<Keyframe Value="#0ff" TimeDelta="0.25"/>
+			</Change>
+		</ActivatingAnimation>
+	</Page>
+
+This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute positions. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their position on the timeline.
+
+TODO: Interpolation
 
 ### $(Change)
 

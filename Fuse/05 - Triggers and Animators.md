@@ -57,7 +57,7 @@ In the following example, the total duration of the @(WhileTrue) trigger will be
 ```
 
 ### $(Delay)/$(DelayBack)
-Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its target over 2 seconds.
+Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
 ```
 <Change Delay="5" Duration="2" someElement.Height="100"/>
 ```
@@ -91,40 +91,8 @@ Assign easing to an animator like so:
 <Rotate Easing="BounceOut" Degrees="10" Duration="0.4"/>
 ```
 
-* Note that the easing type has to be combined with either In, Out or InOut. In means that the easing function is observed only in the beginning of the animation. Out is observed only at the end. InOut gives an effect on both the beginning and end of the animation.
-
 - MixOp
-TODO: Write about mixop
-
-### $(Keyframe)
-AUTH:
-
-There are situations in where we not only want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
-
-    <Move RelativeTo="ParentSize">
-		<Keyframe X="10" Time="0.5"/>
-		<Keyframe X="15" Time="1"/>
-		<Keyframe X="5" Time="2"/>
-		</Move>
-
-This @(Move) animator will first animte X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
-Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
-
-	<Page>
-		<SolidColor ux:Name="background" Color="#f00"/>
-		<ActivatingAnimation>
-			<Change Target="background.Color">
-				<Keyframe Value="#0f0" TimeDelta="0.25"/>
-				<Keyframe Value="#f00" TimeDelta="0.25"/>
-				<Keyframe Value="#ff0" TimeDelta="0.25"/>
-				<Keyframe Value="#0ff" TimeDelta="0.25"/>
-			</Change>
-		</ActivatingAnimation>
-	</Page>
-
-This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute positions. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their position on the timeline.
-
-TODO: Interpolation
+TODO/AUTH: Write about mixop
 
 ### $(Change)
 
@@ -211,7 +179,36 @@ It is worth mentioning that the order of these transforms affects the order of w
 
 The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive X-direction is now 45 degrees downwards, and so our panel ends up being moved towards the bottom right.
 
-There are three types of transforms that can be put on elements:
+### $(Keyframe)
+AUTH:
+
+There are situations in where we not only want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+
+    <Move RelativeTo="ParentSize">
+		<Keyframe X="10" Time="0.5"/>
+		<Keyframe X="15" Time="1"/>
+		<Keyframe X="5" Time="2"/>
+		</Move>
+
+This @(Move) animator will first animte X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
+Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
+
+	<Page>
+		<SolidColor ux:Name="background" Color="#f00"/>
+		<ActivatingAnimation>
+			<Change Target="background.Color">
+				<Keyframe Value="#0f0" TimeDelta="0.25"/>
+				<Keyframe Value="#f00" TimeDelta="0.25"/>
+				<Keyframe Value="#ff0" TimeDelta="0.25"/>
+				<Keyframe Value="#0ff" TimeDelta="0.25"/>
+			</Change>
+		</ActivatingAnimation>
+	</Page>
+
+This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute positions. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their position on the timeline.
+
+TODO: Interpolation
+
 ### $(Translation)
 `Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-reiction and 50 points in the Y-direction.
 ```

@@ -239,8 +239,8 @@ TODO: Document Vector
 
 Document X, Y, Z
 
-### $(Sheer)
-TODO: Document sheer
+### $(Shear)
+TODO: Document shear
 
 
 ## $(Attractor)

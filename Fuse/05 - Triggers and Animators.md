@@ -240,7 +240,9 @@ TODO: Document Vector
 Document X, Y, Z
 
 ### $(Shear)
-TODO: Document shear
+TODO: More?/ AUTH
+
+The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, og an arbirarty vector using the `Vector` property.
 
 
 ## $(Attractor)
@@ -259,21 +261,31 @@ The `Attractor` is used to give a more natural movement to animations. It acts a
 
 ## $(Actions)
 
-- TODO: AtProgress
-
 Triggers can contain actions too, which are one-off events that fire at a particular point in the trigger's timeline.
 
 Note that actions, contrary to @(animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
 
-(make sure examples include things like Delay)
+### $(Action.Delay:Delay)
+
+Like @(Animator:animators), `Actions` can have a `Delay`. This specifies a number of seconds from the @(Trigger) is activated to the `Action` is fired.
+
+
+### $(Action.AtProgress:AtProgress)
+
+`Actions` also has a property called `AtProgress` which can be set to a value between 0 and 1. It has a similar function as `Delay`, but is instead relative to the full @(Duration) of the @(Trigger). Setting `AtProgress` to 0, means the action is fired as soon as the @(Trigger) is actiated. Setting it to 0.5 means it is fired half way through and so on.
 
 ### $(Set)
 
-Permanently changes the value of a property. If you want to just change it temporarily, use @(Change)
+Permanently changes the value of a property. If you want to just change it temporarily, use @(Change). When using `Set` on a property, the value will not be reverted back when the containing trigger is deactivated. In the following example we change the color of a rectangle by setting the value of its `SolidColor` @(Element). Multiple activations of the @(Clicked) trigger won't have any additional effect.
 
-When using `Set` on a property, the value will not be reverted back when the containing trigger is deactivated.
-
-TODO: Examples
+```
+<Rectangle>
+	<SolidColor ux:Name="color" Color="#00f"/>
+</Rectangle>
+<Clicked>
+	<Set color.Color="#f00"/>
+</Clicked>
+```
 
 ### $(Callback)
 
@@ -294,7 +306,7 @@ TODO: Examples
 ```
 
 > ### $(Toggle)
-TODO: Not sure how toggle works exactly
+	TODO: Not sure how toggle works exactly
 
 > ### $(BringIntoView)
 TODO: Ask edaqua

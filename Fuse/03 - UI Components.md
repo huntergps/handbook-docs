@@ -111,9 +111,36 @@ There are a number of ways to address this issue. You can set the `StretchMode`-
 - `Uniform` - This will make the picture as large as possible while preserving aspect ratio. This will often make the `Image` not cover the whole parent.
 - `UniformToFill` - Fill the parent container while preserving aspect ratio. This will often mean that parts of the picture are left out, clipped by the parent
 
-> ### Multi density images
+### $(Image sources)
 
-Because devices have widely different resolutions, Fuse allows you to specify multiple image resources for the same logical `Image`:
+Image sources can be specified directly on @(Image) by using the `File` or `Url` attributes. 
+This however, reduces control over several aspects of the image's lifetime.
+
+Using $(ImageSource) objects instead of specifying the source directly on the @(Image) attribtue
+allows you to name and reuse the image source as a resource throughout your app, without duplicating
+paths and metadata everywhere.
+
+The following example shows you how you can declare an image as a resource: 
+
+	<FileImageSource ux:Global="CloseIcon" File="close.png" Density="2" />
+
+And then you can use `CloseIcon` anywhere in your project:
+
+	<Image Source="CloseIcon" />
+
+Fuse currently suppots the following image source types:
+
+* @(FileImageSource) - specifies a single local image file and it's density 
+* @(HttpImageSource) - specifies a single image from a URL and it's density
+* @(MultiDensityImageSource) - allows you to specify multiple versions of the same image for use with different screen densiies.
+
+In addition, the following classes allow you to configure image sources further:
+
+* @(MemoryPolicy) - controls how long the image data is kept in memory when no longer in use.
+
+> ### $(MultiDensityImageSource)
+
+Because devices have widely different pixel densities, Fuse allows you to specify multiple image resources for the same logical `Image`:
 
 	<Image StretchMode="PointPrefer">
 		<MultiDensityImageSource>
@@ -122,17 +149,28 @@ Because devices have widely different resolutions, Fuse allows you to specify mu
 		</MultiDensityImageSource>
 	</Image>
 	
-Fuse will then pick the resource best suited for the device in question.
-
-AUTH
+Fuse will then pick the resource best suited for the screen, respecting the $(StretchMode) of the image.
 
 > ### Memory policy
 
 TODO: Explain @mortoray?
 
-> ### HttpImageSource
+> ### $(HttpImageSource)
 
-Q: Is this different from just using `Url`? AUTH
+`HttpImageSource` allows you to specify an image to be fetched from a HTTP and displayed asynchronously.
+
+	<Image>
+		<MultiDensityImageSource>
+			<HttpImageSource Url="{image_url_1x}" Density="1"/>
+			<HttpImageSource Url="{image_url_2x}" Density="2"/>
+		</MultiDensityImageSource>
+	</Image>
+
+Or alternatively, if you want to use a fixed density image, you can use the shorter form directly:
+
+	<Image Url="{image_url}" />
+
+Note that images fetched from Http may take some time to load, and until loaded, Fuse knows nothing about the dimensions of the image. You should therefore be careful about basing the layout of your application on the dimensions of HTTP-fetched images.
 
 ## $(Shapes)
 
@@ -799,10 +837,6 @@ The mask will always stretch itself to match the size of the element to be maske
 
 > ## About Controls
 
-AUTH
+In Fuse, we use the word _control_ to describe a UI component that has a semantic function, but could vary largely in visual appearance. 
 
-In Fuse, controls and other UI components are fundamentally the same. In a way, you could say that controls are just _semantic containers_, they embody a certain set of appearances and behavior that we usually refer to by a well-defined name. 
-
-This means that in general, creating your own controls should be possible and accessible.
-
-Naming controls by semantics makes it easy to also create themes that address them. You can read more about this process in the @(Themes:theming) section.
+For example, @(Button) defines certain properties and events, such as @(Clicked), but what a button looks and feels like may be very different between different @(Theme:themes) or @(Style:styles). 

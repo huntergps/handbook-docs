@@ -203,10 +203,7 @@ Can have the values `Closed`, `Open` and `Short`.
 `Short` acts similarly to `Open` except that one can only swipe a a short distance beond the first or last page.
 
 ### $(VelocityThreshold)
-AUTH:
-
 `VelocityThreshold` is used to decide how fast one has to swipe a page in order for it to be interpreted as a navigation. This means that one does not have to swipe the whole page away, but can get away with a short but fast flick gesture.
-
 
 
 ## Databind active page

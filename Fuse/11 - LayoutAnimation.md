@@ -1,6 +1,5 @@
 # $(LayoutAnimation) and $(MultiLayoutPanel)
 
-AUTH: Layout properties (correct word?)
 There is a certain kind of animation which deserves special attention. When an @(Element) has certain properties like @(Width), @(Height) or @(Margin) (collectively reffered to as "layout properties") changed or when its location in the visual tree changes. In Fuse we call these types of animation LayoutAnimations.
 
 Calculating layout for a large UX-document can actually be quite costly. When animating layout properties with @(Change) animators, we run the risk of forcing a new layout to be calculated each frame. This can very easily lead to frame drops.

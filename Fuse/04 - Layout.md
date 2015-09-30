@@ -13,8 +13,15 @@ Panels can contain child UI elements and lay them out according to layout rules.
 The most basic type of panel is the Panel. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other.
 Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite usefull in many situations.
 
-TODO: Example
+```
+<Panel>
+	<Text>This...</Text>
+	<Text>...will be on top of this</Text>
+	<Rectangle Alignment="BottomLeft" Height="20" Width="20" Fill="#678" />
+</Panel>
+```
 
+Note that the element order in a `Panel` is the same as the layer order in popular graphics packages such as Photoshop; the layer that appears first in the UX-file will be layered on top of elements appearing later in the file.
 
 ### $(StackPanel)
 The StackPanel places its children in a stack. The default layout is a vertical stack, but one can use the $(Orientation) property to specify that the stack should be layed out horizontally.
@@ -73,6 +80,8 @@ The Orientation property can be used to make a vertical `WrapPanel` like so:
 <WrapPanel Orientation="Vertical"/>
 ```
 
+TODO: Add information about `Alignment="Bottom"` to start adding at the bottom.
+
 TODO: Illustration
 
 ### $(DockPanel)
@@ -80,7 +89,7 @@ The DockPanel layes out its children by docking them to the different sides, one
 ```
 <Rectangle Dock="Left"/>
 ```
-The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` or `Fill`.
+The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` or `Fill` (which is the default).
 
 ```
 <DockPanel>
@@ -137,6 +146,8 @@ Alignment can be assigned to any one of the following values:
 - BottomCenterter
 - BottomRight
 
+TODO: Add information about `Default`, that is, stretch to match parent?
+
 ### $(Margin) and $(Padding)
 Each element can specify the amount of space between it and its parent or surrounding elements by using its @(Margin) property.
 
@@ -168,10 +179,10 @@ The following properties support units
 - @Offset
 - @Anchor
 
-* Note that Grids column & row properties uses their own system, proportion,auto
+* Note that the column and row properties of @(Grid) use their own system, proportion, auto (TODO: Finish sentence?).
 
 ### Specifying units in $(points)
-When setting an elements Width to a number like so `<Element Width="50"/>`, the elemnt will become 50 points wide.
+When setting an elements Width to a number like so `<Element Width="50"/>`, the element will become 50 points wide.
 
 Points are different from pixels in that they will represent multiple pixels on high density displays. This way, using points will give a you a consistent look on all different screen densities.
 
@@ -194,7 +205,7 @@ When a @(Panel) places its children, it assumes that the "center" of that elemen
 This puts the elements anchor in the middle of its left edge.
 
 ### $(StatusBarBackground)
-iOS and Android devices usually has a status bar alligned to the top of the screen which shows status information from the operating system like battery and network information. This status bar might or might not be visible while our app is running. We also might or might not be able to draw behind it. The @(StatusBarBackground) element is used to compensate for the status bar. It will always have the same size as the status bar across all platforms and devices. We can use a @(DockPanel) to dock this element on the top of our app and "offset" the rest of our content so it fits within the visible parts of our screen.
+iOS and Android devices usually has a status bar aligned to the top of the screen which shows status information from the operating system like battery and network information. This status bar might or might not be visible while our app is running. We also might or might not be able to draw behind it. The @(StatusBarBackground) element is used to compensate for the status bar. It will always have the same size as the status bar across all platforms and devices. We can use a @(DockPanel) to dock this element on the top of our app and "offset" the rest of our content so it fits within the visible parts of our screen.
 ```
 <App>
 	<DockPanel>
@@ -221,6 +232,6 @@ Here is how we can make sure our content is never covered by the keyboard or hom
 
 ### $(Absolute positioning) $(X:) $(Y:)
 
-If we want to give our elements an explicit position, we can assign their X and Y properties. The X property will move the element relative to the left side of its container, while the Y property moves it relative to the top.
+If we want to give our elements an explicit position, we can assign their `X` and `Y` properties. The `X` property will move the element relative to the left side of its container, while the `Y` property moves it relative to the top.
 
 Be ware that absolute positioning elements should generally be avoided in favor of using layout rules. This is because when real data is used, the absolute values used might no longer be meaningfull.

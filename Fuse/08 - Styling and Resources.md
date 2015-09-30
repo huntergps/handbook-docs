@@ -73,38 +73,9 @@ In this case we've introduced a new _semantic class_ when we create `Header`, as
 
 ## $(Theme)
 
-TODO: This needs a rewrite with an emphasis on Native.
+The `Theme` property of `App` decides whether your app is set up with *native UI controls* or *OpenGL ES powered graphics* as the root-level presentation technology, as well as the default look and feel of @(controls).
 
-The global look and feel or our app is determined by a `Theme`. You see this at the root of most applications in the App class:
-
-	<App Theme="Basic">
-	
-Or, to enable native theming:
-
-	<App Theme="Native">
-	
-Or if you create your own theme:
-
-	<App Theme="MyTheme">
-
-A `Theme` is simply a collection of `Style`s.
-
-It is possible to run an app without applying a `Theme`, but in many cases this will be a bad decision, as certain controls might not have enough information about how they are supposed to render themselves. AUTH: Is this really true?
-
-### Theme customization
-
-TODO: Is this still relevant? If so how? AUTH
-
-It is possible to override aspects of a `Theme`:
-
-	<App>
-		<Fuse.BasicTheme>
-			<Button FontSize="20"/>
-		</Fuse.BasicTheme>
-		
-		<Button Text="Simple Button/>
-	</App>
-
+For more information see @(Themes).
 
 ## $(Global resources)
 
@@ -136,44 +107,21 @@ The resource will then be available to any nodes below it in the tree where it i
 
 ### $(Localization)
 
-TODO: This doesn't work. How do I do this? AUTH
+Localization of strings, values, icons and other resources can be easily acheived with *resources*.
 
-	<App Theme="Basic">	
-		<JavaScript>
-		var Observable = require("FuseJS/Observable");
-		var locale = Observable("no");
+	<Match Value="{language}">
+		<Case Value="English">
+			<string ux:Key="Greeting" ux:Value="Hello, world!" />
+		</Case>
+		<Case Value="Norwegian">
+			<string ux:Key="Greeting" ux:Value="Hei, verden!" />
+		</Case>
+	</Match>
 
-		function setLocale(l) {
-			locale.value = l;
-		}
+Then, instead of specifying the greeting string directly throughout the app, we can use a resource binding instead:
 
-		module.exports = {
-			locale: locale
-		};
-		</JavaScript>
-		<StackPanel>			
-			<Panel ux:Class="Norwegian">			
-				<string ux:Key="Greeting" ux:Value="Heisann, verden!" />
-			</Panel>
-			<Panel ux:Class="English">
-				<string ux:Key="Greeting" ux:Value="Hello world!" />
-			</Panel>
-			<Match Value="{locale}">
-				<Case String="no">
-					<Norwegian />
-				</Case>
-				<Case String="en">
-					<English />
-				</Case>
-			</Match>			
-			<Text Value="{Resource Greeting}" />
-		</StackPanel>
-	</App>
+	<Text Value="{Resource Greeting}" />
 
-
-> ### $(DataToResource)
-
-TODO: Does it make sense to cover this here? Is this not fairly tightly bound to databinding? AUTH?
 
 ## The anatomy of controls
 
@@ -183,6 +131,4 @@ TODO: Explain appearances, overlays, child/parent, how
 
 - InheritStyle = false ?
 
-## Building new controls from scratch
 
-AUTH?

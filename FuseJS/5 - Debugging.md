@@ -1,6 +1,6 @@
 ## Debugging
 
-Debugging is currently only supported using Safari and iOS.
+Debugging of JavaScript in Fuse is currently only supported using Safari and iOS.
 
 - Setup
 	- Enable Safari Web Inspector on the device. This is done in the Settings app under `Safari/Advanced/Web Inspector`.

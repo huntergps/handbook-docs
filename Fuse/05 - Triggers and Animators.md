@@ -1,6 +1,6 @@
 # $(Trigger)s and $(Animator)s
 
-Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) which are used to animate elements.
+Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
@@ -15,39 +15,49 @@ For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel
 
 TODO:
 * Explain how triggers are a timeline, plays forwards/backwards, applies/unapplies
-* Duration, easing and easing back - how the trigger takes the total length of all it's @(animators)
 
 As well as animating properties, one can also use triggers to add and remove entire elements.
 
 ### $(Rest state) and deviation
 
-The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state.
-Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means
-animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
+The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state. Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
 multiple devices, screen sizes, with real data and real user input.
 
 
 ## Animators
 
 Animators are used to specify which and how @(Element:elements) are to be animated when a @(Trigger:trigger) is triggered.
-
-Animators have five pairs of properties which are important for controlling the exact result of an animation.
+There are five pairs of properties which are important for controlling the exact result of an animation.
 
 ### $(Target)/Value
 The `Target` property is used to identify the property which we intend to animate.
 The `Value` property is the value of the result of an animation.
 
-Because the task of setting a target and value, UX has a special syntax for this:
+Because the task of setting a target and value, UX has a special syntax for this. Instead of
+```
+<Change Target="target.Property" Value="Value"/>
+```
+one can do the following:
 ```
 <Change target.Property="Value"/>
 ```
 
 ### $(Duration)/$(DurationBack)
-Animations can have different behavior when animating forwards and backwards. When a trigger is activated, the animation is said to play forwards. When the trigger is deactivated, the animation is played backwards. Duration is used to set the duration for the animation.
-One can set a different duration for the backwards animation by using the `DurationBack` property.
+Animations can have different behavior when animating forwards and backwards. When a trigger is activated, the animation is said to play forwards. When the trigger is deactivated, the animation is played backwards. Duration is used to set the duration for the animation. One can set a different duration for the backwards animation by using the `DurationBack` property.
+
+When there are multiple @(Animator:animators) inside a trigger, the total duration of the trigger will be the longest duration among the animators.
+
+In the following example, the total duration of the @(WhileTrue) trigger will be 3 seconds. If we wanted the animations to happen one after the other, we could use @(Delay).
+
+```
+<WhileTrue>
+	<Move X="10" Duration="2"/>
+	<Rotate Degrees="90" Duration="3"/>
+</WhileTrue>
+```
 
 ### $(Delay)/$(DelayBack)
-Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its target over 2 seconds.
+Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
 ```
 <Change Delay="5" Duration="2" someElement.Height="100"/>
 ```
@@ -81,10 +91,8 @@ Assign easing to an animator like so:
 <Rotate Easing="BounceOut" Degrees="10" Duration="0.4"/>
 ```
 
-* Note that the easing type has to be combined with either In, Out or InOut. In means that the easing function is observed only in the beginning of the animation. Out is observed only at the end. InOut gives an effect on both the beginning and end of the animation.
-
 - MixOp
-TODO: Write about mixop
+TODO/AUTH: Write about mixop
 
 ### $(Change)
 
@@ -171,7 +179,36 @@ It is worth mentioning that the order of these transforms affects the order of w
 
 The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive X-direction is now 45 degrees downwards, and so our panel ends up being moved towards the bottom right.
 
-There are three types of transforms that can be put on elements:
+### $(Keyframe)
+AUTH:
+
+There are situations in where we not only want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+
+    <Move RelativeTo="ParentSize">
+		<Keyframe X="10" Time="0.5"/>
+		<Keyframe X="15" Time="1"/>
+		<Keyframe X="5" Time="2"/>
+		</Move>
+
+This @(Move) animator will first animte X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
+Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
+
+	<Page>
+		<SolidColor ux:Name="background" Color="#f00"/>
+		<ActivatingAnimation>
+			<Change Target="background.Color">
+				<Keyframe Value="#0f0" TimeDelta="0.25"/>
+				<Keyframe Value="#f00" TimeDelta="0.25"/>
+				<Keyframe Value="#ff0" TimeDelta="0.25"/>
+				<Keyframe Value="#0ff" TimeDelta="0.25"/>
+			</Change>
+		</ActivatingAnimation>
+	</Page>
+
+This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute positions. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their position on the timeline.
+
+TODO: Interpolation
+
 ### $(Translation)
 `Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-reiction and 50 points in the Y-direction.
 ```
@@ -202,8 +239,10 @@ TODO: Document Vector
 
 Document X, Y, Z
 
-### $(Sheer)
-TODO: Document sheer
+### $(Shear)
+TODO: More?/ AUTH
+
+The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, og an arbirarty vector using the `Vector` property.
 
 
 ## $(Attractor)
@@ -226,13 +265,27 @@ Triggers can contain actions too, which are one-off events that fire at a partic
 
 Note that actions, contrary to @(animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
 
-(make sure examples include things like Delay)
+### $(Action.Delay:Delay)
+
+Like @(Animator:animators), `Actions` can have a `Delay`. This specifies a number of seconds from the @(Trigger) is activated to the `Action` is fired.
+
+
+### $(Action.AtProgress:AtProgress)
+
+`Actions` also has a property called `AtProgress` which can be set to a value between 0 and 1. It has a similar function as `Delay`, but is instead relative to the full @(Duration) of the @(Trigger). Setting `AtProgress` to 0, means the action is fired as soon as the @(Trigger) is actiated. Setting it to 0.5 means it is fired half way through and so on.
 
 ### $(Set)
 
-Permanently changes the value of a property. If you want to just change it temporarily, use @(Change)
+Permanently changes the value of a property. If you want to just change it temporarily, use @(Change). When using `Set` on a property, the value will not be reverted back when the containing trigger is deactivated. In the following example we change the color of a rectangle by setting the value of its `SolidColor` @(Element). Multiple activations of the @(Clicked) trigger won't have any additional effect.
 
-TODO: (examples++)
+```
+<Rectangle>
+	<SolidColor ux:Name="color" Color="#00f"/>
+</Rectangle>
+<Clicked>
+	<Set color.Color="#f00"/>
+</Clicked>
+```
 
 ### $(Callback)
 
@@ -253,13 +306,57 @@ TODO: (examples++)
 ```
 
 > ### $(Toggle)
-TODO: Not sure how toggle works exactly
+`Toggle` is used to toggle a boolean value between `true` and `false`. If out inside a @(Switch) it will toggle the value of the @(Switch). `Toggle` can also be used to activate/deactive @(WhileTrue) and @(WhileFalse) triggers like so:
+
+```
+<WhileTrue ux:Name="trueTrigger">
+	...
+</WhileTrue>
+<Panel>
+	<Clicked>
+		<Toggle Target="trueTrigger"/>
+	</Clicked>
+</Panel>
+```
 
 > ### $(BringIntoView)
-TODO: Ask edaqua
+The `BringIntoView` trigger is used together with the @(ScrollView) control. By setting its `TargetNode` property, we can instruct the @(ScrollView) to go to a position so that that that `Node` becomes visible.
+
+This example shows how to use `BringIntoView` to make a @(ScrollView) automatically scroll between the top and the bottom by clicking a button:
+
+```
+<App Theme="Basic" ClearColor="#eeeeeeff">
+	<DockPanel>
+		<StatusBarBackground DockPanel.Dock="Top" />
+		<ScrollView ClipToBounds="true">
+			<StackPanel>
+				<Panel ux:Name="panel1" Height="80" Background="#F44336" />
+				<Panel Height="200" Background="#ddd"/>
+				<Panel Height="200" Background="#bbb"/>
+				<Panel Height="200" Background="#999"/>
+				<Panel Height="200" Background="#777"/>
+				<Panel Height="200" Background="#444"/>
+				<Panel ux:Name="panel2" Height="80" Background="#3949AB" />
+			</StackPanel>
+		</ScrollView>
+		<StackPanel Dock="Bottom" Height="60" Orientation="Horizontal" Alignment="Center">
+			<Button Text="To the top">
+				<Clicked>
+					<BringIntoView TargetNode="panel1" />
+				</Clicked>
+			</Button>
+			<Button Text="To the bottom">
+				<Clicked>
+					<BringIntoView TargetNode="panel2" />
+				</Clicked>
+			</Button>
+		</StackPanel>
+	</DockPanel>
+</App>
+```
 
 > ### $(BringToFront)
-TODO: Do we need to discuss Z-ordering?
+AUTH: TODO: Do we need to discuss Z-ordering?
 
 
 ## $(State groups)
@@ -320,17 +417,17 @@ Here is an exampel of how to use a `StateGroup` to switch the color of a @(Recta
 Reacts to data changes, either from data binding or from the control context.
 
 ### $(WhileTrue)
-`WhileTrue` is active while its @(Value) property is `True` and inactive while it's false.
+`WhileTrue` is active while its `Value` property is `True` and inactive while it's false.
 
 ### $(WhileFalse)
-`WhileFalse` is active while its @(Value) property is `False` and inactive while it's true.
+`WhileFalse` is active while its `Value` property is `False` and inactive while it's true.
 
 ### WhileFailed
 TODO: I dont know what it does
 
 ## $Gestures
 
-Reacts to pointer inputs.
+Following are triggers which react to pointer gestures.
 
 ### $(WhilePressed)
 `WhilePressed` is active while its containing element is being pressed and the pointer is inside its bounds.
@@ -349,12 +446,11 @@ Reacts to pointer inputs.
 
 ```
 <Panel Width="50" Height="50">
-	<WhilePressed>
+	<Clicked>
 		<Scale Factor="2" Duration="0.2"/>
-	</WhilePressed>
+	</Clicked>
 </Panel>
 ```
-
 
 ### $(Tapped)
 The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click just means that the pointer has to be pressed and released on the element, a tap means that the pointer has to be released within a certain time after the pointer is pressed.
@@ -383,13 +479,22 @@ The `WhileEnabled` trigger is active whenever its containing @(Element:elements)
 The `WhileDisabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `False`.
 
 
-## Platform triggers
+## $(Platform triggers)
 
-TODO: Do android and ios work?
+Sometimes it can be necessary with platform specific code. This can be done by using the platform triggers `Android` and `iOS`.
 
-### Android
+In the following example, we place a red @(Panel) if on an Android device and a blue @(Panel) if on an iOS device:
 
-### iOS
+```
+<Panel>
+	<Android>
+		<Panel Background="#f00" Alignment="Center" Width="150" Height="150"/>
+	</Android>
+	<iOS>
+		<Panel Background="#00f" Alignment="Center" Width="150" Height="150"/>
+	</iOS>
+</Panel>
+```
 
 ### $(WhileKeyboardVisible)
 `WhileKeyboardVisible` is active whenever the on-screen keyboard is visible.
@@ -420,11 +525,10 @@ TODO: Link to examples
 
 `AddingAnimation` is triggered whenever the element is added to the visual tree. Adding animation is by default a backwards animation, meaning it will animate from progress 1 back to 0.
 
-
+TODO: Example
 
 ### $(RemovingAnimation)
-
-TODO: Link to examples
+`RemovingAnimation` is similar to @(AddingAnimation), but is triggered whenever an @(Element) is being removed from the visual tree.
 
 `RemoveAnimation` is similar to @(AddingAnimation) but is triggered whenever the element is removed from its parent. `RemoveAnimation` progresses normally from 0 to 1 over the specified @(Duration).
 

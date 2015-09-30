@@ -107,28 +107,40 @@ You can hook up event handlers to call JavaScript functions with similar syntax:
 	
 You can read more about this in the @(FuseJS) section.
 
+
+## $(Data Context)
+
+At any point in a Fuse @(Node) tree, there is a *data context*. A data binding on any node will be relative to the current data context on the node. By default, this data context is `null`, and any data binding will just return null or empty values. 
+
+To set the data context, you typically add a *behavior* to a node that provides the data context, such as a `<JavaScript>` tag. When using a `<JavaScript>` tag, the `module.exports` from the module specified will become the data context of the node the.
+
+Some behaviors, such as `<Each>` will take objects from the current data context and specify different data
+contexts for each child node.
+
 > ## Other data sources
 
-Explain how the `Fuse.Reactive` provides abstractions over data sources in Uno code, which allows data for UX to come from anywhere and any language. TODO: Should this link to an example in the Uno docs where Uno exposes something that can be databound to? AUTH
+The data binding system in Fuse from an @(Uno) implementation point of view is called `Fuse.Reactive`. It consists of a set of interfaces (primarily `IObservable`) that can be implemented on top of any data source in @(Uno) code, which in turn can be used as @(Data Context) on nodes in Fuse. Fuse provdides out-of-the-box implementations on top of @(Observable) in @(FuseJS).
 
-Roadmap:
-* Observables for Swift
-* Observables for Java
-* Expressions in paths
+In the @(Fuse Roadmap:roadmap for Fuse), we are planning to provide observable data types for Swift, Java and other languages that can be used for databinding directly in UX markup.
 
-## Data Context
-
-More detailed on how data contexts work, how bindings and `Each` change the data context AUTH(ority needed)
+Users who write @(Uno) code can implement `IObservable` by hand to use Fuse's data binding system on top of custom native data sources.
 
 ## $(Each)
 
-The UX construct `Each` makes it easy to iterate a data source:
+`Each` is used to repeat pieces of UX markup for each item in a collection.
+
+The `Each` @(behavior) maintains one copy of its subtree per item in its $(Items) collection, and adds and removes these from the parent node accordingly. The `Items` collection can be an @(Observable) that can be changed dynamically.
+
+When using `Each`, we typically data-bind the `Items` property to an array data source to produce one visual 
+node per object in the data source.
 
 	<Each Items="{items}">
 		<Rectangle Width="{width}" Height="{height}" Fill="#808" />
 	</Each>
 
-It is also possible to nest `Each` constructs:
+Observable add/remove operations on the `Items` collection can be animated using @(AddingAnimation), @(RemovingAnimation) and @(LayoutAnimation)
+
+It is also possible to nest `Each` behaviors:
 	
 	<JavaScript>
 		var Observable = require("FuseJS/Observable");
@@ -162,6 +174,8 @@ It is also possible to nest `Each` constructs:
 		</StackPanel>
 	</ScrollViewer>
 
+> Note: it is not possible to nest two `Each` behaviors directly inside each other without an intermediary container, like `Panel` or `StackPanel` as above.
+
 You can also just use `Each` as a simple repeater:
 
 	<Grid ColumnCount="3">
@@ -170,11 +184,10 @@ You can also just use `Each` as a simple repeater:
 		</Each>
 	</Grid>
 
-When using `Each`, it can be helpful to think of it as a "factory" where the inner tree will be instantiated for every element you databind to.
 
 ## $(WhileCount) and $(WhileEmpty)
 
-You can act on the number of items in a collection:
+The `WhileEmpty` and `WhileCount` @(triggers) can be used to act on the number of items in a collection:
 
 	<Each Items="{friends}">
 		<!-- ... List friend ... -->
@@ -183,11 +196,17 @@ You can act on the number of items in a collection:
 		<Text>No friends. :(</Text>
 	</WhileEmpty>
 
-`WhileEmpty` is a special case of `WhileCount` where the `EqualTo`-property is set to `0`. `WhileCount` accepts:
+`WhileEmpty` is a special case of `WhileCount` where the `EqualTo`-property is set to `0`. `WhileCount` accepts the following properties:
 
 - `EqualTo` - Active when the count of the collection is equal to the provided value
 - `GreaterThan` - Active when the count of the collection is greater than the provided value
 - `LessThan` - Active when the count of the collection is less than the provided value
+
+For example:
+
+	<WhileCount Items="{things}" EqualTo="3" GreaterThan="3" >
+		<Text>You have 3 or more things.</Text>
+	</WhileCount>
 
 ## $(Select)
 
@@ -197,16 +216,16 @@ If you have a complex data context and want to narrow the data context down, you
 		module.exports = {
 			complex: {
 				item1: {
-					subitem1: { name: "Spongebob" }
+					subitem1: { name: "Spongebob", age: 32 }
 				}
 			}
 		};	
 	</JavaScript>
 	<Select Data="{complex.item1.subitem1}">
 		<Text Value="{name}" />
+		<Text Value="{age}" />
 	</Select>
 
-While this might not seem immediately useful, consider that the `Data` property of the `Select` can also be data bound. AUTH: _Bad example? Is this true and a typical usecase?_
 
 ## $(Match) and $(Case)
 

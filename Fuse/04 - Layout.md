@@ -167,7 +167,7 @@ This rectangle has a margin of 50 for its left and right, and 20 for its top and
 <Rectangle Margin="50,20"/>
 ```
 
-### Units
+### @(Units)
 There are multiple ways of specifying values on layout properties, points, percent and pixels.
 The following properties support units
 - Width
@@ -186,11 +186,11 @@ When setting an elements Width to a number like so `<Element Width="50"/>`, the 
 
 Points are different from pixels in that they will represent multiple pixels on high density displays. This way, using points will give a you a consistent look on all different screen densities.
 
-### Specifying units in $(percent) (%)
+### Specifying units in $(Percentage:percent) (%)
 Specifying values using the percent sign means that this value should be a certain percentage of available space.
 For example, if we place an @(Element) inside a @(Panel) which is 500 points wide, and set the elements Width property to be 50%, we get an element which is 250 points wide.
 
-### Specifying units in $(pixels)
+### Specifying units in $(Pixels:pixels)
 We can specify values in pixels using the px suffix like so:
 ```
 <Rectangle Width="200px"/>

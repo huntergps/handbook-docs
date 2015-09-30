@@ -5,7 +5,7 @@ Fuse comes with a number of UI components that can be used to construct a user i
 	<Image File="MyImage.png" />
 	<Rectangle Width="50" Height="50" Fill="#888" />
 	<Text>Hello world!</Text>
-	
+
 Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as triggers and actions.
 
 > ## Videos on this topic
@@ -40,7 +40,7 @@ You can import fonts from ttf files containing TrueType fonts. Because a font is
 
 In this example, the fonts are located in the same directory as the relevant UX file. This way of importing the font ensures that the font is available through the whole project, and is only loaded once.
 
-Both iOS and Android support text rendering with multibyte character sets. This means that emojis work fine rendering on device. 
+Both iOS and Android support text rendering with multibyte character sets. This means that emojis work fine rendering on device.
 
 > Note! There are currently some issues rendering multibyte character sets using desktop preview. Do not be surprised if the desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.
 
@@ -50,7 +50,7 @@ For further control over how your text is rendered, you can set `$(TextAlignment
 
 	<Text TextColor="#999">Left</Text>
 	<Text TextAlignment="Center">Center</Text>
-	<Text FontSize="24" TextAlignment="Right">Right</Text>		
+	<Text FontSize="24" TextAlignment="Right">Right</Text>
 
 In this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. Valid values for `TextAlignment` are `Left` (default), `Right` and `Center`.
 
@@ -94,33 +94,33 @@ This app will show three `Image`s stacked on top of each other. The topmost pict
 It is possible to tint an `Image` by using the `Color`-property. Note, that this will affect the parts of the image that is closest to white in the most predictable way. For example:
 
 	<Image File="WhiteIcon.png" Color="#f00" />
-	
+
 This will turn a white icon red.
 
 ### $(StretchMode)
 
 When added to a container, an `Image` will by default try to show as much of itself as possible. If the image isn't the same aspect as its container, there will be parts of the container that will not be covered.
 
-There are a number of ways to address this issue. You can set the `StretchMode`-property on your `Image` to make it behave differently. Here are the different `StretchMode`s:
+There are a number of ways to address this issue. You can set the `StretchMode`-property on your `Image` to make it behave differently. Here are the different modes:
 
 - `Fill` - Fill the available area in the container without necessarily preserving aspect ratio.
 - `PixelPrecise` - Use the pixels from the image as unit to make sure the image is crisp on all devices. This means that the image will be different sizes on different devices. It ignores the size of the `Image` container.
 - `PointPrecise` - This uses the size of the image source as the `Image` in points, which guarantees that it will be the same on all devices. It ignores the size of the `Image` container. For example, if the image is 64x64 pixels in size, the resulting control will be 64x64 @(points)
 - `PointPrefer` - The `PointPrefer` stretch mode will prioritize getting image size correct using `PointPrecise` stretch mode, but in cases where `PixelPrecise` would create an on-screen image with approximately the right size, it will use `PixelPrecise` to increase the clarity of the image.
-- `Scale9` - Link to external documentation for this? TODO
+- `Scale9` - TODO: Link to external documentation for this?
 - `Uniform` - This will make the picture as large as possible while preserving aspect ratio. This will often make the `Image` not cover the whole parent.
 - `UniformToFill` - Fill the parent container while preserving aspect ratio. This will often mean that parts of the picture are left out, clipped by the parent
 
 ### $(Image sources)
 
-Image sources can be specified directly on @(Image) by using the `File` or `Url` attributes. 
+Image sources can be specified directly on @(Image) by using the `File` or `Url` attributes.
 This however, reduces control over several aspects of the image's lifetime.
 
 Using $(ImageSource) objects instead of specifying the source directly on the @(Image) attribute
 allows you to name and reuse the image source as a resource throughout your app, without duplicating
 paths and metadata everywhere.
 
-The following example shows you how you can declare an image as a resource: 
+The following example shows you how you can declare an image as a resource:
 
 	<FileImageSource ux:Global="CloseIcon" File="close.png" Density="2" />
 
@@ -130,7 +130,7 @@ And then you can use `CloseIcon` anywhere in your project:
 
 Fuse currently suppots the following image source types:
 
-* @(FileImageSource) - specifies a single local image file and its density 
+* @(FileImageSource) - specifies a single local image file and its density
 * @(HttpImageSource) - specifies a single image from a URL and its density
 * @(MultiDensityImageSource) - allows you to specify multiple versions of the same image for use with different screen densities.
 
@@ -148,7 +148,7 @@ Because devices have widely different pixel densities, Fuse allows you to specif
 			<FileImageSource File="Icon.png@2x.png" Density="2"/>
 		</MultiDensityImageSource>
 	</Image>
-	
+
 Fuse will then pick the resource best suited for the screen, respecting the $(StretchMode) of the image.
 
 > ### Memory policy
@@ -174,7 +174,7 @@ Note that images fetched from Http may take some time to load, and until loaded,
 
 ## $(Shapes)
 
-Fuse comes with functionality for doing shape rendering. All shapes can have multiple `Fill`s and `Stroke`s, these will be layered.
+Fuse comes with functionality for doing shape rendering. All shapes can have multiple @(Fill:Fills) and @(Stroke:Strokes). These will be layered on top of each other.
 
 ### $(Rectangle)
 
@@ -182,24 +182,24 @@ To draw a `Rectangle`:
 
 	<Rectangle Fill="#f00" />
 
-In this example, the `Rectangle` will take up as much space as it is allowed by its parent and fill it with `#f00`.
+In this example, the `Rectangle` will take up as much space as it is allowed by its parent and fill it with a red @(SolidColor).
 
 If you want to have the `Rectangle` limit itself, you can add `Width` and `Height`:
-	
+
 	<Rectangle Fill="#f00" Width="50" Height="50" CornerRadius="5" />
 
-This will render a red `Rectangle` with rounded corners over a black background. Note that these units are @(Points), not pixels, and the `Rectangle` will appear to be roughly the same size on most devices, regardless of pixel density and screen size.
+This will render a red `Rectangle` with rounded corners over a black background. Note that these @(Units:units) are in @(Points), not @(Pixels), and the `Rectangle` will appear to be roughly the same size on most devices, regardless of pixel density and screen size.
 
 ### $(Circle)
 
-It is equally simple to draw `Circle`s:
+It is equally simple to draw a `Circle`:
 
 
 	<Circle Fill="#f00" Width="50" Height="50">
-		<Stroke Width="5" Brush="#ff0" />				
+		<Stroke Width="5" Brush="#ff0" />
 	</Circle>
 
-In this example, we've taken it a bit further, and we're adding a yellow stroke.
+In this example, we've taken it a bit further, and we're adding a yellow @(Stroke).
 
 ### $(Fill:Fills)
 
@@ -220,14 +220,14 @@ It is possible to use other kinds of brushes to fill shapes. For example:
 				<GradientStop Offset="1" Color="#B73070" />
 			</LinearGradient>
 		</Rectangle>
-	</StackPanel>	
+	</StackPanel>
 
 Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a `Rectangle` that has a nice and subtle `LinearGradient` from fuchsia(?) to purple(?).
 
 ### $(Stroke:Strokes)
 
-`Stroke`s accept a brush the same way a `Fill` does:
-	
+@(Stroke:Strokes) accept a brush the same way a @(Fill) does:
+
 	<StackPanel>
 		<Circle Width="150" Height="150">
 			<Stroke Width="10">
@@ -244,19 +244,19 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 		</Rectangle>
 	</StackPanel>
 
-It can obviously just be set to be a `SolidColor`-brush:
-	
+It can obviously just be set to be a @(SolidColor:SolidColor-brush):
+
 	<Rectangle Fill="#f00" Width="50" Height="50">
-		<Stroke Width="5" Brush="#ff0" />				
+		<Stroke Width="5" Brush="#ff0" />
 	</Rectangle>
 
 
 #### $(StrokeAlignment)
 
-The `Stroke` can be aligned:
-	
+The @(Stroke) can be aligned:
+
 	<Stroke StrokeAlignment="Center" />
-	
+
 Valid values are `Center`, `Inside`, `Outside`.
 
 #### $(Stroke.Offset)
@@ -280,13 +280,13 @@ Fuse comes with different brush types that can be used as @(Stroke) and @(Fill) 
 If you want to make a simple continuous color, you can use a `SolidColor`:
 
 	<SolidColor Color="#00f" />
-	
+
 This will create a brush that can be assigned to any place that accepts a brush:
 
 	<Rectangle>
 		<SolidColor Color="#00f" />
 	</Rectangle>
-	
+
 Note that this is equivalent of writing:
 
 	<Rectangle Fill="#00f" />
@@ -364,14 +364,14 @@ This is handy when you want to drive business logic from events.
 To accept on/off-style input, Fuse has a `Switch`-control:
 
 	<Switch />
-	
+
 To make it do something, you can use the `WhileTrue`-trigger:
 
 	<App Theme="Basic">
 		<StackPanel>
 			<Switch>
 				<WhileTrue>
-					<Change rectangle.Width="160" Duration="0.5" 
+					<Change rectangle.Width="160" Duration="0.5"
 						Easing="CircularInOut" />
 				</WhileTrue>
 			</Switch>
@@ -387,7 +387,7 @@ If you want the `Switch` to start out being activated:
 
 The events emitted by the `Switch` can also be handled from JavaScript:
 
-	<App Theme="Basic">		
+	<App Theme="Basic">
 		<JavaScript>
 			module.exports = {
 				switchChanged: function (args) {
@@ -404,7 +404,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 
 You can also databind the switch:
 
-	<App Theme="Basic">		
+	<App Theme="Basic">
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
 
@@ -433,7 +433,7 @@ You can also databind the switch:
 To display a slider:
 
 	<Slider />
-	
+
 If you want to influence something as the slider moves, you can use `ProgressAnimation`. Consider this code which allows you to `Rotate` a `Rectangle` from 0 to 90 degrees:
 
 	<StackPanel>
@@ -444,21 +444,21 @@ If you want to influence something as the slider moves, you can use `ProgressAni
 		</Slider>
 		<Rectangle ux:Name="rectangle" Width="100" Height="100" Fill="#808" />
 	</StackPanel>
-	
+
 You can also listen to the `ValueChanged`-event:
 
-	<App Theme="Basic">		
-		<JavaScript>			
+	<App Theme="Basic">
+		<JavaScript>
 			module.exports = {
-				sliderValueChanged: function (args) 
+				sliderValueChanged: function (args)
 				{
 					debug_log ("Value: " + args.value);
 				}
 			};
-		</JavaScript>		
-		<Slider ValueChanged="{sliderValueChanged}" />		
+		</JavaScript>
+		<Slider ValueChanged="{sliderValueChanged}" />
 	</App>
-	
+
 When moving the slider from the far left to the far right, your console will output floating point numbers from 0 to 100, which are the default `Minimum` and `Maximum` values. These properties can also be set:
 
 	<Slider Minimum="4" Maximum="42" />
@@ -467,7 +467,7 @@ When moving the slider from the far left to the far right, your console will out
 
 It is also possible to databind the slider position:
 
-	<App Theme="Basic">		
+	<App Theme="Basic">
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
 
@@ -491,27 +491,27 @@ It is also possible to databind the slider position:
 
 Fuse provides a `TextInput`-control to allow for user input of text:
 
-		
+
 	<JavaScript>
 		var valueChanged = function (args) {
 			debug_log (args.value);
 		}
 
-		module.exports = {			
+		module.exports = {
 			valueChanged: valueChanged
 		};
 	</JavaScript>
 
 	<TextInput ValueChanged="{valueChanged}" />
-	
-You can also easily do two-way databinding:	
 
-	<App Theme="Basic">		
+You can also easily do two-way databinding:
+
+	<App Theme="Basic">
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
 
 			var name = Observable("");
-		
+
 			var greeting = name.map(function (name) {
 				if (name == "") {
 					return "Type your name above";
@@ -526,7 +526,7 @@ You can also easily do two-way databinding:
 
 			module.exports = {
 				name: name,
-				greeting: greeting,				
+				greeting: greeting,
 				clearName: clearName
 			};
 		</JavaScript>
@@ -536,12 +536,12 @@ You can also easily do two-way databinding:
 			<DockPanel>
 				<Text Dock="Left" Alignment="VerticalCenter">Name:</Text>
 				<TextInput Value="{name}" Alignment="VerticalCenter" />
-			</DockPanel>	
+			</DockPanel>
 			<Text TextAlignment="Center" Value="{greeting}" />
 			<Button Clicked="{clearName}" Text="Clear" />
 		</StackPanel>
 	</App>
-	
+
 If you want to accept a password, you might want to mask the user input:
 
 	<TextInput IsPassword="true" />
@@ -549,7 +549,7 @@ If you want to accept a password, you might want to mask the user input:
 If you want to accept numeric values mainly, you can set an `InputHint`:
 
 	<TextInput InputHint="Number" />
-	
+
 Valid values for `InputHint` are `Default`, `Email`, `Number`, `Phone`, `Url`. These are called "hints" because they might not do anything, depending on which platform you are on. For example, when on the desktop, the keyboard will be the same no matter which hint is added to the `TextInput`.
 
 `TextInput` also allows you to input contents over multiple lines instead of scrolling off to the right, which it does by default:
@@ -564,12 +564,12 @@ When a `TextInput` gets focus, it will often summon the device's on-screen keybo
 		</WhileKeyboardVisible>
 	</Text>
 	<TextInput />
-	
+
 As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, and you can do pretty much anything you want as a response to the on-screen keyboard taking up space on the screen.
 
 - WhileFocused TODO: I am not sure what exactly this is supposed to demonstrate
 - WhileEmpty TODO: This doesn't exist, should it? It is good for implementing placeholder data
-- link to styling? 
+- link to styling?
 - text edit TODO: What is this?
 
 TODO: Consider not documenting these here but in the chapter on Triggers and Animators
@@ -593,13 +593,13 @@ A `PageControl` is typically used with `Page`s:
 		</Page>
 	</PageControl>
 
-This will create two swipable pages. You can exchange the `Rectangle`s in this example for any UX you want, of course.
+This will create two swipable pages. You can exchange the @(Rectangle:rectangles) in this example for any UX you want, of course.
 
 ### $(PageIndicator)
 
 If you want to add a page indicator to the mix:
 
-	<App Theme="Basic" Background="#000">		
+	<App Theme="Basic" Background="#000">
 		<DockPanel>
 			<PageControl ux:Name="pageControl">
 				<Page>
@@ -638,15 +638,16 @@ To limit the behavior of a `ScrollView`, you can set the ScrollDirection:
 		<!-- Contents -->
 	</ScrollView>
 
-Valid settings for `AllowedScrollDirections` include `Horizontal`, `Both` and `Vertical` (default). TODO: Check that this is true. There are also a bunch of AllowedScrollDirections in the enum I believe are not used
+Valid settings for `AllowedScrollDirections` include `Horizontal`, `Vertical` (default) and `Both`. TODO: Check that this is true. There are also a bunch of AllowedScrollDirections in the enum I believe are not used
 
 > ### $(ScrollingAnimation)
 
-It is possible to animate properties based on absolute `ScrollView` position. For example, let's remove a top ledge as a `ScrollView` scrolls down: 
+It is possible to animate properties based on absolute `ScrollView` position. For example, let's remove a top ledge as a `ScrollView` scrolls down:
+TODO: Link to triggers and animation
 
-	<App Theme="Basic" Background="#fff">		
+	<App Theme="Basic" Background="#fff">
 		<Panel>
-			<Panel Alignment="Top" Height="50" ux:Name="ledge">		
+			<Panel Alignment="Top" Height="50" ux:Name="ledge">
 				<Text Alignment="Center" TextAlignment="Center" TextColor="#fff" Value="TopLedge" />
 				<Rectangle  Fill="#000" />
 			</Panel>
@@ -666,6 +667,7 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 > ### $(WhileScrollable)
 
 TODO: Not really sure what this trigger does
+TODO: Link to Triggers and Animation
 
 ## $(MapView) (link elsewhere?)
 
@@ -695,7 +697,7 @@ Consider this code:
 			</Clicked>
 		</Rectangle>
 	</Grid>
-	
+
 It will layout two `Rectangle`s and add `Clicked`-triggers to both of them. However, only the left one will output anything when clicked, as the hit testing has been explicitly disabled on the right rectangle. This can be very helpful if you have visual elements obscuring elements below it, where you want the lower elements respond to input.
 
 Valid values for `HitTestMode` are:
@@ -713,7 +715,7 @@ Note that if you set the @(Opacity) of an element below or equal its `HitTestOpa
 Normally, when laying out an element inside the other, the inner element can freely live outside the parent element:
 
 	<Panel Width="100" Height="100">
-			<Image Margin="-100" File="Pictures/Picture1.jpg" 	
+			<Image Margin="-100" File="Pictures/Picture1.jpg"
 				StretchMode="UniformToFill" />
 	</Panel>
 
@@ -722,7 +724,7 @@ This `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip 
 If you intent to have the `Image` clip to its parent size, simply add $(ClipToBounds) to the `Panel`:
 
 		<Panel Width="100" Height="100" ClipToBounds="true">
-			<Image Margin="-100" File="Pictures/Picture1.jpg" 
+			<Image Margin="-100" File="Pictures/Picture1.jpg"
 				StretchMode="UniformToFill" />
 		</Panel>
 
@@ -730,15 +732,16 @@ Now, the `Image` will not overflow the bounds of the `Panel`.
 
 > ## $(Opacity)
 
-You can set the transparency of objects using the `Opacity`-property. 
+You can set the transparency of objects using the `Opacity`-property.
 
 	<Panel>
 		<Opacity Value="0.5" />
 	</Panel>
-	
-When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTest:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state. 
+
+When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTest:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state.
 
 > ## Layers
+TODO: AUTH:
 
 > ## $(Effects)
 
@@ -768,7 +771,7 @@ It can also be used to create artistic effects like outer glow:
 
 `DropShadow` has these properties:
 
-- `Angle` - Which direction does the light come from: 
+- `Angle` - Which direction does the light come from:
 	- 0 - right
 	- 90 - top
 	- 180 - left
@@ -785,7 +788,7 @@ To blur an element:
 	<Text Value="Hello there!">
 		<Blur Radius="0.9" />
 	</Text>
-	
+
 Note that while the `Radius` of the `Blur` can be animated like most other properties, this is potentially an expensive operation, and should be tested on devices to make sure it behaves properly.
 
 TODO: The API reference doesn't include `Radius` and has a bunch of properties I cannot confidently say anything about. AUTH help?
@@ -797,7 +800,7 @@ To `Desaturate` an element, fully or partially:
 	<Image File="Pictures/Picture1.jpg">
 		<Desaturate Amount="0.4" />
 	</Image>
-	
+
 An amount of 1.0 will fully `Desaturate` the element.
 
 ### $(Halftone)
@@ -832,13 +835,13 @@ The `Mask` effects accepts the following properties:
 	- `Greyscale` - Use the color component of the greyscale mask as a multiplication factor with the original alpha value
 - `File` - If you have a picture bundled as part of the project
 - `Source` - If you have another source for the `Image`, for instance a @(HttpImageSource)
-	
+
 If you use a white image with alpha channel, `RGBA` and `Alpha` will have the same result.
 
 The mask will always stretch itself to match the size of the element to be masked.
 
 > ## About Controls
 
-In Fuse, we use the word _control_ to describe a UI component that has a semantic function, but could vary largely in visual appearance. 
+In Fuse, we use the word _control_ to describe a UI component that has a semantic function, but could vary largely in visual appearance.
 
-For example, @(Button) defines certain properties and events, such as @(Clicked), but what a button looks and feels like may be very different between different @(Theme:themes) or @(Style:styles). 
+For example, @(Button) defines certain properties and events, such as @(Clicked), but what a button looks and feels like may be very different between different @(Theme:themes) or @(Style:styles).

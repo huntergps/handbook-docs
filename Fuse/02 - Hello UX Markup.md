@@ -96,7 +96,7 @@ The available tags (classes) come in these categories:
 * * @(Gestures)
 * * @(Triggers)
 * * @(Scripts)
-* Visual @(effects) which can be applied to @(elements)
+  * Visual @(effects) which can be applied to @(elements)
 * @(Styles) which allow consistent look and feel of components without repeating data
 
 ## $(Theme:Themes)

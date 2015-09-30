@@ -71,7 +71,7 @@ If the `firstName` or `lastName` changes, the `fullName` will now update automat
 
 Yes, it's magic.
 
-## $(Members)
+## $(Observable.Members:Members)
 
 ### $(Value operators)
 
@@ -207,7 +207,7 @@ Updates all items in the @(Observable) with the values from `newValues`.
 
 FuseJS comes with set of reactive operators that return @(Observables) from other @(Observables). This means that if the original `Observable` changes, any `Observable`s that are created as a result of applying a reactive operator will also change automatically.
 
-> Note! It is important to understand that the result of a reactive operator will only be computed if the resulting `Observable` is *consumed*, i.e. databound and its value is needed. If you @(map(func)) over an `Observable` collection and try to `debug_log` from the mapping function, these contents might not be displayed because the resulting `Observable` is not databound. If you run into this problem, you can manually add a subscriber for debugging purposes, as described @(addSubscriber(func):here). 
+> Note! It is important to understand that the result of a reactive operator will only be computed if the resulting `Observable` is *consumed*, i.e. databound and its value is needed. If you @(map(func)) over an `Observable` collection and try to `debug_log` from the mapping function, these contents might not be displayed because the resulting `Observable` is not databound. If you run into this problem, you can manually add a subscriber for debugging purposes, as described @(addSubscriber(func):here).
 
 #### $(where:where(condition))
 Returns a new @(Observable) with only the values for which `condition` returns true.
@@ -301,10 +301,10 @@ the subscription, otherwise we can accumulate memory garbage over time:
 Sets the value of the @(Observable) without notifying `excludingObserver`
 
 	var observable = Observable(1);
-	
+
     var shouldGetNotification = function() { }
 	var shouldNotGetNotification = function() { }
-		
+
 	observable.addSubscriber(shouldGetNotification);
 	observable.addSubscriber(shouldNotGetNotification);
 

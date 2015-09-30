@@ -11,7 +11,7 @@ Panels can contain child UI elements and lay them out according to layout rules.
 
 ### $(Panel)
 The most basic type of panel is the Panel. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other.
-Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite usefull in many situations.
+Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite useful in many situations.
 
 ```
 <Panel>
@@ -33,7 +33,7 @@ The StackPanel places its children in a stack. The default layout is a vertical 
 ```
 
 ### $(Grid)
-The Grid places its children in a grid formation. The rows and collumns can be specified explicitly by the @(Rows) and @(Columns) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
+The Grid places its children in a grid formation. The rows and columns can be specified explicitly by the @(Rows) and @(Columns) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
 
 #### $(RowCount) and $(ColumnCount)
 If all you want is a grid of equally sized rows and columns you can simply state the number of rows and columns using the RowCount and ColumnCount properties.
@@ -49,7 +49,7 @@ Example of a Grid with 3 rows of size 10, 10 and 50 points.
 <Grid Rows="10,10,50"/>
 ```
 
-Example of a Grid with 3 rows where the first two each occupy 20% of the available space, and the last one occypies 60%:
+Example of a Grid with 3 rows where the first two each occupy 20% of the available space, and the last one occupies 60%:
 ```
 <Grid Rows="1*,1*,3*"/>
 ```
@@ -68,7 +68,7 @@ By default, elements are placed in the grid by the order they appear in the UX, 
 ```
 
 ### $(WrapPanel)
-The wrap panel lays our its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
+The wrap panel lays out its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
 
 The following WrapPanel layes out its children horizontally from right ro left.
 ```
@@ -94,7 +94,7 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 ```
 <DockPanel>
 	<Rectangle Fill="Red" Dock="Left"/>
-	<Rectangle Fill="Gree" Dock="Top"/>
+	<Rectangle Fill="Green" Dock="Top"/>
 	<Rectangle Fill="Blue" Dock="Right"/>
 	<Rectangle Fill="Yellow" Dock="Bottom"/>
 	<Rectangle Fill="Teal" />

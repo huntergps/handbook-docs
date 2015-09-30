@@ -114,7 +114,7 @@ Removes the first occurence of `value` from the @(Observable:observables) list o
 
 #### $(tryRemove:tryRemove(value))
 Tries to remove the first occurence of `value` from the @(Observable:observables) list of values.
-Returns true if sucessfull, and false otherwise.
+Returns true if successful, and false otherwise.
 
 	var shapes = Observable("Round", "Square", "Rectangular");
 	if(shapes.tryRemove("Rectangular")) {

@@ -703,7 +703,7 @@ Valid values for `HitTestMode` are:
 - `None` - This element will not do hit testing
 - `LocalBounds` - This element will be hit tested based on its size
 - `LocalVisual` - This element will be hit tested based on its appearance
-- `LocalBoundsAndChildren` - Hit testing will include the bounds of the element and its ch`ildren
+- `LocalBoundsAndChildren` - Hit testing will include the bounds of the element and its children
 - `LocalVisualAndChildren` - Hit testing will include the appearance of the element and its children
 
 Note that if you set the @(Opacity) of an element below or equal its `HitTestOpacityThreshold` (which defaults to being 0), hit testing will be disabled for that object. This means that you can click an element as you fade it out, but it will stop accepting clicks at a certain point.
@@ -775,7 +775,7 @@ It can also be used to create artistic effects like outer glow:
 	- 270 - bottom
 - `Distance` - The distance in points from the source of the shadow
 - `Size` - The size of the dropshadow
-- `Spread` - How the shadow drops off. The closer to 0, the more linear. Keep this value low (experiment below 1.0), or you will get artifacting
+- `Spread` - How the shadow drops off. The closer to 0, the more linear. Keep this value low (experiment below 1.0), or you will get artifacts
 - `Color` - Which color the dropshadow should have. Note that this also supports alpha channel, so you can make the shadow more or less transparent 
 
 ### $(Blur)
@@ -787,6 +787,8 @@ To blur an element:
 	</Text>
 	
 Note that while the `Radius` of the `Blur` can be animated like most other properties, this is potentially an expensive operation, and should be tested on devices to make sure it behaves properly.
+
+TODO: The API reference doesn't include `Radius` and has a bunch of properties I cannot confidently say anything about. AUTH help?
 
 ### $(Desaturate)
 

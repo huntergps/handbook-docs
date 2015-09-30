@@ -1,6 +1,6 @@
 # $(Trigger)s and $(Animator)s
 
-Triggers gives a declarative way of creating animations with Fuse. At its most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
+Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
@@ -33,7 +33,7 @@ There are five pairs of properties which are important for controlling the exact
 The `Target` property is used to identify the property which we intend to animate.
 The `Value` property is the value of the result of an animation.
 
-Because the task of setting a target and value, UX has a special syntax for this. Instead of
+Because the task of setting a target and value, UX has a special syntax for this. Instead of (TODO: Broken sentence. Should this be "setting a target and value is so common"?)
 ```
 <Change Target="target.Property" Value="Value"/>
 ```
@@ -43,7 +43,7 @@ one can do the following:
 ```
 
 ### $(Duration)/$(DurationBack)
-Animations can have different behavior when animating forwards and backwards. When a trigger is activated, the animation is said to play forwards. When the trigger is deactivated, the animation is played backwards. Duration is used to set the duration for the animation. One can set a different duration for the backwards animation by using the `DurationBack` property.
+Animations can have different behavior when animating forward and backward. When a trigger is activated, the animation is said to play forward. When the trigger is deactivated, the animation is played backward. Duration is used to set the duration for the animation. One can set a different duration for the backward animation by using the `DurationBack` property.
 
 When there are multiple @(Animator:animators) inside a trigger, the total duration of the trigger will be the longest duration among the animators.
 
@@ -57,14 +57,14 @@ In the following example, the total duration of the @(WhileTrue) trigger will be
 ```
 
 ### $(Delay)/$(DelayBack)
-Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backwards animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
+Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backward animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
 ```
 <Change Delay="5" Duration="2" someElement.Height="100"/>
 ```
 
 ### $(Easing)/$(EasingBack)
 
-Fuse comes with a standard set of predefined easing curves. Easing curves are used to control how an animation progresses over time. The default easing is set to `Linear`. With linear easing, the animation progresses at the same speed over its entire duration. This usually appears quite unnatural and fake. To gain a more natural feel, we can change the easing to QuadraticInOut, like so:
+Fuse comes with a standard set of predefined easing curves. Easing curves are used to control how an animation progresses over time. The default easing is set to `Linear`. With linear easing, the animation progresses at the same speed over its entire duration. This usually appears quite unnatural and fake. To gain a more natural feel, we can change the easing to `QuadraticInOut`, like so:
 ```
 <Change Easing="QuadraticInOut" Duration="2" someElement.Property="SomeValue"/>
 ```
@@ -96,7 +96,7 @@ TODO/AUTH: Write about mixop
 
 ### $(Change)
 
-Temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @(Set) animator.
+`Change` temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @(Set) animator.
 The `Change` animator can be used to animate almost any property.
 
 ```
@@ -162,7 +162,7 @@ TODO: Spin
 
 > ## Transforms
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.
-It is worth mentioning that the order of these transforms affects the order of when they are applied to the element, and therefore can leed to different results.
+It is worth mentioning that the order of these transforms affects the order of when they are applied to the element, and therefore can lead to different results.
 
 ```
 <Panel Width="100" Height="50">
@@ -177,20 +177,20 @@ It is worth mentioning that the order of these transforms affects the order of w
 </Panel>
 ```
 
-The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive X-direction is now 45 degrees downwards, and so our panel ends up being moved towards the bottom right.
+The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive `X`-direction is now 45 degrees downward, and so our panel ends up being moved toward the bottom right.
 
 ### $(Keyframe)
 AUTH:
 
-There are situations in where we not only want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
 
     <Move RelativeTo="ParentSize">
 		<Keyframe X="10" Time="0.5"/>
 		<Keyframe X="15" Time="1"/>
 		<Keyframe X="5" Time="2"/>
-		</Move>
+	</Move>
 
-This @(Move) animator will first animte X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
+This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
 Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
 
 	<Page>
@@ -205,7 +205,7 @@ Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
 		</ActivatingAnimation>
 	</Page>
 
-This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute positions. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their position on the timeline.
+This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.
 
 TODO: Interpolation
 
@@ -230,7 +230,7 @@ TODO: Document X, Y, Z
 TODO: Document Vector
 
 ### $(Rotation)
-`Rotation` rotates the element by the amount of degrees specified. Here is an example of a rectangle which is rotated by 90 degrees.
+`Rotation` rotates the element by the degrees specified. Here is an example of a rectangle which is rotated by 90 degrees.
 ```
 <Rectangle Width="100" Height="50">
 	<Rotation Degrees="90"/>
@@ -242,12 +242,12 @@ Document X, Y, Z
 ### $(Shear)
 TODO: More?/ AUTH
 
-The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, og an arbirarty vector using the `Vector` property.
+The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, og an arbitrary vector using the `Vector` property.
 
 
 ## $(Attractor)
 
-The `Attractor` is used to give a more natural movement to animations. It acts as an intermediary between an animator and its target. An `Attractor` will continuously animate its target towards its `Value` using a simple form of physics simulation. We can combine this behavior with animation by animating the attractors `Value` property.
+The `Attractor` is used to give a more natural movement to animations. It acts as an intermediary between an animator and its target. An `Attractor` will continuously animate its target towards its `Value` using a simple form of physics simulation. We can combine this behavior with animation by animating the attractor's `Value` property.
 ```
 <Panel ux:Name="somePanel">
 	<Translation ux:Name="someTranslation"/>
@@ -306,7 +306,7 @@ Permanently changes the value of a property. If you want to just change it tempo
 ```
 
 > ### $(Toggle)
-`Toggle` is used to toggle a boolean value between `true` and `false`. If out inside a @(Switch) it will toggle the value of the @(Switch). `Toggle` can also be used to activate/deactive @(WhileTrue) and @(WhileFalse) triggers like so:
+`Toggle` is used to toggle a boolean value between `true` and `false`. If inside a @(Switch) it will toggle the value of the @(Switch). `Toggle` can also be used to activate/deactive @(WhileTrue) and @(WhileFalse) triggers like so:
 
 ```
 <WhileTrue ux:Name="trueTrigger">
@@ -373,7 +373,7 @@ A `State` consists of a set of @(Animator:animators) inside a `State` object. It
 ```
 
 ### $(StateGroup)
-A `StateGroup` is used to group a set of @(State:states) together and switch between them. `StateGroup` has an `Active` property, which is used to assign which @(State) is currently active in that group. One can also specify the @(TransitionType), which can be wither `Exclusive` or `Parallel`. `Exclusive` means that each state will have to be fully deactivated before the next state becomes active. `Parallel` means that as one state deactivates, the next one will active and whatever properties they animate will be interpolated between them.
+A `StateGroup` is used to group a set of @(State:states) together and switch between them. `StateGroup` has an `Active` property, which is used to assign which @(State) is currently active in that group. One can also specify the @(TransitionType), which can be either `Exclusive` or `Parallel`. `Exclusive` means that each state will have to be fully deactivated before the next state becomes active. `Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.
 
 Here is an exampel of how to use a `StateGroup` to switch the color of a @(Rectangle) between three states:
 ```
@@ -414,7 +414,7 @@ Here is an exampel of how to use a `StateGroup` to switch the color of a @(Recta
 
 ## Data triggers
 
-Reacts to data changes, either from data binding or from the control context.
+These triggers react to data changes, either from data binding or from the control context.
 
 ### $(WhileTrue)
 `WhileTrue` is active while its `Value` property is `True` and inactive while it's false.
@@ -454,6 +454,8 @@ Following are triggers which react to pointer gestures.
 
 ### $(Tapped)
 The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click just means that the pointer has to be pressed and released on the element, a tap means that the pointer has to be released within a certain time after the pointer is pressed.
+
+AUTH: Is this really true? I thought `Tapped` didn't need a release, only a press.
 
 TODO: Can we configure this time? And what is the default?
 
@@ -515,7 +517,7 @@ too much time scratching your head.
 
 ### $(LayoutAnimation)
 
-The `LayoutAnimation` is triggered in response to a layout change. A layout change happens whenever the element gets a new layout by the layout system. `LayoutAnimation` is commonly used together with @(MultiLayoutPanel) for some pretty interresting animations. See @(LayoutAnimation) for more in depth documentation.
+The `LayoutAnimation` is triggered in response to a layout change. A layout change happens whenever the element gets a new layout by the layout system. `LayoutAnimation` is commonly used together with @(MultiLayoutPanel) for some pretty interesting animations. See @(LayoutAnimation) for more in depth documentation.
 
 TODO: consider linking to external article here
 
@@ -523,7 +525,7 @@ TODO: consider linking to external article here
 
 TODO: Link to examples
 
-`AddingAnimation` is triggered whenever the element is added to the visual tree. Adding animation is by default a backwards animation, meaning it will animate from progress 1 back to 0.
+`AddingAnimation` is triggered whenever the element is added to the visual tree. Adding animation is by default a backward animation, meaning it will animate from progress 1 back to 0.
 
 TODO: Example
 
@@ -532,7 +534,7 @@ TODO: Example
 
 `RemoveAnimation` is similar to @(AddingAnimation) but is triggered whenever the element is removed from its parent. `RemoveAnimation` progresses normally from 0 to 1 over the specified @(Duration).
 
-In the following example, a rectangle will move in from the right side by the width of its parent container over one second when it is added to the visual tree by the @(Switch). It will move out to the left by the same length when it is removed.
+In the following example, a rectangle will move in from the right side by the width of its parent container over one second when it is added to the visual tree by the @(Switch). It will move out to the left by the same distance when it is removed.
 ```
 <App Theme="Basic" ClearColor="#eeeeeeff">
 	<StackPanel Background="#ddd" Margin="10">

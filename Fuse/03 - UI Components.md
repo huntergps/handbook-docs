@@ -116,7 +116,7 @@ There are a number of ways to address this issue. You can set the `StretchMode`-
 Image sources can be specified directly on @(Image) by using the `File` or `Url` attributes. 
 This however, reduces control over several aspects of the image's lifetime.
 
-Using $(ImageSource) objects instead of specifying the source directly on the @(Image) attribtue
+Using $(ImageSource) objects instead of specifying the source directly on the @(Image) attribute
 allows you to name and reuse the image source as a resource throughout your app, without duplicating
 paths and metadata everywhere.
 
@@ -130,9 +130,9 @@ And then you can use `CloseIcon` anywhere in your project:
 
 Fuse currently suppots the following image source types:
 
-* @(FileImageSource) - specifies a single local image file and it's density 
-* @(HttpImageSource) - specifies a single image from a URL and it's density
-* @(MultiDensityImageSource) - allows you to specify multiple versions of the same image for use with different screen densiies.
+* @(FileImageSource) - specifies a single local image file and its density 
+* @(HttpImageSource) - specifies a single image from a URL and its density
+* @(MultiDensityImageSource) - allows you to specify multiple versions of the same image for use with different screen densities.
 
 In addition, the following classes allow you to configure image sources further:
 

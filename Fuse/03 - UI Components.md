@@ -77,12 +77,12 @@ For a small example of other ways to load image data, here is a small example th
 		<StackPanel>
 			<JavaScript>
 				module.exports = {
-					pictureResource: {key: "pic2"},
+					pictureResource: "pic2",
 					url: "http://somewhereontheinternet/Cute-Cat.jpg"
 				}
 			</JavaScript>
 			<Image File="Pictures/Picture1.jpg" />
-			<Image Source="{DataToResource pictureResource.key}" />
+			<Image Source="{DataToResource key}" />
 			<Image Url="{url}" />
 		</StackPanel>
 	</App>
@@ -99,15 +99,15 @@ This will turn a white icon red.
 
 ### $(StretchMode)
 
-When added to a container, an `Image` will by default try to show as much as itself as possible. If the image isn't the same aspect as its container, there will be parts of the container that will not be covered.
+When added to a container, an `Image` will by default try to show as much of itself as possible. If the image isn't the same aspect as its container, there will be parts of the container that will not be covered.
 
 There are a number of ways to address this issue. You can set the `StretchMode`-property on your `Image` to make it behave differently. Here are the different `StretchMode`s:
 
 - `Fill` - Fill the available area in the container without necessarily preserving aspect ratio.
 - `PixelPrecise` - Use the pixels from the image as unit to make sure the image is crisp on all devices. This means that the image will be different sizes on different devices. It ignores the size of the `Image` container.
-- `PointPrecise` - This uses the size of the image source as the `Image` in points, which guarantees that it will be the same on all devices. It ignores the size of the `Image` container.
+- `PointPrecise` - This uses the size of the image source as the `Image` in points, which guarantees that it will be the same on all devices. It ignores the size of the `Image` container. For example, if the image is 64x64 pixels in size, the resulting control will be 64x64 @(points)
 - `PointPrefer` - The `PointPrefer` stretch mode will prioritize getting image size correct using `PointPrecise` stretch mode, but in cases where `PixelPrecise` would create an on-screen image with approximately the right size, it will use `PixelPrecise` to increase the clarity of the image.
-- `Scale9` - Link to external documentation for this?
+- `Scale9` - Link to external documentation for this? TODO
 - `Uniform` - This will make the picture as large as possible while preserving aspect ratio. This will often make the `Image` not cover the whole parent.
 - `UniformToFill` - Fill the parent container while preserving aspect ratio. This will often mean that parts of the picture are left out, clipped by the parent
 

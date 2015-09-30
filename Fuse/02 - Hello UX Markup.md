@@ -8,7 +8,7 @@ Fuse can be used in two primary ways:
 The main representation of both these things in Fuse is through the use of UX Markup.
 
 UX Markup is an XML-based format that should be immediately familiar to anyone who has
-worked with similar formats. For an in-depth look at it's quirks and detailed features, make
+worked with similar formats. For an in-depth look at its quirks and detailed features, make
 sure you read:
 
 * TODO: Links to detailed UX specs
@@ -54,7 +54,7 @@ This can be done on any node even inside other nodes:
 		<Panel ux:Class="FancyClass" />
 	</Panel>
 
-You can also split your components into seprate files. The root node of a n`.ux` file is implicitly a `ux:Class`,
+You can also split your components into seprate files. The root node of a `.ux` file is implicitly a `ux:Class`,
 so if the following code lives inside `FancyPanel.ux`:
 
 	<Panel>

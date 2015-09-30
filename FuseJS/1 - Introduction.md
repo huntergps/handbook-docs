@@ -1,6 +1,6 @@
 # Introduction
 
-FuseJS is a JavaScript framework for writing cross-platform mobile app business logic.
+$(FuseJS) is a JavaScript framework for writing cross-platform mobile app business logic.
 
 ## Getting started
 

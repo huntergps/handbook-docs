@@ -128,7 +128,7 @@ And then you can use `CloseIcon` anywhere in your project:
 
 	<Image Source="CloseIcon" />
 
-Fuse currently suppots the following image source types:
+Fuse currently supports the following image source types:
 
 * @(FileImageSource) - specifies a single local image file and its density
 * @(HttpImageSource) - specifies a single image from a URL and its density

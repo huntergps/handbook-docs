@@ -1,6 +1,6 @@
 # $(Trigger)s and $(Animator)s
 
-Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represents events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
+Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represent events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 
 $(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
 
@@ -57,7 +57,7 @@ In the following example, the total duration of the @(WhileTrue) trigger will be
 ```
 
 ### $(Delay)/$(DelayBack)
-Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backward animation. The total duation of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
+Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backward animation. The total duration of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
 ```
 <Change Delay="5" Duration="2" someElement.Height="100"/>
 ```
@@ -113,7 +113,7 @@ One can also animate such properties as `Width`, `Height` and `Margin`, but beca
 ### $(Move)
 
 The `Move` animator is used to move an element. `Move` does not affect layout, so the element will just get an offset from its actual location. By default, `<Move X="10"/>` will move the element by 10 points.
-Some times one wants an element to move relative to its own size or some other elements size. To control this, we can use the @(RelativeTo) property.
+Sometimes, one wants an element to move relative to its own size or some other elements size. To control this, we can use the @(RelativeTo) property.
 
 @(RelativeTo) can be set to the following values:
 - `Local`(default): Moves the set amount of points in the X and/or Y direction.
@@ -123,7 +123,7 @@ Some times one wants an element to move relative to its own size or some other e
 - `Keyboard`: Moves the element relative to the size of the @(Keyboard).
 
 `<Move X="0.5" RelativeTo="Size"/>` will move the element by half of its own width in the x-direction.
-Move corresponds to adding a @(Translation) on the element and using @(Change) to animate its X and Y values. The folling two examples give the same result.
+Move corresponds to adding a @(Translation) on the element and using @(Change) to animate its X and Y values. The following two examples give the same result.
 ```
 <Panel>
 	<WhilePressed>
@@ -190,7 +190,7 @@ There are situations where we don't simply want to animate from point a to point
 		<Keyframe X="5" Time="2"/>
 	</Move>
 
-This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally it will go from an X of 15 to 5 over 1 second.
+This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
 Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
 
 	<Page>
@@ -210,7 +210,7 @@ This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify ti
 TODO: Interpolation
 
 ### $(Translation)
-`Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-reiction and 50 points in the Y-direction.
+`Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-direction and 50 points in the Y-direction.
 ```
 <Rectangle Width="50" Height="50">
 	<Translation X="100" Y="50"/>
@@ -242,7 +242,7 @@ Document X, Y, Z
 ### $(Shear)
 TODO: More?/ AUTH
 
-The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, og an arbitrary vector using the `Vector` property.
+The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, or an arbitrary vector using the `Vector` property.
 
 
 ## $(Attractor)
@@ -375,7 +375,7 @@ A `State` consists of a set of @(Animator:animators) inside a `State` object. It
 ### $(StateGroup)
 A `StateGroup` is used to group a set of @(State:states) together and switch between them. `StateGroup` has an `Active` property, which is used to assign which @(State) is currently active in that group. One can also specify the @(TransitionType), which can be either `Exclusive` or `Parallel`. `Exclusive` means that each state will have to be fully deactivated before the next state becomes active. `Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.
 
-Here is an exampel of how to use a `StateGroup` to switch the color of a @(Rectangle) between three states:
+Here is an example of how to use a `StateGroup` to switch the color of a @(Rectangle) between three states:
 ```
 <StackPanel>
 	<Panel Width="100" Height="100">

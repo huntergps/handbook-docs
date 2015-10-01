@@ -88,17 +88,17 @@ TODO: Add info on that -->
 
 ## UX tags
 
-UX document consists of XML tags. Each available UX tag correspondst a *class* implemented in @(Uno) code. Each tag corresponds to one (or multiple) runtime objects.
+UX documents consists of XML tags. Each available UX tag correspondst a *class* implemented in @(Uno) code. Each tag corresponds to one (or multiple) runtime objects.
 
 The available tags (classes) come in these categories:
 
 * The @(App) class is the root of the app, and can contain eactly one Node
 * Many @(Node) types, most of which are @(Element:UI Elements)
 * @(Behaviors) which modify nodes. Behaviors come in many flavors:
-* * @(Gestures)
-* * @(Triggers)
-* * @(Scripts)
-* Visual @(effects) which can be applied to @(elements)
+  * @(Gestures)
+  * @(Triggers)
+  * @(Scripts)
+  * Visual @(effects) which can be applied to @(elements)
 * @(Styles) which allow consistent look and feel of components without repeating data
 
 ## $(Theme:Themes)
@@ -113,6 +113,8 @@ If not specified, `App` uses a plain `GraphicsTheme` by default.
 ### $(NativeTheme)
 
 The `NativeTheme` will render
+
+AUTH: how do we best describe how nativetheme works?
 
 
 ### $(GraphicsTheme)

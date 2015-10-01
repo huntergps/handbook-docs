@@ -11,7 +11,7 @@ UX Markup is an XML-based format that should be immediately familiar to anyone w
 worked with similar formats. For an in-depth look at its quirks and detailed features, make
 sure you read:
 
-* TODO: Links to detailed UX specs
+<!-- * TODO: Links to detailed UX specs -->
 
 
 ## $(Creating apps) : $(App)
@@ -31,15 +31,16 @@ The `<App>` tag itself bootstraps the app and takes care of application @(lifecy
 
 The `Background` property controls the @(color) of the root view of the app.
 
-> ### $(Lifecycle) events
+<!-- > ### $(Lifecycle) events
 
-TODO: Details on lifecycle events available on App
+TODO: Details on lifecycle events available on App -->
 
 
 ## $(Creating components) : $(ux:Class)
 
+<!--
 TODO: Focus on the humane way with a file for each component
-TODO: Put ux:Class in separate sub topic
+TODO: Put ux:Class in separate sub topic -->
 
 When creating reusable components, we decorate our tags with the `ux:Class`
 attribute:
@@ -76,13 +77,14 @@ Once you've made a reusable class, you can use it like any other tag:
 		<FancyClass />
 	</MyClass>
 
+<!--
 > ### Using your component in a native iOS (Xcode) app
 TODO: Link to @(learn-iOS)
 TODO: Add info on this
 
 > ### Using your component in a native Android Studio app
 TODO: Link to @(learn-Android)
-TODO: Add info on that
+TODO: Add info on that -->
 
 ## UX tags
 
@@ -140,7 +142,7 @@ Or like this, which means exactly the same:
 	</App>
 
 > #### Creating your own GraphicsTheme
-TODO: Concider moving to Styling and resources chapter
+<!-- TODO: Concider moving to Styling and resources chapter -->
 
 It is possible to *extend* `GraphicsTheme` to specify specific
 look and feels for controls like `Slider` and `Button`.

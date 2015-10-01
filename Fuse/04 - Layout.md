@@ -3,7 +3,7 @@
 Fuse has a powerful layout system that works across all platforms and devices, whether you
 are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) based elements.
 
-* TODO: Links to jake's videos
+<!-- * TODO: Links to jake's videos -->
 
 ## $(Panels)
 
@@ -80,9 +80,9 @@ The Orientation property can be used to make a vertical `WrapPanel` like so:
 <WrapPanel Orientation="Vertical"/>
 ```
 
-TODO: Add information about `Alignment="Bottom"` to start adding at the bottom.
+<!-- TODO: Add information about `Alignment="Bottom"` to start adding at the bottom.
 
-TODO: Illustration
+TODO: Illustration -->
 
 ### $(DockPanel)
 The DockPanel layes out its children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so:
@@ -101,13 +101,13 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 </DockPanel>
 ```
 
-TODO: Illustration
+<!-- TODO: Illustration
 TODO: Add information about docking multiple elements to the same dock
-TODO: Order of elements added to dock affects size
+TODO: Order of elements added to dock affects size -->
 
 ## Element Layout
 
-TODO: Link to video
+<!-- TODO: Link to video -->
 
 Whenever a @(Panel) performs layout on its children, it has to ask each element about its layout properties.
 
@@ -146,7 +146,7 @@ Alignment can be assigned to any one of the following values:
 - BottomCenterter
 - BottomRight
 
-TODO: Add information about `Default`, that is, stretch to match parent?
+<!-- TODO: Add information about `Default`, that is, stretch to match parent? -->
 
 ### $(Margin) and $(Padding)
 Each element can specify the amount of space between it and its parent or surrounding elements by using its @(Margin) property.
@@ -179,7 +179,7 @@ The following properties support units
 - @Offset
 - @Anchor
 
-* Note that the column and row properties of @(Grid) use their own system, proportion, auto (TODO: Finish sentence?).
+* Note that the column and row properties of @(Grid) use their own system, proportion, auto. <!-- (TODO: Finish sentence?). -->
 
 ### Specifying units in $(points)
 When setting an elements Width to a number like so `<Element Width="50"/>`, the element will become 50 points wide.

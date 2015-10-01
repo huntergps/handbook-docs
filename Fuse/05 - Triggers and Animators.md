@@ -13,8 +13,8 @@ For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel
 </Panel>
 ```
 
-TODO:
-* Explain how triggers are a timeline, plays forwards/backwards, applies/unapplies
+<!-- TODO:
+* Explain how triggers are a timeline, plays forwards/backwards, applies/unapplies -->
 
 As well as animating properties, one can also use triggers to add and remove entire elements.
 

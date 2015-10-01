@@ -94,3 +94,15 @@ image saved as a JPG image on disk.
 Note that the `targetWith` and `targetHeight` are just hints, the returned image can be any size.
 
 ## Vibration
+
+Allows you to use the devices vibration functionality.
+
+### How to import
+
+	var Vibration = require('FuseJS/Vibration');
+
+### Example usage:
+
+	Vibration.vibrate(200);
+
+Vibrates for 200 milliseconds.

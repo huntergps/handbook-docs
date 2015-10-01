@@ -1,6 +1,6 @@
 # Navigation
 
-<!-- - TODO: High level (navigator(native))(dont know how it works) -->
+Most apps contains more than just one page. Fuse has several components for making and customizing navigation between different pages.
 
 Lets take a look at a simple case: we want a set of @(Page:pages) which we can @(SwipeNavigate:swipe) between.
 
@@ -93,7 +93,7 @@ It is mandatory to set a value for the @(PageIndicator:page indicators) `Navigat
 Another thing to note is that the `PageIndicator` uses a @(Factory) to create an indicator for each page. In the example above, we use a @(Circle) with the @(ux:Generate) property set to @(Factory) and the @(ux:Binding) property set to to page indicators `DotFactory` property.
 
 ## $(Navigation types)
-There are three navigation types, and they have quite different behaviors and use cases.
+There are three navigation types, and they have quite different behaviors and use cases. Each of them inherit from the `Navigation` base type.
 
 ### $(Linear navigation)
 `LinearNavigation` is used when each page should be layed out linearly. So with a swipe navigation, one would start from page 1, swipe to page 2, then page 3 and so on. Navigating directly to page 3 from page 1 would cause a quick visit to page 2 on the way.
@@ -182,14 +182,13 @@ Here is a more advanced use of @(EnteringAnimation:Entering-), @(ExitingAnimatio
 ## $(WhileInactive)
 `WhileInactive` animates as a page is becoming inactive.
 
-<!-- 
+<!--
 ## $(WhileInEnterState)
-TODO:
+TODO
 ## $(WhileInExitState)
-TODO:
+TODO
 ## $(WhileNavigating)
-TODO:
--->
+TODO -->
 
 ## $(SwipeNavigate)
 `SwipeNavigate` is used to connect swiping gestures to @(Navigation).

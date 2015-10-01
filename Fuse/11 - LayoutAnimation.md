@@ -103,7 +103,3 @@ Here is a quick example, showing how we can move a @(Rectangle) from one @(Panel
 			</Placeholder>
 		</Panel>
 	</MultiLayoutPanel>
-
-MultiLayout can be a bit tricky to wrap ones head around, so lets go through a few more use cases.
-
-Here is an example of how one can move elements from a stack layout to a grid layout.

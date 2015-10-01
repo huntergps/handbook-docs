@@ -77,12 +77,11 @@ Once you've made a reusable class, you can use it like any other tag:
 		<FancyClass />
 	</MyClass>
 
-<!--
-> ### Using your component in a native iOS (Xcode) app
+<!-- ### Using your component in a native iOS (Xcode) app
 TODO: Link to @(learn-iOS)
-TODO: Add info on this
+TODO: Add info on this -->
 
-> ### Using your component in a native Android Studio app
+<!--  ### Using your component in a native Android Studio app
 TODO: Link to @(learn-Android)
 TODO: Add info on that -->
 
@@ -112,10 +111,9 @@ If not specified, `App` uses a plain `GraphicsTheme` by default.
 
 ### $(NativeTheme)
 
-The `NativeTheme` will render
+When using `NativeTheme`, Fuse will use the native controls to render. For example putting a @(Button) in the UX will put a native Android or iOS @(Button) depending on the target platform.
 
-AUTH: how do we best describe how nativetheme works?
-
+<!-- AUTH: how do we best describe how nativetheme works? -->
 
 ### $(GraphicsTheme)
 

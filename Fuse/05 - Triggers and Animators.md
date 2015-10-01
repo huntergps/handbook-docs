@@ -33,7 +33,7 @@ There are five pairs of properties which are important for controlling the exact
 The `Target` property is used to identify the property which we intend to animate.
 The `Value` property is the value of the result of an animation.
 
-Because the task of setting a target and value, UX has a special syntax for this. Instead of (TODO: Broken sentence. Should this be "setting a target and value is so common"?)
+Because the task of setting a target and value is so common, UX has a special syntax for this. Instead of
 ```
 <Change Target="target.Property" Value="Value"/>
 ```
@@ -91,8 +91,8 @@ Assign easing to an animator like so:
 <Rotate Easing="BounceOut" Degrees="10" Duration="0.4"/>
 ```
 
-- MixOp
-TODO/AUTH: Write about mixop
+<!-- - MixOp
+TODO/AUTH: Write about mixop-->
 
 ### $(Change)
 
@@ -154,11 +154,11 @@ Move corresponds to adding a @(Translation) on the element and using @(Change) t
 <Rotate Degrees="90" Duration="0.5"/>
 ```
 
-> ### $(Cycle)
+<!--  ### $(Cycle)
 TODO: Cycle
 
-> ### $(Spin)
-TODO: Spin
+ ### $(Spin)
+TODO: Spin -->
 
 > ## Transforms
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.
@@ -207,7 +207,7 @@ Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
 
 This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.
 
-TODO: Interpolation
+<!-- TODO: Interpolation -->
 
 ### $(Translation)
 `Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-direction and 50 points in the Y-direction.
@@ -217,7 +217,7 @@ TODO: Interpolation
 </Rectangle>
 ```
 
-TODO: Document X, Y, Z
+<!-- TODO: Document X, Y, Z -->
 
 ### $(Scaling)
 `Scaling` enlarges or shrinks the element by the factor specified. The following example will make the @(Rectangle) twice as big as the original size:
@@ -227,7 +227,7 @@ TODO: Document X, Y, Z
 </Rectangle>
 ```
 
-TODO: Document Vector
+<!-- TODO: Document Vector -->
 
 ### $(Rotation)
 `Rotation` rotates the element by the degrees specified. Here is an example of a rectangle which is rotated by 90 degrees.
@@ -237,10 +237,10 @@ TODO: Document Vector
 </Rectangle>
 ```
 
-Document X, Y, Z
+<!-- Document X, Y, Z -->
 
 ### $(Shear)
-TODO: More?/ AUTH
+<!-- TODO: More?/ AUTH -->
 
 The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, or an arbitrary vector using the `Vector` property.
 
@@ -355,8 +355,8 @@ This example shows how to use `BringIntoView` to make a @(ScrollView) automatica
 </App>
 ```
 
-> ### $(BringToFront)
-AUTH: TODO: Do we need to discuss Z-ordering?
+<!--  ### $(BringToFront)
+AUTH: TODO: Do we need to discuss Z-ordering? -->
 
 
 ## $(State groups)
@@ -422,8 +422,8 @@ These triggers react to data changes, either from data binding or from the contr
 ### $(WhileFalse)
 `WhileFalse` is active while its `Value` property is `False` and inactive while it's true.
 
-### WhileFailed
-TODO: I dont know what it does
+<!-- ### WhileFailed
+TODO: I dont know what it does -->
 
 ## $Gestures
 
@@ -455,9 +455,8 @@ Following are triggers which react to pointer gestures.
 ### $(Tapped)
 The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click just means that the pointer has to be pressed and released on the element, a tap means that the pointer has to be released within a certain time after the pointer is pressed.
 
-AUTH: Is this really true? I thought `Tapped` didn't need a release, only a press.
-
-TODO: Can we configure this time? And what is the default?
+<!-- AUTH: Is this really true? I thought `Tapped` didn't need a release, only a press. -->
+<!-- TODO: Can we configure this time? And what is the default? -->
 
 ### $(WhileHovering)
 `WhileHovering` is active while the pointer is within the bounds if its containing @(Element).
@@ -501,10 +500,10 @@ In the following example, we place a red @(Panel) if on an Android device and a 
 ### $(WhileKeyboardVisible)
 `WhileKeyboardVisible` is active whenever the on-screen keyboard is visible.
 
-TODO: Example
+<!-- TODO: Example -->
 
-### WhileWindowAspect
-TODO: Did we change the name of this?
+<!-- ### WhileWindowAspect
+TODO: Did we change the name of this?-->
 
 ## Special $(Animation)s
 
@@ -519,15 +518,15 @@ too much time scratching your head.
 
 The `LayoutAnimation` is triggered in response to a layout change. A layout change happens whenever the element gets a new layout by the layout system. `LayoutAnimation` is commonly used together with @(MultiLayoutPanel) for some pretty interesting animations. See @(LayoutAnimation) for more in depth documentation.
 
-TODO: consider linking to external article here
+<!-- TODO: consider linking to external article here-->
 
 ### $(AddingAnimation)
 
-TODO: Link to examples
+<!-- TODO: Link to examples -->
 
 `AddingAnimation` is triggered whenever the element is added to the visual tree. Adding animation is by default a backward animation, meaning it will animate from progress 1 back to 0.
 
-TODO: Example
+<!-- TODO: Example -->
 
 ### $(RemovingAnimation)
 `RemovingAnimation` is similar to @(AddingAnimation), but is triggered whenever an @(Element) is being removed from the visual tree.
@@ -556,15 +555,6 @@ In the following example, a rectangle will move in from the right side by the wi
 	</StackPanel>
 </App>
 ```
-
-### $(EnteringAnimation)
-
-TODO: Link to navigation
-`EnteringAnimation` is used to control how pages behave when they are navigated to and from. Check out the @(Navigation) chapter for more in depth documentation.
-
-### $(ExitingAnimation)
-
-TODO: Same as above
 
 ### $(ActivatingAnimation)
 
@@ -621,18 +611,29 @@ In the following example, our background changes color when we reach the bottom 
 
 ### $(ProgressAnimation)
 
-TODO: What does it do?
+`ProgressAnimation` can be used together with a slider to animate elements as one slides its thumb. `ProgressAnimation` always goes from 0 to 1 as one slides the slider from its minimum value to its maximum value.
 
-## $(Timeline)
+```
+<Image File="someImage.png">
+	<Blur ux:Name="blur" Radius="0"/>
+</Image>
+<Slider Width="50%" Alignment="Bottom" Margin="0,80">
+	<ProgressAnimation>
+		<Change blur.Radius="10"/>
+	</ProgressAnimation>
+</Slider>
+```
+
+<!-- ## $(Timeline)
 
 TODO: Might need edaqua for this one.
 
-Timelines are used to create custom animations that can be played, paused, seeked etc. in response to events.
+Timelines are used to create custom animations that can be played, paused, seeked etc. in response to events.-->
 
-> ## Advanced trigger usage
+<!-- ## Advanced trigger usage
 
 TODO: Show examples of
 * Document Bypass
 * Triggers within triggers
 * Elements/nodes within triggers
-* Styles within triggers (? not sure if this is currently possible)
+* Styles within triggers (? not sure if this is currently possible) -->

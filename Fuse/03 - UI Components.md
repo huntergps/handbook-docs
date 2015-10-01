@@ -743,8 +743,23 @@ You can set the transparency of objects using the `Opacity`-property.
 
 When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTest:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state.
 
-<!-- > ## Layers
-TODO: AUTH: -->
+> ## Layers
+
+<!-- TODO: AUTH: @mortoray --> 
+
+It is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its `Background` `Layer`:
+
+	<Button Text="Hello!">
+		<Rectangle Fill="#931" Layer="Background" />		
+	</Button>
+	
+This will not change the layout or behavior of the `Button`, but its appearance will change.
+
+Valid values for `Layer` are:
+
+- `Background`
+- `Layout`
+- `Overlay`
 
 > ## $(Effects)
 

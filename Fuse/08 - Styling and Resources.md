@@ -123,12 +123,12 @@ Then, instead of specifying the greeting string directly throughout the app, we 
 	<Text Value="{Resource Greeting}" />
 
 
-## The anatomy of controls
+<!--## The anatomy of controls
 
 TODO: Explain appearances, overlays, child/parent, how 
 
 ## Tweaking existing styles
 
-- InheritStyle = false ?
+- InheritStyle = false ? -->
 
 

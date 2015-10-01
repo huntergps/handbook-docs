@@ -1,6 +1,6 @@
 # Navigation
 
-- TODO: High level (navigator(native))(dont know how it works)
+<!-- - TODO: High level (navigator(native))(dont know how it works) -->
 
 Lets take a look at a simple case: we want a set of @(Page:pages) which we can @(SwipeNavigate:swipe) between.
 
@@ -104,7 +104,7 @@ With `DirectNavigation` there is no implicit flow between pages. Any @(Page) can
 ### $(Hierarchical navigation)
 A `HierarchicalNavigation` is commonly used when there is a hierarchical flow of pages. This is commonly found in the settings apps on iOS and Android devices. One first picks a topic, then a subtopic and so on, taking us deeper into the hierarchy of options. Navigating in this context means pushing a page onto a stack of pages. For each navigation there is a natural back navigation which takes us back the the page navigated from.
 
-TODO: Document - GoBack and - GoForward ?
+<!-- TODO: Document - GoBack and - GoForward ? -->
 
 
 ## $(EnteringAnimation) / $(ExitingAnimation)
@@ -174,7 +174,7 @@ Here is a more advanced use of @(EnteringAnimation:Entering-), @(ExitingAnimatio
 		</Page>
 	</Style>
 
-TODO: Document whats going on?
+<!-- TODO: Document whats going on? -->
 
 ## $(WhileActive)
 `WhileActive` animates as a page is becoming active.
@@ -182,12 +182,14 @@ TODO: Document whats going on?
 ## $(WhileInactive)
 `WhileInactive` animates as a page is becoming inactive.
 
+<!-- 
 ## $(WhileInEnterState)
 TODO:
 ## $(WhileInExitState)
 TODO:
 ## $(WhileNavigating)
 TODO:
+-->
 
 ## $(SwipeNavigate)
 `SwipeNavigate` is used to connect swiping gestures to @(Navigation).
@@ -210,4 +212,4 @@ Can have the values `Closed`, `Open` and `Short`.
 It is quite possible to perform navigation through databinding.
 To do this, we databind the navigations `Active` property to a string in JavaScript. This string should correspond to the Name of the @(Page) we intend to navigate to.
 
-TODO: Create example where both pages and direct navigation is databound. (perhaps hierarchical?)
+<!-- TODO: Create example where both pages and direct navigation is databound. (perhaps hierarchical?) -->

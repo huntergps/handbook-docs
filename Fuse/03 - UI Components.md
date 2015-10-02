@@ -6,7 +6,7 @@ Fuse comes with a number of UI components that can be used to construct a user i
 	<Rectangle Width="50" Height="50" Fill="#888" />
 	<Text>Hello world!</Text>
 
-Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as triggers and actions.
+Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as @(Triggers) and @(Actions).
 
 > ## Videos on this topic
 
@@ -22,11 +22,11 @@ If you want to add longer passages of text, such as a _Lorem Ipsum_, you discove
 
 	<Text TextWrapping="Wrap">Lorem Ipsum(...)</Text>
 
-If you find that wrapping the text still makes it hard to show all the contents you want, you probably want to look at adding the contents to a @(ScrollView), or changing @(FontSize). `TextWrapping` can be set to `Wrap` and `NoWrap` (default).
+If you find that wrapping the text still makes it hard to show all the contents you want, you probably want to look at adding the contents to a @(ScrollView), or changing @(FontSize). `TextWrapping` can be set to `Wrap` or `NoWrap` (default).
 
 ### $(Fonts)
 
-You can import fonts from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a _global @(Resources:resource)_ for it.
+You can import fonts from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a _@(Resources:global resource)_ for it.
 
 	<App>
 		<Font File="Roboto-Medium.ttf" ux:Global="Medium" />
@@ -73,21 +73,21 @@ This code assumes the file `FuseLogo.png` lives in the same directory as the UX-
 For a small example of other ways to load image data, here is a small example that also uses databinding from JavaScript:
 
 	<App>
-		<FileImageSource ux:Key="pic2" File="Pictures/Picture2.jpg" />
+		<FileImageSource ux:Key="pic2" File="Images/Image2.jpg" />
 		<StackPanel>
 			<JavaScript>
 				module.exports = {
-					pictureResource: "pic2",
+					imageResource: "pic2",
 					url: "http://somewhereontheinternet/Cute-Cat.jpg"
 				}
 			</JavaScript>
-			<Image File="Pictures/Picture1.jpg" />
+			<Image File="Images/Image1.jpg" />
 			<Image Source="{DataToResource key}" />
 			<Image Url="{url}" />
 		</StackPanel>
 	</App>
 
-This app will show three `Image`s stacked on top of each other. The topmost picture will be fetched as a normal file. Then we create a `FileImageSource` that we bind to a picture using `DataToResource`, which looks up the resource for `pictureResource.key` and binds it to the `Image`. We also get the URL for a picture on the web and bind it to the `Url`-property of an image. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly.
+This app will show three images stacked on top of each other. The topmost image will be fetched as a normal file. Then we create a `FileImageSource` that we bind to an image using `DataToResource`, which looks up the resource for `pictureResource.key` and binds it to the `Image`. We also get the URL for a picture on the web and bind it to the `Url`-property of an `Image`. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly.
 
 > ### Image Color
 
@@ -152,7 +152,7 @@ Because devices have widely different pixel densities, Fuse allows you to specif
 Fuse will then pick the resource best suited for the screen, respecting the $(StretchMode) of the image.
 
 <!--
-> ### Memory policy
+  ### Memory policy
 
 TODO: Explain @mortoray? -->
 
@@ -185,11 +185,11 @@ To draw a `Rectangle`:
 
 In this example, the `Rectangle` will take up as much space as it is allowed by its parent and fill it with a red @(SolidColor).
 
-If you want to have the `Rectangle` limit itself, you can add `Width` and `Height`:
+If you want to have the `Rectangle` limit itself in size, you can add `Width` and `Height`:
 
 	<Rectangle Fill="#f00" Width="50" Height="50" CornerRadius="5" />
 
-This will render a red `Rectangle` with rounded corners over a black background. Note that these @(Units:units) are in @(Points), not @(Pixels), and the `Rectangle` will appear to be roughly the same size on most devices, regardless of pixel density and screen size.
+This will render a red `Rectangle` with rounded corners. Note that these @(Units:units) are in @(Points), not @(Pixels), and the `Rectangle` will appear to be roughly the same size on most devices, regardless of pixel density and screen size.
 
 ### $(Circle)
 
@@ -223,7 +223,7 @@ It is possible to use other kinds of brushes to fill shapes. For example:
 		</Rectangle>
 	</StackPanel>
 
-Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a `Rectangle` that has a nice and subtle `LinearGradient` from fuchsia(?) to purple(?).
+Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a @(Rectangle) that has a nice and subtle `LinearGradient` from fuchsia(?) to purple(?).
 
 ### $(Stroke:Strokes)
 
@@ -245,7 +245,7 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 		</Rectangle>
 	</StackPanel>
 
-It can obviously just be set to be a @(SolidColor:SolidColor-brush):
+It can also be set to be a @(SolidColor:SolidColor-brush) using the `Brush`-property:
 
 	<Rectangle Fill="#f00" Width="50" Height="50">
 		<Stroke Width="5" Brush="#ff0" />
@@ -258,18 +258,17 @@ The @(Stroke) can be aligned:
 
 	<Stroke StrokeAlignment="Center" />
 
-Valid values are `Center`, `Inside`, `Outside`.
+Valid values are `Center`, `Inside` and `Outside`.
 
 #### $(Stroke.Offset)
 
-The `Stroke` of a @(Shape) can be `Offset`:
+The @(Stroke) of a @(Shape) can be `Offset`:
 
 	<Stroke Width="10" Offset="10">
 		<ImageFill File="Pictures/Picture1.jpg" />
 	</Stroke>
 
 A positive `Offset` will make the `Stroke` appear outside the `Shape` while a negative `Offset` will make it appear inside.
-
 
 
 ### Brushes
@@ -282,7 +281,7 @@ If you want to make a simple continuous color, you can use a `SolidColor`:
 
 	<SolidColor Color="#00f" />
 
-This will create a brush that can be assigned to any place that accepts a brush:
+This will create a brush that can be assigned to any place that accepts a brush, for example a @(Rectangle):
 
 	<Rectangle>
 		<SolidColor Color="#00f" />
@@ -329,7 +328,7 @@ It is easy to make an app that has a `Button`:
 
 This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". Because we're working with a control, we add `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
 
-In Fuse, pretty much anything can easily be made clickable (and tappable, etc):
+In Fuse, pretty much anything can easily be made @(Clicked:clickable) (and @(Tapped:tappable), etc):
 
 	<App>
 		<Rectangle Fill="#309">
@@ -347,7 +346,7 @@ Because when you switch the `Theme` to `Native`, Fuse will render the `Button` a
 
 ### $(Event triggers)
 
-The `Button` can also accept `Clicked` as an _`event` trigger_:
+The `Button` can also accept `Clicked` as an _event-trigger_:
 
 	<App Theme="Basic">
 		<JavaScript>
@@ -366,7 +365,7 @@ To accept on/off-style input, Fuse has a `Switch`-control:
 
 	<Switch />
 
-To make it do something, you can use the `WhileTrue`-trigger:
+To make it react to being switched on, you can use the @(WhileTrue:WhileTrue-trigger):
 
 	<App Theme="Basic">
 		<StackPanel>
@@ -380,7 +379,7 @@ To make it do something, you can use the `WhileTrue`-trigger:
 		</StackPanel>
 	</App>
 
-To make it act on the opposite state, you can use `WhileFalse`, or `WhileTrue Invert="true"`.
+To make it act on the opposite state, you can use @(WhileFalse), or `WhileTrue Invert="true"`.
 
 If you want the `Switch` to start out being activated:
 
@@ -403,7 +402,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 
 > ### Databinding switch
 
-You can also databind the switch:
+You can also databind the `Switch` using its `Value`-property:
 
 	<App Theme="Basic">
 		<JavaScript>
@@ -435,7 +434,7 @@ To display a slider:
 
 	<Slider />
 
-If you want to influence something as the slider moves, you can use `ProgressAnimation`. Consider this code which allows you to `Rotate` a `Rectangle` from 0 to 90 degrees:
+To react to the slider being moved, use `ProgressAnimation`. Consider this code which allows you to `Rotate` a `Rectangle` from 0 to 90 degrees:
 
 	<StackPanel>
 		<Slider>
@@ -745,14 +744,14 @@ When the `Opacity` is set to 0.0, the element is fully transparent and will no l
 
 > ## Layers
 
-<!-- TODO: AUTH: @mortoray --> 
+<!-- TODO: AUTH: @mortoray -->
 
 It is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its `Background` `Layer`:
 
 	<Button Text="Hello!">
-		<Rectangle Fill="#931" Layer="Background" />		
+		<Rectangle Fill="#931" Layer="Background" />
 	</Button>
-	
+
 This will not change the layout or behavior of the `Button`, but its appearance will change.
 
 Valid values for `Layer` are:
@@ -797,7 +796,7 @@ It can also be used to create artistic effects like outer glow:
 - `Distance` - The distance in points from the source of the shadow
 - `Size` - The size of the dropshadow
 - `Spread` - How the shadow drops off. The closer to 0, the more linear. Keep this value low (experiment below 1.0), or you will get artifacts
-- `Color` - Which color the dropshadow should have. Note that this also supports alpha channel, so you can make the shadow more or less transparent 
+- `Color` - Which color the dropshadow should have. Note that this also supports alpha channel, so you can make the shadow more or less transparent
 
 ### $(Blur)
 

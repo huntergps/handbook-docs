@@ -87,7 +87,7 @@ TODO: Add info on that -->
 
 ## UX tags
 
-UX documents consists of XML tags. Each available UX tag correspondst a *class* implemented in @(Uno) code. Each tag corresponds to one (or multiple) runtime objects.
+UX documents consists of XML tags. Each available UX tag corresponds to a *class* implemented in @(Uno) code. Each tag corresponds to one (or multiple) runtime objects.
 
 The available tags (classes) come in these categories:
 
@@ -111,7 +111,7 @@ If not specified, `App` uses a plain `GraphicsTheme` by default.
 
 ### $(NativeTheme)
 
-When using `NativeTheme`, Fuse will use the native controls to render. For example putting a @(Button) in the UX will put a native Android or iOS @(Button) depending on the target platform.
+When using `NativeTheme`, Fuse will use native controls instead of OpenGL ES rendering. For example putting a @(Button) in the UX will put a native Android or iOS @(Button) depending on the target platform.
 
 <!-- AUTH: how do we best describe how nativetheme works? -->
 

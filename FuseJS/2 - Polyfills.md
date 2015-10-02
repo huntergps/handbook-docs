@@ -1,6 +1,6 @@
 # Polyfills
 
-FuseJS executes in a (minimum) EcmaScript 5.1 environment on all supported platforms. 
+FuseJS executes in a (minimum) EcmaScript 5.1 environment on all supported platforms.
 There is no web browser involved, FuseJS only provides a subset of the browser's standard libraries.
 
 <!-- ## EcmaScript features
@@ -11,14 +11,14 @@ TODO for the below: write some basic inline docs & examples, then point to the M
 
 ## $(fetch)
 
-This is the main way to do HTTP requests. 
+This is the main way to do HTTP requests.
 
 <!-- TODO: (note Fetch and FetchJson will be renamed and de-emphasized) -->
 
 ### Example usage:
 
 This is an example on how to take a JavaScript object, POST it as JSON and receive JSON data which is turned back into a JavaScript object using `fetch`:
-	
+
 	var status = 0;
 	var response_ok = false;
 
@@ -27,7 +27,7 @@ This is an example on how to take a JavaScript object, POST it as JSON and recei
 		headers: { "Content-type": "application/json"},
 		body: JSON.stringify(requestObject)
 	}).then(function(response) {
-		status = response.status;  // Get the HTTP status code 
+		status = response.status;  // Get the HTTP status code
 		response_ok = response.ok; // Is response.status in the 200-range?
 		return response.json();    // This returns a promise
 	}).then(function(responseObject) {
@@ -68,9 +68,9 @@ You can also use `setTimeout` to create loops:
 
 	function poller() {
 		// Do work (...)
-		
+
 		// And again in 1 second
-		setTimeout(poller, 1000); 	
+		setTimeout(poller, 1000);
 	}
 
 * [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout)
@@ -82,5 +82,4 @@ You can also use `setTimeout` to create loops:
 
 FuseJS has support for the `File` API:
 
-* [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) 
-
+* [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File)

@@ -61,5 +61,31 @@ Being a pulse trigger, means that the @(Animation:animations)/@(Action:actions) 
 
 ### $(InForceFieldAnimation)
 
-- From
-- To
+`InForceFieldAnimation` is used to animate @(Element:elements) as they enter a @(ForceField).
+
+- From - Number between 0 and 1
+- To - Number between 0 and 1
+
+
+	<Panel>
+		<Panel Alignment="Top">
+			<Rectangle Background="Blue" Width="50" Height="100" Margin="0,100">
+				<Draggable/>
+				<InForceFieldAnimation ForceField="attractor" From="0.5" To="1">
+					<Rotate Degrees="360"/>
+				</InForceFieldAnimation>
+				<InForceFieldAnimation ForceField="attractor" From="0" To="1">
+					<Change circleColor.Color="#f00"/>
+				</InForceFieldAnimation>
+			</Rectangle>
+		</Panel>
+		<Panel Alignment="BottomCenter" MaxHeight="10000" MaxWidth="10000"
+		       Height="800" Width="800" Y="50%">
+			<Panel>
+				<PointAttractor ux:Name="attractor" Radius="400" Strength="200"/>
+			</Panel>
+			<Circle>
+				<SolidColor ux:Name="circleColor" Color="#ddd"/>
+			</Circle>
+		</Panel>
+	</Panel>

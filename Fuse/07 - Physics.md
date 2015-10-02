@@ -1,9 +1,11 @@
 # $(Physics)
 
 <!-- TODO: Mention: Does not affect layout -->
-Some types of animation (such as TODO: Link to card swipe) are best described using Physics simulation. Fuse comes with a set of physics based triggers and behaviors which can be used for these situations.
+Some types of animation ([like this one](https://www.fusetools.com/developers/examples/swipeplaces)) are best described using Physics simulation. Fuse comes with a set of physics based triggers and behaviors which can be used for these situations.
 
 ## $(Physics Rules)
+
+Physics simulation is achieved by using different types of physics rule behaviors like @(Spring) or @(PointAttractor). Each rule knows how to perform a certain kind of simulation and how to apply this to each frame of the animation. We can add additional customization to the animation by using the related @(Trigger:triggers) to animate based on certain physics @(ForceField triggers:events).
 
 ### $(Draggable)
 
@@ -61,10 +63,10 @@ Being a pulse trigger, means that the @(Animation:animations)/@(Action:actions) 
 
 ### $(InForceFieldAnimation)
 
-`InForceFieldAnimation` is used to animate @(Element:elements) as they enter a @(ForceField).
+`InForceFieldAnimation` is used to animate @(Element:elements) as they enter a @(ForceField). One can modify the `From` and `To` properties to control where in the `ForceField` the animation should occur.
 
-- From - Number between 0 and 1
-- To - Number between 0 and 1
+- `From` & `To` - Number between 0 and 1, 0 being the edge of the forcefield and 1 at the center.
+
 
 
 	<Panel>

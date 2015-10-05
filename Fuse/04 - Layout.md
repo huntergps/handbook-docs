@@ -64,25 +64,31 @@ The following grid has 3 rows where the first two rows gets the size of its larg
 By default, elements are placed in the grid by the order they appear in the UX, from left to right, top to bottom. One can specify per element which grid cell they should be placed in using the Row and Column like so:
 ```
 <Grid RowCount="1" ColumnCount="2">
-	<Rectangle Row="1" Column="2" />
-	<Rectangle Row="1" Column="1" />
+	<Rectangle Row="0" Column="1" Fill="Red"/>
+	<Rectangle Row="0" Column="0" Fill="Blue"/>
 </Grid>
 ```
 
 ### $(WrapPanel)
-The wrap panel lays out its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
+The `WrapPanel` lays out its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
 
 The following WrapPanel layes out its children horizontally from right ro left.
 ```
-<WrapPanel FlowDirection="RightToLeft"/>
+<WrapPanel FlowDirection="RightToLeft">
+	<Each Count="10">
+		<Rectangle Margin="5" Width="100" Height="100" Fill="Blue"/>
+	</Each>
+</WrapPanel>
 ```
 
 The Orientation property can be used to make a vertical `WrapPanel` like so:
 ```
-<WrapPanel Orientation="Vertical"/>
+<WrapPanel Orientation="Vertical">
+	<Each Count="10">
+		<Rectangle Margin="5" Width="100" Height="100" Fill="Blue"/>
+	</Each>
+</WrapPanel>
 ```
-
-<!-- TODO: Add information about `Alignment="Bottom"` to start adding at the bottom.
 
 TODO: Illustration -->
 
@@ -95,6 +101,9 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 
 ```
 <DockPanel>
+	<Style>
+		<Rectangle MinWidth="100" MinHeight="200"/>
+	</Style>
 	<Rectangle Fill="Red" Dock="Left"/>
 	<Rectangle Fill="Green" Dock="Top"/>
 	<Rectangle Fill="Blue" Dock="Right"/>
@@ -103,9 +112,7 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 </DockPanel>
 ```
 
-<!-- TODO: Illustration
-TODO: Add information about docking multiple elements to the same dock
-TODO: Order of elements added to dock affects size -->
+The @(Style) is used to give the @(Rectangle:rectangles) a minimum size. The @(Rectangle) do not have any explicit default size, so when the `DockPanel` places them, it tries to use their minimum size, except for when `Dock` is set to `Fill`.
 
 ## Element Layout
 

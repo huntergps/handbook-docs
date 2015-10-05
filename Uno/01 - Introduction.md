@@ -1,8 +1,11 @@
 # $(Uno:Introduction)
 
-While UX and JavaScript is the recommended way of developing apps with Fuse, advanced users can also dive into Uno-code if they want to do more advanced things, like custom rendering. While it doesn't have the live-reload features of JavaScript, and takes a bit of time to set up, it is compiled to native code, and is therefore a nice asset when you need fast custom elements in your UI.
+For advanced use cases, Fuse lets you write code in Uno. Uno is a fast, native dialect of C#, where you have direct access to Anroid and iOS APIs. The Fuse UX classes are written entirely in Uno.
 
 To learn more about Uno, consult these resources:
 
-- [Working with Uno code](https://www.fusetools.com/developers/guides/uno)
-- [Uno language reference](https://www.fusetools.com/developers/guides/unolang)
+- [Working with Uno code](https://www.fusetools.com/developers/guides/uno) - Overview of working with Uno code
+- [Uno API Reference](https://www.fusetools.com/developers/api) - Detailed docs on all Fuse classes
+- [Uno Language Reference](https://www.fusetools.com/developers/guides/unolang) - How the Uno language differs from C#
+- [Uno Project Format Overview](https://www.fusetools.com/developers/guides/unoprojectformat) - How the Uno project format works
+- [UXL Handbook (Here be Dragons)](https://www.fusetools.com/developers/guides/uxl-handbook) - An informal overview of using UXL for conditional compilation and interop with native code

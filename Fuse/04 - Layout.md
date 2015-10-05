@@ -10,8 +10,7 @@ are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) ba
 Panels can contain child UI elements and lay them out according to layout rules. There are several types of panels, each with different layouting rules.
 
 ### $(Panel)
-The most basic type of panel is the Panel. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other.
-Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite useful in many situations.
+The most basic type of panel is the `Panel`. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other. Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite useful in many situations.
 
 ```
 <Panel>
@@ -36,12 +35,12 @@ The StackPanel places its children in a stack. The default layout is a vertical 
 The Grid places its children in a grid formation. The rows and columns can be specified explicitly by the @(Rows) and @(Columns) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
 
 #### $(RowCount) and $(ColumnCount)
-If all you want is a grid of equally sized rows and columns you can simply state the number of rows and columns using the RowCount and ColumnCount properties.
+If all that is needed is a grid of equally sized rows and columns one can simply state the number of rows and columns using the RowCount and ColumnCount properties.
 ```
 <Grid RowCount="4" ColumnCount="2"/>
 ```
 #### $(Rows) and $(Columns)
-If you want more fine grained control of how the rows and column sizes are calculated, you can use the Rows and Columns properties. These properties are assigned to a comma separated list of values which can take on a few different forms.
+More fine grained control of how the rows and column sizes are calculated can be achieved with the Rows and Columns properties. These properties are assigned to a comma separated list of values which can take on a few different forms.
 The values can either be absolute, relative or automatic.
 
 Example of a Grid with 3 rows of size 10, 10 and 50 points.
@@ -64,7 +63,10 @@ The following grid has 3 rows where the first two rows gets the size of its larg
 ### $(Grid.Row:Placing elements in a Grid) $(Grid.Column:)
 By default, elements are placed in the grid by the order they appear in the UX, from left to right, top to bottom. One can specify per element which grid cell they should be placed in using the Row and Column like so:
 ```
-<Rectangle Row="1" Column="2" />
+<Grid RowCount="1" ColumnCount="2">
+	<Rectangle Row="1" Column="2" />
+	<Rectangle Row="1" Column="1" />
+</Grid>
 ```
 
 ### $(WrapPanel)

@@ -7,14 +7,17 @@ Fuse is working hard to make it easy to $(import) assets and designs from great 
 Sketch is great vector design tool for Mac. If you haven't tried it, <a href="https://www.sketchapp.com">check it out</a>!.
 
 Fuse can:
+
 * Import assets from `.sketch` files, into sliced images, fonts and ready-to-use UX tags. 
 * Live update the assets if you change the sketch file after initial import.
 
+
 > *Note*: Importing `.sketch` files only works on Mac OSX (like Sketch itself), and is currently experimental.
 
-> ### Best practices 
+> ### Best practices
 
 When working on `.sketch` files for use in Fuse, keep the following in mind:
+
 
 * Fuse tag names will correspond to the layer names in Sketch, so keep your layer names meaningful
 * Use artboard sizes that match the target device. For example, if designing for iPhone 6, use the iPhone 6 artboard template in Sketch. This makes sure assets become the right size when exported
@@ -24,8 +27,9 @@ When working on `.sketch` files for use in Fuse, keep the following in mind:
 ### Importing
 
 To use the sketch importer, you first need to install SketchTool by Bohemian Coding. You can <a href="https://bohemiancoding.com/sketch/tool/">download it here</a>.
+Extract the zip and run the install script.
 
-To import a Sketch document, say `MyDesign.sketch`, first copy the file into your fuse project folder. 
+To import a sketch document, say `MyDesign.sketch`, first copy the file into your fuse project folder.
 
 Then using a terminal type:
 
@@ -41,14 +45,14 @@ As an alternative to using the terminal, you can drag-and-drop your `.sketch` fi
 
 When import is done - if all went well - Fuse has generated a file called `MyDesign.sketch.ux` next to your `.sketch` file. Open it in your text editor to see what's inside.
 
-This file is a resource library which contains all the assets Fuse was able to extract from your Sketch document. It is automatically included in your project, and you can start using the resources. 
+This file is a resource library which contains all the assets Fuse was able to extract from your Sketch document. It is automatically included in your project, and you can start using the resources.
 
 By itself, the resource library does nothing and does not add to your exported app size. Only the assets you reference from other UX files will be included in your final app, the rest will be stripped away.
 
 
 ### Images
 
-Images from the Sketch document will be represented as classes (`ux:Class`) which extend @(Image), and point to the rendered assets with a @(MultiDensityImageSource). 
+Images from the sketch document will be represented as classes (`ux:Class`) which extend @(Image), and point to the rendered assets with a @(MultiDensityImageSource).
 
 The names of the classes correspond to the layer names in Sketch. If your file was called `MyDesign.sketch`, and it contains an artboard called `Screen1`, which contains a layer group called `SomeGroup` and a layer called `SomeLayer`, you can create in instance of this image like this:
 
@@ -69,7 +73,7 @@ The image files is placed in the `MyDesign.sketch-assets/` folder next to the `.
 
 ### Fonts
 
-Fuse will automatically extract the fonts needed from your system and put them in the `-assets/` folder next to your `.sketch` file. It will also declare them as global resources in your resource library. 
+Fuse will automatically extract the fonts needed from your system and put them in the `-assets/` folder next to your `.sketch` file. It will also declare them as global resources in your resource library.
 
 In the resource library they will look like this:
 
@@ -83,13 +87,13 @@ Which means you can use them like this:
 
 ### Auto-generated app layout
 
-Fuse can also generate a app layout based on the imported resource library, so you get proper Fuse screens that look exactly like your Sketch design. This includes @Text elements in addition to shapes and images, and can be a good starting point for creating a responsive app layout. 
+Fuse can also generate a app layout based on the imported resource library, so you get proper Fuse screens that look exactly like your sketch design. This includes @Text elements in addition to shapes and images, and can be a good starting point for creating a responsive app layout.
 
 You do this by specifying the `--app` or (`--overwrite-app`) options to `fuse import`. Example:
 
 	fuse import --app MyDesign.ux MyDesign.sketch
 
-This will generate `MyDesign.ux` which will contain an @App tag, with a @PageControl, and one @Page for each *artboard* in your sketch file. 
+This will generate `MyDesign.ux` which will contain an @App tag, with a @PageControl, and one @Page for each *artboard* in your sketch file.
 
 Fuse will as accurately as possible reproduce the layout from your sketch file. This currently means absolute positioning all elements to match the sketch file precisely.
 
@@ -99,7 +103,7 @@ Fuse will as accurately as possible reproduce the layout from your sketch file. 
 
 If you run `fuse import` again after original import, the resource library will be updated (overwritten) with the latest assets, and any assets in use in the project will automatically update on in all preview sessions.
 
-The names of the classes remain the same, as long as Sketch layers have not been renamed. 
+The names of the classes remain the same, as long as Sketch layers have not been renamed.
 
 > ### Image densities
 

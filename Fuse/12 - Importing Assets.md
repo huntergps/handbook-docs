@@ -120,7 +120,7 @@ You would typically get things like :
 	<Image ux:Class="activity.Activity___6.Rectangle_91___Bitmap_2">
 		<MultiDensityImageSource>
 			<FileImageSource File="activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@1x.png" Density="1" />
-			<FileImageSource File="activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@2x.png" Density="1" />
+			<FileImageSource File="activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@2x.png" Density="2" />
 		</MultiDensityImageSource>
 	</Image>
 

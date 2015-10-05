@@ -1,6 +1,6 @@
-# UI Components
+# UI Components $(Element:)
 
-Fuse comes with a number of UI $(Element:elements) that can be used to construct a user interface. In UX you can add UI components by enclosing them in tags:
+Fuse comes with a number of UI components that can be used to construct a user interface. In UX you can add UI components by enclosing them in tags:
 
 	<Image File="MyImage.png" />
 	<Rectangle Width="50" Height="50" Fill="#888" />

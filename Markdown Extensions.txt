@@ -13,7 +13,7 @@ Regular text can also link to documentation using @(Foo)
 $(some-label:Foo bar) defines where "Foo bar" is documented, but you can use label as a
 shorthand in references, i.e. 
 
-* @(some-label) - renders <a>Foo bar</a>
+* @(some-label) - renders <a>some-label</a>
 * @(some-label: the fancy Foo bar feature) - renders <a> the fancy Foo bar feature</a`>
 
 Note that @(Foo bar) should also work in this case as before.

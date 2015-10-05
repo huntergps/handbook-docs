@@ -120,17 +120,17 @@ The @(Style) is used to give the @(Rectangle:rectangles) a minimum size. The @(R
 
 Whenever a @(Panel) performs layout on its children, it has to ask each element about its layout properties.
 
-Layout properties are assigned per element to control such things as the elements `Width`, `Height`, @(Margin) and @(Padding).
+Layout properties are assigned per element to control such things as the elements @(Width), @(Height), @(Margin) and @(Padding).
 If an element doesn't specify these things, the panel performing layout on them will handle it.
 
-Available space, @(points) (vs @(pixels)).
+<!-- TODO: Available space, @(points) (vs @(pixels)). -->
 
 ### $(Alignment)
 
 When elements are positioned in a panel they may not require all of the space available to them. For example, a vertical stack panel will be as wide as its largest element, leaving extra space for the smaller elements. Elements can either be aligned within this space, or stretched to fill it.
 
 We can align elements to the sides of its container by the @(Alignment) property.
-In the following example, we have a @(Panel) which is 500x500 in size, which contains a @(Rectangle) which is only 50x50 points in size. By setting alignment to BottomRight, this rectangle will be positioned by the bottom right corner of the panel.
+In the following example, we have a @(Panel) which is 500x500 points in size, which contains a @(Rectangle) which is only 50x50 points in size. By setting alignment to BottomRight, this rectangle will be positioned by the bottom right corner of the panel.
 
 ```
 <Panel>

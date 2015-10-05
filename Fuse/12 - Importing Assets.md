@@ -4,20 +4,20 @@ Fuse is working hard to make it easy to $(import) assets and designs from great 
 
 ## From $(Sketch) (experimental)
 
-Sketch is a kickass vector design tool for Mac. If you tried it, <a href="https://bohemiancoding.com/sketch/">check it out</a>!.
+Sketch is great vector design tool for Mac. If you haven't tried it, <a href="https://www.sketchapp.com">check it out</a>!.
 
 Fuse can:
 * @(sketch-import:Import assets) from `.sketch` files, into sliced images, fonts and ready-to-use UX tags. 
 * @(sketch-update:Live update) the assets if you change the sketch file after initial import.
 
-> *Note*: Importing Sketch files only works on Mac OSX (like Sketch itself), and is currently experimental.
+> *Note*: Importing `.sketch` files only works on Mac OSX (like Sketch itself), and is currently experimental.
 
 > ### Best practices 
 
-When working on Sketch files for use in Fuse, keep the following in mind:
+When working on `.sketch` files for use in Fuse, keep the following in mind:
 
-* Fuse tag names will correspond to the layer names in Sketch, so keep your layer names meaningful. 
-* Use artboard sizes that match the target device. For example, if designing for iPhone 6, use the iPhone 6 artboard template in Sketch. This makes sure assets become the right size when exported.
+* Fuse tag names will correspond to the layer names in Sketch, so keep your layer names meaningful
+* Use artboard sizes that match the target device. For example, if designing for iPhone 6, use the iPhone 6 artboard template in Sketch. This makes sure assets become the right size when exported
 * Artboards in Sketch can (but doesn't have to) correspond to pages in Fuse
 
 
@@ -35,7 +35,7 @@ Import may take a while, depending on the amount of assets in your document.
 
 > ### Using drag-and-drop to import
 
-As an alternative to using the terminal, you can drag-and-drop your sketch file into a Fuse preview window. This will copy the sketch file to your project's root folder (if it isn't there already) and then do the same thing. Any existing sketch file with the same name will be overwritten.
+As an alternative to using the terminal, you can drag-and-drop your `.sketch` file into a Fuse preview window. This will copy the sketch file to your project's root folder (if it isn't there already) and then do the same thing. Any existing `.sketch` file with the same name will be overwritten.
 
 ### Resource library ($(.sketch.ux))
 
@@ -83,7 +83,7 @@ Which means you can use them like this:
 
 ### Auto-generated app layout
 
-Fuse can also generate a app layout based on the imported resource library, so you get proper Fuse screens that look exactly like your sketch design. This includes @Text elements in addition to shapes and images, and can be a good starting point for creating a responsive app layout. 
+Fuse can also generate a app layout based on the imported resource library, so you get proper Fuse screens that look exactly like your Sketch design. This includes @Text elements in addition to shapes and images, and can be a good starting point for creating a responsive app layout. 
 
 You do this by specifying the `--app` or (`--overwrite-app`) options to `fuse import`. Example:
 
@@ -103,7 +103,7 @@ The names of the classes remain the same, as long as Sketch layers have not been
 
 > ### Image densities
 
-You can control the image densities Fuse generates when importing the sketch document by passing options to the import command. For example:
+You can control the image densities Fuse generates when importing the Sketch document by passing options to the import command. For example:
 
 	fuse import --1x --1.5x --2x MyDesign.sketch
 
@@ -113,7 +113,7 @@ Will import all image assets in 1.0, 1.5 and 2.0 density, respectively. If you d
 
 #### Asset aliasing
 
-Sometimes when you import sketch files that were never intended for import into Fuse, you get a lot of long, ugly names for your assets, because whoever made the Sketch file didn't care to name the layers properly.
+Sometimes when you import `.sketch` files that were never intended for import into Fuse, you get a lot of long, ugly names for your assets, because whoever made the Sketch file didn't care to name the layers properly.
 
 You would typically get things like :
 

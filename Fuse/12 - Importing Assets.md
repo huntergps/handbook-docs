@@ -25,7 +25,7 @@ When working on `.sketch` files for use in Fuse, keep the following in mind:
 
 To use the sketch importer, you first need to install SketchTool by Bohemian Coding. You can <a href="https://bohemiancoding.com/sketch/tool/">download it here</a>.
 
-To import a sketch document, say `MyDesign.sketch`, first copy the file into your fuse project folder. 
+To import a Sketch document, say `MyDesign.sketch`, first copy the file into your fuse project folder. 
 
 Then using a terminal type:
 
@@ -48,7 +48,7 @@ By itself, the resource library does nothing and does not add to your exported a
 
 ### Images
 
-Images from the sketch document will be represented as classes (`ux:Class`) which extend @(Image), and point to the rendered assets with a @(MultiDensityImageSource). 
+Images from the Sketch document will be represented as classes (`ux:Class`) which extend @(Image), and point to the rendered assets with a @(MultiDensityImageSource). 
 
 The names of the classes correspond to the layer names in Sketch. If your file was called `MyDesign.sketch`, and it contains an artboard called `Screen1`, which contains a layer group called `SomeGroup` and a layer called `SomeLayer`, you can create in instance of this image like this:
 

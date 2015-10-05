@@ -8,7 +8,7 @@ The storage API allows you to save text to files in the application directory.
 
 	var Storage = require('FuseJS/Storage');
 
-### `write` function
+### $(Storage.write:write)
 
 Write a string value to specified file.
 
@@ -25,7 +25,7 @@ Returns a `Promise` with a `bool` which tells if the content was successfully wr
 
 	storage.write("filename.txt", "filecontent");
 
-### `read` function
+### $(Storage.read:read)
 
 #### Syntax:
 
@@ -48,9 +48,26 @@ Returns a `Promise` with a `string` containing the content of the file.
 The actual folder where the file will be saved will vary depending on platform.
 
 ### `writeSync`
+
+Synchrounously write data to the application folder:
+	
+	storage.writeSync("filename.txt", "filecontent");
+	
+> Warning: This call will block, if you are writing large amounts of data, use @(Storage.write).
+
 ### `readSync`
+
+Synchronously read data from a file in the application folder:
+
+	var data = storage.readSync("filename.txt");
+	
+> Warning: This call will block, if you are writing large amounts of data, use @(Storage.read).
+
 ### `deleteSync`
 
+Delete a file from the application folder:
+
+	storage.deleteSync("filename.txt");
 
 ## Camera
 

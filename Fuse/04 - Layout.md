@@ -3,7 +3,7 @@
 Fuse has a powerful layout system that works across all platforms and devices, whether you
 are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) based elements.
 
-> ## Video introduction
+> ### Video introduction to layout
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/x6CueKzTK68"></iframe>
@@ -240,7 +240,7 @@ iOS and Android devices usually has a status bar aligned to the top of the scree
 </App>
 ```
 
-> ### Video introduction
+> ### Video introduction to OS elements
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/S_syTU44jzw"></iframe>

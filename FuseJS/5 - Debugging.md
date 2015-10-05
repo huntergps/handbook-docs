@@ -9,7 +9,7 @@ Debugging of JavaScript in Fuse is currently only supported using Safari and iOS
 	- Build and run your project on the device.
 	- Open Safari on the host computer and click the Develop menu in the menu bar. There should be a sub-menu named after your device, where you can click `JSContext`. This will open a Web Inspector instance allowing you to view and debug the JavaScript code of your app. 
 
-> ### Video introduction
+> ### Video introduction to Debugging
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/EDjymiMxHSw"></iframe>

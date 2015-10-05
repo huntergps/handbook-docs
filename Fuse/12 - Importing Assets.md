@@ -37,9 +37,9 @@ Import may take a while, depending on the amount of assets in your document.
 
 As an alternative to using the terminal, you can drag-and-drop your sketch file into a Fuse preview window. This will copy the sketch file to your project's root folder (if it isn't there already) and then do the same thing. Any existing sketch file with the same name will be overwritten.
 
-### Resource library ($(.res.ux))
+### Resource library ($(.sketch.ux))
 
-When import is done - if all went well - Fuse has generated a file called `MyDesign.sketch.res.ux` next to your `.sketch` file. Open it in your text editor to see what's inside.
+When import is done - if all went well - Fuse has generated a file called `MyDesign.sketch.ux` next to your `.sketch` file. Open it in your text editor to see what's inside.
 
 This file is a resource library which contains all the assets Fuse was able to extract from your Sketch document. It is automatically included in your project, and you can start using the resources. 
 
@@ -56,7 +56,7 @@ The names of the classes correspond to the layer names in Sketch. If your file w
 
 This tag is an @(Image), so it supports the same attributes as @(Image), e.g. @(Alignment), @(Margin), @(StretchMode) and @(Scale9Margin).
 
-This is all possible because in the resource library file (`.res.ux`), you'll now have a generated class that looks something like:
+This is all possible because in the resource library file (`.sketch.ux`), you'll now have a generated class that looks something like:
 
 	<Image ux:Class="MyDesign.Screen1.SomeGroup.SomeLayer">
 	  <MultiDensityImageSource>
@@ -108,3 +108,36 @@ You can control the image densities Fuse generates when importing the sketch doc
 	fuse import --1x --1.5x --2x MyDesign.sketch
 
 Will import all image assets in 1.0, 1.5 and 2.0 density, respectively. If you don't specify anything, Fuse defaults to rendering 1.0 and 2.0 densities.
+
+> ### Pro tips
+
+#### Asset aliasing
+
+Sometimes when you import sketch files that were never intended for import into Fuse, you get a lot of long, ugly names for your assets, because whoever made the Sketch file didn't care to name the layers properly.
+
+You would typically get things like :
+
+	<Image ux:Class="activity.Activity___6.Rectangle_91___Bitmap_2">
+		<MultiDensityImageSource>
+			<FileImageSource File="activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@1x.png" Density="1" />
+			<FileImageSource File="activity.sketch-assets/Activity___6.Rectangle_91___Bitmap_2@2x.png" Density="1" />
+		</MultiDensityImageSource>
+	</Image>
+
+This will make your UX code look ugly when you start using these. At the same time, we don't want to rename the classes, because then we lose the link to the `.sketch` file and can no longer get @(sketch-update:live updates).
+
+To deal with this, make yourself an extra UX file, for example called `AssetAliases.ux`. Use a `Panel` or something as the root tag.
+
+In the above example, we might know that this bitmap is actually the background for the entire screen. Then we can give it a more reasonable name, like `ActivityBackground`.
+
+In `AssetAliases.ux` do:
+
+	<Panel>
+		<activity.Activity___6.Rectangle_91___Bitmap_2 ux:Class="ActivityBackground" />
+	</Panel>
+
+All other assets you want to alias, can just be added to this list.
+
+Then you can use this much nicer tag in your actual app code:
+
+	<ActivityBackground />

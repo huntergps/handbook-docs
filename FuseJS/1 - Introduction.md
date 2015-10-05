@@ -4,7 +4,7 @@ $(FuseJS) is a JavaScript framework for writing cross-platform mobile app busine
 
 ## Getting started
 
-FuseJS is can be used in @(UX Markup) through the `<$(JavaScript)>` tag, either by pointing to external JavaScript files, like this:
+FuseJS is can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:
 
 	<JavaScript File="SomeCode.js" />
 
@@ -22,7 +22,7 @@ For things inside the module to be visible on the outside, we use the `module.ex
 
 	<JavaScript>
 		module.exports = {
-			exportedSymbol: "Hello, rest of the world!"	
+			exportedSymbol: "Hello, rest of the world!"
 		};
 	</JavaScript>
 
@@ -31,7 +31,7 @@ Failing to export from modules will make it impossible to reach defined data ins
 	<JavaScript>
 		var data = [1, 2, 3];
 		var invisible = "I'm invisible";
-		
+
 		module.exports = {
 			data: data
 		};
@@ -54,14 +54,14 @@ You can then access this module in any other module in the same project like thi
 > Note: It is currently not possible to include modules from JS just by file path. We're on it, thanks for your patience!
 
 Examples:
-	
-* <a href="https://www.fusetools.com/developers/examples/todoparseexample">TODO App with Parse backend example</a> 
+
+* <a href="https://www.fusetools.com/developers/examples/todoparseexample">TODO App with Parse backend example</a>
 
 
 ## Design & motivation
 
 The key design goal of FuseJS is to keep your JS code small, clean and only concerned with the practical functions of your application. Meanwhile
-all things UX-oriented such as layout, data presentation, animation and gesture response is left to declarative $(UX markup) and native UI components. 
+all things UX-oriented such as layout, data presentation, animation and gesture response is left to declarative $(UX markup) and native UI components.
 
 The way Fuse separates JavaScript business logic from UX markup presentation has some clear benefits:
 
@@ -74,13 +74,9 @@ Note that Fuse has tons of declarative APIs (designed UX markup) that replace th
 
 Many other JavaScript frameworks mix imparative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try
 doing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some
-time to study the Fuse examples to get a feel for the new way of doing things. 
+time to study the Fuse examples to get a feel for the new way of doing things.
 
 Purifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow
 more effective collaboration between UX designers and developers.
 
 If you need to write performance-critical business logic, we recommend doing that in @(native code) or alternatively @(Uno) code instead of JS.
-
-
-
-

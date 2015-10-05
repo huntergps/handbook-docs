@@ -85,7 +85,7 @@ For a small example of other ways to load image data, here is a small example th
 		<Image Url="{url}" />
 	</StackPanel>
 
-This code will show three images stacked on top of each other. The topmost image will be fetched as a file that's part of the project. At the top we've referenced a file by creating a `FileImageSource` that we bind to an image using `DataToResource`. This will lookup the resource from the key it gets form the JavaScript. We also get the URL for a picture on the web and bind it to the `Url`-property of an `Image`. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly.
+This code will show three images stacked on top of each other. The topmost image will be fetched as a file that's part of the project. At the top we've referenced a file by creating a `FileImageSource` that we bind to an image using `DataToResource`. This will lookup the resource from the key it gets form the JavaScript. We also get the URL for a picture on the web and bind it to the `Url`-property of an `Image`. If this looks complicated, don't fret: We'll look more at @(Data Binding) and @(JavaScript) shortly.
 
 > ### Image Color
 

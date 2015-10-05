@@ -48,7 +48,7 @@ You can read more about starting Fuse preview on the desktop here: https://www.f
 
 When running preview, Fuse will create a shell application on your device that connects to the Fuse daemon running on your system to quickly display changes you make to the project. However, if you want to bring the device with you to a meeting or to show to people away from your development environment, you need to export the project to the device you are targeting.
 
-> ### iOS
+> ### Exporting to iOS
 
 On iOS, you need to have a machine running OS X and Xcode installed (as for preview). You also need an Apple developer account. In the project root, simply type:
 
@@ -56,7 +56,7 @@ On iOS, you need to have a machine running OS X and Xcode installed (as for prev
 
 This will open the built project in Xcode. If you select your device from the pulldown list of available output targets and press the "run" button, the application will deploy to your device and run.
 
-> ### Android
+> ### Exporting to Android
 
 To export to Android, you go to the project root and type:
 

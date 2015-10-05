@@ -13,6 +13,7 @@ are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) ba
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/0hpL4KBfUy8"></iframe>
 </div>
 
+
 ## $(Panels)
 
 Panels can contain child UI elements and lay them out according to layout rules. There are several types of panels, each with different layouting rules.
@@ -226,6 +227,7 @@ When a @(Panel) places its children, it assumes that the "center" of that elemen
 This puts the elements anchor in the middle of its left edge.
 
 ### $(StatusBarBackground)
+
 iOS and Android devices usually has a status bar aligned to the top of the screen which shows status information from the operating system like battery and network information. This status bar might or might not be visible while our app is running. We also might or might not be able to draw behind it. The @(StatusBarBackground) element is used to compensate for the status bar. It will always have the same size as the status bar across all platforms and devices. We can use a @(DockPanel) to dock this element on the top of our app and "offset" the rest of our content so it fits within the visible parts of our screen.
 ```
 <App>
@@ -237,6 +239,13 @@ iOS and Android devices usually has a status bar aligned to the top of the scree
 	</DockPanel>
 </App>
 ```
+
+> ### Video introduction
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/S_syTU44jzw"></iframe>
+</div>
+
 ### $(BottomBarBackground)
 The BottomBarBackground element is quite similar to the @(StatusBarBackground) in that it takes on the same size as certain OS specific elements. The BottomBarBackground will take on the same size as the keyboard (whenever it is visible). Certain Android devices have their home button on the screen instead of as a physical button. The BottomBarBackground will also take this into account when sizing itself.
 Here is how we can make sure our content is never covered by the keyboard or home button:

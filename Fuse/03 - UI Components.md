@@ -623,7 +623,7 @@ If you want to add a page indicator to the mix:
 
 For a full example of using `PageControl`, `PageIndicator` and `Page` check this out: https://www.fusetools.com/developers/examples/pagecontrol
 
-## $(ScrollView) (link elsewhere?)
+## $(ScrollView) 
 
 Fuse has a `ScrollView` that can be used to navigate contents that are larger than the available size.
 

@@ -94,8 +94,8 @@ The available tags (classes) come in these categories:
 * The @(App) class is the root of the app, and can contain eactly one Node
 * Many `Node` types, most of which are @(Element:UI Elements)
 * Behaviors which modify nodes. Behaviors come in many flavors:
-  * @(Gestures
-  * @(Triggers
+  * Gestures
+  * Triggers
   * Scripts
   * Visual @(effects) which can be applied to elements
 * $(Styles:Styling) which allow consistent look and feel of components without repeating data

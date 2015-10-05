@@ -73,7 +73,7 @@ In this case we've introduced a new _semantic class_ when we create `Header`, as
 
 ## $(Theme)
 
-The `Theme` property of `App` decides whether your app is set up with *native UI controls* or *OpenGL ES powered graphics* as the root-level presentation technology, as well as the default look and feel of @(controls).
+The `Theme` property of `App` decides whether your app is set up with *native UI controls* or *OpenGL ES powered graphics* as the root-level presentation technology, as well as the default look and feel of @(control).
 
 For more information see @(Themes).
 

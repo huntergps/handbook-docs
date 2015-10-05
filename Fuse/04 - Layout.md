@@ -130,23 +130,27 @@ In the following example, we have a @(Panel) which is 500x500 in size, which con
 ```
 
 Alignment can be assigned to any one of the following values:
-- Left
-- HorizontalCenter
-- Right
-- Top
-- VerticalCenter
-- Bottom
-- TopLeft
-- TopCenter
-- TopRight
-- CenterLeft
-- Center
-- CenterRight
-- BottomLeft
-- BottomCenterter
-- BottomRight
+- $(Left)
+- $(HorizontalCenter)
+- $(Right)
+- $(Top)
+- $(VerticalCenter)
+- $(Bottom)
+- $(TopLeft)
+- $(TopCenter)
+- $(TopRight)
+- $(CenterLeft)
+- $(Center)
+- $(CenterRight)
+- $(BottomLeft)
+- $(BottomCenterter)
+- $(BottomRight)
 
-<!-- TODO: Add information about `Default`, that is, stretch to match parent? -->
+If you don't assign an `Alignment` explicitly, the default alignment will be to stretch the control as much as the parent control requests. For a normal `Panel`, this means that the child control will try to fill the parent `Panel`, but other containing controls might ask the children to behave differently.
+
+### $(Width) and $(Height)
+
+You can combine @(Alignment) and other layout properties with `Width` and `Height`, which will set the size of the @(Element) in the desired @(Units:Unit).
 
 ### $(Margin) and $(Padding)
 Each element can specify the amount of space between it and its parent or surrounding elements by using its @(Margin) property.

@@ -1,4 +1,4 @@
-# Navigation
+# $(Navigation)
 
 Most apps contains more than just one page. Fuse has several components for making and customizing navigation between different pages.
 
@@ -69,7 +69,7 @@ We actually already built most of the behavior of the `PageControl` from scratch
 	</PageControl>
 
 ### $(PageIndicator)
-The `PageIndicator` can be used together with @(PageControl) to show clearly which page is selected. The following example has four pages in a @(PageControl) and a circle docked to the bottom for each @(Page). When a @(Page) becomes @(Active) its corresponding indicator is scaled by a factor of 1.3.
+The `PageIndicator` can be used together with @(PageControl) to show clearly which page is selected. The following example has four pages in a @(PageControl) and a circle docked to the bottom for each @(Page). When a @(Page) becomes `Active` its corresponding indicator is scaled by a factor of 1.3.
 
 	<DockPanel>
 		<PageControl ux:Name="pageControl">
@@ -90,15 +90,17 @@ The `PageIndicator` can be used together with @(PageControl) to show clearly whi
 
 It is mandatory to set a value for the @(PageIndicator:page indicators) `Navigation` property. In this case we simply set it to be the @(PageControl).
 
-Another thing to note is that the `PageIndicator` uses a @(Factory) to create an indicator for each page. In the example above, we use a @(Circle) with the @(ux:Generate) property set to @(Factory) and the @(ux:Binding) property set to to page indicators `DotFactory` property.
+Another thing to note is that the `PageIndicator` uses a `Factory` to create an indicator for each page. In the example above, we use a @(Circle) with the @(ux:Generate) property set to `Factory` and the @(ux:Binding) property set to to page indicators `DotFactory` property.
+
+<!-- TODO: Write about Factory -->
 
 ## $(Navigation types)
 There are three navigation types, and they have quite different behaviors and use cases. Each of them inherit from the `Navigation` base type.
 
-### $(Linear navigation)
+### $(LinearNavigation)
 `LinearNavigation` is used when each page should be layed out linearly. So with a swipe navigation, one would start from page 1, swipe to page 2, then page 3 and so on. Navigating directly to page 3 from page 1 would cause a quick visit to page 2 on the way.
 
-### $(Direct navigation)
+### $(DirectNavigation)
 With `DirectNavigation` there is no implicit flow between pages. Any @(Page) can be directly navigated to from any other @(Page). If we have 5 pages in our @(Navigation), there would be no scrolling over the other pages when navigating from page 1 to page 5 as there would be with a @(LinearNavigation).
 
 ### $(Hierarchical navigation)

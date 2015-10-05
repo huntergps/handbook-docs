@@ -1,4 +1,4 @@
-# Data Binding
+# $(Data Binding)
 
 Fuse provides first class support for creating data driven apps with UX tags through direct binding, iteration and branching. UX can also do referencing deep inside complex data structures, so you do not have to do tedious data massaging in code. 
 

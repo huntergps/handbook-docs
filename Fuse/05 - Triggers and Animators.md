@@ -120,7 +120,7 @@ $(RelativeTo) can be set to the following values:
 - `Size`: Moves the set amount times the size of the element. So X="1" moves the element by its entire width in the X direction.
 - `ParentSize`: Same as `Size` but uses the elements parents size instead.
 - `LayoutChange`: Used in response to a @(LayoutAnimation) to move the element by the amount of a layout change.
-- `Keyboard`: Moves the element relative to the size of the keyboard.
+- `Keyboard`: Moves the element relative to the size of the eyboard.
 
 `<Move X="0.5" RelativeTo="Size"/>` will move the element by half of its own width in the x-direction.
 Move corresponds to adding a @(Translation) on the element and using @(Change) to animate its X and Y values. The following two examples give the same result.
@@ -263,7 +263,7 @@ The `Attractor` is used to give a more natural movement to animations. It acts a
 
 Triggers can contain actions too, which are one-off events that fire at a particular point in the trigger's timeline.
 
-Note that actions, contrary to @(animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
+Note that actions, contrary to @(animator:animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
 
 ### $(Action.Delay:Delay)
 
@@ -289,7 +289,7 @@ Permanently changes the value of a property. If you want to just change it tempo
 
 ### $(Callback)
 
-`Callback` is used to call a JavaScript function (see @(DataBinding)) when a trigger is activated.
+`Callback` is used to call a JavaScript function (see @(Data Binding)) when a trigger is activated.
 
 ```
 <JavaScript>
@@ -373,7 +373,7 @@ A `State` consists of a set of @(Animator:animators) inside a `State` object. It
 ```
 
 ### $(StateGroup)
-A `StateGroup` is used to group a set of @(State:states) together and switch between them. `StateGroup` has an `Active` property, which is used to assign which @(State) is currently active in that group. One can also specify the @(TransitionType), which can be either `Exclusive` or `Parallel`. `Exclusive` means that each state will have to be fully deactivated before the next state becomes active. `Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.
+A `StateGroup` is used to group a set of @(State:states) together and switch between them. `StateGroup` has an `Active` property, which is used to assign which @(State) is currently active in that group. One can also specify the `TransitionType`, which can be either `Exclusive` or `Parallel`. `Exclusive` means that each state will have to be fully deactivated before the next state becomes active. `Parallel` means that as one state deactivates, the next one will become active and whatever properties they animate will be interpolated between them.
 
 Here is an example of how to use a `StateGroup` to switch the color of a @(Rectangle) between three states:
 ```
@@ -425,7 +425,7 @@ These triggers react to data changes, either from data binding or from the contr
 <!-- ### WhileFailed
 TODO: I dont know what it does -->
 
-## $Gestures
+## $(Gestures)
 
 Following are triggers which react to pointer gestures.
 
@@ -466,7 +466,7 @@ The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click j
 ## $(Control triggers)
 
 ### $(WhileEnabled)
-The `WhileEnabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `True`.
+The `WhileEnabled` trigger is active whenever its containing @(Element:elements) `IsEnabled` property is set to `True`.
 
 ```
 <Panel  Width="50" Height="50" Background="Red" >
@@ -477,7 +477,7 @@ The `WhileEnabled` trigger is active whenever its containing @(Element:elements)
 ```
 
 ### $(WhileDisabled)
-The `WhileDisabled` trigger is active whenever its containing @(Element:elements) @(IsEnabled) property is set to `False`.
+The `WhileDisabled` trigger is active whenever its containing @(Element:elements) `IsEnabled` property is set to `False`.
 
 
 ## $(Platform triggers)

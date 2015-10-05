@@ -7,8 +7,8 @@ Fuse is working hard to make it easy to $(import) assets and designs from great 
 Sketch is great vector design tool for Mac. If you haven't tried it, <a href="https://www.sketchapp.com">check it out</a>!.
 
 Fuse can:
-* @(sketch-import:Import assets) from `.sketch` files, into sliced images, fonts and ready-to-use UX tags. 
-* @(sketch-update:Live update) the assets if you change the sketch file after initial import.
+* Import assets from `.sketch` files, into sliced images, fonts and ready-to-use UX tags. 
+* Live update the assets if you change the sketch file after initial import.
 
 > *Note*: Importing `.sketch` files only works on Mac OSX (like Sketch itself), and is currently experimental.
 

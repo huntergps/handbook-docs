@@ -43,7 +43,7 @@ In this example, we use a @(Set) action to change the alignment og a panel from 
 
 ## $(MultiLayoutPanel)
 
-`MultiLayout` allows us to move @(Element:elements) between different @(Layout:layouts). This allows us to @(Move) elements between different locations in the visual tree, and also switch between certain layouts on the fly.
+$(MultiLayout) allows us to move @(Element:elements) between different @(Layout:layouts). This allows us to @(Move) elements between different locations in the visual tree, and also switch between certain layouts on the fly.
 
 ## $(Placeholder)
 The `Placeholder` element is used to reference other @(Element:elements) in the visual tree. A `Placeholder` is itself an @(Element) and it can have its own layout properties.
@@ -71,7 +71,7 @@ To switch between the two placeholder, we need to use @(MultiLayout). We can app
 By changing the `LayoutElement` property of the MultiLayout, we can move the @(Rectangle) between "placeholder1" and "placeholder2". Notice that the @(Rectangle) has its @(Margin) property set. Therefore that property will still exist when it's moved to the other @(Placeholder). The @(Height) however, is set on the @(Placeholder:placeholders) themselves, and will therefore change.
 
 
-Here is a quick example, showing how we can move a @(Rectangle) from one @(Panel) to another. In this example we use a @(MultilayoutPanel) with a @(DockLayout). We put three @(Panel:panels) inside it, docket do different locations. We use @(Placeholder:placeholders) to reference one @(Rectangle) and move it between the three @(Panel:panels).
+Here is a quick example, showing how we can move a @(Rectangle) from one @(Panel) to another. In this example we use a @(MultilayoutPanel) with a `DockLayout`. We put three @(Panel:panels) inside it, docket do different locations. We use @(Placeholder:placeholders) to reference one @(Rectangle) and move it between the three @(Panel:panels).
 
 	<MultiLayoutPanel ux:Name="multiLayoutPanel">
 		<DockLayout/>

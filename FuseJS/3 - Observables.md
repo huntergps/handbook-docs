@@ -9,7 +9,7 @@ changes, subscribers are notified.
 
 Observables can be used for asynchronous and reactive programming, greatly simplifying data-driven UI programming.
 
-> ## Video introduction
+## Video introduction
 
 <!-- 16:9 aspect ratio -->
 <div class="embed-responsive embed-responsive-16by9">

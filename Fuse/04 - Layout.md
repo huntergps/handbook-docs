@@ -3,7 +3,15 @@
 Fuse has a powerful layout system that works across all platforms and devices, whether you
 are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) based elements.
 
-<!-- * TODO: Links to jake's videos -->
+> ## Video introduction
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/x6CueKzTK68"></iframe>
+</div>
+
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/0hpL4KBfUy8"></iframe>
+</div>
 
 ## $(Panels)
 

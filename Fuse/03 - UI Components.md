@@ -1,6 +1,6 @@
 # UI Components
 
-Fuse comes with a number of UI components that can be used to construct a user interface. In UX you can add UI components by enclosing them in tags:
+Fuse comes with a number of UI $(Element:elements) that can be used to construct a user interface. In UX you can add UI components by enclosing them in tags:
 
 	<Image File="MyImage.png" />
 	<Rectangle Width="50" Height="50" Fill="#888" />
@@ -26,7 +26,7 @@ If you find that wrapping the text still makes it hard to show all the contents 
 
 ### $(Fonts)
 
-You can import fonts from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a _@(Resources:global resource)_ for it.
+You can import fonts from ttf files containing TrueType fonts. Because a font is typically referred to throughout an application, it is best to simply create a _@(Global Resources:global resource)_ for it.
 
 	<App>
 		<Font File="Roboto-Medium.ttf" ux:Global="Medium" />
@@ -128,13 +128,13 @@ And then you can use `CloseIcon` anywhere in your project:
 
 Fuse currently supports the following image source types:
 
-* @(FileImageSource) - specifies a single local image file and its density
+* `FileImageSource` - specifies a single local image file and its density
 * @(HttpImageSource) - specifies a single image from a URL and its density
 * @(MultiDensityImageSource) - allows you to specify multiple versions of the same image for use with different screen densities.
 
 In addition, the following classes allow you to configure image sources further:
 
-* @(MemoryPolicy) - controls how long the image data is kept in memory when no longer in use.
+* `MemoryPolicy` - controls how long the image data is kept in memory when no longer in use.
 
 > ### $(MultiDensityImageSource)
 
@@ -260,7 +260,7 @@ Valid values are `Center`, `Inside` and `Outside`.
 
 #### $(Stroke.Offset)
 
-The @(Stroke) of a @(Shape) can be `Offset`:
+The @(Stroke) of a @(Shapes:Shape) can be `Offset`:
 
 	<Stroke Width="10" Offset="10">
 		<ImageFill File="Pictures/Picture1.jpg" />
@@ -291,7 +291,7 @@ Note that this is equivalent of writing:
 
 #### $(ImageFill)
 
-You can fill a @(Shape) with an image using `ImageFill`:
+You can fill a @(Shapes:Shape) with an image using `ImageFill`:
 
 	<Circle Width="160" Height="160">
 		<ImageFill File="Portrait.png" />
@@ -308,7 +308,7 @@ You can describe a `LinearGradient`-brush using `LinearGradient` and `GradientSt
 		<GradientStop Offset="1" Color="#000" />
 	</LinearGradient>
 
-The `StartPoint` and `EndPoint` are both X and Y offsets within the @(Shape) the brush is used in, so you can specify a diagonal brush by using `StartPoint="0,0" EndPoint="1,1"`.
+The `StartPoint` and `EndPoint` are both X and Y offsets within the @(Shapes:Shape) the brush is used in, so you can specify a diagonal brush by using `StartPoint="0,0" EndPoint="1,1"`.
 
 ## $(Button)
 
@@ -738,7 +738,7 @@ You can set the transparency of objects using the `Opacity`-property.
 		<Opacity Value="0.5" />
 	</Panel>
 
-When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTest:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state.
+When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTestMode:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state.
 
 > ## Layers
 

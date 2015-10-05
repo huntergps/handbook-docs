@@ -1,8 +1,8 @@
 # $(Triggers) and $(Animators)
 
-Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represent events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animator:Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
+Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represent events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 
-@(Trigger)s are behaviors that live on a @(node) or UI @(Element), listen to events and perform animations and @(actions) in response.
+@(Trigger)s are behaviors that live on a `Node` or UI @(Element), listen to events and perform animations and @(actions) in response.
 
 For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel to rotate 90 degrees with a bouncy animation.
 ```
@@ -45,7 +45,7 @@ one can do the following:
 ### $(Duration)/$(DurationBack)
 Animations can have different behavior when animating forward and backward. When a trigger is activated, the animation is said to play forward. When the trigger is deactivated, the animation is played backward. Duration is used to set the duration for the animation. One can set a different duration for the backward animation by using the `DurationBack` property.
 
-When there are multiple @(Animator:animators) inside a trigger, the total duration of the trigger will be the longest duration among the animators.
+When there are multiple @(Animators:animators) inside a trigger, the total duration of the trigger will be the longest duration among the animators.
 
 In the following example, the total duration of the @(WhileTrue) trigger will be 3 seconds. If we wanted the animations to happen one after the other, we could use @(Delay).
 
@@ -263,11 +263,11 @@ The `Attractor` is used to give a more natural movement to animations. It acts a
 
 Triggers can contain actions too, which are one-off events that fire at a particular point in the trigger's timeline.
 
-Note that actions, contrary to @(animator:animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
+Note that actions, contrary to @(Animators:animators) are not reversible. This means it is not neccessarily possible to return to the @(rest state) if the trigger is reversed.
 
 ### $(Action.Delay:Delay)
 
-Like @(Animator:animators), `Actions` can have a `Delay`. This specifies a number of seconds from the @(Trigger) is activated to the `Action` is fired.
+Like @(Animators:animators), `Actions` can have a `Delay`. This specifies a number of seconds from the @(Trigger) is activated to the `Action` is fired.
 
 
 ### $(Action.AtProgress:AtProgress)
@@ -364,7 +364,7 @@ AUTH: TODO: Do we need to discuss Z-ordering? -->
 State groups allow you to define completely custom states, with custom events.
 
 ### $(State)
-A `State` consists of a set of @(Animator:animators) inside a `State` object. It acts as a normal @(Trigger), but is activated by its containing @(StateGroup).
+A `State` consists of a set of @(Animators:animators) inside a `State` object. It acts as a normal @(Trigger), but is activated by its containing @(StateGroup).
 ```
 <State>
 	<Rotate Degrees="200" Duration="0.4"/>

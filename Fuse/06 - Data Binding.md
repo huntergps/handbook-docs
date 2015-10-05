@@ -110,7 +110,7 @@ You can read more about this in the @(FuseJS) section.
 
 ## $(Data Context)
 
-At any point in a Fuse @(Node) tree, there is a *data context*. A data binding on any node will be relative to the current data context on the node. By default, this data context is `null`, and any data binding will just return null or empty values. 
+At any point in a Fuse `Node` tree, there is a *data context*. A data binding on any node will be relative to the current data context on the node. By default, this data context is `null`, and any data binding will just return null or empty values. 
 
 To set the data context, you typically add a *behavior* to a node that provides the data context, such as a `<JavaScript>` tag. When using a `<JavaScript>` tag, the `module.exports` from the module specified will become the data context of the node the.
 
@@ -129,7 +129,7 @@ Users who write @(Uno) code can implement `IObservable` by hand to use Fuse's da
 
 `Each` is used to repeat pieces of UX markup for each item in a collection.
 
-The `Each` @(behavior) maintains one copy of its subtree per item in its $(Items) collection, and adds and removes these from the parent node accordingly. The `Items` collection can be an @(Observable) that can be changed dynamically.
+The `Each` behavior maintains one copy of its subtree per item in its $(Items) collection, and adds and removes these from the parent node accordingly. The `Items` collection can be an @(Observable) that can be changed dynamically.
 
 When using `Each`, we typically data-bind the `Items` property to an array data source to produce one visual 
 node per object in the data source.

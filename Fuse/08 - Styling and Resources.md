@@ -1,4 +1,4 @@
-# Styling and Resources
+# $(Styling) and Resources
 
 In Fuse, styling refers to setting properties such as fonts, colors, margins and appearances in a consistent way throughout your app.
 

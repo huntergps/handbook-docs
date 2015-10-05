@@ -8,8 +8,6 @@ Fuse comes with a number of UI components that can be used to construct a user i
 
 Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as @(Trigger:Triggers) and @(Actions).
 
-> ## Videos on this topic
-
 ## Text
 
 Here is a tiny app that renders text:

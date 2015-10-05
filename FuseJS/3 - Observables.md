@@ -263,15 +263,16 @@ Returns an @(Observable) that has the inverse value of the @(Observable) you are
 	falseValue = Observable(false);
 	trueValue = falseValue.not();
 
+<!-- 
 #### $(inner:inner())
-TODO: Write inner
+TODO: Write inner -->
 
 #### $($(filter:filter(condition)))
 Returns an observable that will only propagate values that pass the given `condition`, otherwise it retains its previous value.
 
 This method only considers the first (single) value of an observable.
 
-TODO: Make example
+<!-- TODO: Make example -->
 
 #### $(expand:expand(func))
 When an @(Observable) contains only a single array, expand will return an @(Observable) containing the values from that array.

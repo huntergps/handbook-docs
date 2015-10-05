@@ -90,7 +90,7 @@ The Orientation property can be used to make a vertical `WrapPanel` like so:
 </WrapPanel>
 ```
 
-TODO: Illustration -->
+<!-- TODO: Illustration -->
 
 ### $(DockPanel)
 The DockPanel layes out its children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so:

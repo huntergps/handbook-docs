@@ -789,7 +789,7 @@ It can also be used to create artistic effects like outer glow:
 
 `DropShadow` has these properties:
 
-- `Angle` - Which direction does the light come from:
+- `Angle` - Which direction the light comes from:
 	- 0 - right
 	- 90 - top
 	- 180 - left

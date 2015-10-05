@@ -251,7 +251,7 @@ Valid match properties for `Case` are:
 - `Number` - match a number
 - `Bool` - match a boolean
 
-## DataToResource
+## $(DataToResource)
 
 You can bind to a defined resource using @(DataToResource):
 

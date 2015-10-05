@@ -15,8 +15,9 @@ The following third party JavaScript libraries are tested and known to work
 
 * <a href="https://parse.com/docs/js/guide">Parse SDK</a>
 
-
+<!-- TODO: Add this section as we uncover incompatible libraries
 ## Known incompatibilities
 
 (nothing yet)
+-->
 

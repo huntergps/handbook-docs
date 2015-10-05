@@ -80,7 +80,3 @@ Purifying your code by separating view and logic into UX markup and JavaScript c
 more effective collaboration between UX designers and developers.
 
 If you need to write performance-critical business logic, we recommend doing that in @(native code) or alternatively @(Uno) code instead of JS.
-
-
-
-

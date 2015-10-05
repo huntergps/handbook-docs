@@ -1,8 +1,8 @@
 # $(Trigger)s and $(Animator)s
 
-Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represent events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
+Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represent events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @(Animator:Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 
-$(Trigger)s are @(behavior)s that live on a $(node) or UI $(Element), listen to events and perform animations and $(actions) in response.
+@(Trigger)s are behaviors that live on a @(node) or UI @(Element), listen to events and perform animations and @(actions) in response.
 
 For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel to rotate 90 degrees with a bouncy animation.
 ```
@@ -115,12 +115,12 @@ One can also animate such properties as `Width`, `Height` and `Margin`, but beca
 The `Move` animator is used to move an element. `Move` does not affect layout, so the element will just get an offset from its actual location. By default, `<Move X="10"/>` will move the element by 10 points.
 Sometimes, one wants an element to move relative to its own size or some other elements size. To control this, we can use the @(RelativeTo) property.
 
-@(RelativeTo) can be set to the following values:
+$(RelativeTo) can be set to the following values:
 - `Local`(default): Moves the set amount of points in the X and/or Y direction.
 - `Size`: Moves the set amount times the size of the element. So X="1" moves the element by its entire width in the X direction.
 - `ParentSize`: Same as `Size` but uses the elements parents size instead.
 - `LayoutChange`: Used in response to a @(LayoutAnimation) to move the element by the amount of a layout change.
-- `Keyboard`: Moves the element relative to the size of the @(Keyboard).
+- `Keyboard`: Moves the element relative to the size of the keyboard.
 
 `<Move X="0.5" RelativeTo="Size"/>` will move the element by half of its own width in the x-direction.
 Move corresponds to adding a @(Translation) on the element and using @(Change) to animate its X and Y values. The following two examples give the same result.

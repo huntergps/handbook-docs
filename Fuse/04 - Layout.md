@@ -167,7 +167,7 @@ This rectangle has a margin of 50 for its left and right, and 20 for its top and
 <Rectangle Margin="50,20"/>
 ```
 
-### @(Units)
+### $(Units)
 There are multiple ways of specifying values on layout properties, points, percent and pixels.
 The following properties support units
 - Width

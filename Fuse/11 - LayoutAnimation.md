@@ -1,4 +1,4 @@
-# $(LayoutAnimation) and $(MultiLayoutPanel)
+# $(LayoutAnimation) and $(MultiLayoutPanel) 
 
 There is a certain kind of animation which deserves special attention. When an @(Element) has certain properties like @(Width), @(Height) or @(Margin) (collectively reffered to as "layout properties") changed or when its location in the visual tree changes. In Fuse we call these types of animation LayoutAnimations.
 

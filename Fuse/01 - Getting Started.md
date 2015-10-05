@@ -32,8 +32,6 @@ For instructions on how to enable iOS preview, go here: https://www.fusetools.co
 
 For instructions on how to enable preview on an Android device, go here: https://www.fusetools.com/developers/guides/previewandexport/devicepreview
 
-> ### Desktop
-
 Starting a preview of your project on your desktop can be done in a couple of ways. If you have Sublime Text 3 installed with the supported plugin, you can right click on the UX-file and select "Begin Fuse preview" and select the "Local" option. Preview will the open the simulator, and it will sync automatically as you edit your files.
 
 Alternatively, you can navigate on the command line to your project root directory and type `fuse preview`.

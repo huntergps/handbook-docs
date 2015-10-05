@@ -9,6 +9,13 @@ changes, subscribers are notified.
 
 Observables can be used for asynchronous and reactive programming, greatly simplifying data-driven UI programming.
 
+> ## Video introduction
+
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=mi8sWErrabI"></iframe>
+</div>
+
 ### How to import
 
 	var Observable = require('FuseJS/Observable');

@@ -72,22 +72,20 @@ This code assumes the file `FuseLogo.png` lives in the same directory as the UX-
 
 For a small example of other ways to load image data, here is a small example that also uses databinding from JavaScript:
 
-	<App>
-		<FileImageSource ux:Key="pic2" File="Images/Image2.jpg" />
-		<StackPanel>
-			<JavaScript>
-				module.exports = {
-					imageResource: "pic2",
-					url: "http://somewhereontheinternet/Cute-Cat.jpg"
-				}
-			</JavaScript>
-			<Image File="Images/Image1.jpg" />
-			<Image Source="{DataToResource key}" />
-			<Image Url="{url}" />
-		</StackPanel>
-	</App>
+	<FileImageSource ux:Key="pic2" File="Images/Image2.jpg" />
+	<StackPanel>
+		<JavaScript>
+			module.exports = {
+				imageResource: "pic2",
+				url: "http://somewhereontheinternet/Cute-Cat.jpg"
+			}
+		</JavaScript>
+		<Image File="Images/Image1.jpg" />
+		<Image Source="{DataToResource imageResource}" />
+		<Image Url="{url}" />
+	</StackPanel>
 
-This app will show three images stacked on top of each other. The topmost image will be fetched as a normal file. Then we create a `FileImageSource` that we bind to an image using `DataToResource`, which looks up the resource for `pictureResource.key` and binds it to the `Image`. We also get the URL for a picture on the web and bind it to the `Url`-property of an `Image`. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly.
+This code will show three images stacked on top of each other. The topmost image will be fetched as a file that's part of the project. At the top we've referenced a file by creating a `FileImageSource` that we bind to an image using `DataToResource`. This will lookup the resource from the key it gets form the JavaScript. We also get the URL for a picture on the web and bind it to the `Url`-property of an `Image`. If this looks complicated, don't fret: We'll look more at @(DataBinding) and @(JavaScript) shortly.
 
 > ### Image Color
 
@@ -175,7 +173,7 @@ Note that images fetched from Http may take some time to load, and until loaded,
 
 ## $(Shapes)
 
-Fuse comes with functionality for doing shape rendering. All shapes can have multiple @(Fill:Fills) and @(Stroke:Strokes). These will be layered on top of each other.
+Fuse can render `Rectangle`s and `Circle`s. These shapes can have multiple @(Fill:Fills) and @(Stroke:Strokes). These will be layered on top of each other.
 
 ### $(Rectangle)
 
@@ -223,7 +221,7 @@ It is possible to use other kinds of brushes to fill shapes. For example:
 		</Rectangle>
 	</StackPanel>
 
-Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a @(Rectangle) that has a nice and subtle `LinearGradient` from fuchsia(?) to purple(?).
+Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a @(Rectangle) that has a nice and subtle `LinearGradient`.
 
 ### $(Stroke:Strokes)
 
@@ -326,7 +324,7 @@ It is easy to make an app that has a `Button`:
 		</Button>
 	</App>
 
-This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". Because we're working with a control, we add `Theme="Basic"`. We have previously not needed to rely on a `Theme` because we haven't really been working with anything that has a theme that can be applied.
+This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". Because we're working with a control, we add `Theme="Basic"`.
 
 In Fuse, pretty much anything can easily be made @(Clicked:clickable) (and @(Tapped:tappable), etc):
 

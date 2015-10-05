@@ -1,10 +1,8 @@
 # $(Getting Started)
 
-Welcome to Fuse!
+Getting up and running with Fuse is super easy. We'll just need to install a few things, then we're good to go!
 
 ## $(Setup)
-
-Getting up and running with Fuse is super easy. We'll just need to install a few things, then we're good to go!
 
 We're always working hard on making this process smooth as silk, but occasionally things can still go wrong. If something happens, please let us know!
 

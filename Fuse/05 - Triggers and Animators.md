@@ -526,9 +526,9 @@ Animation triggers are designed to solve quite specific animation problems that 
 The flipside is that these triggers can be somewhat hard to understand and use, so make sure you read the docs and study examples before spending
 too much time scratching your head.
 
-### $(LayoutAnimation)
+### LayoutAnimation
 
-The `LayoutAnimation` is triggered in response to a layout change. A layout change happens whenever the element gets a new layout by the layout system. `LayoutAnimation` is commonly used together with @(MultiLayoutPanel) for some pretty interesting animations. See @(LayoutAnimation) for more in depth documentation.
+The `LayoutAnimation` is triggered in response to a layout change. A layout change happens whenever an element gets a new layout by the layout system. `LayoutAnimation` is commonly used together with @(MultiLayoutPanel) for some pretty interesting animations. See @(LayoutAnimation) for more in depth documentation.
 
 <!-- TODO: consider linking to external article here-->
 

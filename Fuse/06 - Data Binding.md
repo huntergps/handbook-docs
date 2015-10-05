@@ -187,7 +187,7 @@ You can also just use `Each` as a simple repeater:
 
 ## $(WhileCount) and $(WhileEmpty)
 
-The `WhileEmpty` and `WhileCount` @(triggers) can be used to act on the number of items in a collection:
+The `WhileEmpty` and `WhileCount` @(Trigger:triggers) can be used to act on the number of items in a collection:
 
 	<Each Items="{friends}">
 		<!-- ... List friend ... -->

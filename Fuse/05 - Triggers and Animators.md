@@ -1,4 +1,4 @@
-# $(Triggers) and $(Animators)
+# $(Trigger:Triggers) and $(Animators)
 
 Triggers provide a declarative way of creating animations with Fuse. At their most basic, triggers represent events that are triggered in response to user and/or program input. @(Trigger:Triggers) can contain @Animators) and @(Actions) which are used to animate and manipulate elements as well as interacting with @(JavaScript).
 

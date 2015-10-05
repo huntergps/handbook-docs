@@ -6,7 +6,7 @@ Fuse comes with a number of UI $(Element:elements) that can be used to construct
 	<Rectangle Width="50" Height="50" Fill="#888" />
 	<Text>Hello world!</Text>
 
-Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as @(Triggers) and @(Actions).
+Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as @(Trigger:Triggers) and @(Actions).
 
 > ## Videos on this topic
 

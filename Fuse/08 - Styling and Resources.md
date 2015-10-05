@@ -40,7 +40,7 @@ Class Resources can be as complex as you want:
 		<BurgerIcon />
 	</Panel>
 
-Class Resources can also contain their own logic using @(Triggers) and @(Actions).
+Class Resources can also contain their own logic using @(Triggers:Trigger) and @(Actions).
 
 ## $(Style)
 

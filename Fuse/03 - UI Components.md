@@ -808,7 +808,7 @@ Note that while the `Radius` of the `Blur` can be animated like most other prope
 
 <!-- TODO: The API reference doesn't include `Radius` and has a bunch of properties I cannot confidently say anything about. AUTH help? -->
 
-### $(Desaturate)
+> ### $(Desaturate)
 
 To `Desaturate` an element, fully or partially:
 
@@ -818,7 +818,7 @@ To `Desaturate` an element, fully or partially:
 
 An amount of 1.0 will fully `Desaturate` the element.
 
-### $(Halftone)
+> ### $(Halftone)
 
 Add a classic halftone effect:
 
@@ -834,7 +834,7 @@ Add a classic halftone effect:
 - `DotTint` - Tint amount of the dots (`float`, default 0.5)
 - `PaperTint` - Tint amount of the paper (`float`, default 0.2)
 
-### $(Mask)
+> ### $(Mask)
 
 Fuse allows you to mask an element with an image or `ImageSource`.
 

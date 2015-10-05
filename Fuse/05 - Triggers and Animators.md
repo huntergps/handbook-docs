@@ -154,6 +154,12 @@ Move corresponds to adding a @(Translation) on the element and using @(Change) t
 <Rotate Degrees="90" Duration="0.5"/>
 ```
 
+### $(Resize)
+
+When used in concert with @(LayoutAnimation), `Resize` allows you to animate the size of an element:
+
+	 <Resize RelativeTo="LayoutChange" Duration="0.5" Easing="CircularInOut" />
+
 <!--  ### $(Cycle)
 TODO: Cycle
 

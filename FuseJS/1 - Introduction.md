@@ -57,7 +57,6 @@ Examples:
 
 * <a href="https://www.fusetools.com/developers/examples/todoparseexample">TODO App with Parse backend example</a>
 
-
 ## Design & motivation
 
 The key design goal of FuseJS is to keep your JS code small, clean and only concerned with the practical functions of your application. Meanwhile

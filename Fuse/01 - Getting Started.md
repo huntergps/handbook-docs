@@ -12,7 +12,7 @@ Setup instructions for Windows: https://www.fusetools.com/developers/guides/setu
 
 ## Tutorial
 
-We suggest you start by taking a look at our Getting Started tutorial: https://www.fusetools.com/developers/guides/tutorial You can also find a wide range of ready-to-run examples at https://www.fusetools.com/examples
+We suggest you start by [following our tutorial](https://www.fusetools.com/developers/guides/tutorial). You can also find a wide range of ready-to-run examples [on our Examples-page](https://www.fusetools.com/examples).
 
 ## $(Project structure)
 
@@ -26,7 +26,7 @@ Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScrip
 
 ## Preview
 
-Fuse has excellent support for getting a live preview of the edits you make, both in a desktop based simulator and on the devices you decide to target. These previews can run simultaneously, so you no longer need to build your project for specific devices between edits; just save and they will appear instantly on the device(s).
+Live preview is a key feature of Fuse. You can live preview simultaneously on multiple devices (and in the desktop simulator), so you no longer need to build your project for specific devices between edits; just save and they will appear instantly all of your devices.
 
 > ### iOS
 

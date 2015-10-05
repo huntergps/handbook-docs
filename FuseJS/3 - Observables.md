@@ -1,6 +1,6 @@
 # $(Observable)s
 
-Observables are the key ingredients in a FuseJS application. Observables deal with @(data-binding), @(reactive programming) and @(asynchronous programming).
+Observables are the key ingredients in a FuseJS application. Observables deal with @(Data Binding), reactive programming and asynchronous programming.
 
 An `Observable` represents a value that can be observed. In Fuse, Observables are primarily used for data-binding between JavaScript and UX Markup.
 
@@ -48,7 +48,7 @@ We can also query the number of values in the list through the `.length` propert
 	friends.add('Gina');
 	Console.Log(friends.length); // prints 4
 
-See the full list of @(Members) to see what's possible with observable lists.
+See the full list of @(Observable.Members) to see what's possible with observable lists.
 
 
 #### Observable functions
@@ -205,7 +205,7 @@ Updates all items in the @(Observable) with the values from `newValues`.
 
 ### $(Reactive operators)
 
-FuseJS comes with set of reactive operators that return @(Observables) from other @(Observables). This means that if the original `Observable` changes, any `Observable`s that are created as a result of applying a reactive operator will also change automatically.
+FuseJS comes with set of reactive operators that return @(Observable:Observables) from other @(Observable:Observables). This means that if the original `Observable` changes, any `Observable`s that are created as a result of applying a reactive operator will also change automatically.
 
 > Note! It is important to understand that the result of a reactive operator will only be computed if the resulting `Observable` is *consumed*, i.e. databound and its value is needed. If you @(map(func)) over an `Observable` collection and try to `debug_log` from the mapping function, these contents might not be displayed because the resulting `Observable` is not databound. If you run into this problem, you can manually add a subscriber for debugging purposes, as described @(addSubscriber(func):here).
 
@@ -317,10 +317,12 @@ Returns a string representation of an observable and its contents.
 	testObservable.toString(); // "(observable) 1,two,3"
 
 ## Topics
-TODO: Fill inn here!!
+<!-- TODO: Fill inn here!! -->
 
-Observables can be used for a lot of things, here are articles about each topic:
+Observables can be used for a lot of things:
 
-* @(Databinding)
-* @(Asynchronous programming)
-* @(Reactive programming)
+* @(Data Binding)
+* Asynchronous programming
+* Reactive programming
+
+<!-- TODO: Here are articles about each topic -->

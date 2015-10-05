@@ -56,7 +56,7 @@ FuseJS has support for promises, go here for more information:
 ## Polyfills
 
 FuseJS provides polyfills for some features (typically browser features) that are mainly provided to make
-$(third party libraries) work. These implementations are not neccessarily complete at this point, but check the @(Roadmap) to see what the status is for development.
+$(third party libraries) work. These implementations are not neccessarily complete at this point, but check the @(FuseJS Roadmap) to see what the status is for development.
 
 > ### $(setTimeout)
 

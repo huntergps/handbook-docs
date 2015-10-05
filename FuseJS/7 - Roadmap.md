@@ -14,9 +14,11 @@ FuseJS features:
 * Media - play sound files
 * Accelerometer - know the device orientation
 
+<!-- TODO:
+
 @(Third party libraries: Third party library) compatibility:
 
-* Socket.io
+* Socket.io -->
 
 ## Planned
 
@@ -26,6 +28,8 @@ FuseJS features:
 * Contacts - access the phone's contact list
 * Geolocation - know where you are (GPS)
 
+<!-- TODO:
+
 @(Third party libraries: Third party library) compatibility:
 
-* (lots)
+* (lots) -->

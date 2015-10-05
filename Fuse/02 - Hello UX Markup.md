@@ -25,7 +25,7 @@ When creating stand-alone apps or prototypes in Fuse, we use the `<App>` tag.
 Inside your `<App>` tag you can put any `Node`, `Behavior` or `Theme` tag. The above example
 simply displays text using the default font.
 
-The `<App>` tag itself bootstraps the app and takes care of application @(lifecycle) and @(Theme).
+The `<App>` tag itself bootstraps the app and takes care of application lifecycle and @(Theme).
 
 > ### The $(Background) property
 

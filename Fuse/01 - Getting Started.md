@@ -12,9 +12,7 @@ Setup instructions for Windows: https://www.fusetools.com/developers/guides/setu
 
 ## Tutorial
 
-Congratulations on your fresh Fuse install!
-
-If you want to get started using Fuse by following an example from creation of a new project all the way until you run it on your handheld device, you can find such a tutorial here: https://www.fusetools.com/developers/guides/tutorial Also, if you want to look at some ready-to-run examples of Fuse in action, head on over to https://www.fusetools.com/examples
+We suggest you start by taking a look at our Getting Started tutorial: https://www.fusetools.com/developers/guides/tutorial You can also find a wide range of ready-to-run examples at https://www.fusetools.com/examples
 
 ## $(Project structure)
 

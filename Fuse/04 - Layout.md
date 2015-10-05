@@ -162,7 +162,7 @@ If you don't assign an `Alignment` explicitly, the default alignment will be to 
 You can combine @(Alignment) and other layout properties with `Width` and `Height`, which will set the size of the @(Element) in the desired @(Units:Unit).
 
 ### $(Margin) and $(Padding)
-Each element can specify the amount of space between it and its parent or surrounding elements by using its @(Margin) property.
+Each element can specify the amount of space between it and its parent or surrounding siblings by using its @(Margin) property.
 
 Each element can also specify how much space should be between its borders and any element inside it by using the @(Padding) property.
 
@@ -183,16 +183,16 @@ This rectangle has a margin of 50 for its left and right, and 20 for its top and
 ### $(Units)
 There are multiple ways of specifying values on layout properties, points, percent and pixels.
 The following properties support units
-- Width
-- Height
+- @(Width)
+- @(Height)
 - MinWidth
 - MinHeight
 - MaxWidth
 - MaxHeight
-- @Offset
-- @Anchor
+- @(Offset)
+- @(Anchor)
 
-* Note that the column and row properties of @(Grid) use their own system, proportion, auto. <!-- (TODO: Finish sentence?). -->
+* Note that the column and row properties of @(Grid) use their own @(Rows:system).
 
 ### Specifying units in $(points)
 When setting an elements Width to a number like so `<Element Width="50"/>`, the element will become 50 points wide.

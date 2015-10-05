@@ -28,11 +28,7 @@ Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScrip
 
 Live preview is a key feature of Fuse. You can live preview simultaneously on multiple devices (and in the desktop simulator), so you no longer need to build your project for specific devices between edits; just save and they will appear instantly all of your devices.
 
-> ### iOS
-
 For instructions on how to enable iOS preview, go here: https://www.fusetools.com/developers/guides/previewandexport/devicepreview
-
-> ### Android
 
 For instructions on how to enable preview on an Android device, go here: https://www.fusetools.com/developers/guides/previewandexport/devicepreview
 

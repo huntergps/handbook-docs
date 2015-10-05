@@ -12,13 +12,13 @@ Note that just because something is enclosed in a tag doesn't necessarily mean i
 
 ## Text
 
-To render text in a minimal app:
+Here is a tiny app that renders text:
 
 	<App>
 		<Text>Hello, world!</Text>
 	</App>
 
-If you want to add longer passages of text, such as a _Lorem Ipsum_, you discover that you in certain cases want to enable word wrapping. In Fuse, this is done with the `$(TextWrapping)` property on the `Text` control:
+This is great but when you have longer passages of text, such as a _Lorem Ipsum_, you likely want to enable word wrapping. In Fuse, this is done with the `$(TextWrapping)` property on the `Text` control:
 
 	<Text TextWrapping="Wrap">Lorem Ipsum(...)</Text>
 

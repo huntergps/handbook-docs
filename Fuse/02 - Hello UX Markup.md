@@ -127,7 +127,7 @@ exception of:
 The main benefits of working with `GraphicsTheme` are:
 
 * You can preview your app on Mac and PC using Fuse's realtime preview window,
-  which offers a much smoother experience than the iOS and Android emulators.
+  which offers a smoother experience than the iOS and Android emulators.
 * Your designs and animations will look and behave identically on all platforms.
 
 Since `GraphicsTheme` is the default theme, you don't have to specify this explicitly,

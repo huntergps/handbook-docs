@@ -79,4 +79,4 @@ time to study the Fuse examples to get a feel for the new way of doing things.
 Purifying your code by separating view and logic into UX markup and JavaScript can shrink your code base significantly, make it more maintainable, and allow
 more effective collaboration between UX designers and developers.
 
-If you need to write performance-critical business logic, we recommend doing that in @(native code) or alternatively @(Uno) code instead of JS.
+If you need to write performance-critical business logic, we recommend doing that in native code or alternatively Uno code instead of JS.

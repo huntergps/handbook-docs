@@ -4,7 +4,7 @@ $(FuseJS) is a $(JavaScript) framework for writing cross-platform mobile app bus
 
 ## Getting started
 
-FuseJS is can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:
+FuseJS can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:
 
 	<JavaScript File="SomeCode.js" />
 
@@ -40,8 +40,7 @@ Failing to export from modules will make it impossible to reach defined data ins
 This is good for hiding implementation details from other calling JavaScript modules and UX code.
 
 > ## Importing modules
-
-FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file (or inline snippet) is a module.
+Each code file (or inline snippet) is a module.
 
 To make a module available to other modules through `$(require)`, mark your `<JavaScript>` tag with the `ux:Global` attribute.
 
@@ -67,7 +66,7 @@ The way Fuse separates JavaScript business logic from UX markup presentation has
 * Performance - all the performance critical bits are handled in native code and based on native UI components.
 * Easy - declarative code is easy to read, write and understand even with limited programming knowledge
 * Less error prone - fewer states means less things can go wrong
-* Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag&droppy stuff.
+  * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.
 
 Note that Fuse has tons of declarative APIs (designed UX markup) that replace the need for controlling animation from JavaScript (i.e. imparatively).
 

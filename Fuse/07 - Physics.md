@@ -11,25 +11,29 @@ Physics simulation is achieved by using different types of physics rule behavior
 
 The `Draggable` behavior lets you move an @(Element) using the pointer by dragging it.
 
-    <Panel>
-		<Rectangle Width="100" Height="100" Fill="Red">
-			<Draggable/>
-		</Rectangle>
-	</Panel>
+```
+<Panel>
+	<Rectangle Width="100" Height="100" Fill="Red">
+		<Draggable/>
+	</Rectangle>
+</Panel>
+```
 
 #### $(WhileDragging)
 
 The `WhileDragging` trigger is active while the @(Element) is being dragged and deactivates as it gets released.
 
-    <Panel>
-		<Rectangle Background="Blue" Width="50" Height="100">
-			<Draggable/>
-			<WhileDragging>
-				<Rotate Degrees="90" Duration="0.8"
-				        Easing="BounceOut" EasingBack="BounceIn"/>
-			</WhileDragging>
-		</Rectangle>
-	</Panel>
+```
+<Panel>
+	<Rectangle Background="Blue" Width="50" Height="100">
+		<Draggable/>
+		<WhileDragging>
+			<Rotate Degrees="90" Duration="0.8"
+			        Easing="BounceOut" EasingBack="BounceIn"/>
+		</WhileDragging>
+	</Rectangle>
+</Panel>
+```
 
 ### $(PointAttractor)
 

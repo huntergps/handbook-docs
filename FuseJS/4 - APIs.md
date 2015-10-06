@@ -6,6 +6,11 @@ TODO for the below: write some basic inline docs & examples, then point to the M
 
 > * : May have limited functionality compared to browser implementations -->
 
+## Polyfills
+
+FuseJS executes in a (minimum) EcmaScript 5.1 environment on all supported platforms.
+There is no web browser involved, FuseJS only provides a subset of the browser's standard libraries. FuseJS provides polyfills for some features (typically browser features) that are mainly provided to make $(third party libraries) work. These implementations are not neccessarily complete at this point, but check the @(FuseJS Roadmap) to see what the status is for development.
+
 ## $(fetch)
 
 This is the main way to do HTTP requests.
@@ -47,12 +52,7 @@ FuseJS has support for promises, go here for more information:
 
 <!-- TODO: Cleanup the difference between polyfill and API -->
 
-## Polyfills
-
-FuseJS executes in a (minimum) EcmaScript 5.1 environment on all supported platforms.
-There is no web browser involved, FuseJS only provides a subset of the browser's standard libraries. FuseJS provides polyfills for some features (typically browser features) that are mainly provided to make $(third party libraries) work. These implementations are not neccessarily complete at this point, but check the @(FuseJS Roadmap) to see what the status is for development.
-
-> ### $(setTimeout)
+> ## $(setTimeout)
 
 To call a function in 2 seconds:
 

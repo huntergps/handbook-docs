@@ -337,7 +337,7 @@ The `Button` can also accept `Clicked` as an _event-trigger_:
 	<App Theme="Basic">
 		<JavaScript>
 			module.exports = {
-				buttonClick: function (args) { debug_log ("Button was clicked"); }
+				buttonClick: function (args) { console.log("Button was clicked"); }
 			}
 		</JavaScript>
 		<Button Text="Click me!" Clicked="{buttonClick}" />
@@ -377,7 +377,7 @@ The events emitted by the `Switch` can also be handled from JavaScript:
 		<JavaScript>
 			module.exports = {
 				switchChanged: function (args) {
-					debug_log ("Switch value is: " + args.value);
+					console.log("Switch value is: " + args.value);
 				}
 			};
 		</JavaScript>
@@ -401,7 +401,7 @@ You can also databind the `Switch` using its `Value`-property:
 				enableSwitch: function () { switchValue.value = true; },
 				disableSwitch: function () { switchValue.value = false; },
 				switchChanged: function (args) {
-					debug_log ("Switch value is: " + args.value);
+					console.log("Switch value is: " + args.value);
 				}
 			};
 		</JavaScript>
@@ -438,7 +438,7 @@ You can also listen to the `ValueChanged`-event:
 			module.exports = {
 				sliderValueChanged: function (args)
 				{
-					debug_log ("Value: " + args.value);
+					console.log("Value: " + args.value);
 				}
 			};
 		</JavaScript>
@@ -480,7 +480,7 @@ Fuse provides a `TextInput`-control to allow for user input of text:
 
 	<JavaScript>
 		var valueChanged = function (args) {
-			debug_log (args.value);
+			console.log(args.value);
 		}
 
 		module.exports = {

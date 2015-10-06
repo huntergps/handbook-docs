@@ -99,7 +99,7 @@ You can hook up event handlers to call JavaScript functions with similar syntax:
 	<JavaScript>			
 		module.exports = {
 			clickHandler: function (args) { 
-				debug_log ("I was clicked: " + JSON.stringify(args)); 
+				console.log("I was clicked: " + JSON.stringify(args)); 
 			}
 		};
 	</JavaScript>

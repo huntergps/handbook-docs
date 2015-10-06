@@ -70,8 +70,6 @@ Being a pulse trigger, means that the @(Animation:animations)/@(Actions:actions)
 
 - `From` & `To` - Number between 0 and 1, 0 being the edge of the forcefield and 1 at the center.
 
-
-If the
 	<Panel>
 		<Panel Alignment="Top">
 			<Rectangle Background="Blue" Width="50" Height="100" Margin="0,100">

@@ -4,7 +4,7 @@ $(FuseJS) is a $(JavaScript) framework for writing cross-platform mobile app bus
 
 ## Getting started
 
-FuseJS is can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:
+FuseJS can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:
 
 	<JavaScript File="SomeCode.js" />
 

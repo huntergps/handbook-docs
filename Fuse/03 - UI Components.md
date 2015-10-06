@@ -647,7 +647,7 @@ Normally, when laying out an element inside the other, the inner element can fre
 
 This `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds.
 
-If you intent to have the `Image` clip to its parent size, simply add $(ClipToBounds) to the `Panel`:
+If you intend to have the `Image` clip to its parent size, simply add $(ClipToBounds) to the `Panel`:
 
 		<Panel Width="100" Height="100" ClipToBounds="true">
 			<Image Margin="-100" File="Pictures/Picture1.jpg"

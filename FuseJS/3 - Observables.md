@@ -173,9 +173,9 @@ Returns the index of the first occurrence of `value`.
 
 
 #### $(contains:contains(value))
-Returns true if `value` exists in the @(Observable).
+Returns true if `value` exists in the @(var).
 
-	var seasons = Observable("Summer", "Fall", "Winter", "Spring");
+	Observable seasons = Observable("Summer", "Fall", "Winter", "Spring");
 	var winterExists = seasons.contains("Winter"); // true
 
 #### $(refreshAll:refreshAll(newValues, compareFunc, updateFunc, mapFunc))
@@ -269,7 +269,7 @@ Returns an @(Observable) that has the inverse value of the @(Observable) you are
 	falseValue = Observable(false);
 	trueValue = falseValue.not();
 
-<!-- 
+<!--
 #### $(inner:inner())
 TODO: Write inner -->
 

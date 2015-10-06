@@ -29,59 +29,6 @@ The `<App>` tag itself bootstraps the app and takes care of application lifecycl
 
 The $(Background) property controls the color of the root view of the app.
 
-<!-- > ### $(Lifecycle) events
-
-TODO: Details on lifecycle events available on App -->
-
-
-## $(Creating components) : $(ux:Class)
-
-<!--
-TODO: Focus on the humane way with a file for each component
-TODO: Put ux:Class in separate sub topic -->
-
-When creating reusable components, we decorate our tags with the `ux:Class`
-attribute:
-
-	<Panel ux:Class="MyClass">
-		<!-- code goes here -->
-	</Panel>
-
-This can be done on any node even inside other nodes:
-
-	<Panel>
-		<Panel ux:Class="FancyClass" />
-	</Panel>
-
-You can also split your components into seprate files. The root node of a `.ux` file is implicitly a `ux:Class`,
-so if the following code lives inside `FancyPanel.ux`:
-
-	<Panel>
-		<!-- code goes here -->
-	</Panel>
-
-Then this is equivalent to:
-
-	<Panel ux:Class="FancyPanel">
-		<!-- code goes here -->
-	</Panel>
-
-### Reusing your component within Fuse
-
-Once you've made a reusable class, you can use it like any other tag:
-
-	<MyClass>
-		<Panel />
-		<FancyClass />
-	</MyClass>
-
-<!-- ### Using your component in a native iOS (Xcode) app
-TODO: Link to @(learn-iOS)
-TODO: Add info on this -->
-
-<!--  ### Using your component in a native Android Studio app
-TODO: Link to @(learn-Android)
-TODO: Add info on that -->
 
 ## UX tags
 
@@ -109,7 +56,7 @@ If not specified, `App` uses a plain `GraphicsTheme` by default.
 
 ### $(NativeTheme)
 
-When using `NativeTheme`, Fuse will use native controls instead of OpenGL ES rendering. To use a native theme, do:
+When using `NativeTheme`, Fuse will use the native controls from the target platform. To use a native theme, do:
 
 	<App Theme="Native">
 		<StackPanel>
@@ -119,15 +66,13 @@ When using `NativeTheme`, Fuse will use native controls instead of OpenGL ES ren
 		</StackPanel>
 	</App>
 
-In this example, the displayed controls will have native appearance on iOS and Android, and *no appearance* in desktop preview. This is because Fuse will not dare to try to mimic the "real" iOS and Android controls using GL.
+In this example, the displayed controls will have native appearance on iOS and Android, and *no appearance* in desktop preview.
 
 > If you still want to make use of desktop preview while working with native controls, you can use the `NativeWithFallback` theme. This will give you native controls on iOS and Android, while falling back to a (unspecified) basic theme on desktop.
 
 ### $(GraphicsTheme)
 
-By default, app uses a `GraphicsTheme`, which will render all components using
-OpenGL ES. This will give your app an identical look on all platforms, with the
-exception of:
+By default, `App` uses a `GraphicsTheme`, which will give your app an identical look on all platforms, with the exception of:
 
 * `TextInput` - will be rendered using the platform's native text edit controls
 * Status bars will behave differently across platforms
@@ -182,7 +127,7 @@ And then this works:
 ### $(BasicTheme)
 
 The `BasicTheme` is a `GraphicsTheme` that ships with fuse and gives controls a
-material design-ish look and feel. This can be useful when you want a starting
+look and feel inspired by material design. This can be useful when you want a starting
 point for UIs that are supposed to look the same on all platforms.
 
 	<App Theme="Basic">

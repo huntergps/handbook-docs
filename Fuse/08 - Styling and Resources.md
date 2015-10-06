@@ -16,15 +16,15 @@ In this case, the `Header`-class will be a distinctly different class from `Text
 
 __Header.ux__:
 
-	<!-- Setting 'ux:Class' is superfluous in this case, 
-		 as it is implicitly set on the root element in 
+	<!-- Setting 'ux:Class' is superfluous in this case,
+		 as it is implicitly set on the root element in
 		 a UX-file, but included here for clarity -->
 	<Text ux:Class="Header FontSize="22" />
-	
+
 __MainView.ux__:
 
 	<Header>Welcome</Header>
-	
+
 Class Resources can be as complex as you want:
 
 	<Image ux:Class="BurgerIcon">
@@ -33,9 +33,9 @@ Class Resources can be as complex as you want:
 			<FileImageSource File="Burger.png@2x.png" Density="2"/>
 		</MultiDenistyImageSoruce>
 	</Image>
-	
+
 	<!-- ... -->
-	
+
 	<Panel>
 		<BurgerIcon />
 	</Panel>
@@ -125,10 +125,8 @@ Then, instead of specifying the greeting string directly throughout the app, we 
 
 <!--## The anatomy of controls
 
-TODO: Explain appearances, overlays, child/parent, how 
+TODO: Explain appearances, overlays, child/parent, how
 
 ## Tweaking existing styles
 
 - InheritStyle = false ? -->
-
-

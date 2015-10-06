@@ -213,7 +213,7 @@ Here we create a `Circle` that has been filled with an `ImageFill`-brush, great 
 
 ## $(Stroke:Strokes)
 
-@(Stroke:Strokes) accept a brush the same way a @(Fill) does:
+Strokes accept a brush the same way a @(Fill) does:
 
 	<StackPanel>
 		<Circle Width="150" Height="150">
@@ -561,7 +561,7 @@ As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, 
 
 TODO: Consider not documenting these here but in the chapter on Triggers and Animators -->
 
-# $(ScrollView) 
+# $(ScrollView)
 
 Fuse has a `ScrollView` that can be used to navigate contents that are larger than the available size.
 
@@ -600,7 +600,7 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 			</ScrollView>
 		</Panel>
 	</App>
-	
+
 # $(Element)
 
 Here are some properties that are common for `Element`:

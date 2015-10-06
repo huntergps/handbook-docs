@@ -36,11 +36,11 @@ The `WhileDragging` trigger is active while the @(Element) is being dragged and 
 
 ### $(PointAttractor)
 
-The `PointAttractor` `Rule` can be used to define points which @(Element:elements) are attracted towards. The `PointAttractor` can be customized with the following properties:
+The `PointAttractor` `Rule` is one of the `ForceField` rules and can be used to define points which @(Element:elements) are attracted towards. The `PointAttractor` can be customized with the following properties:
 - Offset - Set the position of the `PointAttractor` relative to its container
 - Radius - The radius from the point where the attractor will have an effect.
 - Strength - How much attraction is applied to the affected elements.
-- Exclusive - Whether this attractor will be exclusively applied when it is considered the strongest @(Rule) applying force.
+- Exclusive - Whether this attractor will be exclusively applied when it is considered the strongest @(Physics Rules:rule) applying force.
 
 <!-- ### $(Spring)
 The Spring @(Rule:rule) is used
@@ -52,9 +52,9 @@ AUTH: Buggy?
 -->
 
 ## $(ForceField triggers)
-ForceField triggers are used to animate based on whether an @(Element) is affected by a `ForceField` rule or not.
+`ForceField` triggers are used to animate based on whether an @(Element) is affected by a `ForceField` rule or not.
 
-- ForceField - The @(ForceField) needed to enter to activate this @(Trigger).
+- ForceField - The `ForceField` needed to enter to activate this @(Trigger).
 
 ### $(EnteredForceField)
 

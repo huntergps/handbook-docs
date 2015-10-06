@@ -20,7 +20,7 @@ Panels can contain child UI elements and lay them out according to layout rules.
 
 For a good introductory example to basic layout, take a look [here](https://www.fusetools.com/developers/examples/layoutexample).
 
-### $(Panel)
+# $(Panel)
 The most basic type of panel is the `Panel`. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other. Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite useful in many situations.
 
 ```
@@ -33,7 +33,7 @@ The most basic type of panel is the `Panel`. Children of a Panel will be default
 
 Note that the element order in a `Panel` is the same as the layer order in popular graphics packages such as Photoshop; the layer that appears first in the UX-file will be layered on top of elements appearing later in the file.
 
-### $(StackPanel)
+# $(StackPanel)
 The StackPanel places its children in a stack. The default layout is a vertical stack, but one can use the $(Orientation) property to specify that the stack should be layed out horizontally.
 
 ```
@@ -42,15 +42,15 @@ The StackPanel places its children in a stack. The default layout is a vertical 
 </StackPanel>
 ```
 
-### $(Grid)
+# $(Grid)
 The Grid places its children in a grid formation. The rows and columns can be specified explicitly by the @(Rows) and @(Columns) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
 
-#### $(RowCount) and $(ColumnCount)
+## $(RowCount) and $(ColumnCount)
 If all that is needed is a grid of equally sized rows and columns one can simply state the number of rows and columns using the RowCount and ColumnCount properties.
 ```
 <Grid RowCount="4" ColumnCount="2"/>
 ```
-#### $(Rows) and $(Columns)
+## $(Rows) and $(Columns)
 More fine grained control of how the rows and column sizes are calculated can be achieved with the Rows and Columns properties. These properties are assigned to a comma separated list of values which can take on a few different forms.
 The values can either be absolute, relative or automatic.
 
@@ -71,7 +71,7 @@ The following grid has 3 rows where the first two rows gets the size of its larg
 <Grid Rows="auto,auto,1*"/>
 ```
 
-### $(Grid.Row:Placing elements in a Grid) $(Grid.Column:)
+## $(Grid.Row:Placing elements in a Grid) $(Grid.Column:)
 By default, elements are placed in the grid by the order they appear in the UX, from left to right, top to bottom. One can specify per element which grid cell they should be placed in using the Row and Column like so:
 ```
 <Grid RowCount="1" ColumnCount="2">
@@ -80,7 +80,7 @@ By default, elements are placed in the grid by the order they appear in the UX, 
 </Grid>
 ```
 
-### $(WrapPanel)
+# $(WrapPanel)
 The `WrapPanel` lays out its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
 
 The following WrapPanel layes out its children horizontally from right ro left.
@@ -103,7 +103,7 @@ The Orientation property can be used to make a vertical `WrapPanel` like so:
 
 <!-- TODO: Illustration -->
 
-### $(DockPanel)
+# $(DockPanel)
 The DockPanel layes out its children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so:
 ```
 <Rectangle Dock="Left"/>
@@ -125,7 +125,7 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 
 The @(Style) is used to give the @(Rectangle:rectangles) a minimum size. The @(Rectangle) do not have any explicit default size, so when the `DockPanel` places them, it tries to use their minimum size, except for when `Dock` is set to `Fill`.
 
-## Element Layout
+# Element Layout
 
 <!-- TODO: Link to video -->
 
@@ -136,7 +136,7 @@ If an element doesn't specify these things, the panel performing layout on them 
 
 <!-- TODO: Available space, @(points) (vs @(pixels)). -->
 
-### $(Alignment)
+## $(Alignment)
 
 When elements are positioned in a panel they may not require all of the space available to them. For example, a vertical stack panel will be as wide as its largest element, leaving extra space for the smaller elements. Elements can either be aligned within this space, or stretched to fill it.
 
@@ -168,11 +168,11 @@ Alignment can be assigned to any one of the following values:
 
 If you don't assign an `Alignment` explicitly, the default alignment will be to stretch the control as much as the parent control requests. For a normal `Panel`, this means that the child control will try to fill the parent `Panel`, but other containing controls might ask the children to behave differently.
 
-### $(Width) and $(Height)
+## $(Width) and $(Height)
 
 You can combine @(Alignment) and other layout properties with `Width` and `Height`, which will set the size of the @(Element) in the desired @(Units:Unit).
 
-### $(Margin) and $(Padding)
+## $(Margin) and $(Padding)
 Each element can specify the amount of space between it and its parent or surrounding siblings by using its @(Margin) property.
 
 Each element can also specify how much space should be between its borders and any element inside it by using the @(Padding) property.
@@ -191,7 +191,7 @@ This rectangle has a margin of 50 for its left and right, and 20 for its top and
 <Rectangle Margin="50,20"/>
 ```
 
-### $(Units)
+## $(Units)
 There are multiple ways of specifying values on layout properties, points, percent and pixels.
 The following properties support units
 - @(Width)
@@ -205,32 +205,43 @@ The following properties support units
 
 * Note that the column and row properties of @(Grid) use their own @(Rows:system).
 
-### Specifying units in $(points)
+## Specifying units in $(points)
 When setting an elements Width to a number like so `<Element Width="50"/>`, the element will become 50 points wide.
 
 Points are different from pixels in that they will represent multiple pixels on high density displays. This way, using points will give a you a consistent look on all different screen densities.
 
-### Specifying units in $(Percentage:percent) (%)
+## Specifying units in $(Percentage:percent) (%)
 Specifying values using the percent sign means that this value should be a certain percentage of available space.
 For example, if we place an @(Element) inside a @(Panel) which is 500 points wide, and set the elements Width property to be 50%, we get an element which is 250 points wide.
 
-### Specifying units in $(Pixels:pixels)
+## Specifying units in $(Pixels:pixels)
 We can specify values in pixels using the px suffix like so:
 ```
 <Rectangle Width="200px"/>
 ```
 This rectangle will be exactly 200 pixels wide, which means it will be smaller when the screen density is high.
 
-### $(Anchor) and $(Offset)
+## $(Anchor) and $(Offset)
 When a @(Panel) places its children, it assumes that the "center" of that element is in the middle. However, if we want the element to be placed as if its "center" was along its left side, we could use the @(Anchor) property like so:
 ```
 <Rectangle Anchor="0,50%"/>
 ```
 This puts the elements anchor in the middle of its left edge.
 
-### $(StatusBarBackground)
+# $(Absolute positioning) $(X:) $(Y:)
 
-iOS and Android devices usually has a status bar aligned to the top of the screen which shows status information from the operating system like battery and network information. This status bar might or might not be visible while our app is running. We also might or might not be able to draw behind it. The @(StatusBarBackground) element is used to compensate for the status bar. It will always have the same size as the status bar across all platforms and devices. We can use a @(DockPanel) to dock this element on the top of our app and "offset" the rest of our content so it fits within the visible parts of our screen.
+If we want to give our elements an explicit position, we can assign their `X` and `Y` properties. The `X` property will move the element relative to the left side of its container, while the `Y` property moves it relative to the top.
+
+Be aware that absolute positioning elements should generally be avoided in favor of using layout rules. This is because when real data is used, the absolute values used might no longer be meaningfull.
+
+
+# Status bars
+
+iOS and Android devices usually has a status bar aligned to the top of the screen which shows status information from the operating system like battery and network information. This status bar might or might not be visible while our app is running. We also might or might not be able to draw behind it. Android also often has an on-screen bar to handle navigation, and most devices show an on-screen keyboard when it accepts user input.
+
+## $(StatusBarBackground)
+
+The @(StatusBarBackground) element is used to compensate for the status bar. It will always have the same size as the status bar across all platforms and devices. We can use a @(DockPanel) to dock this element on the top of our app and "offset" the rest of our content so it fits within the visible parts of our screen.
 ```
 <App>
 	<DockPanel>
@@ -242,13 +253,13 @@ iOS and Android devices usually has a status bar aligned to the top of the scree
 </App>
 ```
 
-> ### Video introduction to OS elements
+> # Video introduction to OS elements
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/S_syTU44jzw"></iframe>
 </div>
 
-### $(BottomBarBackground)
+## $(BottomBarBackground)
 The BottomBarBackground element is quite similar to the @(StatusBarBackground) in that it takes on the same size as certain OS specific elements. The BottomBarBackground will take on the same size as the keyboard (whenever it is visible). Certain Android devices have their home button on the screen instead of as a physical button. The BottomBarBackground will also take this into account when sizing itself.
 Here is how we can make sure our content is never covered by the keyboard or home button:
 ```
@@ -261,9 +272,3 @@ Here is how we can make sure our content is never covered by the keyboard or hom
 	</DockPanel>
 </App>
 ```
-
-### $(Absolute positioning) $(X:) $(Y:)
-
-If we want to give our elements an explicit position, we can assign their `X` and `Y` properties. The `X` property will move the element relative to the left side of its container, while the `Y` property moves it relative to the top.
-
-Be aware that absolute positioning elements should generally be avoided in favor of using layout rules. This is because when real data is used, the absolute values used might no longer be meaningfull.

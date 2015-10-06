@@ -10,10 +10,6 @@ TODO for the below: write some basic inline docs & examples, then point to the M
 
 This is the main way to do HTTP requests.
 
-<!-- TODO: (note Fetch and FetchJson will be renamed and de-emphasized) -->
-
-### Example usage:
-
 This is an example on how to take a JavaScript object, POST it as JSON and receive JSON data which is turned back into a JavaScript object using `fetch`:
 
 	var status = 0;
@@ -73,20 +69,15 @@ You can also use `setTimeout` to create loops:
 
 * [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout)
 
-
 ## Storage
 
 The storage API allows you to save text to files in the application directory.
-
-### How to import
 
 	var Storage = require('FuseJS/Storage');
 
 ### $(Storage.write:write)
 
 Write a string value to specified file.
-
-#### Syntax:
 
 	Storage.write(filename, value)
 
@@ -95,13 +86,9 @@ Write a string value to specified file.
 
 Returns a `Promise` with a `bool` which tells if the content was successfully written.
 
-### Example usage:
-
 	storage.write("filename.txt", "filecontent");
 
 ### $(Storage.read:read)
-
-#### Syntax:
 
 	Storage.read(filename)
 
@@ -109,15 +96,12 @@ Returns a `Promise` with a `bool` which tells if the content was successfully wr
 
 Returns a `Promise` with a `string` containing the content of the file.
 
-### Example usage:
-
 	storage.read("filename.txt").then(function(content) {
 		console.log(content);
 	}, function(error) {
 		console.log(error);
 	});
 
-#### Remarks
 
 The actual folder where the file will be saved will vary depending on platform.
 
@@ -149,7 +133,7 @@ You can react to lifecycle events using JavaScript:
 
 	var Lifecycle = require('FuseJS/Lifecycle');
 	Lifecycle.onEnteringForeground = function() {
-  		initialize();	
+  		initialize();
 	};
 
 The following lifecycle events will be raised:
@@ -173,11 +157,9 @@ You can use the Phone-API to request a $(Phone.call:call) initiation:
 
 Allows you to take pictures with the device's camera.
 
-### How to import
-
 	var Camera = require('FuseJS/Camera');
 
-### Example usage:
+Use it like so:
 
 	Camera.takePicture({ targetWidth: 640, targetHeight: 360}).then(function(file)
 	{
@@ -186,14 +168,12 @@ Allows you to take pictures with the device's camera.
 	}).catch(function(e) {
 		console.log(e);
 	});
-	
+
 You can optionally add a `correctOrientation`-value to the original request if you don't want the call to automatically rotate the picture according to EXIF data. This will be done by default.
 
 ### `takePicture` function
 
 Takes a picture with the device's camera.
-
-#### Syntax:
 
 	Camera.takePicture({ targetWidth: width, targetHeight: height, correctOrientation: shouldCorrect })
 
@@ -202,10 +182,6 @@ The option object can contain the following properties:
 * `targetWidth` - Desired width of the picture, in pixels. If omitted, the default is used.
 * `targetHeight` - Desired height of the picture, in pixels. If omitted, the default is used.
 * `correctOrientation` - True if you want to correct orientation of the picture
-
-Returns a `Promise` of a `File`.
-
-#### Remarks
 
 The method returns a `Promise` that if successful yields a `File` object that points to the
 image saved as a JPG image on disk.
@@ -216,11 +192,9 @@ Note that the `targetWith` and `targetHeight` are just hints, the returned image
 
 Allows you to use the devices vibration functionality.
 
-### How to import
-
 	var Vibration = require('FuseJS/Vibration');
 
-### Example usage:
+User it like so:
 
 	Vibration.vibrate(200);
 
@@ -233,6 +207,8 @@ Vibrates for 200 milliseconds.
 
 The InterApp module is designed to simplify communication between apps.
 
+	var InterApp = require('FuseJS/InterApp');
+
 Right now it handles two cases:
 - Request launching another app with a Uri
 - Receiving Uri launch requests from other apps
@@ -244,7 +220,7 @@ This is exposed via a method and a callback.
 Call this method with a string and fuse will request the system to open the app that handles that Uri.
 
 ```
-InterApp.launchUri ("purple://some/uri”)
+InterApp.launchUri ('purple://some/uri')
 ```
 
 ### onReceivedUri(uri)
@@ -266,7 +242,7 @@ If your app is already open `onReceivedUri` will just fire. Your app may momenta
 To use the callback in your javascript code you can simply do the following:
 
 ```
-var InterApp = require("FuseJS/InterApp");
+var InterApp = require('FuseJS/InterApp1);
 
 InterApp.onReceivedUri = function(uri) {
     console.log ("js recieved Uri: " + uri);

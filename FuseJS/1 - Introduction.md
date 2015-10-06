@@ -66,7 +66,7 @@ The way Fuse separates JavaScript business logic from UX markup presentation has
 * Performance - all the performance critical bits are handled in native code and based on native UI components.
 * Easy - declarative code is easy to read, write and understand even with limited programming knowledge
 * Less error prone - fewer states means less things can go wrong
-* Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag&droppy stuff.
+  * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.
 
 Note that Fuse has tons of declarative APIs (designed UX markup) that replace the need for controlling animation from JavaScript (i.e. imparatively).
 

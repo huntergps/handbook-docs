@@ -124,9 +124,9 @@ The actual folder where the file will be saved will vary depending on platform.
 ### `writeSync`
 
 Synchrounously write data to the application folder:
-	
+
 	storage.writeSync("filename.txt", "filecontent");
-	
+
 > Warning: This call will block, if you are writing large amounts of data, use @(Storage.write).
 
 ### `readSync`
@@ -134,7 +134,7 @@ Synchrounously write data to the application folder:
 Synchronously read data from a file in the application folder:
 
 	var data = storage.readSync("filename.txt");
-	
+
 > Warning: This call will block, if you are writing large amounts of data, use @(Storage.read).
 
 ### `deleteSync`
@@ -223,3 +223,48 @@ Allows you to use the devices vibration functionality.
 Vibrates for 200 milliseconds.
 
 <!-- TODO: Document localstorage -->
+
+
+## InterApp
+
+The InterApp module is designed to simplify communication between apps.
+
+Right now it handles two cases:
+- Request launching another app with a Uri
+- Receiving Uri launch requests from other apps
+
+This is exposed via a method and a callback.
+
+### launchUri(uri)
+
+Call this method with a string and fuse will request the system to open the app that handles that Uri.
+
+```
+InterApp.launchUri ("purple://some/uri”)
+```
+
+### onReceivedUri(uri)
+
+Is a callback telling you if another app launches your app with a Uri. To receive this first you need to give your app a custom Uri scheme. We can do this easily by adding the "UriScheme" element to the "Mobile" section of the unoproj file.
+
+After you have done that your "Mobile" section will look something like this
+```
+"Mobile": {
+  "UriScheme": "YourScheme",
+  "Orientations": "Auto",
+},
+```
+
+From now on, any time a Uri is opened on the device starting with `YourScheme://` your app will be opened and the `onReceivedUri` callback will be fired with the full Uri.
+
+If your app is already open `onReceivedUri` will just fire. Your app may momentarily leave interactive mode, but this is perfectly normal.
+
+To use the callback in your javascript code you can simply do the following:
+
+```
+var InterApp = require("FuseJS/InterApp");
+
+InterApp.onReceivedUri = function(uri) {
+    console.log ("js recieved Uri: " + uri);
+};
+```

@@ -154,11 +154,13 @@ You can react to lifecycle events using JavaScript:
 
 The following lifecycle events will be raised:
 
-- $(onEnteringForeground) - the app starts or is coming back from being in the background
-- $(onEnteringBackground) - the app is going into the background
-- $(onEnteringInteractive) - 
-- $(onExitedInteractive) - 
-- $(onTerminating) - the app has been asked to terminate
+The app start event is implicit as this is when your js code is first evaluated.
+
+- $(onEnteringForeground) - The app has left the suspended state and now is running. You will get this event when the app starts.
+- $(onEnteringBackground) - The app is leaving the running state and is about to be suspended.
+- $(onEnteringInteractive) - The app is entering a state where it is fully focused and receiving events.
+- $(onExitedInteractive) - The app is partially obscured or is no longer the focus (e.g. when you drag open the notification bar)
+- $(onTerminating) - The app is about to shut down.
 
 ## $(Phone)
 
@@ -177,13 +179,15 @@ Allows you to take pictures with the device's camera.
 
 ### Example usage:
 
-	Camera.takePicture({ targetWidth: 640, targetHeight: 360, correctOrientation:true }).then(function(file)
+	Camera.takePicture({ targetWidth: 640, targetHeight: 360}).then(function(file)
 	{
 		// file is a standard JavaScript File object
 		// file.path contains the path to the saved image on the device
 	}).catch(function(e) {
 		console.log(e);
 	});
+	
+You can optionally add a `correctOrientation`-value to the original request if you don't want the call to automatically rotate the picture according to EXIF data. This will be done by default.
 
 ### `takePicture` function
 

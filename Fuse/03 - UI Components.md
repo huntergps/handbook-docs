@@ -600,8 +600,12 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 			</ScrollView>
 		</Panel>
 	</App>
+	
+# $(Element)
 
-> # Hit test
+Here are some properties that are common for `Element`:
+
+> ## Hit test
 
 When interacting with an element, it is sometimes desirable to be able to differenciate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using $(HitTestMode).
 
@@ -632,7 +636,7 @@ Valid values for `HitTestMode` are:
 
 Note that if you set the @(Opacity) of an element below or equal its `HitTestOpacityThreshold` (which defaults to being 0), hit testing will be disabled for that object. This means that you can click an element as you fade it out, but it will stop accepting clicks at a certain point.
 
-> # $(ClipToBounds)
+> ## $(ClipToBounds)
 
 Normally, when laying out an element inside the other, the inner element can freely live outside the parent element:
 
@@ -641,7 +645,7 @@ Normally, when laying out an element inside the other, the inner element can fre
 				StretchMode="UniformToFill" />
 	</Panel>
 
-This `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds. <!-- TODO: This really should have a screenshot. -->
+This `Image` will appear to be 300pt wide and tall, as the `Panel` doesn't clip children to its bounds.
 
 If you intent to have the `Image` clip to its parent size, simply add $(ClipToBounds) to the `Panel`:
 
@@ -652,7 +656,7 @@ If you intent to have the `Image` clip to its parent size, simply add $(ClipToBo
 
 Now, the `Image` will not overflow the bounds of the `Panel`.
 
-> # $(Opacity)
+> ## $(Opacity)
 
 You can set the transparency of objects using the `Opacity`-property.
 
@@ -662,9 +666,7 @@ You can set the transparency of objects using the `Opacity`-property.
 
 When the `Opacity` is set to 0.0, the element is fully transparent and will no longer respond to @(HitTestMode:HitTests). When the `Opacity` is set to 1.0, the element will be at its default state.
 
-> # Layers
-
-<!-- TODO: AUTH: @mortoray -->
+> ## Layers
 
 It is often helpful to redefine what existing controls should look like. Elements that are added to containers can be assigned to different layers. If you want a button to appear with a red background, you can redefine its `Background` `Layer`:
 
@@ -680,7 +682,7 @@ Valid values for `Layer` are:
 - `Layout`
 - `Overlay`
 
-> # $(Effects)
+# $(Effects)
 
 Fuse has the ability to render a set of visual effects that can be added to most controls. It is important to understand that in order for these to work, you need to be in graphics mode; native themes are limited in their ability to render these effects.
 

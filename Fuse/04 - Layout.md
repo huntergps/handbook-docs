@@ -13,7 +13,6 @@ are building with @(NativeTheme:native) elements or @(GraphicsTheme:graphics) ba
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/0hpL4KBfUy8"></iframe>
 </div>
 
-
 ## $(Panels)
 
 Panels can contain child UI elements and lay them out according to layout rules. There are several types of panels, each with different layouting rules.

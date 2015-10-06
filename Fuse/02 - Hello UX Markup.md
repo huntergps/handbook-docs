@@ -18,7 +18,7 @@ sure you read:
 
 When creating stand-alone apps or prototypes in Fuse, we use the `<App>` tag.
 
-	<App>
+	<App Background="#436EEE">
 		<Text>Hello, world!</Text>
 	</App>
 
@@ -27,9 +27,7 @@ simply displays text using the default font.
 
 The `<App>` tag itself bootstraps the app and takes care of application lifecycle and @(Theme).
 
-> ### The $(Background) property
-
-The `Background` property controls the @(color) of the root view of the app.
+The $(Background) property controls the @(color) of the root view of the app.
 
 <!-- > ### $(Lifecycle) events
 

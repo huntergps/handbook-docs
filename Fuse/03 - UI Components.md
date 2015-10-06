@@ -603,7 +603,7 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 
 # $(Element)
 
-Here are some properties that are common for `Element`:
+Here are some properties that are common for all `Element` types:
 
 > ## $(HitTestMode)
 
@@ -779,7 +779,7 @@ If you use a white image with alpha channel, `RGBA` and `Alpha` will have the sa
 
 The mask will always stretch itself to match the size of the element to be masked.
 
-> # About $(Control:Controls)
+> ## About $(Control:Controls)
 
 In Fuse, we use the word _control_ to describe a UI component that has a semantic function, but could vary largely in visual appearance.
 

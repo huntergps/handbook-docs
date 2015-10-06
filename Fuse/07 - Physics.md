@@ -1,6 +1,5 @@
 # $(Physics)
 
-<!-- TODO: Mention: Does not affect layout -->
 Some types of animation ([like this one](https://www.fusetools.com/developers/examples/swipeplaces)) are best described using Physics simulation. Fuse comes with a set of physics based triggers and behaviors which can be used for these situations.
 
 ## $(Physics Rules)

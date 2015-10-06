@@ -40,8 +40,7 @@ Failing to export from modules will make it impossible to reach defined data ins
 This is good for hiding implementation details from other calling JavaScript modules and UX code.
 
 > ## Importing modules
-
-FuseJS implements the <a href="http://www.commonjs.org/">CommonJS</a> module system. Each code file (or inline snippet) is a module.
+Each code file (or inline snippet) is a module.
 
 To make a module available to other modules through `$(require)`, mark your `<JavaScript>` tag with the `ux:Global` attribute.
 

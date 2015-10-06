@@ -253,7 +253,7 @@ The @(StatusBarBackground) element is used to compensate for the status bar. It 
 </App>
 ```
 
-> # Video introduction to OS elements
+> ## Video introduction to OS elements
 
 <div class="embed-responsive embed-responsive-16by9">
   <iframe width="420" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/S_syTU44jzw"></iframe>

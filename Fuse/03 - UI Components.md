@@ -605,9 +605,9 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 
 Here are some properties that are common for `Element`:
 
-> ## Hit test
+> ## $(HitTestMode)
 
-When interacting with an element, it is sometimes desirable to be able to differenciate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using $(HitTestMode).
+When interacting with an element, it is sometimes desirable to be able to differenciate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using `HitTestMode`.
 
 Consider this code:
 

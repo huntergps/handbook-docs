@@ -123,3 +123,5 @@ Allows you to use the devices vibration functionality.
 	Vibration.vibrate(200);
 
 Vibrates for 200 milliseconds.
+
+<!-- TODO: Document localstorage -->

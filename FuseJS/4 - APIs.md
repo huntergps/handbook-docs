@@ -143,6 +143,30 @@ Delete a file from the application folder:
 
 	storage.deleteSync("filename.txt");
 
+## $(Lifecycle)
+
+You can react to lifecycle events using JavaScript:
+
+	var Lifecycle = require('FuseJS/Lifecycle');
+	Lifecycle.onEnteringForeground = function() {
+  		initialize();	
+	};
+
+The following lifecycle events will be raised:
+
+- $(onEnteringForeground) - the app starts or is coming back from being in the background
+- $(onEnteringBackground) - the app is going into the background
+- $(onEnteringInteractive) - 
+- $(onExitedInteractive) - 
+- $(onTerminating) - the app has been asked to terminate
+
+## $(Phone)
+
+You can use the Phone-API to request a $(Phone.call:call) initiation:
+
+	var Phone = require('FuseJS/Phone');
+	Phone.call("number");
+
 ## Camera
 
 Allows you to take pictures with the device's camera.

@@ -173,7 +173,7 @@ Returns the index of the first occurrence of `value`.
 
 
 #### $(contains:contains(value))
-Returns true if `value` exists in the @(var).
+Returns true if `value` exists in the `var`.
 
 	Observable seasons = Observable("Summer", "Fall", "Winter", "Spring");
 	var winterExists = seasons.contains("Winter"); // true

@@ -30,7 +30,7 @@ In this example, the fonts are located in the same directory as the relevant UX 
 
 Both iOS and Android support text rendering with multibyte character sets. This means that emojis work fine rendering on device.
 
-> Note! There are currently some issues rendering multibyte character sets using desktop preview. Do not be surprised if the desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.
+_Note!_ There are currently some issues rendering multibyte character sets using desktop preview. Do not be surprised if the desktop rendering doesn't match device rendering 100%. This is an issue that is being worked on.
 
 ## Text properties
 

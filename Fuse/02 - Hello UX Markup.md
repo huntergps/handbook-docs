@@ -109,9 +109,19 @@ If not specified, `App` uses a plain `GraphicsTheme` by default.
 
 ### $(NativeTheme)
 
-When using `NativeTheme`, Fuse will use native controls instead of OpenGL ES rendering. For example putting a @(Button) in the UX will put a native Android or iOS @(Button) depending on the target platform.
+When using `NativeTheme`, Fuse will use native controls instead of OpenGL ES rendering. To use a native theme, do:
 
-<!-- AUTH: how do we best describe how nativetheme works? -->
+	<App Theme="Native">
+		<StackPanel>
+			<Button />
+			<Switch />
+			<Slider />
+		</StackPanel>
+	</App>
+
+In this example, the displayed controls will have native appearance on iOS and Android, and *no appearance* in desktop preview. This is because Fuse will not dare to try to mimic the "real" iOS and Android controls using GL.
+
+> If you still want to make use of desktop preview while working with native controls, you can use the `NativeWithFallback` theme. This will give you native controls on iOS and Android, while falling back to a (unspecified) basic theme on desktop.
 
 ### $(GraphicsTheme)
 

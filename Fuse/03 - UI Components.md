@@ -601,22 +601,6 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 		</Panel>
 	</App>
 
-<!--
-> ## $(WhileScrollable)
-
-TODO: Not really sure what this trigger does
-TODO: Link to Triggers and Animation
-
-# $(MapView) (link elsewhere?)
-
-# $(WebView) (link elsewhere?)
-
-# $(GraphicsView) (link elsewhere?)
-
-# $(Picker) (link elsewhere?)
-
-# $(DatePicker) (link elsewhere?) -->
-
 > # Hit test
 
 When interacting with an element, it is sometimes desirable to be able to differenciate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using $(HitTestMode).

@@ -193,7 +193,7 @@ Updates all items in the @(Observable) with the values from `newValues`.
 		{id: 4, text: "four" },
 		{id: 5, text: "five" }
 	]
-	items.refreshAll(newItems,
+	items.refreshAll(newItems, 
 		//Compare on ID
 		function(oldItem, newItem){
 			return oldItem.id == newItem.id;
@@ -205,8 +205,8 @@ Updates all items in the @(Observable) with the values from `newValues`.
 		// Map to object with an observable version of text
 		function(newItem){
 			return { id:newItem.id, Observable(newItem.text)
-		};
-	}
+		}
+	);
 
 
 ### $(Reactive operators)

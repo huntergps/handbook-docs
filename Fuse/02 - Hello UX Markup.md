@@ -3,7 +3,7 @@
 Fuse can be used in two primary ways:
 
 * @(Creating apps) or prototypes with cross-platform JavaScript logic
-* @(Creating components), UI views and designs for native apps
+* Creating components, UI views and designs for native apps
 
 The main representation of both these things in Fuse is through the use of UX Markup.
 

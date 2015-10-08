@@ -36,7 +36,7 @@ UX documents consists of XML tags. Each available UX tag corresponds to a *class
 
 The available tags (classes) come in these categories:
 
-* The @(App) class is the root of the app, and can contain eactly one Node
+* The @(App) class is the root of the app, and can contain exactly one Node
 * Many `Node` types, most of which are @(Element:UI Elements)
 * Behaviors which modify nodes. Behaviors come in many flavors:
   * Gestures

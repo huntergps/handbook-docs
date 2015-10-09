@@ -7,6 +7,7 @@ Getting up and running with Fuse is super easy. We'll just need to install a few
 We're always working hard on making this process smooth as silk, but occasionally things can still go wrong. If something happens, please let us know!
 
 Setup instructions for OS X: https://www.fusetools.com/developers/guides/setup/install-osx
+
 Uninstall instructions for OS X: http://pastebin.ca/3186889
 
 Setup instructions for Windows: https://www.fusetools.com/developers/guides/setup/install-win

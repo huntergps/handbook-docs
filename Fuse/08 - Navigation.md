@@ -106,6 +106,21 @@ With `DirectNavigation` there is no implicit flow between pages. Any @(Page) can
 ### $(Hierarchical navigation)
 A `HierarchicalNavigation` is commonly used when there is a hierarchical flow of pages. This is commonly found in the settings apps on iOS and Android devices. One first picks a topic, then a subtopic and so on, taking us deeper into the hierarchy of options. Navigating in this context means pushing a page onto a stack of pages. For each navigation there is a natural back navigation which takes us back the the page navigated from.
 
+> ## $(EdgeNavigator)
+
+`EdgeNavigator` is designed to allow you to dock content on the edge of a @(Panel), typically used in full screen.
+
+	<EdgeNavigator>    
+		<Panel Width="150" EdgeNavigation.Edge="Left" Background="#f63" />    
+		<Panel Background="#fff>
+		<Text Alignment="Center">
+			This is an example of EdgeNavigator!
+		</Text>
+		</Panel>
+	</EdgeNavigator>
+  
+Note that setting the @(Background) of the second @(Panel) in this example is of significance, as it enables hit testing of the inner @(Panel). You could alternatively set the @(HitTestMode) of the @(EdgeNavigator) to be @(LocalBoundsAndChildren). Normally this isn't an issue, as the inner panel will have content that is hit testable.
+
 <!-- TODO: Document - GoBack and - GoForward ? -->
 
 

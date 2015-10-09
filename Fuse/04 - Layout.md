@@ -128,14 +128,14 @@ The @(Style) is used to give the @(Rectangle:rectangles) a minimum size. The @(R
 
 `EdgeNavigator` is designed to allow you to dock content on the edge of a @(Panel), typically used in full screen.
 
-  <EdgeNavigator>    
-    <Panel Width="150" EdgeNavigation.Edge="Left" Background="#f63" />    
-    <Panel Background="#fff>
-      <Text Alignment="Center">
-        This is an example of EdgeNavigator!
-      </Text>
-    </Panel>
-  </EdgeNavigator>
+	<EdgeNavigator>    
+		<Panel Width="150" EdgeNavigation.Edge="Left" Background="#f63" />    
+		<Panel Background="#fff>
+		<Text Alignment="Center">
+			This is an example of EdgeNavigator!
+		</Text>
+		</Panel>
+	</EdgeNavigator>
   
 Note that setting the @(Background) of the second @(Panel) in this example is of significance, as it enables hit testing of the inner @(Panel). You could alternatively set the @(HitTestMode) of the @(EdgeNavigator) to be @(LocalBoundsAndChildren). Normally this isn't an issue, as the inner panel will have content that is hit testable.
 

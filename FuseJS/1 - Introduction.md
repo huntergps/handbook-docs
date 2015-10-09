@@ -56,7 +56,7 @@ Examples:
 
 * <a href="https://www.fusetools.com/developers/examples/todoparseexample">TODO App with Parse backend example</a>
 
-## Design & motivation
+## Design and motivation
 
 The key design goal of FuseJS is to keep your JS code small, clean and only concerned with the practical functions of your application. Meanwhile
 all things UX-oriented such as layout, data presentation, animation and gesture response is left to declarative $(UX markup) and native UI components.

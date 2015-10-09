@@ -273,7 +273,7 @@ Returns an @(Observable) that has the inverse value of the @(Observable) you are
 #### $(inner:inner())
 TODO: Write inner -->
 
-#### $($(filter:filter(condition)))
+#### $(filter:filter(condition))
 Returns an observable that will only propagate values that pass the given `condition`, otherwise it retains its previous value.
 
 This method only considers the first (single) value of an observable.

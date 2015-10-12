@@ -26,6 +26,7 @@ After having created a new project, either by using the dashboard or the `fuse` 
 
 Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.
 
+
 > ### $(Sublime Text projects)
 
 When you drop a folder into Sublime Text 3, it will by default search through all files in all subfolders. When building a Fuse project, this isn't always what you want.
@@ -49,6 +50,13 @@ If you create a file called `ProjectName.sublime-project`, you can drop this int
 ```
 
 This file can then be opened from the `Project` -> `Open Project...`-dialog.
+
+> ### Git
+
+If you are using Git for version control, you can put the following in your .gitignore file.
+
+	.build/*
+	.cache/*
 
 ## Preview
 

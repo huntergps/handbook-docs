@@ -26,6 +26,30 @@ After having created a new project, either by using the dashboard or the `fuse` 
 
 Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.
 
+> ### $(Sublime projects)
+
+When you drop a folder into sublime, it will by default search through all files in all subfolders. When building a Fuse project, this isn't always what you want.
+
+If you create a file called `ProjectName.sublime-project`, you can drop this into it to make it ignore the `.Cache` and `.Build` directories:
+
+```
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				".Build",
+				".Cache",				
+			],
+			"path": "."
+		}
+	]
+}
+```
+
+This file can then be opened from the `Project` -> `Open Project...`-dialog.
+
 ## Preview
 
 Live preview is a key feature of Fuse. You can live preview simultaneously on multiple devices (and in the desktop simulator), so you no longer need to build your project for specific devices between edits; just save and they will appear instantly all of your devices.

@@ -26,7 +26,7 @@ After having created a new project, either by using the dashboard or the `fuse` 
 
 Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.
 
-> ### $(Sublime projects)
+> ### $(Sublime Text projects)
 
 When you drop a folder into Sublime Text 3, it will by default search through all files in all subfolders. When building a Fuse project, this isn't always what you want.
 

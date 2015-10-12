@@ -109,7 +109,7 @@ The actual folder where the file will be saved will vary depending on platform.
 
 Synchrounously write data to the application folder, returning `true` on a successful write:
 
-	storage.writeSync("filename.txt", "filecontent");
+	var wasWritten = storage.writeSync("filename.txt", "filecontent");
 
 > Warning: This call will block, if you are writing large amounts of data, use @(Storage.write).
 
@@ -123,9 +123,9 @@ Synchronously read data from a file in the application folder:
 
 ### `deleteSync`
 
-Delete a file from the application folder:
+Delete a file from the application folder, returning `true` on a success:
 
-	storage.deleteSync("filename.txt");
+	var wasDeleted = storage.deleteSync("filename.txt");
 
 ## $(Lifecycle)
 

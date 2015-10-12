@@ -28,7 +28,7 @@ Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScrip
 
 > ### $(Sublime projects)
 
-When you drop a folder into sublime, it will by default search through all files in all subfolders. When building a Fuse project, this isn't always what you want.
+When you drop a folder into Sublime Text 3, it will by default search through all files in all subfolders. When building a Fuse project, this isn't always what you want.
 
 If you create a file called `ProjectName.sublime-project`, you can drop this into it to make it ignore the `.Cache` and `.Build` directories:
 

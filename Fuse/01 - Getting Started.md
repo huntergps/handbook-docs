@@ -39,8 +39,8 @@ If you create a file called `ProjectName.sublime-project`, you can drop this int
 		{
 			"folder_exclude_patterns":
 			[
-				".Build",
-				".Cache",				
+				".build",
+				".cache",				
 			],
 			"path": "."
 		}

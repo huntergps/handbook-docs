@@ -107,7 +107,7 @@ The actual folder where the file will be saved will vary depending on platform.
 
 ### `writeSync`
 
-Synchrounously write data to the application folder:
+Synchrounously write data to the application folder, returning `true` on a successful write:
 
 	storage.writeSync("filename.txt", "filecontent");
 

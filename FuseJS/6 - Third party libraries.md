@@ -32,14 +32,16 @@ To be able to use Parse in our JavaScript code, we need to import it as a global
 <JavaScript File="latest-parse.js" ux:Global="Parse"/>
 ```
 
-Place this in the top level of your UX markup. Parse can now be used from any of your JavaScript files using `require('Parse')`.
+Place this in the top level of your UX markup. Parse can now be used from any of your JavaScript files using `require('Parse').Parse`.
 
 Create a Parse App from Parse' website by going to your dashboard and clicking "Create a new app". Go to the Keys tab under settings and find your "Application ID" and "JavaScript Key". These keys are used to identify you app using `Parse.initialize(appID, jsKey)`.
 
+```
 <JavaScript>
 	var Parse = require('Parse').Parse;
 	Parse.initialize(appID, jsKey);
 </JavaScript>
+```
 
 You are now ready to start using parse. If you are new to Parse, take a look at their excellent [guide](https://www.parse.com/docs/js/guide).
 For a more complete example of using Parse as a backend for Fuse, take a look [here](https://www.fusetools.com/community/examples/todoparseexample).

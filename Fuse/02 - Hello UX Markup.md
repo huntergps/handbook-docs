@@ -102,11 +102,11 @@ look and feels for controls like `Slider` and `Button`.
 
 You can make your own `GraphicsTheme` by using it as a base class:
 
-	<BasicTheme ux:Class="MyGraphicsTheme">
+	<GraphicsTheme ux:Class="MyGraphicsTheme">
 		<Button>
 			<!-- how a button looks goes here -->
 		</Button>
-	</BasicTheme>
+	</GraphicsTheme>
 
 And use it like this:
 

@@ -8,7 +8,7 @@ We're always working hard on making this process smooth as silk, but occasionall
 
 Setup instructions for OS X: https://www.fusetools.com/developers/guides/setup/install-osx
 
-Uninstall instructions for OS X: http://pastebin.ca/3186889
+Uninstall instructions for OS X: http://pastebin.ca/3195666
 
 Setup instructions for Windows: https://www.fusetools.com/developers/guides/setup/install-win
 

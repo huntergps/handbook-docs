@@ -55,8 +55,8 @@ This file can then be opened from the `Project` -> `Open Project...`-dialog.
 
 If you are using Git for version control, you can put the following in your .gitignore file.
 
-	.build/*
-	.cache/*
+	.build
+	.cache
 
 ## Preview
 

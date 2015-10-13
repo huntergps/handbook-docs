@@ -58,7 +58,7 @@ See the full list of @(Observable.Members) to see what's possible with observabl
 
 
 #### Observable functions
-When an `Observable` is initialized with a function as its ownly argument, the `.value`
+When an `Observable` is initialized with a function as its only argument, the `.value`
 of the observable is computed by evaluating the function.
 
 Reactive dependencies are automatically generated with all other observables touched while

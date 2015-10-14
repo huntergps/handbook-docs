@@ -140,7 +140,7 @@ You can set which directions you want the content to scale by setting the `Stret
 - `UpOnly` - Only upscale contents
 - `DownOnly` - Only downscale contents
 
-Note that any other setting than `DownOnly` might create pixel artifacts.
+Note that any other setting than `DownOnly` might create pixel artifacts, as the `Viewbox` performs a bitmap stretch of its contents.
 
 You can also set the @(StretchMode) for the contents, which defaults to `Uniform`.
 

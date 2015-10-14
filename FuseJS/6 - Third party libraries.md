@@ -5,7 +5,7 @@ libraries work, we are constantly growing and revising our $(Polyfills) to impro
 
 This chapter contains a list of libraries that are known to work or known to not work, and explains workarounds/caveats.
 
-If you have tested a library and found it to work/not work/a work-around, please share your experience on email to support@fusetools.com.
+If you have tested a library and found it to work/not work/a work-around, please [share your experience on our forums](https://www.fusetools.com/community/forums) or send an email to support@fusetools.com.
 
 > This list will be expanded as FuseJS develops.
 
@@ -13,7 +13,8 @@ If you have tested a library and found it to work/not work/a work-around, please
 
 The following third party JavaScript libraries are tested and known to work
 
-* <a href="https://parse.com/docs/js/guide">Parse SDK</a>
+* [Parse SDK](https://parse.com/docs/js/guide)
+* [Moment.js](http://momentjs.com)
 
 <!-- TODO: Add this section as we uncover incompatible libraries
 ## Known incompatibilities

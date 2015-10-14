@@ -198,6 +198,22 @@ It is equally simple to draw a `Circle`:
 
 In this example, we've taken it a bit further, and we're adding a yellow @(Stroke).
 
+#### $(StartAngle) / $(EndAngle)
+
+`StartAngle` and `EndAngle` can be used to only draw a slice of a @(Circle).
+There are 6 different properties use to control this in different ways.
+
+* `StartAngle` - The angle in radians where the slice begins
+* `EndAngle` - The angle in radians where the slice ends
+
+* $(StartAngleDegrees) - The angle in degrees where the slice begins
+* $(EndAngleDegrees) - The angle in degrees where the slice ends
+
+* $(LengthAngle) - An offset in radians from @(StartAngle). This can be used instead of @(EndAngle)
+* $(LengthAngleDegrees) - An offset in degrees from @(StartAngle). This can be used instead of @(EndAngleDegrees)
+
+Note that using for example both @(StartAngle) and @(StartAngleDegrees) on the same @(Circle) will have an undefined behavior.
+
 ### $(Fill:Fills)
 
 We've seen that shapes accept simple `Fill` properties:

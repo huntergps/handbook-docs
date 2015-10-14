@@ -124,6 +124,26 @@ The Dock property can be assigned to be either `Left`, `Right`, `Top`, `Bottom` 
 
 The @(Style) is used to give the @(Rectangle:rectangles) a minimum size. The @(Rectangle) do not have any explicit default size, so when the `DockPanel` places them, it tries to use their minimum size, except for when `Dock` is set to `Fill`.
 
+> ## $(Viewbox)
+
+To make contents stretch to fit an area  you can use `Viewbox`:
+
+	<Viewbox>
+		<Rectangle Background="#808" Width="200" Height="100" />
+	</Viewbox>
+
+This will maintain its aspect ratio of 2:1 while stretching the `Rectangle` to be the size of the `Viewbox`.
+
+You can set which directions you want the content to scale by setting the `StretchDirection`-property:
+
+- `Both` - Allow both up- and downscaling
+- `UpOnly` - Only upscale contents
+- `DownOnly` - Only downscale contents
+
+Note that any other setting than `DownOnly` might create pixel artifacts.
+
+You can also set the @(StretchMode) for the contents, which defaults to `Uniform`.
+
 ## Element Layout
 
 <!-- TODO: Link to video -->

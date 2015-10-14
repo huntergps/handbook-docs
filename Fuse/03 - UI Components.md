@@ -205,10 +205,8 @@ There are 6 different properties use to control this in different ways.
 
 * `StartAngle` - The angle in radians where the slice begins
 * `EndAngle` - The angle in radians where the slice ends
-
 * $(StartAngleDegrees) - The angle in degrees where the slice begins
 * $(EndAngleDegrees) - The angle in degrees where the slice ends
-
 * $(LengthAngle) - An offset in radians from @(StartAngle). This can be used instead of @(EndAngle)
 * $(LengthAngleDegrees) - An offset in degrees from @(StartAngle). This can be used instead of @(EndAngleDegrees)
 

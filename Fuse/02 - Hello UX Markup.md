@@ -74,8 +74,8 @@ In this example, the displayed controls will have native appearance on iOS and A
 
 By default, `App` uses a `GraphicsTheme`, which will give your app an identical look on all platforms, with the exception of:
 
-* `TextInput` - will be rendered using the platform's native text edit controls
 * Status bars will behave differently across platforms
+* `TextInput` is a higher-level control and will by default not be rendered since it relies on native platform controls. Either define your own style for this or use a @(BasicTheme) instead.
 
 The main benefits of working with `GraphicsTheme` are:
 

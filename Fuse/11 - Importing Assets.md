@@ -113,11 +113,9 @@ You can control the image densities Fuse generates when importing the Sketch doc
 
 Will import all image assets in 1.0, 1.5 and 2.0 density, respectively. If you don't specify anything, Fuse defaults to rendering 1.0 and 2.0 densities.
 
-> ### Pro tips
-
 #### Asset aliasing
 
-Sometimes when you import `.sketch` files that were never intended for import into Fuse, you get a lot of long, ugly names for your assets, because whoever made the Sketch file didn't care to name the layers properly.
+Sometimes when you import `.sketch` files you may get a lot of long, impractical names for your assets. This is simply because noone considered that the document would be imported to Fuse when it was made and thus didn't name the layers properly.
 
 You would typically get things like :
 
@@ -128,11 +126,11 @@ You would typically get things like :
 		</MultiDensityImageSource>
 	</Image>
 
-This will make your UX code look ugly when you start using these. At the same time, we don't want to rename the classes, because then we lose the link to the `.sketch` file and can no longer get @(sketch-update:live updates).
+This will make your UX code look not-so-nice when you start using these. At the same time, we don't want to rename the classes, because then we lose the link to the `.sketch` file and can no longer get @(sketch-update:live updates).
 
-To deal with this, make yourself an extra UX file, for example called `AssetAliases.ux`. Use a `Panel` or something as the root tag.
+To deal with this, make yourself an extra UX file, for example called `AssetAliases.ux`. You can for instance use a `Panel` as the root tag.
 
-In the above example, we might know that this bitmap is actually the background for the entire screen. Then we can give it a more reasonable name, like `ActivityBackground`.
+In the above example we know that this bitmap is actually the background for the entire screen. We can therefore give it a more reasonable name, like `ActivityBackground`.
 
 In `AssetAliases.ux` do:
 
@@ -140,7 +138,7 @@ In `AssetAliases.ux` do:
 		<activity.Activity___6.Rectangle_91___Bitmap_2 ux:Class="ActivityBackground" />
 	</Panel>
 
-All other assets you want to alias, can just be added to this list.
+All other assets you want to alias can just be added to this list.
 
 Then you can use this much nicer tag in your actual app code:
 

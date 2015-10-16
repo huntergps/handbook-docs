@@ -14,7 +14,7 @@ Setup instructions for Windows: https://www.fusetools.com/developers/guides/setu
 
 ## Tutorial
 
-We suggest you start by [following our tutorial](https://www.fusetools.com/developers/guides/tutorial). You can also find a wide range of ready-to-run examples [on our Examples-page](https://www.fusetools.com/examples).
+We suggest you start by [following our tutorial](https://www.fusetools.com/developers/guides/tutorial). You can also find a wide range of ready-to-run examples [on our Examples-page](https://www.fusetools.com/examples), as well as a (constantly growing) list of [tutorials on Youtube](https://www.youtube.com/playlist?list=PLdlqWm6b-XALJgM3fGa4q95Yipsgb8Q1o).
 
 ## $(Project structure)
 

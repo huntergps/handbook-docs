@@ -63,7 +63,7 @@ Since swiping between pages is such a common thing to see in apps, Fuse has a wr
 
 We actually already built most of the behavior of the `PageControl` from scratch in @(Basic navigation). One difference to note is that the `PageControl` styles @(Page:pages), and not @(Panel:panels), so it should be used like this:
 
-	<PageConrol>
+	<PageControl>
 		<Page Background="Red"/>
 		<Page Background="Blue"/>
 	</PageControl>
@@ -118,7 +118,7 @@ A `HierarchicalNavigation` is commonly used when there is a hierarchical flow of
 		</Text>
 		</Panel>
 	</EdgeNavigator>
-  
+
 Note that setting the @(Background) of the second @(Panel) in this example is of significance, as it enables hit testing of the inner @(Panel). You could alternatively set the @(HitTestMode) of the @(EdgeNavigator) to be @(LocalBoundsAndChildren). Normally this isn't an issue, as the inner panel will have content that is hit testable.
 
 <!-- TODO: Document - GoBack and - GoForward ? -->

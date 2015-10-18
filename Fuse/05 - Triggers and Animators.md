@@ -312,7 +312,7 @@ Permanently changes the value of a property. If you want to just change it tempo
 </JavaScript>
 <Rectangle Width="100" Height="50" Alignment="Center" Fill="Red">
 	<WhilePressed>
-		<Callback Handle="{someJSFunction}"/>
+		<Callback Handler="{someJSFunction}"/>
 	</WhilePressed>
 </Rectangle>
 ```

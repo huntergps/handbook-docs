@@ -68,9 +68,9 @@ The way Fuse separates JavaScript business logic from UX markup presentation has
 * Less error prone - fewer states means less things can go wrong
   * Visual tooling - UX markup can be edited by Fuse tools such as inspectors, timelines and generally cool drag & droppy stuff.
 
-Note that Fuse has tons of declarative APIs (designed UX markup) that replace the need for controlling animation from JavaScript (i.e. imparatively).
+Note that Fuse has tons of declarative APIs (designed UX markup) that replace the need for controlling animation from JavaScript (i.e. imperatively).
 
-Many other JavaScript frameworks mix imparative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try
+Many other JavaScript frameworks mix imperative UI code, animation and performance critical tasks into JavaScript, hence many people new to FuseJS tend to try
 doing things this way in the beginning. While most of these things are technically possible in FuseJS, it is discouraged. We recommend taking some
 time to study the Fuse examples to get a feel for the new way of doing things.
 

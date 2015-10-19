@@ -2,33 +2,8 @@
 
 This chapter is about using the Android and iOS native APIs from Uno.
 
-## Using iOS APIs
-```
-using Uno;
-using Uno.Collections;
-using Fuse;
-using Fuse.Scripting;
-using Fuse.Reactive;
-using iOS.AudioToolbox;
-using iOS.Foundation;
-
-public class SoundPlayer : NativeModule
-{
-	public SoundPlayer()
-	{
-		AddMember(new NativeFunction("Play", (NativeCallback)Play));
-	}
-
-	static object Play(Context c, object[] args)
-	{
-		//Sounds http://iphonedevwiki.net/index.php/AudioServices
-		global::iOS.AudioToolbox.Functions.AudioServicesPlaySystemSound(1310);
-		return null;
-	}
-}
-```
-
 ## Using Android APIs
+
 Make sure the `.unoproj` file contains the `Android` package:
 
 ```

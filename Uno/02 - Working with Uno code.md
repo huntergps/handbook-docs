@@ -5,7 +5,7 @@ While UX and JavaScript is the recommended way of developing apps with Fuse, adv
 
 Uno is closely related to C# - check out the [Uno Language Reference](https://www.fusetools.com/developers/guides/unolang) for more information.
 
-## Adding uno-files to a project
+## $(Adding uno-files to a project)
 
 To add an uno file, simply type `fuse create uno <filename>`. This will automatically create an uno file with a template, and add it to the project. You can alternatively add an existing file manually by adding it as an entry to the `Includes` array in the project file. The entry should be in the format `"<filename>:SourceFile"`.
 
@@ -38,13 +38,13 @@ public partial class MainView
 }
 ```
 
-## Compiling
+## $(Compiling uno:Compiling)
 
 Because the codebehind is compiled to C++ and can *not* be changed while the app is running, we don't support codebehinds in live preview. Instead, you have to build and run the app to see the results using `uno build`
 
 Simply run `uno build --target=DotNetExe --run` if you are on windows, or `uno build --target=cmake --run` if you are on a mac.
 
-## Compiling on Mac OS X
+## $(OSX compiling:Compiling on Mac OS X)
 Mac users need a copy of CMake to build Uno code.
 If you don't have CMake installed on your machine, you can find instructions for installing it [here](http://www.cmake.org/install/).
 

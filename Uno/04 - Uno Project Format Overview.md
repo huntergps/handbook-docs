@@ -108,7 +108,7 @@ Use globstar (`**`) for explicit recursion.
 
     Foo/**/*.uno  # Matches all files named *.uno in Foo directory recursively.
 
-## Icons
+## $(Icons)
 
 To set the default icon, use the `Icon` property (not the `Includes` property):
 
@@ -131,7 +131,7 @@ If you explicitly want to add specific resolutions, you can override specialized
 }
 ```
 
-## Signing (Android)
+## $(Android signing:Signing for Android)
 
 A Uno Project set up for signing can look like this:
 

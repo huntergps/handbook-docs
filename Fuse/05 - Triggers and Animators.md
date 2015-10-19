@@ -196,7 +196,7 @@ AUTH:
 
 There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
 
-    <Move RelativeTo="ParentSize">
+  <Move RelativeTo="ParentSize">
 		<Keyframe X="10" Time="0.5"/>
 		<Keyframe X="15" Time="1"/>
 		<Keyframe X="5" Time="2"/>
@@ -305,7 +305,7 @@ Permanently changes the value of a property. If you want to just change it tempo
 
 ```
 <JavaScript>
-	var someJSFunction(){
+	var someJSFunction = function () {
 		Console.Log("some function called");
 	}
 	module.exports = { someJSFunction: someJSFunction };

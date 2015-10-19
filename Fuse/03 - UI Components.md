@@ -742,7 +742,7 @@ It can also be used to create artistic effects like outer glow:
 - `Distance` - The distance in points from the source of the shadow
 - `Size` - The size of the dropshadow
 - `Spread` - How the shadow drops off. The closer to 0, the more linear. Keep this value low (experiment below 1.0), or you will get artifacts
-- `Color` - Which color the dropshadow should have. Note that this also supports alpha channel for adjusting shadow transparency (declare with using a fourth value for your hex color values, such as #FFF0 to #FFFF).
+- `Color` - Which color the dropshadow should have. Note that this also supports alpha channel for adjusting shadow transparency (declare with using a fourth digit for your hex color values, such as #FFF0 to #FFFF).
 
 ### $(Blur)
 

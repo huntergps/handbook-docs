@@ -187,6 +187,23 @@ Alignment can be assigned to any one of the following values:
 
 If you don't assign an `Alignment` explicitly, the default alignment will be to stretch the control as much as the parent control requests. For a normal `Panel`, this means that the child control will try to fill the parent `Panel`, but other containing controls might ask the children to behave differently.
 
+### $(Visibility)
+The `Visibility` property can be used to @(Show), @(Hide) or @(Collapse) elements. It can be set to one of the following values:
+- $(Visible) - The default state where the element is visible.
+- $(Hidden) - The element is not drawn, but it still takes up space.
+- $(Collapsed) - The element is not visible and is will not take up any space.
+
+In the following example, only two of the @(Rectangle:rectangles) are visible. The second @(Rectangle) is collapsed, so it's not taking up any space at all. The third @(Rectangle) is hidden, so it takes up space, but is not visible. The last @(Rectangle) has no `Visibility` set, so it defaults to being visible.
+
+```
+<StackPanel>
+	<Rectangle Visibility="Visible" Fill="Red" Height="50"/>
+	<Rectangle Visibility="Collapsed" Fill="Green" Height="50"/>
+	<Rectangle Visibility="Hidden" Fill="Blue" Height="50"/>
+	<Rectangle Fill="Yellow" Height="50"/>
+</StackPanel>
+```
+
 ### $(Width) and $(Height)
 
 You can combine @(Alignment) and other layout properties with `Width` and `Height`, which will set the size of the @(Element) in the desired @(Units:Unit).

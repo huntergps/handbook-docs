@@ -35,6 +35,8 @@ extern(Android) class AndroidSystemSoundsProvider : ISystemSoundsProvider
 }
 ```
 
+> You can find a complete overview of all the available Android APIs on the <a href="http://developer.android.com/reference/android/media/RingtoneManager.html">Android developer site</a>.
+
 ## Using iOS APIs
 
 Make sure the `.unoproj`file contains the `Experimental.iOS` and `ObjC` packages:
@@ -64,9 +66,11 @@ extern(iOS) class iOSSystemSoundsProvider : ISystemSoundsProvider
 }
 ```
 
-## Creating your own abstractions
+> You can find a complete overview of all the available iOS APIs in the <a href="https://developer.apple.com/library/prerelease/ios/documentation/AudioToolbox/Reference/SystemSoundServicesReference/index.html#//apple_ref/c/func/AudioServicesPlaySystemSound">iOS developer library</a>.
 
-Fuse provides a couple neat ways to wrap target specific code so as to make it available as a unified API on all platforms.
+## Creating new FuseJS modules
+
+Fuse provides a couple neat ways to wrap target specific code so as to make it available as a unified JavaScript API on all platforms.
 
 * Take a look at the [uxl-handbook](https://www.fusetools.com/developers/guides/uxl-handbook) for detailed documentation of target specific compilation.
 * For a tutorial on creating your own JavaScript module with Uno, take a look [here](https://www.fusetools.com/community/guides/fusejs/nativemodules).

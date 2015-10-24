@@ -38,6 +38,7 @@ Divide the solution into multiple projects and reference them from the `unoproj`
 "Projects" : [
 	"path_to_other_project.unoproj"
 ]
+```
 
 <!-- AUTH: We need to fill out this section -->
 

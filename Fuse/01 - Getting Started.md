@@ -30,8 +30,6 @@ Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScrip
 
 The `unoproj` file has the following structure (incomplete):
 
-#### Projects
-
 Divide the solution into multiple projects and reference them from the `unoproj`-file:
 
 ```
@@ -40,9 +38,7 @@ Divide the solution into multiple projects and reference them from the `unoproj`
 ]
 ```
 
-<!-- AUTH: We need to fill out this section -->
-
-> Note: This section of the documentation is incomplete, a full description of the `unoproj` file is coming.
+__Note__: This section of the documentation is incomplete, a full description of the `unoproj` file is coming.
 
 
 

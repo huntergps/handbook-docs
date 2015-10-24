@@ -28,6 +28,8 @@ Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScrip
 
 > ### $(Project file structure)
 
+The `unoproj` file has the following structure (incomplete):
+
 #### Projects
 
 Divide the solution into multiple projects and reference them from the `unoproj`-file:

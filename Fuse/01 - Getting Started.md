@@ -37,9 +37,11 @@ Divide the solution into multiple projects and reference them from the `unoproj`
 	"path_to_other_project.unoproj"
 ]
 
+<!-- AUTH: We need to fill out this section -->
+
 > Note: This section of the documentation is incomplete, a full description of the `unoproj` file is coming.
 
-<!-- AUTH: We need to fill out this section -->
+
 
 > ### $(Sublime Text projects)
 

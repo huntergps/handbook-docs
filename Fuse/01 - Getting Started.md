@@ -26,6 +26,20 @@ After having created a new project, either by using the dashboard or the `fuse` 
 
 Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.
 
+> ### $(Project file structure)
+
+#### Projects
+
+Divide the solution into multiple projects and reference them from the `unoproj`-file:
+
+```
+"Projects" : [
+	"path_to_other_project.unoproj"
+]
+
+> Note: This section of the documentation is incomplete, a full description of the `unoproj` file is coming.
+
+<!-- AUTH: We need to fill out this section -->
 
 > ### $(Sublime Text projects)
 

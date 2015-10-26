@@ -192,15 +192,16 @@ It is worth mentioning that the order of these transforms affects the order of w
 The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive `X`-direction is now 45 degrees downward, and so our panel ends up being moved toward the bottom right.
 
 ### $(Keyframe)
-AUTH:
-
+<!--AUTH:-->
 There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
 
-  <Move RelativeTo="ParentSize">
-		<Keyframe X="10" Time="0.5"/>
-		<Keyframe X="15" Time="1"/>
-		<Keyframe X="5" Time="2"/>
-	</Move>
+```
+<Move RelativeTo="ParentSize">
+	<Keyframe X="10" Time="0.5"/>
+	<Keyframe X="15" Time="1"/>
+	<Keyframe X="5" Time="2"/>
+</Move>
+```
 
 This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
 Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:

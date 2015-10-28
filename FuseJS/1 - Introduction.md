@@ -2,6 +2,8 @@
 
 $(FuseJS) is a $(JavaScript) framework for writing cross-platform mobile app business logic.
 
+Note: FuseJS is currently [not supported for WebGL exports](/learn/guides/previewandexport/other).
+
 ## Getting started
 
 FuseJS can be used in @(UX Markup) through the `<JavaScript>` tag, either by pointing to external JavaScript files, like this:

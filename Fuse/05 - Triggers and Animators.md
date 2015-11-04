@@ -166,8 +166,19 @@ When used in concert with @(LayoutAnimation), `Resize` allows you to animate the
 
 	 <Resize RelativeTo="LayoutChange" Duration="0.5" Easing="CircularInOut" />
 
-<!--  ### $(Cycle)
-TODO: Cycle -->
+
+### $(Cycle)
+
+`Cycle` continuously animates a property between two values at a given frequency.
+
+	<Panel>
+		<Translation ux:Name="someTranslation" />
+		<WhilePressed>
+			<Cycle Target="someTranslation.X" Low="-20" High="20" Frequency="2" />
+		</WhilePressed>
+	</Panel>
+
+You may also specify a `Duration` to control the length of the animation.
 
 ### $(Spin)
 `Spin` continuously rotates an element, given a `Frequency` measured in full rotations per second.
@@ -179,6 +190,7 @@ TODO: Cycle -->
 	</Panel>
 
 As with @(Cycle), you may also specify a `Duration` to control the length of the animation.
+
 
 > ## Transforms
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.

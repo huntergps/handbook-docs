@@ -1,7 +1,6 @@
-
 # Handbook Writer's Guidelines
 
-Make sure you read the Markdown Extensions spec too.
+Make sure you read the [Markdown Extensions spec](https://github.com/fusetools/handbook-docs/blob/master/Markdown%20Extensions.txt) as well.
 
 ## Chronology
 
@@ -11,9 +10,9 @@ I will learn or discover everything I need to know to understand the next chapte
 If I jump to chapter X and read something I don't understand, I should be able to find a definition,
 explaination or link about that topic by scrolling back up.
 
-## Tell a story - sell Fuse
+## Tell a story
 
-The handbook should sell the features of Fuse in the order we think they should be discovered and understood.
+The handbook should explain the features of Fuse in the order they should be discovered and understood.
 
 This means:
 
@@ -21,19 +20,19 @@ This means:
 * Focus on the concepts that are more likely to be interesting to people
 
 For example, it is not important to communicate the class heirarchy or implementation details of Button.
-Neither is it important to state the obvious - make it clear from context instead. 
+Neither is it important to state the obvious - make it clear from context instead.
 
 Focus on how a Button is used and *how* you acheive the most common tasks with it.
 
-	## `$(Button)` 
-	
-	Buttons are clickable @(control)s that takes their look and feel from the @(theme).
+	## $(Button)
+
+	Buttons are clickable @(Control:controls) that takes their look and feel from the @(Theme).
 
 	(pictures of android, ios and some custom GL-based buttons side by side)
 
 	This is how you handle a clicked event:
 
-		<Button Clicked="{some_function}" />
+		<Button Clicked="{someFunction}" />
 
 	> ### Tweaking the look and feel
 
@@ -42,8 +41,7 @@ Focus on how a Button is used and *how* you acheive the most common tasks with i
 	This means a button can look like many different things depending on the platform and
 	custom style settings.
 
-
-	Changing the look and feel of a button must be considered in context of the @(theme). For example, in iOS the native
+	Changing the look and feel of a button must be considered in context of the @(Theme). For example, in iOS the native
 	buttons are just blue text labels, while on Android they have backgrounds and complex behavior when
 	interacted with.
 
@@ -91,14 +89,20 @@ Outline structure:
 	* Link
 	* Link
 
-	## Subchapter (consider folding)
+	## Subchapter
 
 
-	### Subchapter (prefer folding)
+    ### Subchapter (consider folding)
+
+    > #### Subchaper (prefer folding)
 
 	## Further reading
 	* Links to external articles
 
+
+## Add lots of code examples
+
+The best way to learn is by example. Make sure your content is backed by actual code showing how its used in practice. The snippets dont have to compile on their own, but should be copy pastable into any project (if possible).
 
 ## Language entities
 
@@ -108,11 +112,9 @@ go-to location for each language entity in the public facing UX API.
 This means that all classes available in UX that we want people to be able to discover must have a
 $(ClassName) somewhere in the handbook (written as used in UX, not with full namespace path).
 
-The docus should foucs on the most used properties and their allowed values, but does not need to provide
-exhaustive docs. When references to exhaustive docs are neded, use the @unodoc macro.
-
+The docs should foucs on the most used properties and their allowed values, but does not need to provide
+exhaustive docs.
 
 ## Rules of thumb:
 
-* Use XML brackets in article bodies where it makes sense, e.g. `<App>`
 * Don't use XML brackets in headers, but use `code notation` around things that are XML tags in headers

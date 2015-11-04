@@ -19,7 +19,7 @@ The handbook is written in Markdown. We have added a couple custom extensions to
 
 - We track bugs and issues using [github issues](https://github.com/fusetools/handbook-docs/issues).
 - Take a look at the [writers guide](Writer's%20Guidelines.md).
-- Send pull requests to the develop branch.
+- Send pull requests to the master branch.
     - Include a description of the contents of your pull request.
     - Make sure you got rid of all typos.
     - Make sure your code examples work in the latest official release.

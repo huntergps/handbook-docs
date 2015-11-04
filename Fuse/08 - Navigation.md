@@ -92,7 +92,61 @@ It is mandatory to set a value for the @(PageIndicator:page indicators) `Navigat
 
 Another thing to note is that the `PageIndicator` uses a `Factory` to create an indicator for each page. In the example above, we use a @(Circle) with the @(ux:Generate) property set to `Factory` and the @(ux:Binding) property set to to page indicators `DotFactory` property.
 
-<!-- TODO: Write about Factory -->
+## {Page} Binding
+
+
+The `{Page name}` syntax allows linking with resources on the currently active navigation page. It works much like `{Resource name}`, except that it starts looking from the current page instead of the current node. A common use for this is to show a title for the current page.
+
+In the following example, we have a @(DockPanel) with a @(Panel) and a @(PageControl). We would like the contents of our @(Panel) to display the title of the current @(Page), so we set its `Navigation` property to be the @(PageControl).
+
+```
+<DockPanel>
+	<Panel Navigation="myNav" Dock="Top" Height="100" Background="Teal">
+		<Text Value="{Page title}" FontSize="22" Alignment="Center"/>
+	</Panel>
+	<PageControl ux:Name="myNav">
+		<Page Background="Red">
+			<string ux:Key="title" ux:Value="First page"/>
+		</Page>
+		<Page Background="Green">
+			<string ux:Key="title" ux:Value="Second page"/>
+		</Page>
+	</PageControl>
+</DockPanel>
+```
+
+`Navigation="myNav"` establishes the navigation context for this node and its descendents. It can be placed on any node, and overriden on the children. Any binding, gesture, or otherwise that refers to a navigation will now refer to this one.
+
+To show the title of the page we use the `{Page title}` binding:
+
+```
+<Text Value="{Page title}"/>
+```
+
+`{Page title}` is a resource binding that starts at the current page of the navigation (the one we specified with `Navigation="TheNav"`. Any time the current page changes this value will also change.
+
+### Defining Title
+
+The title of the page still needs to be defined somewhere. We do this on the pages of in our navigation using the generic resource syntax:
+
+	<string ux:Key="Title" ux:Value="The First Page"/>
+
+`ux:Key="Title"` defines a resource with the name `Title` and the `ux:Value` specifies the value. These are just normal resources -- anything that can use resources will also work through the `{Page}` binding.
+
+### PageIndicator
+
+This feature can be used to create an interesting page indicator. We can replace the dots with images for each of the pages. On the page we define the image source we want to use:
+
+	<FileImageSource ux:Key="Image" File="icons_200/bowling.png"/>
+
+Again, this is just a normal resource binding that happens to refer to an image source.
+
+With these on each page we can create a `PageIndicator` that uses images for the "dots":
+
+	<PageIndicator Navigation="TheNav" ...>
+		<Image ux:Binding="DotFactory" ux:Generate="Factory" Source="{Page Image}" ...>
+
+<!-- todo: Write about Factory -->
 
 ## $(Navigation types)
 There are three navigation types, and they have quite different behaviors and use cases. Each of them inherit from the `Navigation` base type.
@@ -110,8 +164,8 @@ A `HierarchicalNavigation` is commonly used when there is a hierarchical flow of
 
 `EdgeNavigator` is designed to allow you to dock content on the edge of a @(Panel), typically used in full screen.
 
-	<EdgeNavigator>    
-		<Panel Width="150" EdgeNavigation.Edge="Left" Background="#f63" />    
+	<EdgeNavigator>
+		<Panel Width="150" EdgeNavigation.Edge="Left" Background="#f63" />
 		<Panel Background="#fff>
 		<Text Alignment="Center">
 			This is an example of EdgeNavigator!

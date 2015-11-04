@@ -16,11 +16,11 @@ Here is a tiny app that renders text:
 		<Text>Hello, world!</Text>
 	</App>
 
-This is great but when you have longer passages of text, such as a _Lorem Ipsum_, you likely want to enable word wrapping. In Fuse, this is done with the `$(TextWrapping)` property on the `Text` control:
+This is great but when you have longer passages of text, such as a _Lorem Ipsum_, you most likely want to enable word wrapping. In Fuse, this is done with the `$(TextWrapping)` property on the `Text` control:
 
 	<Text TextWrapping="Wrap">Lorem Ipsum(...)</Text>
 
-If you find that wrapping the text still makes it hard to show all the contents you want, you probably want to look at adding the contents to a @(ScrollView), or changing @(FontSize). `TextWrapping` can be set to `Wrap` or `NoWrap` (default).
+If you are still finding that wrapping the text still makes it hard to show all the contents you want, you probably want to consider adding the contents to a @(ScrollView), or changing @(FontSize). `TextWrapping` can be set to `Wrap` or `NoWrap` (default).
 
 ### $(Fonts)
 
@@ -36,7 +36,7 @@ You can import fonts from ttf files containing TrueType fonts. Because a font is
 		</StackPanel>
 	</App>
 
-In this example, the fonts are located in the same directory as the relevant UX file. This way of importing the font ensures that the font is available through the whole project, and is only loaded once.
+In this example, the fonts are located in the same directory as the relevant UX file. This way of importing the font ensures that the font is available throughout the whole project, and is only loaded once.
 
 Both iOS and Android support text rendering with multibyte character sets. This means that emojis work fine rendering on device.
 
@@ -99,7 +99,7 @@ When added to a container, an `Image` will by default try to show as much of its
 
 There are a number of ways to address this issue. You can set the `StretchMode`-property on your `Image` to make it behave differently. Here are the different modes:
 
-- `Fill` - Fill the available area in the container without necessarily preserving aspect ratio.
+- `Fill` - Fill the available area in the container without necessarily preserving the aspect ratio.
 - `PixelPrecise` - Use the pixels from the image as unit to make sure the image is crisp on all devices. This means that the image will be different sizes on different devices. It ignores the size of the `Image` container.
 - `PointPrecise` - This uses the size of the image source as the `Image` in points, which guarantees that it will be the same on all devices. It ignores the size of the `Image` container. For example, if the image is 64x64 pixels in size, the resulting control will be 64x64 @(points)
 - `PointPrefer` - The `PointPrefer` stretch mode will prioritize getting image size correct using `PointPrecise` stretch mode, but in cases where `PixelPrecise` would create an on-screen image with approximately the right size, it will use `PixelPrecise` to increase the clarity of the image.
@@ -154,7 +154,7 @@ TODO: Explain @mortoray? -->
 
 > ### $(HttpImageSource)
 
-`HttpImageSource` allows you to specify an image to be fetched from a HTTP and displayed asynchronously.
+`HttpImageSource` allows you to specify an image to be fetched from a HTTP and be displayed asynchronously.
 
 	<Image>
 		<MultiDensityImageSource>
@@ -201,7 +201,7 @@ In this example, we've taken it a bit further, and we're adding a yellow @(Strok
 #### $(StartAngle) / $(EndAngle)
 
 `StartAngle` and `EndAngle` can be used to only draw a slice of a @(Circle).
-There are 6 different properties use to control this in different ways.
+There are 6 different properties that can be used to control this in different ways.
 
 * `StartAngle` - The angle in radians where the slice begins
 * `EndAngle` - The angle in radians where the slice ends
@@ -233,7 +233,7 @@ It is possible to use other kinds of brushes to fill shapes. For example:
 		</Rectangle>
 	</StackPanel>
 
-Here we create a `Circle` that has been filled with an `ImageFill`-brush, great for creating your typical profile picture in a social app. We then add under it a @(Rectangle) that has a nice and subtle `LinearGradient`.
+Here, we created a `Circle` that has been filled with an `ImageFill`-brush, great for creating a typical profile picture in a social app. Then under it, we created a @(Rectangle) that has a nice and subtle `LinearGradient`.
 
 ### $(Stroke:Strokes)
 
@@ -350,7 +350,7 @@ In Fuse, pretty much anything can easily be made @(Clicked:clickable) (and @(Tap
 
 Depending on where you started the preview process from, you'll see the `Message` output when you click the `Rectangle`.
 
-Why, then is there a need to a separate `Button` concept?
+Then why is there a need for a separate `Button` concept?
 
 Because when you switch the `Theme` to `Native`, Fuse will render the `Button` as a native iOS or Android `Button`, depending on which platform the app is run on. Also, creating a concept called "Button" makes it easier to make meaningful themes.
 
@@ -631,7 +631,7 @@ Here are some properties that are common for all `Element` types:
 
 ### $(HitTestMode)
 
-When interacting with an element, it is sometimes desirable to be able to differenciate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using `HitTestMode`.
+When interacting with an element, it is sometimes desirable to be able to differentiate which elements can be interacted with and how. This is typically referred to as "hit testing". In Fuse, how elements interact with user input can be set using `HitTestMode`.
 
 Consider this code:
 

@@ -95,10 +95,10 @@ Or like this, which means exactly the same:
 	</App>
 
 > #### Creating your own GraphicsTheme
-<!-- TODO: Concider moving to Styling and resources chapter -->
+<!-- TODO: Consider moving to Styling and resources chapter -->
 
 It is possible to *extend* `GraphicsTheme` to specify specific
-look and feels for controls like `Slider` and `Button`.
+look and feel for controls like `Slider` and `Button`.
 
 You can make your own `GraphicsTheme` by using it as a base class:
 
@@ -126,7 +126,7 @@ And then this works:
 
 ### $(BasicTheme)
 
-The `BasicTheme` is a `GraphicsTheme` that ships with fuse and gives controls a
+The `BasicTheme` is a `GraphicsTheme` that ships with Fuse and gives controls a
 look and feel inspired by material design. This can be useful when you want a starting
 point for UIs that are supposed to look the same on all platforms.
 

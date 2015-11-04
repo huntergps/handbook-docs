@@ -20,7 +20,7 @@ Panels can contain child UI elements and lay them out according to layout rules.
 For a good introductory example to basic layout, take a look [here](https://www.fusetools.com/developers/examples/layoutexample).
 
 ## $(Panel)
-The most basic type of panel is the `Panel`. Children of a Panel will be default fill its entire space. If a panel contains several children it simply layers them on top of each other. Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite useful in many situations.
+The most basic type of panel is the `Panel`. Children of a Panel will be default fill its entire space. If a panel contains several children, it simply layers them on top of each other. Combining this behavior with @(Alignment:alignment), @(Margin:margin) and @(Padding:padding) can be quite useful in many situations.
 
 ```
 <Panel>
@@ -45,7 +45,7 @@ The StackPanel places its children in a stack. The default layout is a vertical 
 The Grid places its children in a grid formation. The rows and columns can be specified explicitly by the @(Rows) and @(Columns) properties, or implicitly by assigning the @(RowCount) and @(ColumnCount) properties.
 
 ### $(RowCount) and $(ColumnCount)
-If all that is needed is a grid of equally sized rows and columns one can simply state the number of rows and columns using the RowCount and ColumnCount properties.
+If all that is needed is a grid of equally sized rows and columns, one can simply state the number of rows and columns using the RowCount and ColumnCount properties.
 ```
 <Grid RowCount="4" ColumnCount="2"/>
 ```
@@ -82,7 +82,7 @@ By default, elements are placed in the grid by the order they appear in the UX, 
 ## $(WrapPanel)
 The `WrapPanel` lays out its children one after the other and wraps around whenever it reaches the end. One can specify which direction the elements are layed out in by assigning the $(FlowDirection) property. FlowDirection can either be `LeftToRight` or `RightToLeft`.
 
-The following WrapPanel layes out its children horizontally from right ro left.
+The following WrapPanel lays out its children horizontally from right ro left.
 ```
 <WrapPanel FlowDirection="RightToLeft">
 	<Each Count="10">
@@ -103,7 +103,7 @@ The Orientation property can be used to make a vertical `WrapPanel` like so:
 <!-- TODO: Illustration -->
 
 ## $(DockPanel)
-The DockPanel layes out its children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so:
+The DockPanel lays out its children by docking them to the different sides, one after the other. One can specify which side per element by using the $(Dock) property like so:
 ```
 <Rectangle Dock="Left"/>
 ```
@@ -126,7 +126,7 @@ The @(Style) is used to give the @(Rectangle:rectangles) a minimum size. The @(R
 
 > ## $(Viewbox)
 
-To make contents stretch to fit an area  you can use `Viewbox`:
+To make contents stretch to fit an area, you can use `Viewbox`:
 
 	<Viewbox>
 		<Rectangle Background="#808" Width="200" Height="100" />

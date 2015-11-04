@@ -1,6 +1,6 @@
 # Handbook Writer's Guidelines
 
-Make sure you read the [Markdown Extensions spec](https://github.com/fusetools/handbook-docs/blob/master/Markdown%20Extensions.txt) as well.
+Make sure you read the [Markdown Extensions spec](Markdown%20Extensions.md) as well.
 
 ## Chronology
 

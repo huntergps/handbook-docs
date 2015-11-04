@@ -11,6 +11,8 @@ The handbook is split into four parts:
 - Android - Everything Android specific.
 - iOS - Everything iOS specific.
 
+You can view the rendered version [here](https://www.fusetools.com/learn/fuse).
+
 # How to contribute
 
 The handbook is written in Markdown. We have added a couple custom extensions to easily link to topics across the entire handbook. The [extensions guide](https://github.com/fusetools/handbook-docs/blob/master/Markdown%20Extensions.txt) for details.

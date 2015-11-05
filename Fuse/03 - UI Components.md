@@ -754,9 +754,7 @@ To blur an element:
 
 Note that while the `Radius` of the `Blur` can be animated like most other properties, this is potentially an expensive operation, and should be tested on devices to make sure it behaves properly.
 
-<!-- TODO: The API reference doesn't include `Radius` and has a bunch of properties I cannot confidently say anything about. AUTH help? -->
-
-> ### $(Desaturate)
+### $(Desaturate)
 
 To `Desaturate` an element, fully or partially:
 
@@ -766,7 +764,7 @@ To `Desaturate` an element, fully or partially:
 
 An amount of 1.0 will fully `Desaturate` the element.
 
-> ### $(Halftone)
+### $(Halftone)
 
 Add a classic halftone effect:
 
@@ -782,7 +780,7 @@ Add a classic halftone effect:
 - `DotTint` - Tint amount of the dots (`float`, default 0.5)
 - `PaperTint` - Tint amount of the paper (`float`, default 0.2)
 
-> ### $(Mask)
+### $(Mask)
 
 Fuse allows you to mask an element with an image or `ImageSource`.
 
@@ -803,7 +801,7 @@ If you use a white image with alpha channel, `RGBA` and `Alpha` will have the sa
 
 The mask will always stretch itself to match the size of the element to be masked.
 
-> ### About $(Control:Controls)
+### About $(Control:Controls)
 
 In Fuse, we use the word _control_ to describe a UI component that has a semantic function, but could vary largely in visual appearance.
 

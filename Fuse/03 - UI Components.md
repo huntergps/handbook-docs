@@ -754,6 +754,8 @@ To blur an element:
 
 Note that while the `Radius` of the `Blur` can be animated like most other properties, this is potentially an expensive operation, and should be tested on devices to make sure it behaves properly.
 
+<!-- The original author was concerned about there being parameters in the doc he couldn't speak of with confidence. There are no such parameters  -->
+
 ### $(Desaturate)
 
 To `Desaturate` an element, fully or partially:

@@ -1,5 +1,5 @@
 # $(UX Class Reference)
 
-<!-- Write some short summary about the UX Class Reference docs here -->
+The UX Class reference is a complete reference to all classes available in UX.
 
  * [UX Class Reference documentation](/learn/fuse/ux)

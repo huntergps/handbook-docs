@@ -34,7 +34,11 @@
 - Your Uno code is not executed in preview
 
 ### Explanation
-- Unlike ux/js, Uno-code is not refreshed when you save and auto-refresh preview, you'll have to restart the preview. In addition, any Uno-code you have in `ux.uno` files is not run at all in preview.
+- Unlike ux/js, Uno-code is not refreshed when you save and auto-refresh preview, you'll have to restart Fuse. A better solution for this is coming soon.
+ - Windows: Right click on the Fuse icon in the tray, click "Exit"
+ - OS X: Control-click on the Fuse icon in the menu bar, click "Quit"
+- In addition, any Uno-code you have in `ux.uno` files is not run at all in preview.
+- All in all, it can be easier to work with Uno code through `uno build` than through preview. A better solution for this is coming soon.
 
 ## Preview says "Oops! Something went wrong here"
 ### Symptom

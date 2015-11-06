@@ -1,7 +1,14 @@
 # $(Fuse Troubleshooting Guide)
 
 ## Cannot connect to daemon
-### Symptoms
+
+### Symptom
+- You get a message "fuse: A network error occurred: Could not resolve host 'gl_FragColor' Please check your network setup and try again."
+
+### Solution
+- You have an issue with your network. Try doing `ping $(hostname)` in a terminal. If you get an error message, you have to fix your network setup before you continue.
+
+### Symptom
 - You get a stack trace with `FailedToConnectToDaemon` somewhere in it
  
 ### Solution
@@ -13,7 +20,7 @@
 - If that did not help, please try to reboot your computer.
 
 ## Sublime plugin does not work
-### Symptoms
+### Symptom
 - You get the message "Error loading: Packages/Fuse/UX.tmLanguage"
 - You don't get syntax highlighting in Sublime
 
@@ -22,7 +29,7 @@
 - If that didn't work, delete the files staring with `Fuse` in `%APPDATA%\Sublime Text 3\Installed Packages` (Windows) or `~/Library/Application Support/Sublime Text 3/Installed Packages` (OS X), and try the wizard again.
 
 ## My Uno code is not run/updated in preview
-### Symptoms
+### Symptom
 - Changes to your Uno code is not reflected in preview
 - Your Uno code is not executed in preview
 
@@ -30,7 +37,7 @@
 - Unlike ux/js, Uno-code is not refreshed when you save and auto-refresh preview, you'll have to restart the preview. In addition, any Uno-code you have in `ux.uno` files is not run at all in preview.
 
 ## Preview says "Oops! Something went wrong here"
-### Symptoms
+### Symptom
 - When previewing your app, the "Oops! Something went wrong here" screen appears.
 
 ### Solution

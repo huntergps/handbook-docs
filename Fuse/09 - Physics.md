@@ -42,6 +42,8 @@ The `PointAttractor` `Rule` is one of the `ForceField` rules and can be used to 
 - Strength - How much attraction is applied to the affected elements.
 - Exclusive - Whether this attractor will be exclusively applied when it is considered the strongest @(Physics Rules:rule) applying force.
 
+The @(Swipe places) example is a good example of the `PointAttractor` in use.
+
 <!-- ### $(Spring)
 The Spring @(Rule:rule) is used
 

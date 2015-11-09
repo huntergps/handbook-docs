@@ -288,7 +288,6 @@ You can rotate an element using:
 Additionally, you can check if the `Rotation` is strictly around the Z axis by using the property `IsFlat`.
  
 ### $(Shear)
-<!-- TODO: More?/ AUTH -->
 
 The `Shear` animator can be used to perform a shear mapping on an element. One can use `DegreesX` and `DegreesY` to set the shear on one axis, or `Degrees` and `Vector` to set the shear in both the X and Y plane, using degrees or radians.
 

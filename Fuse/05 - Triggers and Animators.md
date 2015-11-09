@@ -307,7 +307,7 @@ Like @(Animators:animators), `Actions` can have a `Delay`. This specifies a numb
 
 `Actions` also has a property called `AtProgress` which can be set to a value between 0 and 1. It has a similar function as `Delay`, but is instead relative to the full @(Duration) of the @(Trigger). Setting `AtProgress` to 0, means the action is fired as soon as the @(Trigger) is actiated. Setting it to 0.5 means it is fired half way through and so on.
 
-### $(Set)
+> ### $(Set)
 
 Permanently changes the value of a property. If you want to just change it temporarily, use @(Change). When using `Set` on a property, the value will not be reverted back when the containing trigger is deactivated. In the following example we change the color of a rectangle by setting the value of its `SolidColor` @(Element). Multiple activations of the @(Clicked) trigger won't have any additional effect.
 
@@ -320,7 +320,7 @@ Permanently changes the value of a property. If you want to just change it tempo
 </Clicked>
 ```
 
-### $(Callback)
+> ### $(Callback)
 
 `Callback` is used to call a JavaScript function (see @(Data Binding)) when a trigger is activated.
 
@@ -337,6 +337,18 @@ Permanently changes the value of a property. If you want to just change it tempo
 	</WhilePressed>
 </Rectangle>
 ```
+
+### $(GoForward)
+Tell a @(Navigation) or a @(WebView) to step forward in its navigation history.
+
+`<GoForward WebView="myWebView" />`  
+`<GoForward Context="myNavigation" />`
+
+### $(GoBack)
+Tell a Navigation context or a @(WebView) to go backwards in its navigation history.
+
+`<GoBack WebView="myWebView" />`  
+`<GoBack Context="myNavigation" />`
 
 > ### $(Toggle)
 `Toggle` is used to toggle a boolean value between `true` and `false`. If inside a @(Switch) it will toggle the value of the @(Switch). `Toggle` can also be used to activate/deactive @(WhileTrue) and @(WhileFalse) triggers like so:
@@ -391,6 +403,62 @@ This example shows how to use `BringIntoView` to make a @(ScrollView) automatica
 <!--  ### $(BringToFront)
 AUTH: TODO: Do we need to discuss Z-ordering? -->
 
+## WebView triggers & actions
+
+### $(PageBeginLoading)
+Triggers once the @(WebView) begins loading new content.
+
+### $(WhilePageLoading)
+Is active until the @(WebView) has completed loading content from its current Url.
+
+### $(PageLoaded)
+Triggers once the @(WebView) has completed loading content from its current Url.
+
+### $(Reload)
+`Reload` is a @(WebView)-specific Action that lets you tell a given WebView to reload its current location. 
+
+`<Reload WebView="myWebView" />`
+
+### $(LoadUrl)
+`LoadUrl` is a @(WebView)-specific Action that lets you tell a given WebView to navigate to a location. 
+
+`<LoadUrl WebView="myWebView" Url="http://mypage.com" />`
+
+> ### $(EvaluateJS)
+
+`EvaluateJS` is a @(WebView)-specific Action that allows you to execute arbitrary JavaScript in the context of a @(WebView)'s currently loaded content and extract a return value as JSON to be passed into a FuseJS JavaScript handler.
+
+```
+<App Theme="Native" Background="#333">
+	<JavaScript>
+		module.exports = {
+			onPageLoaded : function(res) 
+			{
+				//The return value is acquired with the 'json' property of the argument object and will usually be parsed to be read.
+				console.log("WebView arrived at "+ JSON.parse(res.json).url);
+			}
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Dock="Top"/>
+		
+		<WebView Dock="Fill" Url="http://www.google.com">
+			<PageLoaded>
+				<EvaluateJS Handler="{onPageLoaded}">
+					//All return values are automatically JSON.stringified before being passed through to Fuse as a bridge. For this reason it's generally cleaner to return a structure.
+					var result = {
+						url : document.location.href
+					};
+					//Note that returning a value is optional
+					return result; 
+				</EvaluateJS>
+			</PageLoaded>
+		</WebView>
+	
+		<BottomBarBackground Dock="Bottom" />
+	</DockPanel>
+</App> 
+```
 
 ## $(State groups)
 

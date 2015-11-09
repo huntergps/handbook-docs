@@ -250,7 +250,15 @@ This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify ti
 </Rectangle>
 ```
 
-<!-- TODO: Document X, Y, Z -->
+You can set the translation value for `Translation` with:
+
+ * `X` or `Y`, to seperately set the X and Y translations
+ * `XY`, to set the translation of both axes at once
+ * `Z`, to set the translation in the Z axis.
+
+The coordinates default to being relative to the elements original position(`TranslationModes.Local`), but this can be changed using the property `RelativeTo`. Further, you can make the transform relative to another element by using `RelativeNode`.
+
+Additionally, `IsFlat` will return true if the `Translation` only translates on the X and Y axis.
 
 ### $(Scaling)
 `Scaling` enlarges or shrinks the element by the factor specified. The following example will make the @(Rectangle) twice as big as the original size:

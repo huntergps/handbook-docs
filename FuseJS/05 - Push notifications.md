@@ -55,6 +55,39 @@ What happens when your app starts varies slightly on each platform, but by refer
 
 All three callbacks mentioned are available in JavaScript and Uno.
 
+## JavaScript code
+
+Using the notifications from JS is super simple. Here is an example that just logs when you the callbacks fire:
+
+```
+<Fuse.PushNotifications.JS.PushNotify ux:Global="PushNotify" />
+<JavaScript>
+    var PushNotify = require("PushNotify");
+
+    PushNotify.onRegistrationSucceeded = function(regID) {
+        console.log ("Reg Succeeded: " + regID);
+    };
+
+    PushNotify.onRegistrationFailed = function(reason) {
+        console.log ("Reg Failed: " + reason);
+    };
+
+    PushNotify.onReceivedMessage = function(payload) {
+        console.log ("Recieved Push Notification: " + payload);
+    };
+</JavaScript>
+```
+
+In a real app you will want to send your `registration ID` to your server when `onRegistrationSucceeded` is called, but other than that this is fairly complete.
+
+## Server Side
+
+So now we have our client all set up and ready to go we get to the backend. This area obviously is not one where we can simplify the process as these services and procedures are controlled totally by apple and google.
+
+However we do have some guides for getting a setup you can use for testing.
+
+iOS: [Setting up iOS Push Notifications Backend]()
+Android: [Setting up Android Push Notification Backend]()
 
 ## The Notification
 We support push notifications in JSON format. When a notification arrives one of two things will happen:
@@ -92,43 +125,3 @@ Implementation Note:
 Google and Apple has different limits on the size of push notifications.
 - Google limits to 4096 bytes
 - Apple limits to 2048 bytes on iOS 8 and up but only 256 bytes on all previous versions.
-
-## JavaScript code
-
-Using the notifications from JS is super simple. Here is an example that just logs when you the callbacks fire:
-
-```
-<Fuse.PushNotifications.JS.PushNotify ux:Global="PushNotify" />
-<JavaScript>
-    var PushNotify = require("PushNotify");
-
-    PushNotify.onRegistrationSucceeded = function(regID) {
-        console.log ("Reg Succeeded: " + regID);
-    };
-
-    PushNotify.onRegistrationFailed = function(reason) {
-        console.log ("Reg Failed: " + reason);
-    };
-
-    PushNotify.onReceivedMessage = function(payload) {
-        console.log ("Recieved Push Notification: " + payload);
-    };
-</JavaScript>
-```
-
-In a real app you will want to send your `registration ID` to your server when `onRegistrationSucceeded` is called, but other than that this is fairly complete.
-
-## Server Side
-
-So now we have our client all set up and ready to go we get to the backend. This area obviously is not one where we can do anything to help as these services and procedures are controlled totally by apple and google.
-
-We do have some guides for getting a setup you can use for testing however.
-
-iOS: [Setting up iOS Push Notifications Backend]()
-Android: [Setting up Android Push Notification Backend]()
-
-## Future Features
-These are some of the areas we could extend our push notification support
-
-- Support more 'notification'/'aps' json options. (icon control, sounds etc come to mind)
-- Support more notification backends (GCM can be used for iOS for example)

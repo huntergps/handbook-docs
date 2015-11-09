@@ -258,7 +258,16 @@ This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify ti
 <Rectangle Width="100" Height="100">
 	<Scaling Factor="2"/>
 </Rectangle>
+
 ```
+
+`Scaling` can be utilized using:
+
+ * `Factor`, to set an universal scale on all axes
+ * `Vector`, to set the scale of all three axes at once
+ * `X`, `Y`, and `Z`, for control of individual axes.
+
+While the property `IsFlat` exists, it will allways return true as `Scaling` can't add depth, and is only there for consistency reasons.
 
 <!-- TODO: Document Vector -->
 

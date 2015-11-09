@@ -75,7 +75,7 @@ For iOS you just include an `'aps'` entry in the notification's JSON
 
 And 'title' and 'body' will be used as the title and body of the system notification.
 
-For iOS you can use exactly the same `'aps'` entry or the alternatively the following:
+For Android you can use exactly the same `'aps'` entry or the alternatively the following:
 
 ```
 'notification': {

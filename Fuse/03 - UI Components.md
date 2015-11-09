@@ -625,6 +625,42 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 		</Panel>
 	</App>
 
+## $(WebView)
+
+To include web content Fuse offers a native WebView component for Android and iOS. The WebView is native only, and as such needs to be contained in a @(NativeViewHost) if you wish to use it with Graphics themes.
+
+The WebView can be used to present web content over the http protocol, and hooks into some useful triggers for building a customized browsing experience, such as @(PageBeginLoading), @(WhilePageLoading) and @(PageLoaded). Navigation triggers like @(GoBack) and @(GoForward) are complimented with WebView-specific ones, like @(Reload) and @(LoadUrl). It can also be used to feed a @(ProgressAnimation).
+
+Of particular notice is the @(EvaluateJS) trigger, which allows arbitrary JavaScript to be run in the WebView's context and the resulting data be fed back into Fuse:
+
+	<App Theme="Native" Background="#333">
+		<JavaScript>
+			module.exports = {
+				onPageLoaded : function(res) {
+					console.log("WebView arrived at "+ J	SON.parse(res.json).url);
+			}
+		};
+	</JavaScript>
+	<DockPanel>
+		<StatusBarBackground Dock="Top"/>
+		
+		<WebView Dock="Fill" Url="http://www.google.com">
+			<PageLoaded>
+				<EvaluateJS Handler="{onPageLoaded}">
+					var result = {
+						url : document.location.href
+					};
+					return result;
+				</EvaluateJS>
+			</PageLoaded>
+		</WebView>
+
+		<BottomBarBackground Dock="Bottom" />
+	</DockPanel>
+</App>
+
+
+
 ## $(Element)
 
 Here are some properties that are common for all `Element` types:

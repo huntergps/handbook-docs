@@ -1,4 +1,4 @@
-# $(LayoutAnimation) and $(MultiLayoutPanel) 
+# $(LayoutAnimation) and $(MultiLayoutPanel)
 
 There is a certain kind of animation which deserves special attention. When an @(Element) has certain properties like @(Width), @(Height) or @(Margin) (collectively reffered to as "layout properties") changed or when its location in the visual tree changes, we can trigger a `LayoutAnimation`.
 
@@ -11,8 +11,8 @@ Here is a quick example:
 	<Panel>
 		<Panel ux:Name="panel" Width="50" Height="50" Background="Teal">
 			<LayoutAnimation>
-				<Resize RelativeTo="LayoutChange" Duration="0.5"/>
-				<Move RelativeTo="LayoutChange" Duration="0.5"/>
+				<Resize X="1" Y="1" RelativeTo="LayoutChange" Duration="0.5"/>
+				<Move X="1" Y="1" RelativeTo="LayoutChange" Duration="0.5"/>
 			</LayoutAnimation>
 			<Clicked>
 				<Set panel.Width="200"/>
@@ -31,7 +31,7 @@ The @(Panel) has a @(LayoutAnimation) on it with a @(Resize) and @(Move) animato
 	<Panel>
 		<Panel ux:Name="panel" Width="50" Height="50" Background="Teal" Alignment="Center">
 			<LayoutAnimation>
-				<Move RelativeTo="LayoutChange" Duration="0.5"/>
+				<Move X="1" Y="1" RelativeTo="LayoutChange" Duration="0.5"/>
 			</LayoutAnimation>
 			<Clicked>
 				<Set panel.Alignment="BottomRight"/>
@@ -79,8 +79,8 @@ Here is a quick example, showing how we can move a @(Rectangle) from one @(Panel
 			<Placeholder Width="50" Height="50">
 				<Rectangle ux:Name="rect" Fill="Teal">
 					<LayoutAnimation>
-						<Move RelativeTo="LayoutChange" Duration="1"/>
-						<Resize RelativeTo="LayoutChange" Duration="1"/>
+						<Move X="1" Y="1" RelativeTo="LayoutChange" Duration="1"/>
+						<Resize X="1" Y="1" RelativeTo="LayoutChange" Duration="1"/>
 					</LayoutAnimation>
 				</Rectangle>
 				<Clicked>

@@ -270,8 +270,14 @@ This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify ti
 </Rectangle>
 ```
 
-<!-- Document X, Y, Z -->
+You can rotate an element using:
 
+ * `Degrees`, controlling rotation around the Z axis
+ * `DegreesX`, `DegreesY`, `DegreesZ`, giving you individual control of all 3 axes.
+ * `EulerAngle` and `EulerAngleDegrees`, letting you set the euler angles of the element in radians or degrees, respectively.
+
+Additionally, you can check if the `Rotation` is strictly around the Z axis by using the property `IsFlat`.
+ 
 ### $(Shear)
 <!-- TODO: More?/ AUTH -->
 

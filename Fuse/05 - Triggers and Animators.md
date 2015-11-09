@@ -290,7 +290,9 @@ Additionally, you can check if the `Rotation` is strictly around the Z axis by u
 ### $(Shear)
 <!-- TODO: More?/ AUTH -->
 
-The `Shear` animator can be used to perform a shear mapping on an element. One can use `Degrees`, `DegreesX` or `DegreesY` to specify a shear, or an arbitrary vector using the `Vector` property.
+The `Shear` animator can be used to perform a shear mapping on an element. One can use `DegreesX` and `DegreesY` to set the shear on one axis, or `Degrees` and `Vector` to set the shear in both the X and Y plane, using degrees or radians.
+
+While the effect is strictly 2D, the `IsFlat` property is there for consistency reasons, and will allways return true due to this.
 
 
 ## $(Attractor)

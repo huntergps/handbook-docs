@@ -695,6 +695,15 @@ If you want to change the color of the selection, `SelectionColor` enables you t
 
 	<TextInput SelectionColor="#00ffaa" />
 
+A Placeholder value can be added if you want some default string to be displayed when the TextInput is empty
+
+	<TextInput PlaceholderText="My placeholder text" />
+
+And it can also have a separate color
+	
+	<TextInput PlaceholderText="My placeholder text" PlaceholderColor="#eee" />
+	
+
 <!--
 - WhileFocused TODO: I am not sure what exactly this is supposed to demonstrate
 - WhileEmpty TODO: This doesn't exist, should it? It is good for implementing placeholder data

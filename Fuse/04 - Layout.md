@@ -308,3 +308,11 @@ Here is how we can make sure our content is never covered by the keyboard or hom
 	</DockPanel>
 </App>
 ```
+
+You also have the option to not take the size of the keyboard into account:
+
+	<BottomBarBackground IncludesKeyboard="false" />
+
+> ### $(ClientPanel)
+
+`ClientPanel` is a @(DockPanel) with both a @(StatusBarBackground) and a @(BottomBarBackground) docked to its top and bottom edges, respectively. It is included for convenience.

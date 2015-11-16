@@ -243,7 +243,7 @@ This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify ti
 <!-- TODO: Interpolation -->
 
 ### $(Translation)
-`Translation` moves the element in the X and Y direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-direction and 50 points in the Y-direction.
+`Translation` moves the element in the specified X, Y, and Z direction. The follwing example shows a @(Rectangle) which is moved 100 points in the X-direction and 50 points in the Y-direction.
 ```
 <Rectangle Width="50" Height="50">
 	<Translation X="100" Y="50"/>
@@ -346,7 +346,7 @@ Permanently changes the value of a property. If you want to just change it tempo
 
 > ### $(Callback)
 
-`Callback` is used to call a JavaScript function (see @(Data Binding)) when a trigger is activated.
+The `Callback` action is used to call a JavaScript function (see @(Data Binding)) when a trigger is activated.
 
 ```
 <JavaScript>
@@ -389,7 +389,8 @@ Tell a Navigation context or a @(WebView) to go backwards in its navigation hist
 ```
 
 > ### $(BringIntoView)
-The `BringIntoView` trigger is used together with the @(ScrollView) control. By setting its `TargetNode` property, we can instruct the @(ScrollView) to go to a position so that that that `Node` becomes visible.
+
+The `BringIntoView` action is used together with the @(ScrollView) control. By setting its `TargetNode` property, we can instruct the @(ScrollView) to go to a position so that that that `Node` becomes visible.
 
 This example shows how to use `BringIntoView` to make a @(ScrollView) automatically scroll between the top and the bottom by clicking a button:
 
@@ -427,30 +428,47 @@ This example shows how to use `BringIntoView` to make a @(ScrollView) automatica
 <!--  ### $(BringToFront)
 AUTH: TODO: Do we need to discuss Z-ordering? -->
 
-## WebView triggers & actions
+## WebView-specific triggers & actions
 
 ### $(PageBeginLoading)
 Triggers once the @(WebView) begins loading new content.
 
+```
+<WebView Url="http://fusetools.com">
+	<PageBeginLoading>
+		<DebugAction Message="Page began to load!"/>
+	</PageBeginLoading>
+</WebView>
+```
+
 ### $(WhilePageLoading)
-Is active until the @(WebView) has completed loading content from its current Url.
+Becomes active when a @(WebView) Url changes, and stays active until it has completed loading content.
 
 ### $(PageLoaded)
 Triggers once the @(WebView) has completed loading content from its current Url.
 
+```
+<WebView Url="http://fusetools.com">
+	<PageLoaded>
+		<DebugAction Message="Arrived at page!"/>
+	</PageLoaded>
+</WebView>
+```
+
 ### $(Reload)
-`Reload` is a @(WebView)-specific Action that lets you tell a given WebView to reload its current location. 
+The `Reload` action lets you tell a given WebView to reload its current location. 
 
 `<Reload WebView="myWebView" />`
 
 ### $(LoadUrl)
-`LoadUrl` is a @(WebView)-specific Action that lets you tell a given WebView to navigate to a location. 
+
+The `LoadUrl` action lets you tell a given WebView to navigate to a location. 
 
 `<LoadUrl WebView="myWebView" Url="http://mypage.com" />`
 
 > ### $(EvaluateJS)
 
-`EvaluateJS` is a @(WebView)-specific Action that allows you to execute arbitrary JavaScript in the context of a @(WebView)'s currently loaded content and extract a return value as JSON to be passed into a FuseJS JavaScript handler.
+The `EvaluateJS` action allows you to execute arbitrary JavaScript in the context of a @(WebView)'s currently loaded content and extract a return value as JSON to be passed into a FuseJS JavaScript handler.
 
 ```
 <App Theme="Native" Background="#333">
@@ -458,7 +476,8 @@ Triggers once the @(WebView) has completed loading content from its current Url.
 		module.exports = {
 			onPageLoaded : function(res) 
 			{
-				//The return value is acquired with the 'json' property of the argument object and will usually be parsed to be read.
+				// The return value is acquired with the 'json' property of the 
+				// argument object and will usually be parsed to be read.
 				console.log("WebView arrived at "+ JSON.parse(res.json).url);
 			}
 		};
@@ -469,7 +488,9 @@ Triggers once the @(WebView) has completed loading content from its current Url.
 		<WebView Dock="Fill" Url="http://www.google.com">
 			<PageLoaded>
 				<EvaluateJS Handler="{onPageLoaded}">
-					//All return values are automatically JSON.stringified before being passed through to Fuse as a bridge. For this reason it's generally cleaner to return a structure.
+					// All return values are automatically JSON.stringified before 
+					// being passed through to Fuse as a bridge. 
+					// For this reason it's generally cleaner to return a structure.
 					var result = {
 						url : document.location.href
 					};
@@ -580,8 +601,11 @@ Following are triggers which react to pointer gestures.
 ### $(Tapped)
 The `Tapped`-trigger is quite similar to the @(Clicked)-trigger. Where a click just means that the pointer has to be pressed and released on the element, a tap means that the pointer has to be released within a certain time after the pointer is pressed.
 
-<!-- AUTH: Is this really true? I thought `Tapped` didn't need a release, only a press. -->
-<!-- TODO: Can we configure this time? And what is the default? -->
+### $(DoubleClicked)
+`DoubleClicked` is activated when the element has been @(Clicked) twice within a certain timeframe.
+
+### $(DoubleTapped)
+As with @(DoubleClicked), `DoubleTapped` is activated when the element has been @(Tapped) twice within a certain timeframe.
 
 ### $(WhileHovering)
 `WhileHovering` is active while the pointer is within the bounds if its containing @(Element).

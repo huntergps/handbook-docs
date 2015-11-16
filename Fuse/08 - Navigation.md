@@ -173,7 +173,7 @@ A `HierarchicalNavigation` is commonly used when there is a hierarchical flow of
 		</Panel>
 	</EdgeNavigator>
 
-Note that setting the @(Background) of the second @(Panel) in this example is of significance, as it enables hit testing of the inner @(Panel). You could alternatively set the @(HitTestMode) of the @(EdgeNavigator) to be @(LocalBoundsAndChildren). Normally this isn't an issue, as the inner panel will have content that is hit testable.
+Note that setting the @(Background) of the second @(Panel) in this example is of significance, as it enables hit testing of the inner @(Panel). You could alternatively set the @(HitTestMode) of the @(EdgeNavigator) to be @(HitTestMode.LocalBoundsAndChildren). Normally this isn't an issue, as the inner panel will have content that is hit testable.
 
 <!-- TODO: Document - GoBack and - GoForward ? -->
 

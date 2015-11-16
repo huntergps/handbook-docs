@@ -3,7 +3,7 @@
 ## Cannot connect to daemon
 
 ### Symptom
-- You get a message "fuse: A network error occurred: Could not resolve host 'gl_FragColor' Please check your network setup and try again."
+- You get a message `fuse: A network error occurred: Could not resolve host '<your hostname>' Please check your network setup and try again.`
 
 ### Solution
 - You have an issue with your network. Try doing `ping $(hostname)` in a terminal. If you get an error message, you have to fix your network setup before you continue.

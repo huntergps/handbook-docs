@@ -8,7 +8,7 @@ Fuse comes with a number of UI components that can be used to construct a user i
 
 Note that just because something is enclosed in a tag doesn't necessarily mean it has to be a UI component. UX uses tags for other concepts also, such as @(Trigger:Triggers) and @(Actions).
 
-## Text
+## $(Text)
 
 Here is a tiny app that renders text:
 
@@ -51,6 +51,19 @@ For further control over how your text is rendered, you can set `$(TextAlignment
 	<Text FontSize="24" TextAlignment="Right">Right</Text>
 
 In this example, the first text element will be left aligned as this is the default, and have its color set to a medium light grey. The second text will be center aligned. The third will be right aligned and have a larger font. Valid values for `TextAlignment` are `Left` (default), `Right` and `Center`.
+
+> ### $(Number)
+
+While @(Text) is the way to go in most cases, you may use `Number` to display a formatted numeric value.
+The format, specified via the `Format` property, must be in the form of a [Standard Numeric Format String](https://msdn.microsoft.com/en-us/library/dwhawy9k.aspx).
+
+The only format currently supported by `Number` is `F`, which truncates the number of decimal places to be shown.
+
+The following code will render `3.141`:
+
+```
+<Number Value="3.14159265359" Format="F03" />
+```
 
 ## $(Image)
 
@@ -106,6 +119,35 @@ There are a number of ways to address this issue. You can set the `StretchMode`-
 - `Scale9` - If you use `Scale9`, the `Image` will be streched according to its $(Scale9Margin). This margin will decide which pixels will be streched and by how much. The margin divides the image into 9 areas, where the corners will retain their original aspect and the rest of the areas will be stretched to accomodate the desired size of the image.
 - `Uniform` - This will make the picture as large as possible while preserving aspect ratio. This will often make the `Image` not cover the whole parent.
 - `UniformToFill` - Fill the parent container while preserving aspect ratio. This will often mean that parts of the picture are left out, clipped by the parent
+
+### $(StretchDirection)
+
+You can set which directions you want the image to scale by setting the `StretchDirection`-property:
+
+- `Both` - Allow both up- and downscaling
+- `UpOnly` - Only upscale contents
+- `DownOnly` - Only downscale contents
+
+### $(ContentAlignment)
+
+You can set an alignment on Image which will make the image align within its rectangle on screen if it fills more or less of the available space in its rectangle. Which might be common when using @(StretchDirection) and @(StretchMode):
+
+- `Default`
+- `Left`
+- `HorizontalCenter`
+- `Right`
+- `Top`
+- `VerticalCenter`
+- `Bottom`
+- `TopLeft`
+- `TopCenter`
+- `TopRight`
+- `CenterLeft`
+- `Center`
+- `CenterRight`
+- `BottomLeft`
+- `BottomCenter`
+- `BottomRight`
 
 ### $(Image sources)
 
@@ -168,6 +210,69 @@ Or alternatively, if you want to use a fixed density image, you can use the shor
 	<Image Url="{image_url}" />
 
 Note that images fetched from Http may take some time to load, and until loaded, Fuse knows nothing about the dimensions of the image. You should therefore be careful about basing the layout of your application on the dimensions of HTTP-fetched images.
+
+## $(Video)
+
+To display a video:
+
+	<Video File="fuse_video.mp4" />
+
+Video allows playback of video from file or stream through its properties `File` and `Url` respectively. Video is similar to @(Image), they share the properties @(StretchMode), @(StretchDirection) and @(ContentAlignment) and they work in the same way for both.
+
+### $(Video properties)
+
+Video come with a set of properties that can be used to configure it or control it. In addition to the properties shared with @(Image):
+- `Volume`: range from `0.0` to `1.0`, default is `1.0`
+- `Duration`: the duration of the video in seconds
+- `Position`: the current position of the video in seconds
+- `IsLooping`: a `bool` specifying if the video should loop or not, default is `false`
+
+### $(Useful triggers that can be used with Video)
+
+	<Video>
+		<WhilePlaying />	<!-- Active while the video is playing -->
+		<WhilePaused />		<!-- Active while the video is paused -->
+		<WhileCompleted />	<!-- Active while the video is done playing -->
+		<WhileLoading />	<!-- Active while the video is loading -->
+		<WhileFailed />		<!-- Active if the video failed to load or an error occured -->
+	</Video>
+
+### Supported platforms
+
+Video is currently only supported on iOS and Android. Support for video playback on other platforms is in our roadmap
+
+### Supported formats
+
+Video is implemented by using the videodecoder provided by the export target and therefore supports whatever the platform supports.
+Be aware that Android and iOS might not share support for some formats
+- [Android supported formats](http://developer.android.com/guide/appendix/media-formats.html)
+- [iOS supported formats (found under 'public.movie')](https://developer.apple.com/library/mac/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html)
+
+> ### $(Video example)
+
+	<App Theme="Basic">
+		<DockPanel>
+			<Video ux:Name="video" Dock="Fill" File="fuse_video.mp4" IsLooping="true" StretchMode="UniformToFill">
+				<ProgressAnimation>
+					<Change progressBar.Width="100" />
+				</ProgressAnimation>
+			</Video>
+			<Rectangle ux:Name="progressBar" Dock="Bottom" Fill="#f00" Width="0%" Height="10" />
+			<Grid Dock="Bottom" ColumnCount="2" RowCount="1">
+				<Button Text="Play">
+					<Clicked>
+						<Resume Target="video" />
+					</Clicked>
+				</Button>
+				<Button>
+					<Clicked>
+						<Pause Target="video" />
+					</Clicked>
+				</Button>
+			</Grid>
+		</DockPanel>
+	</App>
+
 
 ## $(Shapes)
 
@@ -326,7 +431,7 @@ The `StartPoint` and `EndPoint` are both X and Y offsets within the @(Shapes:Sha
 
 <!-- TODO: Remove DebugAction and or rename to <Debug Message=, this has a pull request, but the examples needs a search/replace DebugAction -> Debug -->
 
-It is easy to make an app that has a `Button`:
+Buttons are clickable controls that take their look and feel from the @(Theme).
 
 	<App Theme="Basic">
 		<Button Text="Click me!" ux:Name="button1">
@@ -336,9 +441,9 @@ It is easy to make an app that has a `Button`:
 		</Button>
 	</App>
 
-This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!". Because we're working with a control, we add `Theme="Basic"`.
+This small example will create a `Button` that covers the whole screen. When you click it, its label will change from "Click me!" to "Clicked!".
 
-In Fuse, pretty much anything can easily be made @(Clicked:clickable) (and @(Tapped:tappable), etc):
+In Fuse, pretty much anything can easily be made @(Clicked:clickable) (and @(Tapped:tappable), etc). Thus, if you want to design a custom look and feel for a button, any component can be used:
 
 	<App>
 		<Rectangle Fill="#309">
@@ -349,10 +454,6 @@ In Fuse, pretty much anything can easily be made @(Clicked:clickable) (and @(Tap
 	</App>
 
 Depending on where you started the preview process from, you'll see the `Message` output when you click the `Rectangle`.
-
-Then why is there a need for a separate `Button` concept?
-
-Because when you switch the `Theme` to `Native`, Fuse will render the `Button` as a native iOS or Android `Button`, depending on which platform the app is run on. Also, creating a concept called "Button" makes it easier to make meaningful themes.
 
 ### $(Event triggers)
 
@@ -566,6 +667,10 @@ Valid values for `InputHint` are `Default`, `Email`, `Number`, `Phone`, `Url`. T
 
 	<TextInput IsMultiline="true" />
 
+You may also choose to disable editing altogether:
+
+	<TextInput IsReadOnly="true" />
+
 When a `TextInput` gets focus, it will often summon the device's on-screen keyboard. Fuse provides a number of mechanisms to react to this event, one of which is `WhileKeyboardVisible`:
 
 	<Text Value="Instructions of some kind">
@@ -576,6 +681,18 @@ When a `TextInput` gets focus, it will often summon the device's on-screen keybo
 	<TextInput />
 
 As you can see, `WhileKeyboardVisible` can be attached to an arbitrary element, and you can do pretty much anything you want as a response to the on-screen keyboard taking up space on the screen.
+
+The read-only `RenderValue` property gives you the string that is actually being drawn. For instance, if `IsPassword` is true, it will contain the masked password (i.e. `•••••••`).
+
+> ### Styling TextInput
+
+The `CaretColor` property allows you to change the color of the caret:
+
+	<TextInput CaretColor="#ff0000" />
+
+If you want to change the color of the selection, `SelectionColor` enables you to do just that:
+
+	<TextInput SelectionColor="#00ffaa" />
 
 <!--
 - WhileFocused TODO: I am not sure what exactly this is supposed to demonstrate
@@ -625,6 +742,39 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 		</Panel>
 	</App>
 
+## $(NativeViewHost)
+Some views are only available as native components, so how can we avoid the limitation of having to use the Native theme and combine these native views with our custom Fuse views? By compositing them with the NativeViewHost! As an example, here is a @(WebView) added with a NativeViewHost:
+
+```
+<App Theme="Basic">
+	<Panel>
+		<NativeViewHost>
+			<WebView Url="http://interwebs.com" />
+		</NativeViewHost>
+	</Panel>
+</App>
+```
+
+Note that views added in a NativeViewHost are always rendered _in front_ of your other Graphics theme content, so your use of depth and render order will need to take this into account.
+
+To achieve the opposite -Adding Fuse views in a Native theme- read on.
+
+## $(GraphicsView)
+The `GraphicsView` is the counterpart to the @(NativeViewHost) and allows you to add Fuse views to an @(App) using the Native theme.
+
+```
+<App Theme="Native">
+	<StackPanel>
+		<Button Text="I'm a Native button!" />
+		<GraphicsView>
+			<Button Text="I'm a Fuse button!" />
+		</GraphicsView>
+	</StackPanel>
+</App>
+```
+
+As with the @(NativeViewHost) note that depth ordering will behave differently when mixing Native and Fuse views.
+
 ## $(WebView)
 
 To include web content Fuse offers a native WebView component for Android and iOS. The WebView is native only, and as such needs to be contained in a @(NativeViewHost) if you wish to use it with Graphics themes.
@@ -633,17 +783,17 @@ The WebView can be used to present web content over the http protocol, and hooks
 
 Of particular notice is the @(EvaluateJS) trigger, which allows arbitrary JavaScript to be run in the WebView's context and the resulting data be fed back into Fuse:
 
-	<App Theme="Native" Background="#333">
-		<JavaScript>
+```
+<App Theme="Native" Background="#333">
+	<JavaScript>
 			module.exports = {
 				onPageLoaded : function(res) {
-					console.log("WebView arrived at "+ J	SON.parse(res.json).url);
+					console.log("WebView arrived at "+ JSON.parse(res.json).url);
 			}
 		};
 	</JavaScript>
 	<DockPanel>
 		<StatusBarBackground Dock="Top"/>
-		
 		<WebView Dock="Fill" Url="http://www.google.com">
 			<PageLoaded>
 				<EvaluateJS Handler="{onPageLoaded}">
@@ -658,7 +808,7 @@ Of particular notice is the @(EvaluateJS) trigger, which allows arbitrary JavaSc
 		<BottomBarBackground Dock="Bottom" />
 	</DockPanel>
 </App>
-
+```
 
 
 ## $(Element)
@@ -688,11 +838,11 @@ It will layout two `Rectangle`s and add `Clicked`-triggers to both of them. Howe
 
 Valid values for `HitTestMode` are:
 
-- `None` - This element will not do hit testing
-- `LocalBounds` - This element will be hit tested based on its size
-- `LocalVisual` - This element will be hit tested based on its appearance
-- `LocalBoundsAndChildren` - Hit testing will include the bounds of the element and its children
-- `LocalVisualAndChildren` - Hit testing will include the appearance of the element and its children
+- $(HitTestMode.None:None) - This element will not do hit testing
+- $(HitTestMode.LocalBounds:LocalBounds) - This element will be hit tested based on its size
+- $(HitTestMode.LocalVisual:LocalVisual) - This element will be hit tested based on its appearance
+- $(HitTestMode.LocalBoundsAndChildren:LocalBoundsAndChildren) - Hit testing will include the bounds of the element and its children
+- $(HitTestMode.LocalVisualAndChildren:LocalVisualAndChildren) - Hit testing will include the appearance of the element and its children
 
 Note that if you set the @(Opacity) of an element below or equal its `HitTestOpacityThreshold` (which defaults to being 0), hit testing will be disabled for that object. This means that you can click an element as you fade it out, but it will stop accepting clicks at a certain point.
 

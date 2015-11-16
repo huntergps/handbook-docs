@@ -159,9 +159,12 @@ Move corresponds to adding a @(Translation) on the element and using @(Change) t
 
 ### $(Rotate)
 `Rotate` rotates an Element and is equal to adding a @(Rotation) and animating it with a @(Change).
+
 ```
 <Rotate Degrees="90" Duration="0.5"/>
 ```
+
+Using the `Degrees` property rotates the element around the Z-axis. Alternatively, you can use `DegreesX`, `DegreesY`, and `DegreesZ` to rotate the element around a specifix axis. However, you will propabily not need this.
 
 ### $(Resize)
 

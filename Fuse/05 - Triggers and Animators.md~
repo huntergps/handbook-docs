@@ -24,19 +24,18 @@ For example, here is a @(Panel) with a @(WhilePressed) trigger causing the panel
 
 As well as animating properties, one can also use triggers to add and remove entire elements.
 
-## $(Rest state) and deviation
+### $(Rest state) and deviation
 
 The default layout and configuration of UX markup elements is called the rest state. Triggers define deviations from this rest state. Each trigger knows how to "un-apply" its own animation to return the rest state, even if interrupted mid-animation. This is great, because it means animation is completely separated from the logical state of your program, greatly reducing the complexity of dealing with combined animation on
 multiple devices, screen sizes, with real data and real user input.
 
+
 ## Animators
 
 Animators are used to specify which and how @(Element:elements) are to be animated when a @(Trigger:trigger) is triggered.
-
-### Properties
 There are five pairs of properties which are important for controlling the exact result of an animation.
 
-#### $(Target)/Value
+### $(Target)/Value
 The `Target` property is used to identify the property which we intend to animate.
 The `Value` property is the value of the result of an animation.
 
@@ -49,7 +48,7 @@ one can do the following:
 <Change target.Property="Value"/>
 ```
 
-#### $(Duration)/$(DurationBack)
+### $(Duration)/$(DurationBack)
 Animations can have different behavior when animating forward and backward. When a trigger is activated, the animation is said to play forward. When the trigger is deactivated, the animation is played backward. Duration is used to set the duration for the animation. One can set a different duration for the backward animation by using the `DurationBack` property.
 
 When there are multiple @(Animators:animators) inside a trigger, the total duration of the trigger will be the longest duration among the animators.
@@ -63,13 +62,13 @@ In the following example, the total duration of the @(WhileTrue) trigger will be
 </WhileTrue>
 ```
 
-#### $(Delay)/$(DelayBack)
+### $(Delay)/$(DelayBack)
 Setting the `Delay` property results in the actual animation being delayed by that amount of seconds. `DelayBack` is used to set a different delay on the backward animation. The total duration of the animation becomes the delay + the duration. The following @(Change:change) animator has a total duration of 7 seconds. It waits 5 seconds after being activated and then animates its @(Target) over 2 seconds.
 ```
 <Change Delay="5" Duration="2" someElement.Height="100"/>
 ```
 
-#### $(Easing)/$(EasingBack)
+### $(Easing)/$(EasingBack)
 
 Fuse comes with a standard set of predefined easing curves. Easing curves are used to control how an animation progresses over time. The default easing is set to `Linear`. With linear easing, the animation progresses at the same speed over its entire duration. This usually appears quite unnatural and fake. To gain a more natural feel, we can change the easing to `QuadraticInOut`, like so:
 ```
@@ -102,8 +101,6 @@ Assign easing to an animator like so:
 TODO/AUTH: Write about mixop-->
 
 ### $(Change)
-
-<!-- Note there are properties we are not touching here, as the following format is consithered best practice -->
 
 `Change` temporarily changes the value of a property while its containing trigger is active. To permanently change a value, use the @(Set) animator.
 The `Change` animator can be used to animate almost any property.
@@ -169,12 +166,6 @@ When used in concert with @(LayoutAnimation), `Resize` allows you to animate the
 
 	 <Resize RelativeTo="LayoutChange" Duration="0.5" Easing="CircularInOut" />
 
-You can specify the amount to resize the element by using:
-
-* `Vector` - To control both X and Y resizing
-* `X` and `Y` - To scale on one axis
-
-
 
 ### $(Cycle)
 
@@ -201,7 +192,7 @@ You may also specify a `Duration` to control the length of the animation.
 As with @(Cycle), you may also specify a `Duration` to control the length of the animation.
 
 
-## Transforms
+> ## Transforms
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.
 It is worth mentioning that the order of these transforms affects the order of when they are applied to the element, and therefore can lead to different results.
 
@@ -219,6 +210,36 @@ It is worth mentioning that the order of these transforms affects the order of w
 ```
 
 The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive `X`-direction is now 45 degrees downward, and so our panel ends up being moved toward the bottom right.
+
+### $(Keyframe)
+<!--AUTH:-->
+There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+
+```
+<Move RelativeTo="ParentSize">
+	<Keyframe X="10" Time="0.5"/>
+	<Keyframe X="15" Time="1"/>
+	<Keyframe X="5" Time="2"/>
+</Move>
+```
+
+This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
+Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
+
+	<Page>
+		<SolidColor ux:Name="background" Color="#f00"/>
+		<ActivatingAnimation>
+			<Change Target="background.Color">
+				<Keyframe Value="#0f0" TimeDelta="0.25"/>
+				<Keyframe Value="#f00" TimeDelta="0.25"/>
+				<Keyframe Value="#ff0" TimeDelta="0.25"/>
+				<Keyframe Value="#0ff" TimeDelta="0.25"/>
+			</Change>
+		</ActivatingAnimation>
+	</Page>
+
+This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.
+
 <!-- TODO: Interpolation -->
 
 ### $(Translation)
@@ -279,36 +300,6 @@ Additionally, you can check if the `Rotation` is strictly around the Z axis by u
 The `Shear` animator can be used to perform a shear mapping on an element. One can use `DegreesX` and `DegreesY` to set the shear on one axis, or `Degrees` and `Vector` to set the shear in both the X and Y plane, using degrees or radians.
 
 While the effect is strictly 2D, the `IsFlat` property is there for consistency reasons, and will allways return true due to this.
-
-### $(Keyframe)
-<!--AUTH:-->
-There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
-
-```
-<Move RelativeTo="ParentSize">
-	<Keyframe X="10" Time="0.5"/>
-	<Keyframe X="15" Time="1"/>
-	<Keyframe X="5" Time="2"/>
-</Move>
-```
-
-This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
-Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
-
-	<Page>
-		<SolidColor ux:Name="background" Color="#f00"/>
-		<ActivatingAnimation>
-			<Change Target="background.Color">
-				<Keyframe Value="#0f0" TimeDelta="0.25"/>
-				<Keyframe Value="#f00" TimeDelta="0.25"/>
-				<Keyframe Value="#ff0" TimeDelta="0.25"/>
-				<Keyframe Value="#0ff" TimeDelta="0.25"/>
-			</Change>
-		</ActivatingAnimation>
-	</Page>
-
-This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.
-
 
 
 ## $(Attractor)

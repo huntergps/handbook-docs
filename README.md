@@ -4,7 +4,7 @@ Welcome to the official Fuse handbook repository!
 
 The handbook is the main place of reference for learning Fuse, and will eventually be an exhaustive reference.
 
-The handbook is split into four parts:
+The handbook is split into five parts:
 - Fuse - Everything related to the Fuse libraries and the UX format.
 - FuseJS - Anything concerning JavaScript, data-binding and Observables.
 - Uno - Using the Uno language, creating native modules and anything in between.

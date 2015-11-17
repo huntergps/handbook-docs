@@ -60,19 +60,19 @@ All three callbacks mentioned are available in JavaScript and Uno.
 Using the notifications from JS is super simple. Here is an example that just logs when you the callbacks fire:
 
 ```
-<Fuse.PushNotifications.JS.PushNotify ux:Global="PushNotify" />
+<FuseJS.Push ux:Global="Push" />
 <JavaScript>
-    var PushNotify = require("PushNotify");
+    var Push = require("Push");
 
-    PushNotify.onRegistrationSucceeded = function(regID) {
+    Push.onRegistrationSucceeded = function(regID) {
         console.log ("Reg Succeeded: " + regID);
     };
 
-    PushNotify.onRegistrationFailed = function(reason) {
+    Push.onRegistrationFailed = function(reason) {
         console.log ("Reg Failed: " + reason);
     };
 
-    PushNotify.onReceivedMessage = function(payload) {
+    Push.onReceivedMessage = function(payload) {
         console.log ("Recieved Push Notification: " + payload);
     };
 </JavaScript>

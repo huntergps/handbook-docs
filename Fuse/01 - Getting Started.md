@@ -21,7 +21,6 @@ We suggest you start by [following our tutorial](https://www.fusetools.com/devel
 After having created a new project, either by using the dashboard or the `fuse` command line command, you will find three files in the project directory:
 
 - `ProjectName.unoproj` - This is the project file, and basically keeps track of which files compose the project, which packages it depends on and also other handy values like your api keys.
-- `devices.json` - When previewing your code, Fuse needs to know which devices you would like to simulate. The `devices.json`-file contains definitions for quite a few devices you are likely to want to deploy your app to. If none of the shipped device definitions match what you intend to ship to, feel free to add your own here. This does not affect what real devices your project can run on.
 - `MainView.ux` - This is the main starting point for your app, mainly because it contains the `App`-tag. Under normal circumstances you will delete most of the contents of this file, but feel free to examine the default application and see what is needed to make a bare bones surface with some controls.
 
 Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.

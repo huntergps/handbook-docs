@@ -196,24 +196,29 @@ As with @(Cycle), you may also specify a `Duration` to control the length of the
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.
 It is worth mentioning that the order of these transforms affects the order of when they are applied to the element, and therefore can lead to different results.
 
+
 ```
 <Panel Width="100" Height="50">
 	<Translation X="100"/>
 	<Rotation Degrees="45"/>
 </Panel>
 ```
+
+
 ```
 <Panel Width="100" Height="50">
 	<Rotation Degrees="45"/>
 	<Translation X="100"/>
 </Panel>
 ```
+
 
 The two examples have quite different results. In the first case, the panel is first moved 100 points to the right and then rotated 45 degrees. In the other case, the panel is first rotated 45 degrees. The positive `X`-direction is now 45 degrees downward, and so our panel ends up being moved toward the bottom right.
 
 ### $(Keyframe)
 <!--AUTH:-->
 There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+
 
 ```
 <Move RelativeTo="ParentSize">
@@ -222,6 +227,7 @@ There are situations where we don't simply want to animate from point a to point
 	<Keyframe X="5" Time="2"/>
 </Move>
 ```
+
 
 This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
 Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
@@ -294,7 +300,7 @@ You can rotate an element using:
  * `EulerAngle` and `EulerAngleDegrees`, letting you set the euler angles of the element in radians or degrees, respectively.
 
 Additionally, you can check if the `Rotation` is strictly around the Z axis by using the property `IsFlat`.
- 
+
 ### $(Shear)
 
 The `Shear` animator can be used to perform a shear mapping on an element. One can use `DegreesX` and `DegreesY` to set the shear on one axis, or `Degrees` and `Vector` to set the shear in both the X and Y plane, using degrees or radians.
@@ -365,13 +371,13 @@ The `Callback` action is used to call a JavaScript function (see @(Data Binding)
 ### $(GoForward)
 Tell a @(Navigation) or a @(WebView) to step forward in its navigation history.
 
-`<GoForward WebView="myWebView" />`  
+`<GoForward WebView="myWebView" />`
 `<GoForward Context="myNavigation" />`
 
 ### $(GoBack)
 Tell a Navigation context or a @(WebView) to go backwards in its navigation history.
 
-`<GoBack WebView="myWebView" />`  
+`<GoBack WebView="myWebView" />`
 `<GoBack Context="myNavigation" />`
 
 > ### $(Toggle)
@@ -455,12 +461,12 @@ Triggers once the @(WebView) has completed loading content from its current Url.
 ```
 
 ### $(Reload)
-The `Reload` action lets you tell a given WebView to reload its current location. 
+The `Reload` action lets you tell a given WebView to reload its current location.
 
 `<Reload WebView="myWebView" />`
 
 ### $(LoadUrl)
-The `LoadUrl` action lets you tell a given WebView to navigate to a location. 
+The `LoadUrl` action lets you tell a given WebView to navigate to a location.
 
 `<LoadUrl WebView="myWebView" Url="http://mypage.com" />`
 
@@ -495,7 +501,7 @@ To make this feel better and allow return, we currently inject the user's JS in 
 
 ### Reading the result value
 
-When we evaluate the JavaScript we are currently bound by platform restrictions in a key way: String is the only allowed return value type on Android, our lowest common denominator. Android allows for parity with iOS as of API level 19, which denies us good backwards compatibility. For now we must rely on the comparatively ancient [addJavaScriptInterface](http://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object, java.lang.String)) API for backwards compatibility. 
+When we evaluate the JavaScript we are currently bound by platform restrictions in a key way: String is the only allowed return value type on Android, our lowest common denominator. Android allows for parity with iOS as of API level 19, which denies us good backwards compatibility. For now we must rely on the comparatively ancient [addJavaScriptInterface](http://developer.android.com/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object, java.lang.String)) API for backwards compatibility.
 
 What this means is that any return value passed from the evaluated script must by necessity be returned as JSON and parsed back from it on the Fuse end. Even if all you want is the result of some arithmetic, you'd still receive it as a string and require a cast. Instead of forcing you to routinely `return JSON.stringify(foo)` from your own JS we handle this by *always* wrapping your JS in JSON.stringify before evaluation:
 
@@ -508,13 +514,13 @@ The returned JSON string here is then put into a result object with the `json` k
 ```XML
 <JavaScript>
 	module.exports = {
-		onPageLoaded : function(result) 
+		onPageLoaded : function(result)
 		{
 			var url = JSON.parse(result.json).url;
 		}
 	};
 </JavaScript>
-``` 
+```
 
 Note that of course return is optional. If you don't return anything from your evaluated JS the return value of the expression will simply be "null".
 

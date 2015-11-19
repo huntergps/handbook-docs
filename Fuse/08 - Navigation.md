@@ -190,6 +190,11 @@ The behavior of `GoBack` depends on the type of navigation context it's performe
 - @(HierarchicalNavigation) – Navigates one level up in the hierarchy, i.e. the page most recently navigated to.
 - @(DirectNavigation) – Does nothing.
 
+> ### $(WhileCanGoBack)
+
+The `WhileCanGoBack` trigger is active whenever navigating backward is possible.
+
+
 ### @(GoForward)
 
 As with @(GoBack), `GoForward` is also context-sensitive:
@@ -197,6 +202,11 @@ As with @(GoBack), `GoForward` is also context-sensitive:
 - @(LinearNavigation) – Navigates to the page occurring after the current page.
 - @(HierarchicalNavigation) – Navigates one level down in the hierarchy, i.e. the last page the user has @(GoBack:gone back) from.
 - @(DirectNavigation) – Does nothing.
+
+
+> ### $(WhileCanGoForward)
+
+The `WhileCanGoForward` trigger is active whenever navigating forward is possible.
 
 
 ## $(EnteringAnimation) / $(ExitingAnimation)

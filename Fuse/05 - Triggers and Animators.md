@@ -131,6 +131,8 @@ $(RelativeTo) can be set to the following values:
 - `LayoutChange`: Used in response to a @(LayoutAnimation) to move the element by the amount of a layout change.
 - `Keyboard`: Moves the element relative to the size of the eyboard.
 
+Additionally, if you set `RelativeTo` to `Size` or `ParentSize`, you can move the element relative to the size of another element set by the `RelativeElement` property.
+
 `<Move X="0.5" RelativeTo="Size"/>` will move the element by half of its own width in the x-direction.
 Move corresponds to adding a @(Translation) on the element and using @(Change) to animate its X and Y values. The following two examples give the same result.
 ```

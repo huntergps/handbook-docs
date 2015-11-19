@@ -694,6 +694,15 @@ If you want to change the color of the selection, `SelectionColor` enables you t
 
 	<TextInput SelectionColor="#00ffaa" />
 
+A Placeholder value can be added if you want some default string to be displayed when the TextInput is empty
+
+	<TextInput PlaceholderText="My placeholder text" />
+
+And it can also have a separate color
+	
+	<TextInput PlaceholderText="My placeholder text" PlaceholderColor="#eee" />
+	
+
 <!--
 - WhileFocused TODO: I am not sure what exactly this is supposed to demonstrate
 - WhileEmpty TODO: This doesn't exist, should it? It is good for implementing placeholder data
@@ -743,7 +752,7 @@ It is possible to animate properties based on absolute `ScrollView` position. Fo
 	</App>
 
 ## $(NativeViewHost)
-Some views are only available as native components, so how can we avoid the limitation of having to use the Native theme and combine these native views with our custom Fuse views? By compositing them with the NativeViewHost! As an example, here is a @(WebView) added with a NativeViewHost:
+Some views are only available as native components. These obviously work out-of-the-box with the Native theme but how can we use them together with custom components in apps based on `GraphicsTheme`? By compositing them with the NativeViewHost! As an example, here is a @(WebView) added with a NativeViewHost:
 
 ```
 <App Theme="Basic">
@@ -755,9 +764,9 @@ Some views are only available as native components, so how can we avoid the limi
 </App>
 ```
 
-Note that views added in a NativeViewHost are always rendered _in front_ of your other Graphics theme content, so your use of depth and render order will need to take this into account.
+Note that views added in a NativeViewHost are always rendered _in front_ of your other Graphics theme content, so your use of depth and render order will need to take this into account. (For instance: things like `<BringToFront>` and `<SendToBack>` might not behave the way you expect.)
 
-To achieve the opposite -Adding Fuse views in a Native theme- read on.
+To achieve the opposite, adding custom components and views inside a Native theme, read on.
 
 ## $(GraphicsView)
 The `GraphicsView` is the counterpart to the @(NativeViewHost) and allows you to add Fuse views to an @(App) using the Native theme.
@@ -779,7 +788,7 @@ As with the @(NativeViewHost) note that depth ordering will behave differently w
 
 To include web content Fuse offers a native WebView component for Android and iOS. The WebView is native only, and as such needs to be contained in a @(NativeViewHost) if you wish to use it with Graphics themes.
 
-The WebView can be used to present web content over the http protocol, and hooks into some useful triggers for building a customized browsing experience, such as @(PageBeginLoading), @(WhilePageLoading) and @(PageLoaded). Navigation triggers like @(GoBack) and @(GoForward) are complimented with WebView-specific ones, like @(Reload) and @(LoadUrl). It can also be used to feed a @(ProgressAnimation).
+The WebView can be used to present web content over the http protocol, and hooks into some useful triggers for building a customized browsing experience, such as @(PageBeginLoading), @(WhilePageLoading) and @(PageLoaded). Navigation triggers like @(GoBack) and @(GoForward) are complemented with WebView-specific ones, like @(Reload) and @(LoadUrl). It can also be used to feed a @(ProgressAnimation).
 
 Of particular notice is the @(EvaluateJS) trigger, which allows arbitrary JavaScript to be run in the WebView's context and the resulting data be fed back into Fuse:
 

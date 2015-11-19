@@ -206,6 +206,15 @@ You may also specify a `Duration` to control the length of the animation.
 
 As with @(Cycle), you may also specify a `Duration` to control the length of the animation.
 
+## $(Skew)
+
+`Skew` allows you to animate a skew transform on an element.
+
+```
+<Skew DegreesX="30" Duration="0.4"/>
+```
+
+You can use `DegreesX` and `DegreesY` to skew on one axis, or `DegreesXY` and `XY` to skew on both axes in degrees or radians, respectively.
 
 ## Transforms
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.

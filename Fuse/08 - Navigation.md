@@ -209,6 +209,26 @@ As with @(GoBack), `GoForward` is also context-sensitive:
 The `WhileCanGoForward` trigger is active whenever navigating forward is possible.
 
 
+### $(NavigateTo)
+
+`NavigateTo` navigates to a specific @(Page:page), specified by the `Target` property. Below is an example using a @(PageControl).
+	
+	<PageControl ux:Name="nav">
+		<Page ux:Name="page1">
+			<Button Text="Go to page 2" Alignment="Center">
+				<Clicked>
+					<NavigateTo Target="page2" />
+				</Clicked>
+			</Button>
+		</Page>
+		<Page ux:Name="page2">
+			<Text Alignment="Center">
+				Welcome to page 2!
+			</Text>
+		</Page>
+	</PageControl>
+
+
 ## $(EnteringAnimation) / $(ExitingAnimation)
 As seen above, Entering- and ExitingAnimation are used to specify how pages and elements behave when they are being navigated to and from. There is no default behavior for elements when using `Navigation` so unless a @(PageControl) is being used (which does apply a style with Entering- and ExitingAnimation to @(Page:pages)) one has to add these in order to define what a navigation actually means for a page.
 

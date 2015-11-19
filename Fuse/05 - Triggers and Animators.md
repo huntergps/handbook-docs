@@ -153,11 +153,14 @@ Move corresponds to adding a @(Translation) on the element and using @(Change) t
 
 `Scale` works in the same way as @(Move) except that it scales the element. Note that scale doesn't actually change the elements size. This means that the rest of the UI layout wont be affected and the animation is guaranteed to be fast.
 
+You can scale an element uniformly along all axes by using the `Factor` property. Alternatively, you can also scale on a per-axis basis using `Vector` or `X`, `Y`, and `Z`.
+
 ```
 <Scale Factor="2" Duration="0.4"/>
 ```
 
 ### $(Rotate)
+
 `Rotate` rotates an Element and is equal to adding a @(Rotation) and animating it with a @(Change).
 
 ```
@@ -176,8 +179,6 @@ You can specify the amount to resize the element by using:
 
 * `Vector` - To control both X and Y resizing
 * `X` and `Y` - To scale on one axis
-
-
 
 ### $(Cycle)
 

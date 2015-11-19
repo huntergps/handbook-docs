@@ -221,7 +221,7 @@ Video allows playback of video from file or stream through its properties `File`
 
 ### $(Video properties)
 
-Video come with a set of properties that can be used to configure it or control it. In addition to the properties shared with @(Image):
+Video come with a set of properties that can be used to configure it or control it, in addition to the properties shared with @(Image):
 - `Volume`: range from `0.0` to `1.0`, default is `1.0`
 - `Duration`: the duration of the video in seconds
 - `Position`: the current position of the video in seconds

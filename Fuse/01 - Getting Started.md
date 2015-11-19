@@ -18,7 +18,7 @@ We suggest you start by [following our tutorial](https://www.fusetools.com/devel
 
 ## $(Project structure)
 
-After having created a new project, either by using the dashboard or the `fuse` command line command, you will find three files in the project directory:
+After having created a new project, either by using the dashboard or the `fuse` command line command, you will find two files in the project directory:
 
 - `ProjectName.unoproj` - This is the project file, and basically keeps track of which files compose the project, which packages it depends on and also other handy values like your api keys.
 - `MainView.ux` - This is the main starting point for your app, mainly because it contains the `App`-tag. Under normal circumstances you will delete most of the contents of this file, but feel free to examine the default application and see what is needed to make a bare bones surface with some controls.

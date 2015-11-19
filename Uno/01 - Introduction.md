@@ -1,6 +1,6 @@
 # $(Uno:Introduction)
 
-For advanced use cases, Fuse lets you write code in Uno. Uno is a fast, native dialect of C#, where you have direct access to Anroid and iOS APIs. The Fuse UX classes are written entirely in Uno.
+For advanced use cases, Fuse lets you write code in Uno. Uno is a fast, native dialect of C#, where you have direct access to Android and iOS APIs. The Fuse UX classes are written entirely in Uno.
 
 To learn more about Uno, consult these resources:
 

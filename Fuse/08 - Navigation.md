@@ -175,13 +175,34 @@ A `HierarchicalNavigation` is commonly used when there is a hierarchical flow of
 
 Note that setting the @(Background) of the second @(Panel) in this example is of significance, as it enables hit testing of the inner @(Panel). You could alternatively set the @(HitTestMode) of the @(EdgeNavigator) to be @(HitTestMode.LocalBoundsAndChildren). Normally this isn't an issue, as the inner panel will have content that is hit testable.
 
-<!-- TODO: Document - GoBack and - GoForward ? -->
+## $(Controlling navigation)
+
+Fuse provides several @(Actions:actions) that allow you to perform @(Navigation:navigation).
+
+All navigation-related @(Actions:actions) have a `Context` property that lets you specify the navigation context to perform the action on.
+If `Context` is not specified, it will look for a parent element with a `Navigation` behavior and use that.
+
+### @(GoBack)
+
+The behavior of `GoBack` depends on the type of navigation context it's performed on:
+
+- @(LinearNavigation) – Navigates to the page occurring before the current page.
+- @(HierarchicalNavigation) – Navigates one level up in the hierarchy, i.e. the page most recently navigated to.
+- @(DirectNavigation) – Does nothing.
+
+### @(GoForward)
+
+As with @(GoBack), `GoForward` is also context-sensitive:
+
+- @(LinearNavigation) – Navigates to the page occurring after the current page.
+- @(HierarchicalNavigation) – Navigates one level down in the hierarchy, i.e. the last page the user has @(GoBack:gone back) from.
+- @(DirectNavigation) – Does nothing.
 
 
 ## $(EnteringAnimation) / $(ExitingAnimation)
 As seen above, Entering- and ExitingAnimation are used to specify how pages and elements behave when they are being navigated to and from. There is no default behavior for elements when using `Navigation` so unless a @(PageControl) is being used (which does apply a style with Entering- and ExitingAnimation to @(Page:pages)) one has to add these in order to define what a navigation actually means for a page.
 
-@(PageControl) applied the following style to @(Page:pages):
+@(PageControl) applies the following style to @(Page:pages):
 
 	<Style>
 		<Page>

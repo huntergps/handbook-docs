@@ -363,16 +363,26 @@ The `Callback` action is used to call a JavaScript function (see @(Data Binding)
 ```
 
 ### $(GoForward)
-Tell a @(Navigation) or a @(WebView) to step forward in its navigation history.
 
-`<GoForward WebView="myWebView" />`  
-`<GoForward Context="myNavigation" />`
+Tells a @(Navigation:navigation context) or a @(WebView) to step forward in its navigation history.
+
+	<GoForward Context="myNavigation" />
+
+	<GoForward WebView="myWebView" />
+
+For further detail about `GoForward` in the context of @(Navigation:navigation), see @(Controlling navigation).
+
 
 ### $(GoBack)
-Tell a Navigation context or a @(WebView) to go backwards in its navigation history.
 
-`<GoBack WebView="myWebView" />`  
-`<GoBack Context="myNavigation" />`
+Tells a @(Navigation:navigation context) or a @(WebView) to step backward in its navigation history.
+
+	<GoBack Context="myNavigation" />
+
+	<GoBack WebView="myWebView" />
+
+For further detail about `GoBack` in the context of @(Navigation:navigation), see @(Controlling navigation).
+
 
 > ### $(Toggle)
 `Toggle` is used to toggle a boolean value between `true` and `false`. If inside a @(Switch) it will toggle the value of the @(Switch). `Toggle` can also be used to activate/deactive @(WhileTrue) and @(WhileFalse) triggers like so:

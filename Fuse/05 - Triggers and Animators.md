@@ -206,7 +206,7 @@ You may also specify a `Duration` to control the length of the animation.
 
 As with @(Cycle), you may also specify a `Duration` to control the length of the animation.
 
-## $(Skew)
+### $(Skew)
 
 `Skew` allows you to animate a skew transform on an element.
 
@@ -215,6 +215,43 @@ As with @(Cycle), you may also specify a `Duration` to control the length of the
 ```
 
 You can use `DegreesX` and `DegreesY` to skew on one axis, or `DegreesXY` and `XY` to skew on both axes in degrees or radians, respectively.
+
+### $(Keyframe:Keyframes)
+<!--AUTH:-->
+There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
+
+```
+<Move RelativeTo="ParentSize">
+	<Keyframe X="10" Time="0.5"/>
+	<Keyframe X="15" Time="1"/>
+	<Keyframe X="5" Time="2"/>
+</Move>
+```
+
+This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
+Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
+
+	<Page>
+		<SolidColor ux:Name="background" Color="#f00"/>
+		<ActivatingAnimation>
+			<Change Target="background.Color">
+				<Keyframe Value="#0f0" TimeDelta="0.25"/>
+				<Keyframe Value="#f00" TimeDelta="0.25"/>
+				<Keyframe Value="#ff0" TimeDelta="0.25"/>
+				<Keyframe Value="#0ff" TimeDelta="0.25"/>
+			</Change>
+		</ActivatingAnimation>
+	</Page>
+
+This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.
+
+### $(Nothing)
+
+All animations for a `Trigger` share a common timeline, which ends when the last animation has completed. In some rare cases, you may want to artificially extend the timeline. This can be done using `Nothing`. Logically, it is a blank animation with an artificial length, forcing the length of the timeline to be at least the duration of the `Nothing`. 
+
+```
+<Nothing Duration="1" />
+```
 
 ## Transforms
 All @(Element:elements) can have transforms applied to them in order to move, scale or rotate.
@@ -294,37 +331,6 @@ Additionally, you can check if the `Rotation` is strictly around the Z axis by u
 The `Shear` animator can be used to perform a shear mapping on an element. One can use `DegreesX` and `DegreesY` to set the shear on one axis, or `Degrees` and `Vector` to set the shear in both the X and Y plane, using degrees or radians.
 
 While the effect is strictly 2D, the `IsFlat` property is there for consistency reasons, and will allways return true due to this.
-
-### $(Keyframe)
-<!--AUTH:-->
-There are situations where we don't simply want to animate from point a to point b. For the cases where we want to specify several steps for an animation, we can use @(Keyframe:keyframes).
-
-```
-<Move RelativeTo="ParentSize">
-	<Keyframe X="10" Time="0.5"/>
-	<Keyframe X="15" Time="1"/>
-	<Keyframe X="5" Time="2"/>
-</Move>
-```
-
-This @(Move) animator will first animate X to 10 over 0.5 second, then from 10 to 15 over 0.5 second. Finally, it will go from an X of 15 to 5 over 1 second.
-Here is an example of using @(Keyframe:keyframes) with a @(Change) animator:
-
-	<Page>
-		<SolidColor ux:Name="background" Color="#f00"/>
-		<ActivatingAnimation>
-			<Change Target="background.Color">
-				<Keyframe Value="#0f0" TimeDelta="0.25"/>
-				<Keyframe Value="#f00" TimeDelta="0.25"/>
-				<Keyframe Value="#ff0" TimeDelta="0.25"/>
-				<Keyframe Value="#0ff" TimeDelta="0.25"/>
-			</Change>
-		</ActivatingAnimation>
-	</Page>
-
-This time we use `TimeDelta` instead of time. With `TimeDelta` we can specify time as a relative term instead of absolute. This means that the order of the @(Keyframe:keyframes) matter, but it lets us reason about the keyframes in terms of their duration instead of their absolute time on the timeline.
-
-
 
 ## $(Attractor)
 

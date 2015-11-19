@@ -36,7 +36,7 @@ The `WhileDragging` trigger is active while the @(Element) is being dragged and 
 
 ### $(PointAttractor)
 
-The `PointAttractor` `Rule` is one of the `ForceField` rules and can be used to define points which @(Element:elements) are attracted towards. The `PointAttractor` can be customized with the following properties:
+The `PointAttractor` `Rule` is a`ForceField` rule and can be used to define "landing points" which @(Draggable:draggable) @(Element:elements) are attracted to when they are not dragged by the user. The `PointAttractor` can be customized with the following properties:
 - Offset - Set the position of the `PointAttractor` relative to its container
 - Radius - The radius from the point where the attractor will have an effect.
 - Strength - How much attraction is applied to the affected elements.

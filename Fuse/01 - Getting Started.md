@@ -1,6 +1,6 @@
 # $(Iniciando)
 
-Comenzar y correr Fuse es súper fácil. Solo tendremos que instalar algunas cosas, entonces estamos bien para iniciar!
+Comenzar y correr Fuse es súper fácil. Solo tendremos que instalar algunas cosas, y estaremos listos para iniciar!
 
 ## $(Setup)
 

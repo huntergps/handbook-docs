@@ -13,20 +13,20 @@ Instrucciones para instalar en Windows: https://www.fusetools.com/developers/gui
 
 ## Tutorial
 
-We suggest you start by [following our tutorial](https://www.fusetools.com/developers/guides/tutorial). You can also find a wide range of ready-to-run examples [on our Examples-page](https://www.fusetools.com/examples), as well as a (constantly growing) list of [tutorials on Youtube](https://www.youtube.com/playlist?list=PLdlqWm6b-XALJgM3fGa4q95Yipsgb8Q1o).
+Sugerimos que inicie [revisando nuestro tutorial](https://www.fusetools.com/developers/guides/tutorial). También puede encontrar una variedad de ejemplos listos para ejecutar en [nuestra página de Ejemplos](https://www.fusetools.com/examples), así como tambien en nuestra lista (en constante crecimiento) de [tutoriales en Youtube](https://www.youtube.com/playlist?list=PLdlqWm6b-XALJgM3fGa4q95Yipsgb8Q1o).
 
-## $(Project structure)
+## $(Estructura del Proyecto)
 
-After having created a new project, either by using the dashboard or the `fuse` command line command, you will find two files in the project directory:
+Después de haber creado un nuevo proyecto, ya sea usando el dashboard  o el comando `fuse` desde la línea de comandos, encontrará dos archivos en el directorio del proyecto:
 
-- `ProjectName.unoproj` - This is the project file, and basically keeps track of which files compose the project, which packages it depends on and also other handy values like your api keys.
-- `MainView.ux` - This is the main starting point for your app, mainly because it contains the `App`-tag. Under normal circumstances you will delete most of the contents of this file, but feel free to examine the default application and see what is needed to make a bare bones surface with some controls.
+- `ProjectName.unoproj` - Este es el archivo de proyecto, y, básicamente, hace un seguimiento de los archivos que forman parte del proyecto, los paquetes de los que depende, así como también otros valores prácticos como las api keys.
+- `MainView.ux` - Este es el punto inicio principal para su app, principalmente por que contiene el tag `App`. Bajo circunstancias normales usted puede borrar la mayoria de contenido de este archivo, pero sientase libre de examinar la aplicación por defecto y mire el esqueleto con algunos controles.
 
-Note: JavaScript do not need to be referenced from the `unoproj`-file. JavaScript files are referenced directly from UX.
+Nota: No es necesita hacer referencia a JavaScript desde el archivo `unoproj`. Los archivos JavaScript son referenciados directamente desde la UX.
 
-> ### $(Project file structure)
+> ### $(Estructura de archivos del proyecto)
 
-The `unoproj` file has the following structure (incomplete):
+El archivo `unoproj`  tiene la siguiente estructura (incompleto):
 
 Divide the solution into multiple projects and reference them from the `unoproj`-file:
 

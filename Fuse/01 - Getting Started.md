@@ -1,16 +1,15 @@
-# $(Getting Started)
+# $(Iniciando)
 
-Getting up and running with Fuse is super easy. We'll just need to install a few things, then we're good to go!
+Comenzar y correr Fuse es súper fácil. Solo tendremos que instalar algunas cosas, entonces estamos bien para iniciar!
 
 ## $(Setup)
 
-We're always working hard on making this process smooth as silk, but occasionally things can still go wrong. If something happens, please let us know.
+Siempre estamos trabajando duro para hacer que este proceso se suave como la seda, pero de vez en cuando las cosas todavía pueden ir mal. Si sucede algo, por favor háganoslo saber.
+Instrucciones para instalar en OS X: https://www.fusetools.com/developers/guides/setup/install-osx
 
-Setup instructions for OS X: https://www.fusetools.com/developers/guides/setup/install-osx
+Instrucciones para desinstalar en OS X: https://gist.github.com/Tapped/daa78c08882f33b0c7c3
 
-Uninstall instructions for OS X: https://gist.github.com/Tapped/daa78c08882f33b0c7c3
-
-Setup instructions for Windows: https://www.fusetools.com/developers/guides/setup/install-win
+Instrucciones para instalar en Windows: https://www.fusetools.com/developers/guides/setup/install-win
 
 ## Tutorial
 
